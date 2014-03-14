@@ -1,0 +1,15 @@
+{
+    "name": "ghassani/miva-provision",
+    "description": "Various classes, helpers, and wrappers for dealing with Miva Merchant Provisioning API",
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "Gassan Idriss",
+            "email": "gidriss@mivamerchant.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+
+    }
+}
