@@ -34,6 +34,8 @@ class Builder
 
 	/**
 	* createStore
+	*
+	* Add a StoreCreate fragment to create a new store in miva
 	*/
 	public function createStore(Fragment\StoreCreate $store)
 	{
@@ -104,6 +106,33 @@ class Builder
 		$countryDelete->addAttribute('name', $country->getName());
 
 		return $this;
+	}
+
+
+	public function addStore($storeCode)
+	{
+		$store = $this->getStore($storeCode);
+
+		// already exists?
+		if ($store) {
+			return $this;
+		}
+
+		$store = $this->getRoot()->addChild('Store');
+		$store->addAttribute('code', $storeCode);
+
+		return $this;
+	}
+
+	public function getStore($storeCode)
+	{
+		$store = $this->getRoot()->xpath(sprintf("/Provision/Store[@code='%s']", $storeCode));
+
+		if (!$store) {
+			return false;
+		}
+
+		return end($store);
 	}
 
 	/**
