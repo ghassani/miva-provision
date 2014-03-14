@@ -1,0 +1,1 @@
+<UpsoldProductRequiredProduct_Assign upsoldproduct_code="shield-large" requiredproduct_code="mail-chain" />

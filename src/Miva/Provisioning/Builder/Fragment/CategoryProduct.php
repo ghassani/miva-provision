@@ -1,0 +1,1 @@
+<CategoryProduct_Assign category_code="Food" product_code="ale-gallon" />

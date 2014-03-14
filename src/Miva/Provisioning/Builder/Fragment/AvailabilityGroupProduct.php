@@ -1,0 +1,1 @@
+<AvailabilityGroupProduct_Assign group_name="Thief" product_code="kit-disguise" />

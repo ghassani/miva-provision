@@ -1,0 +1,1 @@
+<ProductRelatedProduct_Assign product_code="bolts" relatedproduct_code="bolts-silver" />

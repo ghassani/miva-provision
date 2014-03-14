@@ -1,0 +1,1 @@
+<PriceGroupProduct_Assign group_name="Healer" product_code="kit-healers" />

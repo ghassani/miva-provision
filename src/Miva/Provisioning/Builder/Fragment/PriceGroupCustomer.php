@@ -1,0 +1,1 @@
+<PriceGroupCustomer_Assign group_name="Healer" customer_login="cleric" />

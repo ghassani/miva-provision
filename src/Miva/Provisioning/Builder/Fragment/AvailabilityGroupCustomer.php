@@ -1,0 +1,1 @@
+<AvailabilityGroupCustomer_Assign group_name="Thief" customer_login="rogue" />
