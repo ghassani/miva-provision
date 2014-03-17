@@ -1,7 +1,11 @@
 <?php
 /*
+* This file is part of the Miva PHP Provision package.
 *
+* (c) Gassan Idriss <gidriss@mivamerchant.com>
 *
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
@@ -12,14 +16,24 @@ namespace Miva\Provisioning\Builder\Fragment;
 */
 class Category implements FragmentInterface
 {
-
+    
+    /** @var string */
     protected $name;
 
+    /** @var string */
     protected $code;
 
+    /** @var string */
     protected $active;
 
 
+    /**
+     * Constructor
+     * 
+     * @param string $name
+     * @param string $code
+     * @param string $active
+     */
     public function __construct($name = null, $code = null, $active = 'Yes')
     {
         $this->name = $name;
@@ -97,14 +111,22 @@ class Category implements FragmentInterface
     }
 
     /**
-    * {@inheritDoc}
+     * {@inheritDoc}
+     * 
+     * Format:
+     * 
+     *  <Category_Add>
+     *     <Code>Weapons</Code>
+     *     <Name><![CDATA[Weapons]]></Name>
+     *     <Active>Yes</Active>
+     *  </Category_Add> 
     */
     public function toXml()
     {
 
         $xml = null;
         $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-        $xmlObject->addChild('Name', $this->getName());
+        $xmlObject->addChild('Name', sprintf('<![CDATA[%s]]>', $this->getName()));
         $xmlObject->addChild('Code', $this->getCode());
         $xmlObject->addChild('Active', $this->getActive() ? $this->getActive() : 'Yes');
 

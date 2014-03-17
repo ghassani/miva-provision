@@ -10,78 +10,72 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 /**
-* MivaMailerSettings
+* ShippingMethod
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class MivaMailerSettings implements FragmentInterface
+class ShippingMethod implements FragmentInterface
 {
-    
-    
-    /** @var string */
-    protected $account;
-    
-    /** @var string */
-    protected $server;
-    
 
+    /** @var string */
+    protected $moduleCode;
     
+    /** @var string */
+    protected $methodCode;
+      
     /**
-     * getAccount
+     * getModuleCode
      *
      * @return string
     */
-    public function getAccount()
+    public function getModuleCode()
     {
-        return $this->account;
+        return $this->moduleCode;
     }
     
     /**
-     * setAccount
+     * setModuleCode
      *
-     * @param string $account
+     * @param string $moduleCode
      *
      * @return self
     */
-    public function setAccount($account)
+    public function setModuleCode($moduleCode)
     {
-        $this->account = $account;
+    	$this->moduleCode = $moduleCode;
         return $this;
     }
-    
+
+
     /**
-     * getServer
+     * getMethodCode
      *
      * @return string
     */
-    public function getServer()
+    public function getMethodCode()
     {
-        return $this->server;
+        return $this->methodCode;
     }
     
     /**
-     * setServer
+     * setMethodCode
      *
-     * @param string $server
+     * @param string $methodCode
      *
      * @return self
     */
-    public function setServer($server)
+    public function setMethodCode($methodCode)
     {
-        $this->server = $server;
+    	$this->methodCode = $methodCode;
         return $this;
     }
-    
 
     /**
      * {@inheritDoc}
      * 
      * Format:
      * 
-     *   <MivaMailerSettings_Update>
-     *       <Account/>
-     *       <Server/>
-     *   </MivaMailerSettings_Update>
+     * <ShippingMethod module_code="upsxml" method_code="02" />  
      *
     */
     public function toXml()
@@ -96,4 +90,5 @@ class MivaMailerSettings implements FragmentInterface
         
         return $xml;
     }
+
 }

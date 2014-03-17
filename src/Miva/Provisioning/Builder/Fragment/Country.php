@@ -1,7 +1,11 @@
 <?php
 /*
+* This file is part of the Miva PHP Provision package.
 *
+* (c) Gassan Idriss <gidriss@mivamerchant.com>
 *
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
@@ -12,14 +16,23 @@ namespace Miva\Provisioning\Builder\Fragment;
 */
 class Country implements FragmentInterface
 {
-
+    /** @var string */
     protected $name;
 
+    /** @var string */
     protected $code;
 
+    /** @var string */
     protected $isoCode;
 
 
+    /**
+     * Constructor
+     * 
+     * @param string $name
+     * @param string $code
+     * @param string $isoCode
+     */
     public function __construct($name = null, $code = null, $isoCode = null)
     {
         $this->name = $name;
@@ -97,7 +110,23 @@ class Country implements FragmentInterface
     }
 
     /**
-    * {@inheritDoc}
+     * {@inheritDoc}
+     * 
+     * Format:
+     * 
+     *  <Country_Add>
+     *       <Name>Burchtopia</Name>
+     *       <Code>BR</Code>
+     *       <ISO_Code>123</ISO_Code>
+     *   </Country_Add>
+     *
+     *  <Country_Update name="Burchtopia">
+     *       <Name>Burchtopia is great</Name>
+     *      <Code>BG</Code>
+     *     <ISO_Code>321</ISO_Code>
+     * </Country_Update>
+     *
+     *  <Country_Delete name="Burchtopia is great" />
     */
     public function toXml()
     {
