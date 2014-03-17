@@ -13,14 +13,19 @@ namespace Miva\Provisioning\Builder\Fragment;
 class Settings implements FragmentInterface
 {
 
+    /** @var string */
     protected $forcePasswordAfterDays;
 
+    /** @var string */
     protected $passwordReuse;
-
+    
+    /** @var string */
     protected $minimumPasswordLength;
 
+    /** @var string */
     protected $passwordComplexity;
 
+    /** @var string */
     protected $imageJPEGQuality;
 
     /**
