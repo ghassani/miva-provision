@@ -17,18 +17,18 @@ namespace Miva\Provisioning\Builder\Fragment;
 class AffiliateLostPasswordEmail implements FragmentInterface
 {
 
-	/** @var string */
-	protected $emailFrom;
-	
-	/** @var string */
-	protected $emailCC;
-	
-	/** @var string */
-	protected $subject;
-	
-	/** @var string */
-	protected $headerText;
-	
+    /** @var string */
+    protected $emailFrom;
+    
+    /** @var string */
+    protected $emailCC;
+    
+    /** @var string */
+    protected $subject;
+    
+    /** @var string */
+    protected $headerText;
+    
 
     /**
      * getEmailFrom
@@ -37,7 +37,7 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function getEmailFrom()
     {
-    	return $this->emailFrom;
+        return $this->emailFrom;
     }
 
     /**
@@ -49,10 +49,10 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function setEmailFrom($emailFrom)
     {
-	    $this->emailFrom = $emailFrom;
-	    return $this;
+        $this->emailFrom = $emailFrom;
+        return $this;
     }
-	    	
+            
     /**
      * getEmailCC
      *
@@ -60,7 +60,7 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function getEmailCC()
     {
-    	return $this->emailCC;
+        return $this->emailCC;
     }
 
     /**
@@ -72,8 +72,8 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function setEmailCC($emailCC)
     {
-	    $this->emailCC = $emailCC;
-	    return $this;
+        $this->emailCC = $emailCC;
+        return $this;
     }
     
     /**
@@ -83,7 +83,7 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function getSubject()
     {
-    	return $this->subject;
+        return $this->subject;
     }
 
     /**
@@ -95,10 +95,10 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function setSubject($subject)
     {
-	    $this->subject = $subject;
-	    return $this;
+        $this->subject = $subject;
+        return $this;
     }
-	
+    
     /**
      * getHeaderText
      *
@@ -106,7 +106,7 @@ class AffiliateLostPasswordEmail implements FragmentInterface
      */
     public function getHeaderText()
     {
-    	return $this->headerText;
+        return $this->headerText;
     }
 
     /**
@@ -118,39 +118,39 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function setHeaderText($headerText)
     {
-	    $this->headerText = $headerText;
-	    return $this;
+        $this->headerText = $headerText;
+        return $this;
     }
-    	
+        
     
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * Format:
-	 * 
-	 * <AffiliateLostPasswordEmail_Update>
-	 *		<EmailFrom>EmailFrom</EmailFrom>
-	 *		<EmailCC>EmailCC</EmailCC>
-	 *		<Subject>Subject</Subject>
-	 *		<HeaderText>HeaderText</HeaderText>
-	 *	</AffiliateLostPasswordEmail_Update>
-	*/
-	public function toXml()
-	{
+    /**
+     * {@inheritDoc}
+     * 
+     * Format:
+     * 
+     * <AffiliateLostPasswordEmail_Update>
+     *        <EmailFrom>EmailFrom</EmailFrom>
+     *        <EmailCC>EmailCC</EmailCC>
+     *        <Subject>Subject</Subject>
+     *        <HeaderText>HeaderText</HeaderText>
+     *    </AffiliateLostPasswordEmail_Update>
+    */
+    public function toXml()
+    {
 
-		$xml = null;
-		$xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-		
+        $xml = null;
+        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        
 
-		$xmlObject->addChild('EmailFrom', $this->getEmailFrom());
-		$xmlObject->addChild('EmailCC', $this->getEmailCC());
-		$xmlObject->addChild('Subject', $this->getSubject());
-		$xmlObject->addChild('HeaderText', $this->getHeaderText());
-		
-		foreach ($xmlObject->children() as $child) {
-			$xml .= $child->saveXml();
-		}
-		
-		return $xml;
-	}
+        $xmlObject->addChild('EmailFrom', $this->getEmailFrom());
+        $xmlObject->addChild('EmailCC', $this->getEmailCC());
+        $xmlObject->addChild('Subject', $this->getSubject());
+        $xmlObject->addChild('HeaderText', $this->getHeaderText());
+        
+        foreach ($xmlObject->children() as $child) {
+            $xml .= $child->saveXml();
+        }
+        
+        return $xml;
+    }
 }

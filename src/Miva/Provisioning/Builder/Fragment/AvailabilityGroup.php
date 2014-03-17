@@ -16,10 +16,10 @@ namespace Miva\Provisioning\Builder\Fragment;
 */
 class AvailabilityGroup implements FragmentInterface
 {
-	
-	/** @var strint */
-	protected $name;
-	
+    
+    /** @var strint */
+    protected $name;
+    
     /**
      * getName
      *
@@ -27,7 +27,7 @@ class AvailabilityGroup implements FragmentInterface
     */
     public function getName()
     {
-    	return $this->name;
+        return $this->name;
     }
 
     /**
@@ -39,31 +39,31 @@ class AvailabilityGroup implements FragmentInterface
     */
     public function setName($name)
     {
-	    $this->name = $name;
-	    return $this;
+        $this->name = $name;
+        return $this;
     }
     
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * Format:
-	 * 
-	 * <AvailabilityGroup_Add name="Thief" />
-	 * <AvailabilityGroup_Update name="Thief" />
-	 * <AvailabilityGroup_Delete name="Thief" />
-	*/
-	public function toXml()
-	{
+    /**
+     * {@inheritDoc}
+     * 
+     * Format:
+     * 
+     * <AvailabilityGroup_Add name="Thief" />
+     * <AvailabilityGroup_Update name="Thief" />
+     * <AvailabilityGroup_Delete name="Thief" />
+    */
+    public function toXml()
+    {
 
-		$xml = null;
-		$xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-		
-		foreach ($xmlObject->children() as $child) {
-			$xml .= $child->saveXml();
-		}
-		
-		return $xml;
-	}
+        $xml = null;
+        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        
+        foreach ($xmlObject->children() as $child) {
+            $xml .= $child->saveXml();
+        }
+        
+        return $xml;
+    }
 
 }
-	
+    

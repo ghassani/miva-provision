@@ -20,22 +20,22 @@ use Miva\Provisioning\Builder\Fragment\AttributeTemplate;
 class AttributeTemplateTest extends \PHPUnit_Framework_TestCase
 {
 
-	/**
-	  * functionalTest
-	  * 
-	  * Test basic class functionality
-	 */
+    /**
+      * functionalTest
+      * 
+      * Test basic class functionality
+     */
     public function functionalTest()
     {
         $fragment = new AttributeTemplate();
-		
-		$fragment->setCode('code')
-		  ->setPrompt('prompt');
+        
+        $fragment->setCode('code')
+          ->setPrompt('prompt');
 
-		  $this->assertEquals($fragment->getCode(), 'code');
-		  $this->assertEquals($fragment->getPrompt(), 'prompt');
-		  
-		  $expectedXML = '<AttributeTemplate_Add code="code" prompt="prompt" />';
+          $this->assertEquals($fragment->getCode(), 'code');
+          $this->assertEquals($fragment->getPrompt(), 'prompt');
+          
+          $expectedXML = '<AttributeTemplate_Add code="code" prompt="prompt" />';
     }
 
 }

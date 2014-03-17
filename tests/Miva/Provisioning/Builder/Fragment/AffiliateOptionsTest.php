@@ -20,36 +20,36 @@ use Miva\Provisioning\Builder\Fragment\AffiliateOptions;
 class AffiliateOptionsTest extends \PHPUnit_Framework_TestCase
 {
 
-	/**
-	 * functionalTest
-	 * 
-	 * Test basic class functionality
-	 */
+    /**
+     * functionalTest
+     * 
+     * Test basic class functionality
+     */
     public function functionalTest()
     {
         $fragment = new AffiliateOptions();
-		
-		$fragment->setEmailFrom('EmailFrom')
-		  ->setEmailCC('EmailCC')
-		  ->setSubject('Subject')
-		  ->setHeaderText('HeaderText');
+        
+        $fragment->setEmailFrom('EmailFrom')
+          ->setEmailCC('EmailCC')
+          ->setSubject('Subject')
+          ->setHeaderText('HeaderText');
 
-		  $this->assertEquals($fragment->getEmailFrom(), 'EmailFrom');
-		  $this->assertEquals($fragment->getEmailCC(), 'EmailCC');
-		  $this->assertEquals($fragment->getSubject(), 'Subject');
-		  $this->assertEquals($fragment->getHeaderText(), 'HeaderText');
-		  
-		  $expectedXML = '<AffiliateOptions_Update>
-			<Active>Active</Active>
-			<ApplicationStatus>ApplicationStatus</ApplicationStatus>
-			<DefaultCommissionHit>DefaultCommissionHit</DefaultCommissionHit>
-			<DefaultCommissionPercentOfOrder>DefaultCommissionPercentOfOrder</DefaultCommissionPercentOfOrder>
-			<DefaultCommissionOrderFlatFee>DefaultCommissionOrderFlatFee</DefaultCommissionOrderFlatFee>
-			<PayoutThreshold>PayoutThreshold</PayoutThreshold>
-			<LinkImage>LinkImage</LinkImage>
-			<LinkText>LinkText</LinkText>
-			<Terms>Terms</Terms>
-		</AffiliateOptions_Update>';
+          $this->assertEquals($fragment->getEmailFrom(), 'EmailFrom');
+          $this->assertEquals($fragment->getEmailCC(), 'EmailCC');
+          $this->assertEquals($fragment->getSubject(), 'Subject');
+          $this->assertEquals($fragment->getHeaderText(), 'HeaderText');
+          
+          $expectedXML = '<AffiliateOptions_Update>
+            <Active>Active</Active>
+            <ApplicationStatus>ApplicationStatus</ApplicationStatus>
+            <DefaultCommissionHit>DefaultCommissionHit</DefaultCommissionHit>
+            <DefaultCommissionPercentOfOrder>DefaultCommissionPercentOfOrder</DefaultCommissionPercentOfOrder>
+            <DefaultCommissionOrderFlatFee>DefaultCommissionOrderFlatFee</DefaultCommissionOrderFlatFee>
+            <PayoutThreshold>PayoutThreshold</PayoutThreshold>
+            <LinkImage>LinkImage</LinkImage>
+            <LinkText>LinkText</LinkText>
+            <Terms>Terms</Terms>
+        </AffiliateOptions_Update>';
     }
 
 }

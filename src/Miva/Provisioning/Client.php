@@ -12,29 +12,29 @@ namespace Miva\Provisioning;
 */
 class Client
 {
-	
-	/** @var string */
-	protected $uri;
+    
+    /** @var string */
+    protected $uri;
 
-	/** @var string */
-	protected $token;
+    /** @var string */
+    protected $token;
 
-	/** @var SoapClient */
-	protected $client;
+    /** @var SoapClient */
+    protected $client;
 
-	/**
-	* Constructor
-	* 
-	* @param string $uri - The Entry Point to the API
-	* @param string $token - The Access Token to the API
-	*/
-	public function __construct($uri, $token)
-	{
-		
-	}
+    /**
+    * Constructor
+    * 
+    * @param string $uri - The Entry Point to the API
+    * @param string $token - The Access Token to the API
+    */
+    public function __construct($uri, $token)
+    {
+        
+    }
 
-	public function doRequest(RequestInterface $request)
-	{
-		
-	}
+    public function doRequest(RequestInterface $request)
+    {
+        
+    }
 }

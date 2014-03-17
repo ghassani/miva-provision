@@ -12,7 +12,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 */
 interface FragmentInterface 
 {
-	
-	public function toXml();
-	
+    
+    public function toXml();
+    
 }

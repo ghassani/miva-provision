@@ -20,31 +20,31 @@ use Miva\Provisioning\Builder\Fragment\AffiliateLostPasswordEmail;
 class AffiliateLostPasswordEmailTest extends \PHPUnit_Framework_TestCase
 {
 
-	/**
-	 * functionalTest
-	 * 
-	 * Test basic class functionality
-	 */
+    /**
+     * functionalTest
+     * 
+     * Test basic class functionality
+     */
     public function functionalTest()
     {
         $fragment = new AffiliateLostPasswordEmail();
-		
-		$fragment->setEmailFrom('EmailFrom')
-		  ->setEmailCC('EmailCC')
-		  ->setSubject('Subject')
-		  ->setHeaderText('HeaderText');
+        
+        $fragment->setEmailFrom('EmailFrom')
+          ->setEmailCC('EmailCC')
+          ->setSubject('Subject')
+          ->setHeaderText('HeaderText');
 
-		  $this->assertEquals($fragment->getEmailFrom(), 'EmailFrom');
-		  $this->assertEquals($fragment->getEmailCC(), 'EmailCC');
-		  $this->assertEquals($fragment->getSubject(), 'Subject');
-		  $this->assertEquals($fragment->getHeaderText(), 'HeaderText');
-		  
-		  $expectedXml = '<AffiliateLostPasswordEmail_Update>
-				<EmailFrom>EmailFrom</EmailFrom>
-				<EmailCC>EmailCC</EmailCC>
-				<Subject>Subject</Subject>
-				<HeaderText>HeaderText</HeaderText>
-			</AffiliateLostPasswordEmail_Update>';
+          $this->assertEquals($fragment->getEmailFrom(), 'EmailFrom');
+          $this->assertEquals($fragment->getEmailCC(), 'EmailCC');
+          $this->assertEquals($fragment->getSubject(), 'Subject');
+          $this->assertEquals($fragment->getHeaderText(), 'HeaderText');
+          
+          $expectedXml = '<AffiliateLostPasswordEmail_Update>
+                <EmailFrom>EmailFrom</EmailFrom>
+                <EmailCC>EmailCC</EmailCC>
+                <Subject>Subject</Subject>
+                <HeaderText>HeaderText</HeaderText>
+            </AffiliateLostPasswordEmail_Update>';
     }
 
 }

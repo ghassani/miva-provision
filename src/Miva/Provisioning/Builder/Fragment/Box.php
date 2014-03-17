@@ -16,25 +16,25 @@ namespace Miva\Provisioning\Builder\Fragment;
 */
 class AvailabilityGroupProduct implements FragmentInterface
 {
-	
-	/** @var string */
-	protected $description;
-	
-	/** @var string */
-	protected $enabled;	
-	
-	/** @var float */
-	protected $width;	
-	
-	/** @var float */
-	protected $length;	
-	
-	/** @var float */
-	protected $height;
-	
-	/** @var array */
-	protected $boxPackageSettings = array(null, null);
-	
+    
+    /** @var string */
+    protected $description;
+    
+    /** @var string */
+    protected $enabled;    
+    
+    /** @var float */
+    protected $width;    
+    
+    /** @var float */
+    protected $length;    
+    
+    /** @var float */
+    protected $height;
+    
+    /** @var array */
+    protected $boxPackageSettings = array(null, null);
+    
     /**
      * getDescription
      *
@@ -42,7 +42,7 @@ class AvailabilityGroupProduct implements FragmentInterface
     */
     public function getDescription()
     {
-    	return $this->description;
+        return $this->description;
     }
 
     /**
@@ -54,8 +54,8 @@ class AvailabilityGroupProduct implements FragmentInterface
     */
     public function setDescription($description)
     {
-	    $this->description = $description;
-	    return $this;
+        $this->description = $description;
+        return $this;
     }
     
     /**
@@ -65,7 +65,7 @@ class AvailabilityGroupProduct implements FragmentInterface
     */
     public function getEnabled()
     {
-    	return $this->enabled;
+        return $this->enabled;
     }
 
     /**
@@ -77,10 +77,10 @@ class AvailabilityGroupProduct implements FragmentInterface
     */
     public function setEnabled($enabled)
     {
-	    $this->enabled = $enabled;
-	    return $this;
+        $this->enabled = $enabled;
+        return $this;
     }
-    	
+        
     /**
      * getWidth
      *
@@ -88,7 +88,7 @@ class AvailabilityGroupProduct implements FragmentInterface
     */
     public function getWidth()
     {
-    	return $this->width;
+        return $this->width;
     }
 
     /**
@@ -100,8 +100,8 @@ class AvailabilityGroupProduct implements FragmentInterface
     */
     public function setWidth($width)
     {
-	    $this->width = $width;
-	    return $this;
+        $this->width = $width;
+        return $this;
     }
         
     /**
@@ -111,7 +111,7 @@ class AvailabilityGroupProduct implements FragmentInterface
     */
     public function getLength()
     {
-    	return $this->length;
+        return $this->length;
     }
 
     /**
@@ -123,8 +123,8 @@ class AvailabilityGroupProduct implements FragmentInterface
     */
     public function setLength($length)
     {
-	    $this->length = $length;
-	    return $this;
+        $this->length = $length;
+        return $this;
     }
     
     /**
@@ -134,7 +134,7 @@ class AvailabilityGroupProduct implements FragmentInterface
     */
     public function getHeight()
     {
-    	return $this->height;
+        return $this->height;
     }
 
     /**
@@ -146,8 +146,8 @@ class AvailabilityGroupProduct implements FragmentInterface
     */
     public function setHeight($height)
     {
-	    $this->height = $height;
-	    return $this;
+        $this->height = $height;
+        return $this;
     }
     
     /**
@@ -157,7 +157,7 @@ class AvailabilityGroupProduct implements FragmentInterface
     */
     public function getBoxPackageSettings()
     {
-    	return $this->boxPackageSettings;
+        return $this->boxPackageSettings;
     }
 
     /**
@@ -169,41 +169,41 @@ class AvailabilityGroupProduct implements FragmentInterface
     */
     public function setBoxPackageSettings($maxWeight, $maxQuantity)
     {
-	    $this->boxPackageSettings = array($maxWeight,$maxQuantity);
-	    return $this;
+        $this->boxPackageSettings = array($maxWeight,$maxQuantity);
+        return $this;
     }
     
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * Format:
-	 * 
-	 * 	<Box_Add>
-	 *		<Description>Box</Description>
-	 *		<Enabled>Yes</Enabled>
-	 *		<Width>10.11</Width>
-	 * 		<Length>10.11</Length>
-	 *		<Height>10.11</Height>
-	 *
-	 *		<BoxPackingSettings>				-- optional
-	 *			<MaxWeight>1.23</MaxWeight>		-- packbyweight
-	 *			<MaxQuantity>5</MaxQuantity>	-- packbyquantity
-	 *		</BoxPackingSettings>
-	 *	</Box_Add>
-	*/
-	public function toXml()
-	{
+    /**
+     * {@inheritDoc}
+     * 
+     * Format:
+     * 
+     *     <Box_Add>
+     *        <Description>Box</Description>
+     *        <Enabled>Yes</Enabled>
+     *        <Width>10.11</Width>
+     *         <Length>10.11</Length>
+     *        <Height>10.11</Height>
+     *
+     *        <BoxPackingSettings>                -- optional
+     *            <MaxWeight>1.23</MaxWeight>        -- packbyweight
+     *            <MaxQuantity>5</MaxQuantity>    -- packbyquantity
+     *        </BoxPackingSettings>
+     *    </Box_Add>
+    */
+    public function toXml()
+    {
 
-		$xml = null;
-		$xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-		
-		foreach ($xmlObject->children() as $child) {
-			$xml .= $child->saveXml();
-		}
-		
-		return $xml;
-	}
+        $xml = null;
+        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        
+        foreach ($xmlObject->children() as $child) {
+            $xml .= $child->saveXml();
+        }
+        
+        return $xml;
+    }
 
 }
-	
+    

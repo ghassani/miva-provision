@@ -17,32 +17,32 @@ namespace Miva\Provisioning\Builder\Fragment;
 class AffiliateLostPasswordEmail implements FragmentInterface
 {
 
-	/** @var string */
-	protected $active;
-	
-	/** @var string */
-	protected $applicationStatus;
-	
-	/** @var float */
-	protected $defaultCommissionHit;
-	
-	/** @var float */
-	protected $defaultCommissionPercentOfOrder;
-	
-	/** @var float */
-	protected $defaultCommissionOrderFlatFee;
-	
-	/** @var float */
-	protected $payoutThreshold;
-	
-	/** @var string */
-	protected $linkImage;
-	
-	/** @var string */
-	protected $linkText;
-	
-	/** @var string */
-	protected $terms;
+    /** @var string */
+    protected $active;
+    
+    /** @var string */
+    protected $applicationStatus;
+    
+    /** @var float */
+    protected $defaultCommissionHit;
+    
+    /** @var float */
+    protected $defaultCommissionPercentOfOrder;
+    
+    /** @var float */
+    protected $defaultCommissionOrderFlatFee;
+    
+    /** @var float */
+    protected $payoutThreshold;
+    
+    /** @var string */
+    protected $linkImage;
+    
+    /** @var string */
+    protected $linkText;
+    
+    /** @var string */
+    protected $terms;
 
     /**
     * getActive
@@ -51,7 +51,7 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function getActive()
     {
-    	return $this->active;
+        return $this->active;
     }
 
     /**
@@ -63,8 +63,8 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function setActive($active)
     {
-	    $this->active = $active;
-	    return $this;
+        $this->active = $active;
+        return $this;
     }
 
     /**
@@ -74,7 +74,7 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function getApplicationStatus()
     {
-    	return $this->applicationStatus;
+        return $this->applicationStatus;
     }
 
     /**
@@ -86,10 +86,10 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function setApplicationStatus($applicationStatus)
     {
-	    $this->applicationStatus = $applicationStatus;
-	    return $this;
+        $this->applicationStatus = $applicationStatus;
+        return $this;
     }
-	
+    
     /**
     * getDefaultCommissionHit
     *
@@ -97,7 +97,7 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function getDefaultCommissionHit()
     {
-    	return $this->defaultCommissionHit;
+        return $this->defaultCommissionHit;
     }
 
     /**
@@ -109,8 +109,8 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function setDefaultCommissionHit($defaultCommissionHit)
     {
-	    $this->defaultCommissionHit = $defaultCommissionHit;
-	    return $this;
+        $this->defaultCommissionHit = $defaultCommissionHit;
+        return $this;
     }
     
     /**
@@ -120,7 +120,7 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function getDefaultCommissionPercentOfOrder()
     {
-    	return $this->defaultCommissionPercentOfOrder;
+        return $this->defaultCommissionPercentOfOrder;
     }
 
     /**
@@ -132,8 +132,8 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function setDefaultCommissionPercentOfOrder($defaultCommissionPercentOfOrder)
     {
-	    $this->defaultCommissionPercentOfOrder = $defaultCommissionPercentOfOrder;
-	    return $this;
+        $this->defaultCommissionPercentOfOrder = $defaultCommissionPercentOfOrder;
+        return $this;
     }
           
     /**
@@ -143,7 +143,7 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function getDefaultCommissionOrderFlatFee ()
     {
-    	return $this->defaultCommissionOrderFlatFee ;
+        return $this->defaultCommissionOrderFlatFee ;
     }
 
     /**
@@ -155,8 +155,8 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function setDefaultCommissionOrderFlatFee ($defaultCommissionOrderFlatFee )
     {
-	    $this->defaultCommissionOrderFlatFee  = $defaultCommissionOrderFlatFee ;
-	    return $this;
+        $this->defaultCommissionOrderFlatFee  = $defaultCommissionOrderFlatFee ;
+        return $this;
     }
     
     /**
@@ -166,7 +166,7 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function getPayoutThreshold()
     {
-    	return $this->payoutThreshold;
+        return $this->payoutThreshold;
     }
 
     /**
@@ -178,10 +178,10 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function setPayoutThreshold($payoutThreshold)
     {
-	    $this->payoutThreshold = $payoutThreshold;
-	    return $this;
+        $this->payoutThreshold = $payoutThreshold;
+        return $this;
     }
-    	
+        
     /**
     * getLinkImage
     *
@@ -189,7 +189,7 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function getLinkImage()
     {
-    	return $this->linkImage;
+        return $this->linkImage;
     }
 
     /**
@@ -201,8 +201,8 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function setLinkImage($linkImage)
     {
-	    $this->linkImage = $linkImage;
-	    return $this;
+        $this->linkImage = $linkImage;
+        return $this;
     }
     
     /**
@@ -212,7 +212,7 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function getLinkText()
     {
-    	return $this->linkText;
+        return $this->linkText;
     }
 
     /**
@@ -224,10 +224,10 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function setLinkText($linkText)
     {
-	    $this->linkText = $linkText;
-	    return $this;
+        $this->linkText = $linkText;
+        return $this;
     }
-    	
+        
     /**
     * getTerms
     *
@@ -235,7 +235,7 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function getTerms()
     {
-    	return $this->terms;
+        return $this->terms;
     }
 
     /**
@@ -247,49 +247,49 @@ class AffiliateLostPasswordEmail implements FragmentInterface
     */
     public function setTerms($terms)
     {
-	    $this->terms = $terms;
-	    return $this;
+        $this->terms = $terms;
+        return $this;
     }
-    		
-		
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * Format:
-	 * 
-	 *  <AffiliateOptions_Update>
-	 *		<Active>Active</Active>
-	 *		<ApplicationStatus>ApplicationStatus</ApplicationStatus>
-	 *		<DefaultCommissionHit>1.0000</DefaultCommissionHit>
-	 *		<DefaultCommissionPercentOfOrder>1.0000</DefaultCommissionPercentOfOrder>
-	 *		<DefaultCommissionOrderFlatFee>1.0000</DefaultCommissionOrderFlatFee>
-	 *		<PayoutThreshold>1.0000</PayoutThreshold>
-	 *		<LinkImage>LinkImage</LinkImage>
-	 *		<LinkText>LinkText</LinkText>
-	 *		<Terms>Terms</Terms>
-	 *	</AffiliateOptions_Update>
-	*/
-	public function toXml()
-	{
+            
+        
+    /**
+     * {@inheritDoc}
+     * 
+     * Format:
+     * 
+     *  <AffiliateOptions_Update>
+     *        <Active>Active</Active>
+     *        <ApplicationStatus>ApplicationStatus</ApplicationStatus>
+     *        <DefaultCommissionHit>1.0000</DefaultCommissionHit>
+     *        <DefaultCommissionPercentOfOrder>1.0000</DefaultCommissionPercentOfOrder>
+     *        <DefaultCommissionOrderFlatFee>1.0000</DefaultCommissionOrderFlatFee>
+     *        <PayoutThreshold>1.0000</PayoutThreshold>
+     *        <LinkImage>LinkImage</LinkImage>
+     *        <LinkText>LinkText</LinkText>
+     *        <Terms>Terms</Terms>
+     *    </AffiliateOptions_Update>
+    */
+    public function toXml()
+    {
 
-		$xml = null;
-		$xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-		
-		$xmlObject->addChild('Active', $this->getActive());
-		$xmlObject->addChild('ApplicationStatus', $this->getApplicationStatus());
-		$xmlObject->addChild('DefaultCommissionHit', $this->getDefaultCommissionHit());
-		$xmlObject->addChild('DefaultCommissionPercentOfOrder', $this->getDefaultCommissionPercentOfOrder());
-		$xmlObject->addChild('DefaultCommissionOrderFlatFee', $this->getDefaultCommissionOrderFlatFee());
-		$xmlObject->addChild('PayoutThreshold', $this->getPayoutThreshold());
-		$xmlObject->addChild('LinkImage', $this->getLinkImage());
-		$xmlObject->addChild('LinkText', $this->getLinkText());
-		$xmlObject->addChild('Terms', $this->getTerms());
+        $xml = null;
+        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        
+        $xmlObject->addChild('Active', $this->getActive());
+        $xmlObject->addChild('ApplicationStatus', $this->getApplicationStatus());
+        $xmlObject->addChild('DefaultCommissionHit', $this->getDefaultCommissionHit());
+        $xmlObject->addChild('DefaultCommissionPercentOfOrder', $this->getDefaultCommissionPercentOfOrder());
+        $xmlObject->addChild('DefaultCommissionOrderFlatFee', $this->getDefaultCommissionOrderFlatFee());
+        $xmlObject->addChild('PayoutThreshold', $this->getPayoutThreshold());
+        $xmlObject->addChild('LinkImage', $this->getLinkImage());
+        $xmlObject->addChild('LinkText', $this->getLinkText());
+        $xmlObject->addChild('Terms', $this->getTerms());
 
-		
-		foreach ($xmlObject->children() as $child) {
-			$xml .= $child->saveXml();
-		}
-		
-		return $xml;
-	}
+        
+        foreach ($xmlObject->children() as $child) {
+            $xml .= $child->saveXml();
+        }
+        
+        return $xml;
+    }
 }

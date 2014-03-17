@@ -20,20 +20,20 @@ use Miva\Provisioning\Builder\Fragment\AvailabilityGroup;
 class AvailabilityGroupTest extends \PHPUnit_Framework_TestCase
 {
 
-	/**
-	  * functionalTest
-	  * 
-	  * Test basic class functionality
-	 */
+    /**
+      * functionalTest
+      * 
+      * Test basic class functionality
+     */
     public function functionalTest()
     {
         $fragment = new AvailabilityGroup();
-		
-		$fragment->setCode('Name');
+        
+        $fragment->setCode('Name');
 
-		$this->assertEquals($fragment->getName(), 'Name');
-		  
-		$expectedXML = '<AvailabilityGroup_Add name="Thief" />';
+        $this->assertEquals($fragment->getName(), 'Name');
+          
+        $expectedXML = '<AvailabilityGroup_Add name="Thief" />';
     }
 
 }

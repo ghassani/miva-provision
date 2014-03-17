@@ -17,11 +17,11 @@ namespace Miva\Provisioning\Builder\Fragment;
 class AttributeTemplate implements FragmentInterface
 {
 
-	/** @var string */
-	protected $code;
-	
-	/** @var string */
-	protected $prompt;
+    /** @var string */
+    protected $code;
+    
+    /** @var string */
+    protected $prompt;
 
     /**
      * getCode
@@ -30,7 +30,7 @@ class AttributeTemplate implements FragmentInterface
      */
     public function getCode()
     {
-    	return $this->code;
+        return $this->code;
     }
 
     /**
@@ -42,8 +42,8 @@ class AttributeTemplate implements FragmentInterface
      */
     public function setCode($code)
     {
-	    $this->code = $code;
-	    return $this;
+        $this->code = $code;
+        return $this;
     }
  
     /**
@@ -53,7 +53,7 @@ class AttributeTemplate implements FragmentInterface
      */
     public function getPrompt()
     {
-    	return $this->prompt;
+        return $this->prompt;
     }
 
     /**
@@ -65,30 +65,30 @@ class AttributeTemplate implements FragmentInterface
      */
     public function setPrompt($prompt)
     {
-	    $this->prompt = $prompt;
-	    return $this;
+        $this->prompt = $prompt;
+        return $this;
     }
-	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * Format:
-	 * 
-	 * <AttributeTemplate_Add code="spikes-armor" prompt="Armor Spikes" />
-	 * <AttributeTemplate_Update code="spikes-armor" prompt="Armor Spikes" />
-	 * <AttributeTemplate_Delete code="spikes-armor" prompt="Armor Spikes" />
-	*/
-	public function toXml()
-	{
+    
+    /**
+     * {@inheritDoc}
+     * 
+     * Format:
+     * 
+     * <AttributeTemplate_Add code="spikes-armor" prompt="Armor Spikes" />
+     * <AttributeTemplate_Update code="spikes-armor" prompt="Armor Spikes" />
+     * <AttributeTemplate_Delete code="spikes-armor" prompt="Armor Spikes" />
+    */
+    public function toXml()
+    {
 
-		$xml = null;
-		$xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xml = null;
+        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
 
-		foreach ($xmlObject->children() as $child) {
-			$xml .= $child->saveXml();
-		}
-		
-		return $xml;
-	} 	
+        foreach ($xmlObject->children() as $child) {
+            $xml .= $child->saveXml();
+        }
+        
+        return $xml;
+    }     
 }
 

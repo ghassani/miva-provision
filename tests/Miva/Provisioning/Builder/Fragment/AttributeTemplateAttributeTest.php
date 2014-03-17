@@ -20,44 +20,44 @@ use Miva\Provisioning\Builder\Fragment\AttributeTemplateAttribute;
 class AttributeTemplateAttributeTest extends \PHPUnit_Framework_TestCase
 {
 
-	/**
-	  * functionalTest
-	  * 
-	  * Test basic class functionality
-	 */
+    /**
+      * functionalTest
+      * 
+      * Test basic class functionality
+     */
     public function functionalTest()
     {
         $fragment = new AttributeTemplateAttribute();
-		
-		$fragment->setCode('Code')
-		  ->setType('Type')
-		  ->setPrompt('Prompt')
-		  ->setImage('Image')
-		  ->setPrice('Price')
-		  ->setCost('Cost')
-		  ->setWeight('Weight')
-		  ->setRequired('Required');
+        
+        $fragment->setCode('Code')
+          ->setType('Type')
+          ->setPrompt('Prompt')
+          ->setImage('Image')
+          ->setPrice('Price')
+          ->setCost('Cost')
+          ->setWeight('Weight')
+          ->setRequired('Required');
 
-		  $this->assertEquals($fragment->getCode(), 'Code');
-		  $this->assertEquals($fragment->getType(), 'Type');
-		  $this->assertEquals($fragment->getPrompt(), 'Prompt');
-		  $this->assertEquals($fragment->getImage(), 'Image');
-		  $this->assertEquals($fragment->getPrice(), 'Price');
-		  $this->assertEquals($fragment->getCost(), 'Cost');
-		  $this->assertEquals($fragment->getWeight(), 'Weight');
-		  $this->assertEquals($fragment->getRequired(), 'Required');
-		
-		
-		  $expectedXML = '<AttributeTemplateAttribute_Add template_code="spikes-armor">
-			<Code>Code</Code>
-			<Type>Type</Type>
-			<Prompt><![CDATA[Prompt]]></Prompt>
-			<Image>Image</Image>
-			<Price>Price</Price>
-			<Cost>Cost</Cost>
-			<Weight>Weight</Weight>
-			<Required>Required</Required>
-		</AttributeTemplateAttribute_Add>';
+          $this->assertEquals($fragment->getCode(), 'Code');
+          $this->assertEquals($fragment->getType(), 'Type');
+          $this->assertEquals($fragment->getPrompt(), 'Prompt');
+          $this->assertEquals($fragment->getImage(), 'Image');
+          $this->assertEquals($fragment->getPrice(), 'Price');
+          $this->assertEquals($fragment->getCost(), 'Cost');
+          $this->assertEquals($fragment->getWeight(), 'Weight');
+          $this->assertEquals($fragment->getRequired(), 'Required');
+        
+        
+          $expectedXML = '<AttributeTemplateAttribute_Add template_code="spikes-armor">
+            <Code>Code</Code>
+            <Type>Type</Type>
+            <Prompt><![CDATA[Prompt]]></Prompt>
+            <Image>Image</Image>
+            <Price>Price</Price>
+            <Cost>Cost</Cost>
+            <Weight>Weight</Weight>
+            <Required>Required</Required>
+        </AttributeTemplateAttribute_Add>';
     }
 
 }

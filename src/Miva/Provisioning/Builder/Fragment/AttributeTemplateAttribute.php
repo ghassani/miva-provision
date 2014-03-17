@@ -17,38 +17,38 @@ namespace Miva\Provisioning\Builder\Fragment;
 class AttributeTemplateAttribute implements FragmentInterface
 {
 
-	/** @var string */
-	protected $code;
+    /** @var string */
+    protected $code;
 
-	/** @var string */
-	protected $type;
+    /** @var string */
+    protected $type;
 
-	/** @var string */
-	protected $prompt;
+    /** @var string */
+    protected $prompt;
 
-	/** @var string */
-	protected $image;
+    /** @var string */
+    protected $image;
 
-	/** @var float */
-	protected $price;
+    /** @var float */
+    protected $price;
 
-	/** @var float */
-	protected $cost;
+    /** @var float */
+    protected $cost;
 
-	/** @var float */
-	protected $weight;
-	
-	/** @var string */
-	protected $required;
-	
-	/**
+    /** @var float */
+    protected $weight;
+    
+    /** @var string */
+    protected $required;
+    
+    /**
      * getCode
      *
      * @return string
      */
     public function getCode()
     {
-    	return $this->code;
+        return $this->code;
     }
 
     /**
@@ -60,10 +60,10 @@ class AttributeTemplateAttribute implements FragmentInterface
      */
     public function setCode($code)
     {
-	    $this->code = $code;
-	    return $this;
+        $this->code = $code;
+        return $this;
     }
-	
+    
     /**
      * getPrompt
      *
@@ -71,7 +71,7 @@ class AttributeTemplateAttribute implements FragmentInterface
      */
     public function getPrompt()
     {
-    	return $this->prompt;
+        return $this->prompt;
     }
 
     /**
@@ -83,10 +83,10 @@ class AttributeTemplateAttribute implements FragmentInterface
      */
     public function setPrompt($prompt)
     {
-	    $this->prompt = $prompt;
-	    return $this;
+        $this->prompt = $prompt;
+        return $this;
     }
-	
+    
     /**
      * getType
      *
@@ -94,7 +94,7 @@ class AttributeTemplateAttribute implements FragmentInterface
     */
     public function getType()
     {
-    	return $this->type;
+        return $this->type;
     }
 
     /**
@@ -106,10 +106,10 @@ class AttributeTemplateAttribute implements FragmentInterface
     */
     public function setType($type)
     {
-	    $this->type = $type;
-	    return $this;
+        $this->type = $type;
+        return $this;
     }
-    	
+        
     /**
      * getImage
      *
@@ -117,7 +117,7 @@ class AttributeTemplateAttribute implements FragmentInterface
     */
     public function getImage()
     {
-    	return $this->image;
+        return $this->image;
     }
 
     /**
@@ -129,10 +129,10 @@ class AttributeTemplateAttribute implements FragmentInterface
     */
     public function setImage($image)
     {
-	    $this->image = $image;
-	    return $this;
+        $this->image = $image;
+        return $this;
     }
-	
+    
     /**
      * getPrice
      *
@@ -140,7 +140,7 @@ class AttributeTemplateAttribute implements FragmentInterface
     */
     public function getPrice()
     {
-    	return $this->price;
+        return $this->price;
     }
 
     /**
@@ -152,8 +152,8 @@ class AttributeTemplateAttribute implements FragmentInterface
     */
     public function setPrice($price)
     {
-	    $this->price = $price;
-	    return $this;
+        $this->price = $price;
+        return $this;
     }
     
     /**
@@ -163,7 +163,7 @@ class AttributeTemplateAttribute implements FragmentInterface
     */
     public function getCost()
     {
-    	return $this->cost;
+        return $this->cost;
     }
 
     /**
@@ -175,8 +175,8 @@ class AttributeTemplateAttribute implements FragmentInterface
     */
     public function setCost($cost)
     {
-	    $this->cost = $cost;
-	    return $this;
+        $this->cost = $cost;
+        return $this;
     }
     
     /**
@@ -186,7 +186,7 @@ class AttributeTemplateAttribute implements FragmentInterface
     */
     public function getWeight()
     {
-    	return $this->weight;
+        return $this->weight;
     }
 
     /**
@@ -198,8 +198,8 @@ class AttributeTemplateAttribute implements FragmentInterface
     */
     public function setWeight($weight)
     {
-	    $this->weight = $weight;
-	    return $this;
+        $this->weight = $weight;
+        return $this;
     }
 
     /**
@@ -209,7 +209,7 @@ class AttributeTemplateAttribute implements FragmentInterface
     */
     public function getRequired()
     {
-    	return $this->required;
+        return $this->required;
     }
 
     /**
@@ -221,45 +221,45 @@ class AttributeTemplateAttribute implements FragmentInterface
     */
     public function setRequired($required)
     {
-	    $this->required = $required;
-	    return $this;
+        $this->required = $required;
+        return $this;
     }
-    	
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * Format:
-	 * 
-	 * 	<AttributeTemplateAttribute_Add template_code="spikes-armor">
-	 *		<Code>spikes</Code>
-	 *		<Type>checkbox</Type>
-	 *		<Prompt><![CDATA[Would you like to add spikes to the armor? (+500 sp)]]></Prompt>
-	 *		<Image></Image>
-	 *		<Price>500.00</Price>
-	 *		<Cost>375.00</Cost>
-	 *		<Weight>0.00</Weight>
-	 *		<Required>No</Required>
-	 *	</AttributeTemplateAttribute_Add>
-	*/
-	public function toXml()
-	{
+        
+    /**
+     * {@inheritDoc}
+     * 
+     * Format:
+     * 
+     *     <AttributeTemplateAttribute_Add template_code="spikes-armor">
+     *        <Code>spikes</Code>
+     *        <Type>checkbox</Type>
+     *        <Prompt><![CDATA[Would you like to add spikes to the armor? (+500 sp)]]></Prompt>
+     *        <Image></Image>
+     *        <Price>500.00</Price>
+     *        <Cost>375.00</Cost>
+     *        <Weight>0.00</Weight>
+     *        <Required>No</Required>
+     *    </AttributeTemplateAttribute_Add>
+    */
+    public function toXml()
+    {
 
-		$xml = null;
-		$xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xml = null;
+        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
 
-		$xmlObject->addChild('Code',$this->getCode());
-		$xmlObject->addChild('Type',$this->getType());
-		$xmlObject->addChild('Prompt',sprintf('<![CDATA[%s]]>', $this->getPrompt()));
-		$xmlObject->addChild('Image',$this->getImage());
-		$xmlObject->addChild('Price',$this->getPrice());
-		$xmlObject->addChild('Cost',$this->getCost());
-		$xmlObject->addChild('Weight',$this->getWeight());
-		$xmlObject->addChild('Required',$this->getRequired());
-		
-		foreach ($xmlObject->children() as $child) {
-			$xml .= $child->saveXml();
-		}
-		
-		return $xml;
-	} 	
+        $xmlObject->addChild('Code',$this->getCode());
+        $xmlObject->addChild('Type',$this->getType());
+        $xmlObject->addChild('Prompt',sprintf('<![CDATA[%s]]>', $this->getPrompt()));
+        $xmlObject->addChild('Image',$this->getImage());
+        $xmlObject->addChild('Price',$this->getPrice());
+        $xmlObject->addChild('Cost',$this->getCost());
+        $xmlObject->addChild('Weight',$this->getWeight());
+        $xmlObject->addChild('Required',$this->getRequired());
+        
+        foreach ($xmlObject->children() as $child) {
+            $xml .= $child->saveXml();
+        }
+        
+        return $xml;
+    }     
 }

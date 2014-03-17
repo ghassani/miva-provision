@@ -16,13 +16,13 @@ namespace Miva\Provisioning\Builder\Fragment;
 */
 class AvailabilityGroupProduct implements FragmentInterface
 {
-	
-	/** @var string */
-	protected $groupName;
-	
-	/** @var string */
-	protected $productCode;
-	
+    
+    /** @var string */
+    protected $groupName;
+    
+    /** @var string */
+    protected $productCode;
+    
 
     /**
      * getGroupName
@@ -31,7 +31,7 @@ class AvailabilityGroupProduct implements FragmentInterface
     */
     public function getGroupName()
     {
-    	return $this->groupName;
+        return $this->groupName;
     }
 
     /**
@@ -43,18 +43,18 @@ class AvailabilityGroupProduct implements FragmentInterface
     */
     public function setGroupName($groupName)
     {
-	    $this->groupName = $groupName;
-	    return $this;
+        $this->groupName = $groupName;
+        return $this;
     }
 
-	/**
+    /**
      * getProductCode
      *
      * @return string
     */
     public function getProductCode()
     {
-    	return $this->productCode;
+        return $this->productCode;
     }
 
     /**
@@ -66,30 +66,30 @@ class AvailabilityGroupProduct implements FragmentInterface
     */
     public function setProductCode($productCode)
     {
-	    $this->productCode = $productCode;
-	    return $this;
+        $this->productCode = $productCode;
+        return $this;
     }
     
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * Format:
-	 * 
-	 * <AvailabilityGroupProduct_Assign group_name="Thief" product_code="kit-disguise" />
-	*/
-	public function toXml()
-	{
+    /**
+     * {@inheritDoc}
+     * 
+     * Format:
+     * 
+     * <AvailabilityGroupProduct_Assign group_name="Thief" product_code="kit-disguise" />
+    */
+    public function toXml()
+    {
 
-		$xml = null;
-		$xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-		
-		foreach ($xmlObject->children() as $child) {
-			$xml .= $child->saveXml();
-		}
-		
-		return $xml;
-	}
+        $xml = null;
+        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        
+        foreach ($xmlObject->children() as $child) {
+            $xml .= $child->saveXml();
+        }
+        
+        return $xml;
+    }
 
 }
-	
+    

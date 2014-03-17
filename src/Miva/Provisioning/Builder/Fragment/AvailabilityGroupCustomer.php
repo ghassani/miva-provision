@@ -16,13 +16,13 @@ namespace Miva\Provisioning\Builder\Fragment;
 */
 class AvailabilityGroupCustomer implements FragmentInterface
 {
-	
-	/** @var string */
-	protected $groupName;
-	
-	/** @var string */
-	protected $customerLogin;
-	
+    
+    /** @var string */
+    protected $groupName;
+    
+    /** @var string */
+    protected $customerLogin;
+    
 
     /**
      * getGroupName
@@ -31,7 +31,7 @@ class AvailabilityGroupCustomer implements FragmentInterface
     */
     public function getGroupName()
     {
-    	return $this->groupName;
+        return $this->groupName;
     }
 
     /**
@@ -43,8 +43,8 @@ class AvailabilityGroupCustomer implements FragmentInterface
     */
     public function setGroupName($groupName)
     {
-	    $this->groupName = $groupName;
-	    return $this;
+        $this->groupName = $groupName;
+        return $this;
     }
 
     /**
@@ -54,7 +54,7 @@ class AvailabilityGroupCustomer implements FragmentInterface
     */
     public function getCustomerLogin()
     {
-    	return $this->customerLogin;
+        return $this->customerLogin;
     }
 
     /**
@@ -66,29 +66,29 @@ class AvailabilityGroupCustomer implements FragmentInterface
     */
     public function setCustomerLogin($customerLogin)
     {
-	    $this->customerLogin = $customerLogin;
-	    return $this;
+        $this->customerLogin = $customerLogin;
+        return $this;
     }
         
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * Format:
-	 * 
-	 * <AvailabilityGroupCustomer_Assign group_name="Thief" customer_login="rogue" />
-	*/
-	public function toXml()
-	{
+    /**
+     * {@inheritDoc}
+     * 
+     * Format:
+     * 
+     * <AvailabilityGroupCustomer_Assign group_name="Thief" customer_login="rogue" />
+    */
+    public function toXml()
+    {
 
-		$xml = null;
-		$xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-		
-		foreach ($xmlObject->children() as $child) {
-			$xml .= $child->saveXml();
-		}
-		
-		return $xml;
-	}
+        $xml = null;
+        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        
+        foreach ($xmlObject->children() as $child) {
+            $xml .= $child->saveXml();
+        }
+        
+        return $xml;
+    }
 
 }
-	
+    

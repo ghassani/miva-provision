@@ -1,4 +1,4 @@
-		<MivaMailerSettings_Update>
-			<Account></Account>
-			<Server></Server>
-		</MivaMailerSettings_Update>
+        <MivaMailerSettings_Update>
+            <Account></Account>
+            <Server></Server>
+        </MivaMailerSettings_Update>

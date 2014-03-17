@@ -20,22 +20,22 @@ use Miva\Provisioning\Builder\Fragment\AvailabilityGroupProduct;
 class AvailabilityGroupProductTest extends \PHPUnit_Framework_TestCase
 {
 
-	/**
-	  * functionalTest
-	  * 
-	  * Test basic class functionality
-	 */
+    /**
+      * functionalTest
+      * 
+      * Test basic class functionality
+     */
     public function functionalTest()
     {
         $fragment = new AvailabilityGroupProduct();
-		
-		$fragment->setGroupName('GroupName')
-		 ->setProductCode('ProductCode');
+        
+        $fragment->setGroupName('GroupName')
+         ->setProductCode('ProductCode');
 
-		$this->assertEquals($fragment->getGroupName(), 'Name');
-		$this->assertEquals($fragment->getProductCode(), 'ProductCode');
-		  
-		$expectedXML = '<AvailabilityGroupProduct_Assign group_name="Name" product_code="ProductCode" />';
+        $this->assertEquals($fragment->getGroupName(), 'Name');
+        $this->assertEquals($fragment->getProductCode(), 'ProductCode');
+          
+        $expectedXML = '<AvailabilityGroupProduct_Assign group_name="Name" product_code="ProductCode" />';
     }
 
 }
