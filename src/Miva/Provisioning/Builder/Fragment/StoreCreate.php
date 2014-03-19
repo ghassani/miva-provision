@@ -1,7 +1,11 @@
 <?php
 /*
+* This file is part of the Miva PHP Provision package.
 *
+* (c) Gassan Idriss <gidriss@mivamerchant.com>
 *
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
@@ -13,57 +17,83 @@ namespace Miva\Provisioning\Builder\Fragment;
 class StoreCreate implements FragmentInterface
 {
 
+    /** @var string */
     protected $code;
 
+    /** @var string */
     protected $manager;
 
+    /** @var string */
     protected $licenseNumber;
 
+    /** @var string */
     protected $owner;
 
+    /** @var string */
     protected $email;
 
+    /** @var string */
     protected $company;
 
+    /** @var string */
     protected $address;
 
+    /** @var string */
     protected $city;
 
+    /** @var string */
     protected $state;
 
+    /** @var string */
     protected $zip;
 
+    /** @var string */
     protected $country;
 
+    /** @var string */
     protected $phone;
 
+    /** @var string */
     protected $fax;
 
+    /** @var string */
     protected $weightUnits;
 
+    /** @var string */
     protected $basketTimeout;
 
+    /** @var string */
     protected $priceGroupOverlap;
 
+    /** @var string */
     protected $firstOrderNumber;
 
+    /** @var string */
     protected $salesTaxModule;
 
+    /** @var string */
     protected $currencyModule;
 
+    /** @var string */
     protected $requireShipping;
 
+    /** @var string */
     protected $requireTax;
 
+    /** @var string */
     protected $requireShippingForFreeOrders;
 
+    /** @var string */
     protected $userInterface;
 
+    /** @var string */
     protected $maintenanceIpAddresses;
 
 
     /**
     * Constructor
+     * 
+     * @param string $code
     */
     public function __construct($code = null)
     {

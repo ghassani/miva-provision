@@ -10,89 +10,90 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 /**
-* OrderCharge
+* OrderItemOption
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class OrderCharge implements FragmentInterface
+class OrderItemOption implements FragmentInterface
 {
     
     
     /** @var string */
-    protected $type;
-    
-    /** @var string */
-    protected $description;
+    protected $attributeCode;
     
     /** @var int */
-    protected $amount;
-        
+    protected $price;
+    
+    /** @var string */
+    protected $optionCode;
+    
+
     /**
-     * getType
+     * getAttributeCode
      *
      * @return string
     */
-    public function getType()
+    public function getAttributeCode()
     {
-        return $this->type;
+        return $this->attributeCode;
     }
     
     /**
-     * setType
+     * setAttributeCode
      *
-     * @param string $type
+     * @param string $attributeCode
      *
      * @return self
     */
-    public function setType($type)
+    public function setAttributeCode($attributeCode)
     {
-        $this->type = $type;
+        $this->attributeCode = $attributeCode;
         return $this;
     }
     
     /**
-     * getDescription
-     *
-     * @return string
-    */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-    
-    /**
-     * setDescription
-     *
-     * @param string $description
-     *
-     * @return self
-    */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-        return $this;
-    }
-    
-    /**
-     * getAmount
+     * getPrice
      *
      * @return int
     */
-    public function getAmount()
+    public function getPrice()
     {
-        return $this->amount;
+        return $this->price;
     }
     
     /**
-     * setAmount
+     * setPrice
      *
-     * @param int $amount
+     * @param int $price
      *
      * @return self
     */
-    public function setAmount($amount)
+    public function setPrice($price)
     {
-        $this->amount = $amount;
+        $this->price = $price;
+        return $this;
+    }
+    
+    /**
+     * getOptionCode
+     *
+     * @return string
+    */
+    public function getOptionCode()
+    {
+        return $this->optionCode;
+    }
+    
+    /**
+     * setOptionCode
+     *
+     * @param string $optionCode
+     *
+     * @return self
+    */
+    public function setOptionCode($optionCode)
+    {
+        $this->optionCode = $optionCode;
         return $this;
     }
     
@@ -102,11 +103,11 @@ class OrderCharge implements FragmentInterface
      * 
      * Format:
      * 
-     * <Charge>
-     *      <Type>Type</Type>
-     *      <Description>Description</Description>
-     *      <Amount>Amount</Amount>
-     * </Charge>
+     * <Option>
+     *      <AttributeCode>template_attr</AttributeCode>
+     *      <Price>1.00</Price>
+     *      <OptionCode>v1</OptionCode>
+     * </Option>
      *
     */
     public function toXml()

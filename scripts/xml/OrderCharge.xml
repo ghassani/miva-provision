@@ -1,0 +1,5 @@
+<Charge>
+                    <Type>TAX</Type>
+                    <Description>Sales Tax</Description>
+                    <Amount>3</Amount>
+                </Charge>
