@@ -96,20 +96,25 @@ class Client
     /**
      * doRequest
      * 
-     * @param Request $request
+     * @param Request|string $request - String Request content or Request Object
      * 
      * @return Response
      * @throws Exception - When content length is 0
      */
-    public function doRequest(Request $request)
+    public function doRequest($request)
     {
-        if ($request->getUrl()) {
-            $ch = curl_init($request->getUrl());
+        $url = $this->getUrl();
+        if ($request instanceof Request) {
+           $content = (string) $request->getContent();
+            if($request->getUrl()) {
+                $url = $request->getUrl();
+            }
         } else {
-            $ch = curl_init($this->getUrl());
+            $content = (string) $request;   
         }
         
-        $content = (string) $request->getContent();
+        $ch = curl_init($url);
+                
         
         if(!strlen($content)) {
             throw new \Exception('Request object has no content to send');
@@ -139,17 +144,3 @@ class Client
         
         return new Response($response, $statusCode);
     }
-
-    /**
-     * doRawRequest
-     * 
-     * @param string $content
-     * 
-     * @return Response
-     * @throws Exception - When content length is 0
-     */
-    public function doRawRequest($content)
-    {
-        return $this->doRequest(new Request($content));
-    }
-}
