@@ -22,6 +22,9 @@ class Client
 
     /** @var string */
     protected $token;
+    
+    /** @var resource */
+    protected $connection = null;
 
     /**
     * Constructor
@@ -32,8 +35,7 @@ class Client
     public function __construct($uri, $token)
     {
         $this->uri = $uri;
-        $this->token = $token;     
-        $this->connection = curl_init();   
+        $this->token = $token;  
     }
     
     /**
@@ -128,7 +130,7 @@ class Client
             $content = (string) $request;   
         }
         
-        if(!is_resource($this->connection)){
+        if(!is_resource($this->connection)) {
             $this->connection = curl_init();   
         }
                         
