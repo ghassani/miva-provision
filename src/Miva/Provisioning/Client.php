@@ -32,9 +32,20 @@ class Client
     public function __construct($uri, $token)
     {
         $this->uri = $uri;
-        $this->token = $token;        
+        $this->token = $token;     
+        $this->connection = curl_init();   
     }
     
+    /**
+     * Destructor
+     */
+     public function __destruct()
+     {
+         if(is_resource($this->connection)) {
+             curl_close($this->connection);
+         }
+     }
+     
     /**
      * getUri
      *
@@ -117,20 +128,22 @@ class Client
             $content = (string) $request;   
         }
         
-        $ch = curl_init($url);
-                
-        
+        if(!is_resource($this->connection)){
+            $this->connection = curl_init();   
+        }
+                        
         if(!strlen($content)) {
             throw new \Exception('Request object has no content to send');
         }
         
-        curl_setopt_array($ch, array(
+        curl_setopt_array($this->connection, array(
+            CURLOPT_URL => $url,
             CURLOPT_POST => true,
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_SSL_VERIFYHOST => false,
-            CURLOPT_POSTFIELDS => $content,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POSTFIELDS => $content,
             CURLOPT_HTTPHEADER => array(
                 'Content-type: text/xml',
                 'Content-length: '.strlen($content),
@@ -139,12 +152,11 @@ class Client
         ));
         
 
-        $response = curl_exec($ch);
+        $response = curl_exec($this->connection);
         
         // get the response status code
-        $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $statusCode = curl_getinfo($this->connection, CURLINFO_HTTP_CODE);
         
-        curl_close($ch);
         
         return new Response($response, $statusCode);
     }
