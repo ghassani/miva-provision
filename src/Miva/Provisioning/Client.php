@@ -104,11 +104,15 @@ class Client
     public function doRequest($request)
     {
         $url = $this->getUrl();
+        
         if ($request instanceof Request) {
            $content = (string) $request->getContent();
-            if($request->getUrl()) {
-                $url = $request->getUrl();
-            }
+           if($request->getUrl()) {
+               $url = $request->getUrl();
+           }
+        } elseif (class_exists('\Symfony\Component\HttpFoundation\Request') && $request instanceof \Symfony\Component\HttpFoundation\Request) { 
+            // support a symfony2 request object
+            $content = (string) $request->getContent();
         } else {
             $content = (string) $request;   
         }
