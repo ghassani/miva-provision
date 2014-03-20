@@ -17,6 +17,11 @@ namespace Miva\Provisioning\Builder\Fragment;
 class ShippingMethodRules implements FragmentInterface
 {
     
+    /** @var string */
+    protected $moduleCode;
+    
+    /** @var string */
+    protected $methodCode;
     
     /** @var int */
     protected $priority;
@@ -42,18 +47,65 @@ class ShippingMethodRules implements FragmentInterface
     /** @var int */
     protected $maximumWeight;
     
-    /** @var string */
-    protected $states;
+    /** @var array */
+    protected $states = array();
     
     /** @var string */
-    protected $zipCodes;
+    protected $zipCodes = array();
     
-    /** @var string */
-    protected $countries;
+    /** @var array */
+    protected $countries = array();
     
-    /** @var string */
-    protected $exclusions;
+    /** @var array */
+    protected $exclusions = array();
     
+    
+    /**
+     * getMethodCode
+     *
+     * @return string
+    */
+    public function getMethodCode()
+    {
+        return $this->methodCode;
+    }
+    
+    /**
+     * setMethodCode
+     *
+     * @param string $methodCode
+     *
+     * @return self
+    */
+    public function setMethodCode($methodCode)
+    {
+        $this->methodCode = $methodCode;
+        return $this;
+    }
+
+
+    /**
+     * getModuleCode
+     *
+     * @return string
+    */
+    public function getModuleCode()
+    {
+        return $this->moduleCode;
+    }
+    
+    /**
+     * setModuleCode
+     *
+     * @param string $moduleCode
+     *
+     * @return self
+    */
+    public function setModuleCode($moduleCode)
+    {
+    	$this->moduleCode = $moduleCode;
+        return $this;
+    }
 
     
     /**
@@ -243,7 +295,7 @@ class ShippingMethodRules implements FragmentInterface
     /**
      * getStates
      *
-     * @return string
+     * @return array
     */
     public function getStates()
     {
@@ -253,20 +305,33 @@ class ShippingMethodRules implements FragmentInterface
     /**
      * setStates
      *
-     * @param string $states
+     * @param array $states
      *
      * @return self
     */
-    public function setStates($states)
+    public function setStates(array $states)
     {
         $this->states = $states;
         return $this;
     }
     
     /**
+     * addState
+     *
+     * @param State $state
+     *
+     * @return self
+    */
+    public function addState(State $state)
+    {
+        $this->states[] = $state;
+        return $this;
+    }
+    
+    /**
      * getZipCodes
      *
-     * @return string
+     * @return array
     */
     public function getZipCodes()
     {
@@ -276,20 +341,33 @@ class ShippingMethodRules implements FragmentInterface
     /**
      * setZipCodes
      *
-     * @param string $zipCodes
+     * @param array $zipCodes
      *
      * @return self
     */
-    public function setZipCodes($zipCodes)
+    public function setZipCodes(array $zipCodes)
     {
         $this->zipCodes = $zipCodes;
         return $this;
     }
     
     /**
+     * addZipcode
+     *
+     * @param string $zipcode
+     *
+     * @return self
+    */
+    public function addZipcode($zipcode)
+    {
+        $this->zipcodes[] = $zipcode;
+        return $this;
+    }
+    
+    /**
      * getCountries
      *
-     * @return string
+     * @return array
     */
     public function getCountries()
     {
@@ -299,13 +377,26 @@ class ShippingMethodRules implements FragmentInterface
     /**
      * setCountries
      *
-     * @param string $countries
+     * @param array $countries
      *
      * @return self
     */
-    public function setCountries($countries)
+    public function setCountries(array $countries)
     {
         $this->countries = $countries;
+        return $this;
+    }
+    
+    /**
+     * addCountry
+     *
+     * @param Country $country
+     *
+     * @return self
+    */
+    public function addCountry(Country $country)
+    {
+        $this->countries[] = $country;
         return $this;
     }
     
@@ -338,35 +429,34 @@ class ShippingMethodRules implements FragmentInterface
      * 
      * Format:
      * 
-     * <?xml version="1.0"?>
-<ShippingMethodRules_Update module_code="upsxml" method_code="02">
-            <Priority>5</Priority>
-            <Description>2 Day Air</Description>
-            <MinimumSubTotal>0.00</MinimumSubTotal>
-            <MaximumSubTotal>0.00</MaximumSubTotal>
-            <MinimumQuantity>0</MinimumQuantity>
-            <MaximumQuantity>0</MaximumQuantity>
-            <MinimumWeight>0.00</MinimumWeight>
-            <MaximumWeight>0.00</MaximumWeight>
-
-            <States>
-                <State code="CA"/>
-                <State code="OH"/>
-            </States>
-
-            <ZipCodes>92109,44145</ZipCodes>
-
-            <Countries>
-                <Country code="US"/>
-                <Country code="GB"/>
-            </Countries>
-
-            <Exclusions>
-                <Excludes module_code="flatrate" method_code="flat_2day"/>        (multiple allowed)
-                <ExcludedBy module_code="baseunit" method_code="base_2day"/>    (multiple allowed)
-            </Exclusions>
-        </ShippingMethodRules_Update>
-
+     * <ShippingMethodRules_Update module_code="upsxml" method_code="02">
+     *       <Priority>5</Priority>
+     *       <Description>2 Day Air</Description>
+     *       <MinimumSubTotal>0.00</MinimumSubTotal>
+     *       <MaximumSubTotal>0.00</MaximumSubTotal>
+     *       <MinimumQuantity>0</MinimumQuantity>
+     *       <MaximumQuantity>0</MaximumQuantity>
+     *       <MinimumWeight>0.00</MinimumWeight>
+     *       <MaximumWeight>0.00</MaximumWeight>
+     *
+     *       <States>
+     *           <State code="CA"/>
+     *           <State code="OH"/>
+     *       </States>
+     *
+     *       <ZipCodes>92109,44145</ZipCodes>
+     *
+     *       <Countries>
+     *           <Country code="US"/>
+     *           <Country code="GB"/>
+     *       </Countries>
+     *
+     *       <Exclusions>
+     *           <Excludes module_code="flatrate" method_code="flat_2day"/>        (multiple allowed)
+     *           <ExcludedBy module_code="baseunit" method_code="base_2day"/>    (multiple allowed)
+     *       </Exclusions>
+     *   </ShippingMethodRules_Update>
+     *
     */
     public function toXml()
     {

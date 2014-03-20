@@ -17,6 +17,11 @@ namespace Miva\Provisioning\Builder\Fragment;
 class ProductAttributeOption implements FragmentInterface
 {
     
+    /** @var string */
+    protected $productCode;
+    
+    /** @var string */
+    protected $attributeCode;
     
     /** @var string */
     protected $code;
@@ -37,6 +42,52 @@ class ProductAttributeOption implements FragmentInterface
     protected $weight;
     
 
+    /**
+     * getProductCode
+     *
+     * @return string
+    */
+    public function getProductCode()
+    {
+        return $this->productCode;
+    }
+    
+    /**
+     * setProductCode
+     *
+     * @param string $productCode
+     *
+     * @return self
+    */
+    public function setProductCode($productCode)
+    {
+    	$this->productCode = $productCode;
+        return $this;
+    }
+    
+    
+    /**
+     * getAttributeCode
+     *
+     * @return string
+    */
+    public function getAttributeCode()
+    {
+        return $this->attributeCode;
+    }
+    
+    /**
+     * setAttributeCode
+     *
+     * @param string $attributeCode
+     *
+     * @return self
+    */
+    public function setAttributeCode($attributeCode)
+    {
+    	$this->attributeCode = $attributeCode;
+        return $this;
+    }
     
     /**
      * getCode
@@ -182,16 +233,15 @@ class ProductAttributeOption implements FragmentInterface
      * 
      * Format:
      * 
-     * <?xml version="1.0"?>
-<ProductAttributeOption_Add product_code="chest" attribute_code="lock">
-            <Code>simple</Code>
-            <Prompt><![CDATA[Simple (+200 sp)]]></Prompt>
-            <Image/>
-            <Price>200.00</Price>
-            <Cost>100.00</Cost>
-            <Weight>0.00</Weight>
-        </ProductAttributeOption_Add>
-
+     * <ProductAttributeOption_Add product_code="chest" attribute_code="lock">
+     *       <Code>simple</Code>
+     *       <Prompt><![CDATA[Simple (+200 sp)]]></Prompt>
+     *       <Image/>
+     *       <Price>200.00</Price>
+     *       <Cost>100.00</Cost>
+     *       <Weight>0.00</Weight>
+     *   </ProductAttributeOption_Add>
+     *
     */
     public function toXml()
     {

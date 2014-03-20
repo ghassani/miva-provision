@@ -29,70 +29,48 @@ class ShippingMethodRulesTest extends \PHPUnit_Framework_TestCase
         $fragment = new ShippingMethodRules();
         
         $fragment
-            
-        ->setPriority('Priority')
-    
-        ->setDescription('Description')
-    
-        ->setMinimumSubTotal('MinimumSubTotal')
-    
-        ->setMaximumSubTotal('MaximumSubTotal')
-    
-        ->setMinimumQuantity('MinimumQuantity')
-    
-        ->setMaximumQuantity('MaximumQuantity')
-    
-        ->setMinimumWeight('MinimumWeight')
-    
-        ->setMaximumWeight('MaximumWeight')
-    
-        ->setStates('States')
-    
-        ->setZipCodes('ZipCodes')
-    
-        ->setCountries('Countries')
-    
-        ->setExclusions('Exclusions')
-    
-        ;
+        ->setModuleCode('ModuleCode') 
+        ->setMethodCode('MethodCode') 
+        ->setPriority('Priority')    
+        ->setDescription('Description')    
+        ->setMinimumSubTotal('MinimumSubTotal')    
+        ->setMaximumSubTotal('MaximumSubTotal')    
+        ->setMinimumQuantity('MinimumQuantity')    
+        ->setMaximumQuantity('MaximumQuantity')    
+        ->setMinimumWeight('MinimumWeight')    
+        ->setMaximumWeight('MaximumWeight')    
+        ->setStates(array('States'))    
+        ->setZipCodes(array('ZipCodes'))  
+        ->setCountries(array('Countries'))    
+        ->setExclusions(array('Exclusions'));
         
         
-        $this->assertEquals($fragment->getPriority(), 'Priority');
-    
-        $this->assertEquals($fragment->getDescription(), 'Description');
-    
-        $this->assertEquals($fragment->getMinimumSubTotal(), 'MinimumSubTotal');
-    
-        $this->assertEquals($fragment->getMaximumSubTotal(), 'MaximumSubTotal');
-    
-        $this->assertEquals($fragment->getMinimumQuantity(), 'MinimumQuantity');
-    
-        $this->assertEquals($fragment->getMaximumQuantity(), 'MaximumQuantity');
-    
-        $this->assertEquals($fragment->getMinimumWeight(), 'MinimumWeight');
-    
-        $this->assertEquals($fragment->getMaximumWeight(), 'MaximumWeight');
-    
-        $this->assertEquals($fragment->getStates(), 'States');
-    
-        $this->assertEquals($fragment->getZipCodes(), 'ZipCodes');
-    
-        $this->assertEquals($fragment->getCountries(), 'Countries');
-    
-        $this->assertEquals($fragment->getExclusions(), 'Exclusions');
+        $this->assertEquals($fragment->getModuleCode(), 'ModuleCode');   
+        $this->assertEquals($fragment->getMethodCode(), 'MethodCode');   
+        $this->assertEquals($fragment->getPriority(), 'Priority');    
+        $this->assertEquals($fragment->getDescription(), 'Description');    
+        $this->assertEquals($fragment->getMinimumSubTotal(), 'MinimumSubTotal');    
+        $this->assertEquals($fragment->getMaximumSubTotal(), 'MaximumSubTotal');    
+        $this->assertEquals($fragment->getMinimumQuantity(), 'MinimumQuantity');    
+        $this->assertEquals($fragment->getMaximumQuantity(), 'MaximumQuantity');    
+        $this->assertEquals($fragment->getMinimumWeight(), 'MinimumWeight');    
+        $this->assertEquals($fragment->getMaximumWeight(), 'MaximumWeight');    
+        $this->assertEquals($fragment->getStates(), array('States'));    
+        $this->assertEquals($fragment->getZipCodes(), array('ZipCodes'));    
+        $this->assertEquals($fragment->getCountries(), array('Countries'));    
+        $this->assertEquals($fragment->getExclusions(), array('Exclusions'));
       
 
           
-        $expectedXml = '<?xml version="1.0"?>
-<ShippingMethodRules_Update module_code="upsxml" method_code="02">
-            <Priority>5</Priority>
-            <Description>2 Day Air</Description>
-            <MinimumSubTotal>0.00</MinimumSubTotal>
-            <MaximumSubTotal>0.00</MaximumSubTotal>
-            <MinimumQuantity>0</MinimumQuantity>
-            <MaximumQuantity>0</MaximumQuantity>
-            <MinimumWeight>0.00</MinimumWeight>
-            <MaximumWeight>0.00</MaximumWeight>
+        $expectedXml = '<ShippingMethodRules_Update module_code="ModuleCode" method_code="MethodCode">
+            <Priority>Priority</Priority>
+            <Description>Description</Description>
+            <MinimumSubTotal>MinimumSubTotal</MinimumSubTotal>
+            <MaximumSubTotal>MaximumSubTotal</MaximumSubTotal>
+            <MinimumQuantity>MinimumQuantity</MinimumQuantity>
+            <MaximumQuantity>MaximumQuantity</MaximumQuantity>
+            <MinimumWeight>MinimumWeight</MinimumWeight>
+            <MaximumWeight>MaximumWeight</MaximumWeight>
 
             <States>
                 <State code="CA"/>
@@ -110,8 +88,7 @@ class ShippingMethodRulesTest extends \PHPUnit_Framework_TestCase
                 <Excludes module_code="flatrate" method_code="flat_2day"/>        (multiple allowed)
                 <ExcludedBy module_code="baseunit" method_code="base_2day"/>    (multiple allowed)
             </Exclusions>
-        </ShippingMethodRules_Update>
-';
+        </ShippingMethodRules_Update>';
     }
 }
         

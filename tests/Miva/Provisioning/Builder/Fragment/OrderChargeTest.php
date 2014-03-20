@@ -36,7 +36,7 @@ class OrderChargeTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals($fragment->getType(), 'Type');    
         $this->assertEquals($fragment->getDescription(), 'Description');
-            $this->assertEquals($fragment->getAmount(), 'Amount');
+        $this->assertEquals($fragment->getAmount(), 'Amount');
       
 
           

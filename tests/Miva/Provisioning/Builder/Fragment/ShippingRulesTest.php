@@ -28,31 +28,23 @@ class ShippingRulesTest extends \PHPUnit_Framework_TestCase
     {
         $fragment = new ShippingRules();
         
-        $fragment
-            
-        ->setRequiredShippingRedirectPageCode('RequiredShippingRedirectPageCode')
-    
-        ->setFallbackShippingMethod('FallbackShippingMethod')
-    
-        ;
+        $fragment            
+        ->setRequiredShippingRedirectPageCode('RequiredShippingRedirectPageCode')    
+        ->setFallbackShippingMethod('Description', 'Type', 'Amount');
         
         
-        $this->assertEquals($fragment->getRequiredShippingRedirectPageCode(), 'RequiredShippingRedirectPageCode');
-    
-        $this->assertEquals($fragment->getFallbackShippingMethod(), 'FallbackShippingMethod');
+        $this->assertEquals($fragment->getRequiredShippingRedirectPageCode(), 'RequiredShippingRedirectPageCode');    
+        $this->assertEquals($fragment->getFallbackShippingMethod(), array('Description', 'Type', 'Amount'));
       
 
           
-        $expectedXml = '<?xml version="1.0"?>
-<ShippingRules_Update>
-            <RequiredShippingRedirectPageCode>OCST</RequiredShippingRedirectPageCode>
+        $expectedXml = '<ShippingRules_Update>
+            <RequiredShippingRedirectPageCode>RequiredShippingRedirectPageCode</RequiredShippingRedirectPageCode>
             <FallbackShippingMethod>
-                <Description>Estimated Shipping</Description>
-                <Type>Fixed|PercentOfSubTotal</Type>
-                <Amount>1.23</Amount>
+                <Description>Description</Description>
+                <Type>Type</Type>
+                <Amount>Amount</Amount>
             </FallbackShippingMethod>
-        </ShippingRules_Update>
-';
+        </ShippingRules_Update>';
     }
 }
-        

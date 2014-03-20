@@ -1,8 +1,11 @@
 <?php
 
 if(!isset($argv[1]) || !isset($argv[2])) {
-    print_line(PHP_EOL.'Usage: php script.php "<XML></XML>" ClassName'.PHP_EOL, true);
+    print_line(PHP_EOL.'Usage:');
+    print_line("\t".'php '.$_SERVER['SCRIPT_NAME'].' /path/to/fragment.xml ClassName');
+    print_line("\t".'php '.$_SERVER['SCRIPT_NAME'].' "<XML></XML>" ClassName', true);
 }
+
 
 $sourceXml = $argv[1];
 $targetClass = $argv[2];
@@ -32,7 +35,6 @@ foreach($xml->children() as $child) {
     
     $methods .= generate_method($name, $camelName, is_numeric((string) $child->__toString()) ? 'int' : 'string');
     $properties .= generate_property($camelName, is_numeric((string) $child->__toString()) ? 'int' : 'string');
-    
     
 }
 

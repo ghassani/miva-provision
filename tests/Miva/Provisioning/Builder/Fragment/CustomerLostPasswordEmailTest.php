@@ -34,17 +34,17 @@ class CustomerLostPasswordEmailTest extends \PHPUnit_Framework_TestCase
           ->setSubject('Subject')
           ->setHeaderText('HeaderText');
 
-          $this->assertEquals($fragment->getEmailFrom(), 'EmailFrom');
-          $this->assertEquals($fragment->getEmailCC(), 'EmailCC');
-          $this->assertEquals($fragment->getSubject(), 'Subject');
-          $this->assertEquals($fragment->getHeaderText(), 'HeaderText');
+        $this->assertEquals($fragment->getEmailFrom(), 'EmailFrom');
+        $this->assertEquals($fragment->getEmailCC(), 'EmailCC');
+        $this->assertEquals($fragment->getSubject(), 'Subject');
+        $this->assertEquals($fragment->getHeaderText(), 'HeaderText');
           
-          $expectedXml = '<CustomerLostPasswordEmail_Update>
-                <EmailFrom>EmailFrom</EmailFrom>
-                <EmailCC>EmailCC</EmailCC>
-                <Subject>Subject</Subject>
-                <HeaderText>HeaderText</HeaderText>
-            </CustomerLostPasswordEmail_Update>';
+        $expectedXml = '<CustomerLostPasswordEmail_Update>
+             <EmailFrom>EmailFrom</EmailFrom>
+             <EmailCC>EmailCC</EmailCC>
+             <Subject>Subject</Subject>
+             <HeaderText>HeaderText</HeaderText>
+        </CustomerLostPasswordEmail_Update>';
     }
 
 }

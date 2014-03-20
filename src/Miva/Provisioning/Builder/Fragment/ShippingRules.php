@@ -21,8 +21,8 @@ class ShippingRules implements FragmentInterface
     /** @var string */
     protected $requiredShippingRedirectPageCode;
     
-    /** @var string */
-    protected $fallbackShippingMethod;
+    /** @var array */
+    protected $fallbackShippingMethod = array(null, null, null);
     
 
     
@@ -52,7 +52,7 @@ class ShippingRules implements FragmentInterface
     /**
      * getFallbackShippingMethod
      *
-     * @return string
+     * @return array
     */
     public function getFallbackShippingMethod()
     {
@@ -62,13 +62,16 @@ class ShippingRules implements FragmentInterface
     /**
      * setFallbackShippingMethod
      *
-     * @param string $fallbackShippingMethod
+     * @param string $description
+     * @param string $type
+     * @param string $amount
+     * 
      *
      * @return self
     */
-    public function setFallbackShippingMethod($fallbackShippingMethod)
+    public function setFallbackShippingMethod($description, $type, $amount)
     {
-        $this->fallbackShippingMethod = $fallbackShippingMethod;
+        $this->fallbackShippingMethod = array($description, $type, $amount);
         return $this;
     }
     
@@ -78,16 +81,15 @@ class ShippingRules implements FragmentInterface
      * 
      * Format:
      * 
-     * <?xml version="1.0"?>
-<ShippingRules_Update>
-            <RequiredShippingRedirectPageCode>OCST</RequiredShippingRedirectPageCode>
-            <FallbackShippingMethod>
-                <Description>Estimated Shipping</Description>
-                <Type>Fixed|PercentOfSubTotal</Type>
-                <Amount>1.23</Amount>
-            </FallbackShippingMethod>
-        </ShippingRules_Update>
-
+     *  <ShippingRules_Update>
+     *       <RequiredShippingRedirectPageCode>OCST</RequiredShippingRedirectPageCode>
+     *       <FallbackShippingMethod>
+     *           <Description>Estimated Shipping</Description>
+     *           <Type>Fixed|PercentOfSubTotal</Type>
+     *           <Amount>1.23</Amount>
+     *       </FallbackShippingMethod>
+     *  </ShippingRules_Update>
+     *
     */
     public function toXml()
     {
@@ -101,5 +103,4 @@ class ShippingRules implements FragmentInterface
         
         return $xml;
     }
-}
-        
+}        

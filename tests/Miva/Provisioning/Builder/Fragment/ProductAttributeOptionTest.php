@@ -28,47 +28,36 @@ class ProductAttributeOptionTest extends \PHPUnit_Framework_TestCase
     {
         $fragment = new ProductAttributeOption();
         
-        $fragment
-            
-        ->setCode('Code')
-    
-        ->setPrompt('Prompt')
-    
-        ->setImage('Image')
-    
-        ->setPrice('Price')
-    
-        ->setCost('Cost')
-    
-        ->setWeight('Weight')
-    
-        ;
+        $fragment            
+        ->setProductCode('ProductCode') 
+        ->setAttributeCode('AttributeCode') 
+        ->setCode('Code')    
+        ->setPrompt('Prompt')    
+        ->setImage('Image')    
+        ->setPrice('Price')    
+        ->setCost('Cost')    
+        ->setWeight('Weight');
         
         
-        $this->assertEquals($fragment->getCode(), 'Code');
-    
-        $this->assertEquals($fragment->getPrompt(), 'Prompt');
-    
+        $this->assertEquals($fragment->getProductCode(), 'ProductCode');   
+        $this->assertEquals($fragment->getAttributeCode(), 'AttributeCode');   
+        $this->assertEquals($fragment->getCode(), 'Code');    
+        $this->assertEquals($fragment->getPrompt(), 'Prompt');    
         $this->assertEquals($fragment->getImage(), 'Image');
-    
-        $this->assertEquals($fragment->getPrice(), 'Price');
-    
-        $this->assertEquals($fragment->getCost(), 'Cost');
-    
+        $this->assertEquals($fragment->getPrice(), 'Price');    
+        $this->assertEquals($fragment->getCost(), 'Cost');    
         $this->assertEquals($fragment->getWeight(), 'Weight');
       
 
           
-        $expectedXml = '<?xml version="1.0"?>
-<ProductAttributeOption_Add product_code="chest" attribute_code="lock">
-            <Code>simple</Code>
-            <Prompt><![CDATA[Simple (+200 sp)]]></Prompt>
-            <Image/>
-            <Price>200.00</Price>
-            <Cost>100.00</Cost>
-            <Weight>0.00</Weight>
-        </ProductAttributeOption_Add>
-';
+        $expectedXml = '<ProductAttributeOption_Add product_code="ProductCode" attribute_code="AttributeCode">
+            <Code>Code</Code>
+            <Prompt><![CDATA[Prompt]]></Prompt>
+            <Image>Image</Image>
+            <Price>Price</Price>
+            <Cost>Cost</Cost>
+            <Weight>Weight</Weight>
+        </ProductAttributeOption_Add>';
     }
 }
         
