@@ -23,11 +23,11 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * functionalTest
+     * testFunctionality
      * 
      * Test basic class functionality
      */
-    public function functionalTest()
+    public function testFunctionality()
     {
         $client = new Client('http://www.somedomain.com/mm5', 'TOKENZrSHWEET');
         

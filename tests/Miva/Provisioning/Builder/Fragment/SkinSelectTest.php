@@ -20,11 +20,11 @@ class SkinSelectTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * functionalTest
+     * testFunctionality
      * 
      * Test basic class functionality
      */
-    public function functionalTest()
+    public function testFunctionality()
     {
         $fragment = new SkinSelect();
         

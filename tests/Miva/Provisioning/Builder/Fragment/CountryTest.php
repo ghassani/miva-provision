@@ -21,11 +21,11 @@ class CountryTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-      * functionalTest
+      * testFunctionality
       * 
       * Test basic class functionality
      */
-    public function functionalTest()
+    public function testFunctionality()
     {
         $fragment = new Country('Name', 'Code', 'ISO_Code');
         
