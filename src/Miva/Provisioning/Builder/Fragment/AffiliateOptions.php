@@ -10,11 +10,11 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 /**
-* AffiliateLostPasswordEmail
+* AffiliateOptions
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class AffiliateLostPasswordEmail implements FragmentInterface
+class AffiliateOptions implements FragmentInterface
 {
 
     /** @var string */

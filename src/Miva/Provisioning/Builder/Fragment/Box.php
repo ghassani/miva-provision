@@ -10,11 +10,11 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 /**
-* AvailabilityGroupProduct
+* Box
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class AvailabilityGroupProduct implements FragmentInterface
+class Box implements FragmentInterface
 {
     
     /** @var string */

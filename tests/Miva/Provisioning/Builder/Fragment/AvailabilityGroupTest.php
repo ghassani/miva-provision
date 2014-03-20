@@ -29,11 +29,11 @@ class AvailabilityGroupTest extends \PHPUnit_Framework_TestCase
     {
         $fragment = new AvailabilityGroup();
         
-        $fragment->setCode('Name');
+        $fragment->setName('Name');
 
         $this->assertEquals($fragment->getName(), 'Name');
           
-        $expectedXML = '<AvailabilityGroup_Add name="Thief" />';
+        $expectedXML = '<AvailabilityGroup_Add name="Name" />';
     }
 
 }

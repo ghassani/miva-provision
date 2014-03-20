@@ -32,8 +32,8 @@ class CategoryProduct implements FragmentInterface
      */
     public function __construct($categoryCode = null, $productCode = null)
     {
-        $this->categoryCode = $name;
-        $this->productCode = $code;
+        $this->categoryCode = $categoryCode;
+        $this->productCode = $productCode;
     }
 
     /**

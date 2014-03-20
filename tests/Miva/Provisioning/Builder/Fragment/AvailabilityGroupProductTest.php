@@ -32,7 +32,7 @@ class AvailabilityGroupProductTest extends \PHPUnit_Framework_TestCase
         $fragment->setGroupName('GroupName')
          ->setProductCode('ProductCode');
 
-        $this->assertEquals($fragment->getGroupName(), 'Name');
+        $this->assertEquals($fragment->getGroupName(), 'GroupName');
         $this->assertEquals($fragment->getProductCode(), 'ProductCode');
           
         $expectedXML = '<AvailabilityGroupProduct_Assign group_name="Name" product_code="ProductCode" />';

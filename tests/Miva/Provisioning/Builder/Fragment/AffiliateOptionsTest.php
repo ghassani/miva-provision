@@ -7,7 +7,6 @@
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
 */
-
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Provisioning\Builder\Fragment\AffiliateOptions;
@@ -29,17 +28,31 @@ class AffiliateOptionsTest extends \PHPUnit_Framework_TestCase
     {
         $fragment = new AffiliateOptions();
         
-        $fragment->setEmailFrom('EmailFrom')
-          ->setEmailCC('EmailCC')
-          ->setSubject('Subject')
-          ->setHeaderText('HeaderText');
+        $fragment
+        ->setActive('Active')
+        ->setApplicationStatus('ApplicationStatus')    
+        ->setDefaultCommissionHit('DefaultCommissionHit')    
+        ->setDefaultCommissionPercentOfOrder('DefaultCommissionPercentOfOrder')    
+        ->setDefaultCommissionOrderFlatFee('DefaultCommissionOrderFlatFee')
+        ->setPayoutThreshold('PayoutThreshold')    
+        ->setLinkImage('LinkImage')    
+        ->setLinkText('LinkText')    
+        ->setTerms('Terms');
+        
+        
+        $this->assertEquals($fragment->getActive(), 'Active');    
+        $this->assertEquals($fragment->getApplicationStatus(), 'ApplicationStatus');    
+        $this->assertEquals($fragment->getDefaultCommissionHit(), 'DefaultCommissionHit');    
+        $this->assertEquals($fragment->getDefaultCommissionPercentOfOrder(), 'DefaultCommissionPercentOfOrder');    
+        $this->assertEquals($fragment->getDefaultCommissionOrderFlatFee(), 'DefaultCommissionOrderFlatFee');    
+        $this->assertEquals($fragment->getPayoutThreshold(), 'PayoutThreshold');    
+        $this->assertEquals($fragment->getLinkImage(), 'LinkImage');    
+        $this->assertEquals($fragment->getLinkText(), 'LinkText');    
+        $this->assertEquals($fragment->getTerms(), 'Terms');
+      
 
-          $this->assertEquals($fragment->getEmailFrom(), 'EmailFrom');
-          $this->assertEquals($fragment->getEmailCC(), 'EmailCC');
-          $this->assertEquals($fragment->getSubject(), 'Subject');
-          $this->assertEquals($fragment->getHeaderText(), 'HeaderText');
           
-          $expectedXML = '<AffiliateOptions_Update>
+        $expectedXml = '<AffiliateOptions_Update>
             <Active>Active</Active>
             <ApplicationStatus>ApplicationStatus</ApplicationStatus>
             <DefaultCommissionHit>DefaultCommissionHit</DefaultCommissionHit>
@@ -51,5 +64,5 @@ class AffiliateOptionsTest extends \PHPUnit_Framework_TestCase
             <Terms>Terms</Terms>
         </AffiliateOptions_Update>';
     }
-
 }
+        

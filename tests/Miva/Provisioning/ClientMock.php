@@ -22,7 +22,7 @@ class ClientMock extends BaseClient
     /**
      * {@inheritDoc}
      */
-    public function doRequest(Request $request)
+    public function doRequest($request)
     {
         return new Response('I AM A RESPONSES CONTENT', 201);
     }

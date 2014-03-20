@@ -30,10 +30,10 @@ class GroupTest extends \PHPUnit_Framework_TestCase
         $fragment = new Group();
         
         $fragment->setName('Name')
-          ->addPrivledge('Code', 1, 1, 1, 1);
+          ->addPrivilege('Code', 1, 1, 1, 1);
 
         $this->assertEquals($fragment->getName(), 'Name');
-        $this->assertEquals($fragment->getPrivledges(), array('Code' => array(
+        $this->assertSameSize($fragment->getPrivileges(), array('Code' => array(
             'code' => 'Code',
             'view' => 1,
             'add' => 1,

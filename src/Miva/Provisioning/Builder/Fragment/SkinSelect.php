@@ -10,11 +10,11 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 /**
-* State
+* SkinSelect
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class State implements FragmentInterface
+class SkinSelect implements FragmentInterface
 {
 
     /** @var string */

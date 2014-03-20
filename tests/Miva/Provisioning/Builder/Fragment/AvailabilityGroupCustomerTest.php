@@ -32,7 +32,7 @@ class AvailabilityGroupCustomerTest extends \PHPUnit_Framework_TestCase
         $fragment->setGroupName('GroupName')
          ->setCustomerLogin('CustomerLogin');
 
-        $this->assertEquals($fragment->getGroupName(), 'Name');
+        $this->assertEquals($fragment->getGroupName(), 'GroupName');
         $this->assertEquals($fragment->getCustomerLogin(), 'CustomerLogin');
           
         $expectedXML = '<AvailabilityGroupCustomer_Assign group_name="GroupName" customer_login="CustomerLogin" />';

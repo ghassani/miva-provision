@@ -10,6 +10,8 @@
 
 namespace Miva\Provisioning;
 
+require_once(dirname(__FILE__).'/ClientMock.php');
+
 use Miva\Provisioning\Client;
 use Miva\Provisioning\Request;
 use Miva\Provisioning\Response;
@@ -46,7 +48,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      
         $mockClient = new ClientMock('http://www.somedomain.com/mm5', 'TOKENZrSHWEET');
         
-        $response = $mockClint->doRequest($request);
+        $response = $mockClient->doRequest($request);
         
         
         $this->assertInstanceOf('Miva\Provisioning\Response', $response);

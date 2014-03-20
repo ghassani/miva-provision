@@ -10,11 +10,11 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 /**
-* Category
+* Group
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class Category implements FragmentInterface
+class Group implements FragmentInterface
 {
     
     /** @var string */
@@ -66,7 +66,7 @@ class Category implements FragmentInterface
     */
     public function getPrivileges()
     {
-        return $this->name;
+        return $this->privileges;
     }
 
     /**
