@@ -10,12 +10,13 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 /**
-* Country
+* CategoryAdd
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class Country implements DomainFragmentInterface
+class CategoryAdd implements FragmentInterface
 {
+    
     /** @var string */
     protected $name;
 
@@ -23,7 +24,7 @@ class Country implements DomainFragmentInterface
     protected $code;
 
     /** @var string */
-    protected $isoCode;
+    protected $active;
 
 
     /**
@@ -31,13 +32,13 @@ class Country implements DomainFragmentInterface
      * 
      * @param string $name
      * @param string $code
-     * @param string $isoCode
+     * @param string $active
      */
-    public function __construct($name = null, $code = null, $isoCode = null)
+    public function __construct($name = null, $code = null, $active = 'Yes')
     {
         $this->name = $name;
         $this->code = $code;
-        $this->isoCode = $isoCode;
+        $this->active = $active;
     }
 
     /**
@@ -87,26 +88,26 @@ class Country implements DomainFragmentInterface
     }
 
     /**
-    * setIsoCode
+    * setActive
     *
-    * @param string $isoCode
+    * @param string $active
     *
     * @return self
     */
-    public function setIsoCode($isoCode)
+    public function setActive($active)
     {
-        $this->isoCode = $isoCode;
+        $this->active = $active;
         return $this;
     }
 
     /**
-    * getIsoCode
+    * getActive
     *
     * @return string
     */
-    public function getIsoCode()
+    public function getActive()
     {
-        return $this->isoCode;
+        return $this->active;
     }
 
     /**
@@ -114,29 +115,22 @@ class Country implements DomainFragmentInterface
      * 
      * Format:
      * 
-     *  <Country_Add>
-     *       <Name>Burchtopia</Name>
-     *       <Code>BR</Code>
-     *       <ISO_Code>123</ISO_Code>
-     *   </Country_Add>
-     *
-     *  <Country_Update name="Burchtopia">
-     *       <Name>Burchtopia is great</Name>
-     *      <Code>BG</Code>
-     *     <ISO_Code>321</ISO_Code>
-     * </Country_Update>
-     *
-     *  <Country_Delete name="Burchtopia is great" />
+     *  <Category_Add>
+     *     <Code>Weapons</Code>
+     *     <Name><![CDATA[Weapons]]></Name>
+     *     <Active>Yes</Active>
+     *  </Category_Add> 
     */
     public function toXml()
     {
 
         $xml = null;
         $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-        $xmlObject->addChild('Name', $this->getName());
+        $xmlObject->addChild('Name', sprintf('<![CDATA[%s]]>', $this->getName()));
         $xmlObject->addChild('Code', $this->getCode());
-        $xmlObject->addChild('ISO_Code', $this->getIsoCode());
+        $xmlObject->addChild('Active', $this->getActive() ? $this->getActive() : 'Yes');
 
+        
         foreach ($xmlObject->children() as $child) {
             $xml .= $child->saveXml();
         }

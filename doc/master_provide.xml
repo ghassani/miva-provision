@@ -4521,7 +4521,7 @@
 		
 		<ImageType_Add>
 			<Code>type_1</Code>
-			<Description>this is the description for type_1</div>
+			<Description>this is the description for type_1</Description>
 		</ImageType_Add>
 
 		<ImageType_Update code="type_1">

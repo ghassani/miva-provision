@@ -1,5 +1,7 @@
 <?php
 
+require_once(dirname(__FILE__).'/functions.php');
+
 if(!isset($argv[1]) || !isset($argv[2])) {
     print_line(PHP_EOL.'Usage:');
     print_line("\t".'php '.$_SERVER['SCRIPT_NAME'].' /path/to/fragment.xml ClassName');
@@ -45,55 +47,3 @@ $template = str_replace(array('{name}','{properties}','{methods}','{example_xml}
 
 file_put_contents($targetDir.'/'.$targetClass.'.php', $template);
 
-/**
- * 
- */
-function generate_property($variableName, $type = 'string') {
-    return str_replace(array('{variableName}', '{type}'), array($variableName, $type), '
-    /** @var {type} */
-    protected ${variableName};
-    ');
-}
-
-/**
- * 
- */
-function generate_method($functionName, $variableName, $type = 'string') {
-    return str_replace(
-        array('{functionName}','{variableName}','{type}'), 
-        array($functionName, $variableName, $type), '
-    /**
-     * get{functionName}
-     *
-     * @return {type}
-    */
-    public function get{functionName}()
-    {
-        return $this->{variableName};
-    }
-    
-    /**
-     * set{functionName}
-     *
-     * @param {type} ${variableName}
-     *
-     * @return self
-    */
-    public function set{functionName}(${variableName})
-    {
-        $this->{variableName} = ${variableName};
-        return $this;
-    }
-    ');
-    
-}
-
-/**
- * 
- */
-function print_line($message, $exit = false) {
-    echo $message.PHP_EOL;
-    if (true === $exit) {
-        exit();
-    }
-}

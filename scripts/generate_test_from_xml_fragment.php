@@ -1,4 +1,5 @@
 <?php
+require_once(dirname(__FILE__).'/functions.php');
 
 if(!isset($argv[1]) || !isset($argv[2])) {
     print_line(PHP_EOL.'Usage:');
@@ -44,36 +45,3 @@ $template = str_replace(array('{name}','{setters}','{assertions}','{expected_xml
 );
 
 file_put_contents($targetDir.'/'.$targetClass.'Test.php', $template);
-
-/**
- * 
- */
-function generate_setter($functionName, $variableName) {
-    return str_replace(
-        array('{functionName}','{variableName}'), 
-        array($functionName, $variableName), '
-        ->set{functionName}(\'{functionName}\')
-    ');
-}
-
-/**
- * 
- */
-function generate_assertion($functionName, $variableName) {
-    return str_replace(
-        array('{functionName}','{variableName}'), 
-        array($functionName, $variableName), '
-        $this->assertEquals($fragment->get{functionName}(), \'{functionName}\');
-    ');
-    
-}
-
-/**
- * 
- */
-function print_line($message, $exit = false) {
-    echo $message.PHP_EOL;
-    if (true === $exit) {
-        exit();
-    }
-}

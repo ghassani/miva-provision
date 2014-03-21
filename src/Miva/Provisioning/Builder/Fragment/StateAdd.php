@@ -10,20 +10,18 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 /**
-* Country
+* StateAdd
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class Country implements DomainFragmentInterface
+class StateAdd implements FragmentInterface
 {
+    
     /** @var string */
     protected $name;
 
     /** @var string */
     protected $code;
-
-    /** @var string */
-    protected $isoCode;
 
 
     /**
@@ -31,13 +29,11 @@ class Country implements DomainFragmentInterface
      * 
      * @param string $name
      * @param string $code
-     * @param string $isoCode
      */
-    public function __construct($name = null, $code = null, $isoCode = null)
+    public function __construct($name = null, $code = null)
     {
         $this->name = $name;
         $this->code = $code;
-        $this->isoCode = $isoCode;
     }
 
     /**
@@ -86,57 +82,23 @@ class Country implements DomainFragmentInterface
         return $this->code;
     }
 
-    /**
-    * setIsoCode
-    *
-    * @param string $isoCode
-    *
-    * @return self
-    */
-    public function setIsoCode($isoCode)
-    {
-        $this->isoCode = $isoCode;
-        return $this;
-    }
-
-    /**
-    * getIsoCode
-    *
-    * @return string
-    */
-    public function getIsoCode()
-    {
-        return $this->isoCode;
-    }
-
+  
     /**
      * {@inheritDoc}
      * 
      * Format:
      * 
-     *  <Country_Add>
-     *       <Name>Burchtopia</Name>
-     *       <Code>BR</Code>
-     *       <ISO_Code>123</ISO_Code>
-     *   </Country_Add>
-     *
-     *  <Country_Update name="Burchtopia">
-     *       <Name>Burchtopia is great</Name>
-     *      <Code>BG</Code>
-     *     <ISO_Code>321</ISO_Code>
-     * </Country_Update>
-     *
-     *  <Country_Delete name="Burchtopia is great" />
+     *  <State_Add code="" name="Outside the Realms" />
     */
     public function toXml()
     {
 
         $xml = null;
         $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-        $xmlObject->addChild('Name', $this->getName());
+        $xmlObject->addChild('Name', sprintf('<![CDATA[%s]]>', $this->getName()));
         $xmlObject->addChild('Code', $this->getCode());
-        $xmlObject->addChild('ISO_Code', $this->getIsoCode());
 
+        
         foreach ($xmlObject->children() as $child) {
             $xml .= $child->saveXml();
         }

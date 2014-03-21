@@ -10,18 +10,22 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 /**
-* OrderBackorderItems
+* OrderShipmentAdd
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class OrderBackorderItems implements FragmentInterface
+class OrderShipmentAdd implements FragmentInterface
 {
-    
+
     /** @var int */
     protected $orderId;
     
-    /** @var array */
-    protected $products = array();
+    /** @var string */
+    protected $productList = array();
+    
+    /** @var string */
+    protected $code;
+    
 
     /**
      * getOrderId
@@ -45,69 +49,86 @@ class OrderBackorderItems implements FragmentInterface
         $this->orderId = $orderId;
         return $this;
     }
+    
     /**
-     * getProducts
+     * getProductList
      *
      * @return array
     */
-    public function getProducts()
+    public function getProductList()
     {
-        return $this->products;
+        return $this->productList;
     }
     
     /**
-     * setProducts
+     * setProductList
      *
-     * @param array $products
+     * @param array $productList
      *
      * @return self
     */
-    public function setProducts(array $products)
+    public function setProductList(array $productList)
     {
-        $this->products = $products;
+        $this->productList = $productList;
         return $this;
     }
     
     /**
-     * addProduct
+     * addProductList
      *
      * @param ProductListProduct $product
      *
      * @return self
     */
-    public function addProduct(ProductListProduct $product)
+    public function addProductList(ProductListProduct $product)
     {
-        $this->products[] = $product;
+        $this->productList[] = $product;
         return $this;
     }
+    
+    /**
+     * getCode
+     *
+     * @return string
+    */
+    public function getCode()
+    {
+        return $this->code;
+    }
+    
+    /**
+     * setCode
+     *
+     * @param string $code
+     *
+     * @return self
+    */
+    public function setCode($code)
+    {
+        $this->code = $code;
+        return $this;
+    }
+    
 
     /**
      * {@inheritDoc}
      * 
      * Format:
      * 
-     * <Order_Backorder_Items order_id="1000">
+     * <OrderShipment_Add order_id="1000">
      *       <ProductList>                                   (Required)
-     *           <Product>                                       (required)
-     *               <Code>p1</Code>                             (required)
-     *               <Quantity>1</Quantity>                      (required)
-     *               <DateInStock>                               (optional)
-     *                   <Day>01</Day>                                   (required)
-     *                   <Month>01</Month>                               (required)
-     *                   <Year>1970</Year>                               (required)
-     *                   <Hour>00</Hour>                                 (optional)
-     *                   <Minute>01</Minute>                             (optional)
-     *               </DateInStock>
-     *           </Product>
+     *           <Product product_code="p1" quantity="1" />      (required)
      *       </ProductList>
-     *   </Order_Backorder_Items>
+     *      <Code>SHIPMENT_CODE</Code>                      (Required)
+     *   </OrderShipment_Add>
+     *
     */
     public function toXml()
     {
 
         $xml = null;
         $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-        
+
         foreach ($xmlObject->children() as $child) {
             $xml .= $child->saveXml();
         }
@@ -115,4 +136,4 @@ class OrderBackorderItems implements FragmentInterface
         return $xml;
     }
 }
-
+               
