@@ -1,1 +1,0 @@
-<ProductKit_Delete_All product_code="test"/>

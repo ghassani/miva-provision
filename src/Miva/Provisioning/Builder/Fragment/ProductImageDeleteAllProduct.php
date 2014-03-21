@@ -1,1 +1,0 @@
-<ProductImage_Delete_All_Product product_code="p1"/>

@@ -1,1 +1,0 @@
-<ProductKit_Generate_Variants product_code="test" pricing_method="master"/>

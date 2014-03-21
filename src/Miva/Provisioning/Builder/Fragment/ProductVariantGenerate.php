@@ -1,1 +1,0 @@
-<ProductVariant_Generate product_code="test" pricing_method="master" delimiter="_"/>
