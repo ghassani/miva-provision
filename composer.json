@@ -11,5 +11,10 @@
     "minimum-stability": "dev",
     "require": {
 
+    },
+    "autoload": {
+        "psr-0": { 
+            "Miva\\": "src/"
+        }
     }
 }
