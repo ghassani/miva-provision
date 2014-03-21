@@ -3,9 +3,12 @@ Miva PHP Provision Tools
 
 These are a set of libraries and wrappers for dealing with Miva Merchant Enterprise Provisioning.
 
+**Right now, only enterprise customers of Miva Merchant have access to use their provisioning API. This may or may not change in the future.**
+
+
 XML & SOAP Client
 ----
-This wrapper makes it super simple to programatically send your Miva Merchant 
+This wrapper makes it super simple to programatically send your Miva Merchant Provisioning XML File to your Miva Merchant Installation.
 
 **Usage Example:**
 ```
@@ -49,6 +52,9 @@ You can pull the source and use your own/existing class loader, or you can simpl
         "ghassani/miva-provision" : "dev-master"
     }
 ```
+**Via PHAR Package**
+
+Eventually
 
 Misc
 ----
