@@ -106,9 +106,9 @@ class ProductImageAdd implements FragmentInterface
     {
         $xmlObject = new \SimpleXmlElement('<ProductImage_Add></ProductImage_Add>');
 
-        $xmlObject->setAttribute('product_code', $this->getProductCode());
-        $xmlObject->setAttribute('filepath', $this->getFilePath());
-        $xmlObject->setAttribute('type_code', $this->getTypeCode());
+        $xmlObject->addAttribute('product_code', $this->getProductCode());
+        $xmlObject->addAttribute('filepath', $this->getFilePath());
+        $xmlObject->addAttribute('type_code', $this->getTypeCode());
         
         return $xmlObject;
     }

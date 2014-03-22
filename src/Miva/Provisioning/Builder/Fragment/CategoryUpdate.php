@@ -178,7 +178,7 @@ class CategoryUpdate implements FragmentInterface
 
         $xmlObject = new \SimpleXmlElement('<Category_Update></Category_Update>');
         
-        $xmlObject->setAttribute('code', $this->getPreviousCode() ? $this->getPreviousCode() : $this->getCode());
+        $xmlObject->addAttribute('code', $this->getPreviousCode() ? $this->getPreviousCode() : $this->getCode());
         
         $xmlObject->addChild('Name', sprintf('<![CDATA[%s]]>', $this->getName()));
         $xmlObject->addChild('Code', $this->getCode());

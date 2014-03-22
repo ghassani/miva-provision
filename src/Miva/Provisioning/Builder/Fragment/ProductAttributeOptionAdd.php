@@ -77,13 +77,13 @@ class ProductAttributeOptionAdd implements FragmentInterface
     }
     
     /**
-     * setAttributeCode
+     * addAttributeCode
      *
      * @param string $attributeCode
      *
      * @return self
     */
-    public function setAttributeCode($attributeCode)
+    public function addAttributeCode($attributeCode)
     {
         $this->attributeCode = $attributeCode;
         return $this;
@@ -247,8 +247,8 @@ class ProductAttributeOptionAdd implements FragmentInterface
     {
         $xmlObject = new \SimpleXmlElement('<ProductAttributeOption_Add></ProductAttributeOption_Add>');
 
-        $xmlObject->setAttribute('product_code', $this->getProductCode());
-        $xmlObject->setAttribute('attribute_code', $this->getAttributeCode());
+        $xmlObject->addAttribute('product_code', $this->getProductCode());
+        $xmlObject->addAttribute('attribute_code', $this->getAttributeCode());
         
         $xmlObject->addChild('Code', $this->getCode());
         $xmlObject->addChild('Prompt', sprintf('<![CDATA[%s]]>', $this->getPrompt()));

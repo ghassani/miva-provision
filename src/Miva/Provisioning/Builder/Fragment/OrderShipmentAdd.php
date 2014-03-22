@@ -128,14 +128,14 @@ class OrderShipmentAdd implements FragmentInterface
 
         $xmlObject = new \SimpleXmlElement('<OrderShipment_Add></OrderShipment_Add>');
 
-        $xmlObject->setAttribute('order_id', $this->getOrderId());
+        $xmlObject->addAttribute('order_id', $this->getOrderId());
         
         $productListXml = $xmlObject->addChild('ProductList');
         
         foreach($this->getProductList() as $product) {
             $productXml = $productListXml->addChild('Product');
-            $productXml->setAttribute('product_code', $product->getProductCode());
-            $productXml->setAttribute('quantity', $product->getQuantity());
+            $productXml->addAttribute('product_code', $product->getProductCode());
+            $productXml->addAttribute('quantity', $product->getQuantity());
         }
         
         $xmlObject->addChild('Code', $this->getCode());

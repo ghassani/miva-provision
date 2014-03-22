@@ -112,7 +112,7 @@ class ImageTypeUpdate implements FragmentInterface
 
         $xmlObject = new \SimpleXmlElement('<ImageType_Update></ImageType_Update>');
         
-        $xmlObject->setAttribute('code', $this->getCode());
+        $xmlObject->addAttribute('code', $this->getCode());
         $xmlObject->addChild('Description', $this->getDescription());
         
         if ($this->getNewCode()) {

@@ -272,7 +272,7 @@ class AttributeTemplateAttributeAdd implements FragmentInterface
 
         $xmlObject = new \SimpleXmlElement('<AttributeTemplateAttribute_Add></AttributeTemplateAttribute_Add>');
 
-        $xmlObject->setAttribute('template_code', $this->getTemplateCode());
+        $xmlObject->addAttribute('template_code', $this->getTemplateCode());
         
         $xmlObject->addChild('Code',$this->getCode());
         $xmlObject->addChild('Type',$this->getType());

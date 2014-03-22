@@ -81,8 +81,8 @@ class AvailabilityGroupCategoryAssign implements FragmentInterface
 
         $xmlObject = new \SimpleXmlElement('<AvailabilityGroupCategory_Assign />');
         
-        $xmlObject->setAttribute('group_name', $this->getGroupName());
-        $xmlObject->setAttribute('category_code', $this->getCategoryCode());
+        $xmlObject->addAttribute('group_name', $this->getGroupName());
+        $xmlObject->addAttribute('category_code', $this->getCategoryCode());
         
         return $xmlObject;
     }

@@ -94,8 +94,8 @@ class StateAdd implements FragmentInterface
     {
         $xmlObject = new \SimpleXmlElement('<State_Add></State_Add>');
        
-        $xmlObject->setAttribute('code', $this->getCode());
-        $xmlObject->setAttribute('name', $this->getName());
+        $xmlObject->addAttribute('code', $this->getCode());
+        $xmlObject->addAttribute('name', $this->getName());
         
         return $xmlObject;
     }

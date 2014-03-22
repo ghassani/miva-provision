@@ -10,26 +10,33 @@
 namespace Miva\Provisioning\Builder;
 
 /**
-* Builder
-*
-* @author Gassan Idriss <gidriss@mivamerchant.com>
+ * Builder
+ *
+ * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
 class Builder
 {
+    /** @var SimpleXMLElement */
     protected $root;
 
     /**
     * Constructor
     */
-    public function __construct()
+    public function __construct($storeCode = null)
     {
-        $this->root = new \SimpleXMLElement('<Provision />');
+        $this->root = new \SimpleXMLElement('<Provision><Domain></Domain></Provision>');
+        
+        if (!is_null($storeCode)) {
+            $this->addStore($storeCode);
+        }
     }
 
     /**
-    * getRoot
-    *
-    * @return SimpleXMLElement
+     * getRoot
+     * 
+     * Gets the whole XML object 
+     *
+     * @return SimpleXMLElement
     */
     public function getRoot()
     {
@@ -37,82 +44,12 @@ class Builder
     }
 
     /**
-    * createStore
-    *
-    * Add a StoreCreate fragment to create a new store in miva
+     * addStore
+     * 
+     * Adds a store by code and returns the node
+     *
+     * @return SimpleXMLElement
     */
-    public function createStore(Fragment\StoreCreate $store)
-    {
-        $domain = $this->getDomain();
-
-        $storeCreate = $domain->addChild('Store_Create');
-        $storeCreate->addChild($store->toXml());
-
-        return $this;
-    }
-
-    /**
-    * updateSettings
-    */
-    public function updateSettings(Fragment\Settings $settings)
-    {
-        $domain = $this->getDomain();
-
-        $settingsUpdate = $domain->addChild('Settings_Update');
-        $settingsUpdate->addChild($settings->toXml());
-
-        return $this;
-    }
-
-    /**
-    * addCountry
-    */
-    public function addCountry(Fragment\Country $country)
-    {
-        $domain = $this->getDomain();
-
-        $countryAdd = $domain->addChild('Country_Add');
-        $countryAdd->addChild($country->toXml());
-
-        return $this;
-    }
-
-    /**
-    * updateCountry
-    *
-    * @param Country $storeCreate
-    *
-    * @return self
-    */
-    public function updateCountry(Fragment\Country $country)
-    {
-        $domain = $this->getDomain();
-
-        $countryUpdate = $domain->addChild('Country_Update');
-        $countryUpdate->addAttribute('name', $country->getName());
-        $countryUpdate->addChild($country->toXml());
-
-        return $this;
-    }
-
-    /**
-    * deleteCountry
-    *
-    * @param Country $storeCreate
-    *
-    * @return self
-    */
-    public function deleteCountry(Fragment\Country $country)
-    {
-        $domain = $this->getDomain();
-
-        $countryDelete = $domain->addChild('Country_Delete');
-        $countryDelete->addAttribute('name', $country->getName());
-
-        return $this;
-    }
-
-
     public function addStore($storeCode)
     {
         $store = $this->getStore($storeCode);
@@ -125,44 +62,106 @@ class Builder
         $store = $this->getRoot()->addChild('Store');
         $store->addAttribute('code', $storeCode);
 
-        return $this;
+        return $store;
     }
 
+    /**
+     * getStore
+     * 
+     * Gets a store node
+     * 
+     * @param string $storeCode
+     * 
+     * @return SimpleXMLElement
+     * @return false - if doesnt exist
+     */
     public function getStore($storeCode)
     {
-        $store = $this->getRoot()->xpath(sprintf("/Provision/Store[@code='%s']", $storeCode));
+        if(empty($storeCode)){
+            $store = $this->getRoot()->xpath(sprintf("/Provision/Store", $storeCode));
+        } else {
+            $store = $this->getRoot()->xpath(sprintf("/Provision/Store[@code='%s']", $storeCode));
+        }
 
         if (!$store) {
             return false;
         }
 
-        return end($store);
+        return reset($store);
     }
 
     /**
-    * getDomain
-    *
-    * Gets the Domain node
+     * getDomain
+     *
+     * Gets the Domain node
+     * 
+     * @return SimpleXMLElement
     */
     public function getDomain()
     {
         $domain = $this->getRoot()->xpath('/Provision/Domain');
 
         if(!$domain) {
-            $domain = $this->getRoot()->addChild('Domain');    
+            $domain = $this->getRoot()->addChild('Domain');
         } else {
             $domain = end($domain);
         }
 
         return $domain;
     }
-
+    
     /**
-    * toXml
-    *
-    * Outputs current builder to a XML string
-    *
-    * @return string
+     * addFragmentToStore
+     * 
+     * @param Fragment\StoreFragmentInterface $fragment
+     * @param string $storeCode - If null, the first store in the document is used
+     * 
+     * @return self
+     * @throws Exception - If no store is added or store not found by passed code
+     */
+    public function addFragmentToStore(Fragment\StoreFragmentInterface $fragment, $storeCode = null)
+    {
+         $store = $this->getStore($storeCode);
+         
+         if (false === $store) {
+            throw new \Exception(sprintf('Store Never Created or Store Not Found For Code %s', $storeCode));
+         }
+         
+         $fragmentXml = $fragment->toXml();
+         
+         simplexml_import_xml($store, $fragmentXml->saveXml());
+         
+         return $this;
+    }
+    
+    /**
+     * addFragmentToDomain
+     * 
+     * @param Fragment\DomainFragmentInterface $fragment
+     * 
+     * @return self
+     */
+    public function addFragmentToDomain(Fragment\DomainFragmentInterface $fragment)
+    {
+         $domain = $this->getDomain();
+         
+         if (false === $domain) {
+            throw new \Exception('Domain Fragment Not Found');
+         }
+         
+         $fragmentXml = $fragment->toXml();
+         
+         simplexml_import_xml($domain, $fragmentXml->saveXml());
+         
+         return $this;
+    }
+    
+    /**
+     * toXml
+     *
+     * Outputs current builder to a XML string
+     *
+     * @return string
     */
     public function toXml()
     {

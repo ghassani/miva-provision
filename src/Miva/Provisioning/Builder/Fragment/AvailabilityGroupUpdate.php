@@ -55,7 +55,7 @@ class AvailabilityGroupUpdate implements FragmentInterface
 
         $xmlObject = new \SimpleXmlElement('<AvailabilityGroup_Update />');
         
-        $xmlObject->setAttribute('name', $this->getName());
+        $xmlObject->addAttribute('name', $this->getName());
         
         return $xmlObject;
     }

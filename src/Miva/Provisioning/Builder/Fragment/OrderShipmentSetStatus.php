@@ -173,7 +173,7 @@ class OrderShipmentSetStatus implements FragmentInterface
 
         $xmlObject = new \SimpleXmlElement('<OrderShipment_SetStatus></OrderShipment_SetStatus>');
 
-        $xmlObject->setAttribute('code', $this->getCode());
+        $xmlObject->addAttribute('code', $this->getCode());
         
         $xmlObject->addChild('MarkAsShipped', $this->getMarkAsShipped());
         $xmlObject->addChild('TrackingNumber', $this->getTrackingNumber());

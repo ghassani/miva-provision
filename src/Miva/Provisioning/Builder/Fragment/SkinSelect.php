@@ -66,7 +66,7 @@ class SkinSelect implements FragmentInterface
 
         $xmlObject = new \SimpleXmlElement('<Skin_Select />');
         
-        $xmlObject->setAttribute('code', $this->getCode());
+        $xmlObject->addAttribute('code', $this->getCode());
         
         return $xmlObject;
     }

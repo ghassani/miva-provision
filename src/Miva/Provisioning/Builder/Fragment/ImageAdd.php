@@ -66,7 +66,7 @@ class ImageAdd implements FragmentInterface
 
         $xmlObject = new \SimpleXmlElement('<Image_Add></Image_Add>');
         
-        $xmlObject->setAttribute('filepath', $this->getFilePath());
+        $xmlObject->addAttribute('filepath', $this->getFilePath());
         
         return $xmlObject;
     }

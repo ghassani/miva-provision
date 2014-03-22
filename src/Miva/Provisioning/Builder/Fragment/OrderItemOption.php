@@ -39,13 +39,13 @@ class OrderItemOption implements FragmentInterface
     }
     
     /**
-     * setAttributeCode
+     * addAttributeCode
      *
      * @param string $attributeCode
      *
      * @return self
     */
-    public function setAttributeCode($attributeCode)
+    public function addAttributeCode($attributeCode)
     {
         $this->attributeCode = $attributeCode;
         return $this;

@@ -66,7 +66,7 @@ class ImageDelete implements FragmentInterface
 
         $xmlObject = new \SimpleXmlElement('<Image_Delete></Image_Delete>');
         
-        $xmlObject->setAttribute('filepath', $this->getFilePath());
+        $xmlObject->addAttribute('filepath', $this->getFilePath());
         
         return $xmlObject;
     }

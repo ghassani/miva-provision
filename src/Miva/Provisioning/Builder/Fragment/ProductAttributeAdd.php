@@ -273,7 +273,7 @@ class ProductAttributeAdd implements FragmentInterface
     {
         $xmlObject = new \SimpleXmlElement('<ProductAttribute_Add></ProductAttribute_Add>');
 
-        $xmlObject->setAttribute('product_code', $this->getProductCode());
+        $xmlObject->addAttribute('product_code', $this->getProductCode());
         
         $xmlObject->addChild('Code', $this->getCode());
         $xmlObject->addChild('Type', $this->getType());

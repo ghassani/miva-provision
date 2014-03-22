@@ -106,9 +106,9 @@ class ProductImageUpdateType implements FragmentInterface
     {
         $xmlObject = new \SimpleXmlElement('<ProductImage_Update_Type></ProductImage_Update_Type>');
 
-        $xmlObject->setAttribute('product_code', $this->getProductCode());
-        $xmlObject->setAttribute('filepath', $this->getFilePath());
-        $xmlObject->setAttribute('type_code', $this->getTypeCode());
+        $xmlObject->addAttribute('product_code', $this->getProductCode());
+        $xmlObject->addAttribute('filepath', $this->getFilePath());
+        $xmlObject->addAttribute('type_code', $this->getTypeCode());
         
         return $xmlObject;
     }

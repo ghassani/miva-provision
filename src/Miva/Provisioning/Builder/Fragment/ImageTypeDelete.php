@@ -59,7 +59,7 @@ class ImageTypeDelete implements FragmentInterface
 
         $xmlObject = new \SimpleXmlElement('<ImageType_Delete></ImageType_Delete>');
         
-        $xmlObject->setAttribute('code', $this->getCode());
+        $xmlObject->addAttribute('code', $this->getCode());
         
         return $xmlObject;
     }

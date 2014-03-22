@@ -81,8 +81,8 @@ class AvailabilityGroupProductAssign implements FragmentInterface
     {
         $xmlObject = new \SimpleXmlElement('<AvailabilityGroupCustomer_Assign />');
         
-        $xmlObject->setAttribute('group_name', $this->getGroupName());
-        $xmlObject->setAttribute('product_code', $this->getProductCode());
+        $xmlObject->addAttribute('group_name', $this->getGroupName());
+        $xmlObject->addAttribute('product_code', $this->getProductCode());
         
         return $xmlObject;
     }

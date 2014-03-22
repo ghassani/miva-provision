@@ -93,8 +93,8 @@ class UpsoldProductRequiredProductAssign implements FragmentInterface
     {
         $xmlObject = new \SimpleXmlElement('<UpsoldProductRequiredProduct_Assign></UpsoldProductRequiredProduct_Assign>');
 
-        $xmlObject->setAttribute('upsoldproduct_code', $this->getUpsoldProductCode());
-        $xmlObject->setAttribute('requiredproduct_code', $this->getRequiredProductCode());
+        $xmlObject->addAttribute('upsoldproduct_code', $this->getUpsoldProductCode());
+        $xmlObject->addAttribute('requiredproduct_code', $this->getRequiredProductCode());
         
         return $xmlObject;
     }

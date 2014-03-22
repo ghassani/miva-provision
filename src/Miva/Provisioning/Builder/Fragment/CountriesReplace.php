@@ -73,7 +73,7 @@ class CountriesReplace implements DomainFragmentInterface
 
         foreach ($this->getCounties() as $country) {
             $childXml = $xmlObject->addChild('Country', null);
-            $childXml->setAttribute('code', $country->getCode());
+            $childXml->addAttribute('code', $country->getCode());
         }
         
         return $xml;

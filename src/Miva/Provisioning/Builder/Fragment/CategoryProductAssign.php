@@ -93,8 +93,8 @@ class CategoryProductAssign implements FragmentInterface
     {
         $xmlObject = new \SimpleXmlElement('<CategoryProduct_Assign />');
 
-        $xmlObject->setAttribute('category_code', $this->getCategoryCode());
-        $xmlObject->setAttribute('product_code', $this->getProductCode());
+        $xmlObject->addAttribute('category_code', $this->getCategoryCode());
+        $xmlObject->addAttribute('product_code', $this->getProductCode());
         
         return $xmlObject;
     }

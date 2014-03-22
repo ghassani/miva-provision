@@ -343,7 +343,7 @@ class InventoryProductSettingsUpdate implements FragmentInterface
 
         $xmlObject = new \SimpleXmlElement('<InventoryProductSettings_Update></InventoryProductSettings_Update>');
         
-        $xmlObject->setAttribute('product_code', $this->getProductCode());
+        $xmlObject->addAttribute('product_code', $this->getProductCode());
         
         $xmlObject->addChild('TrackProduct', $this->getTrackProduct() ? 'Yes' : 'No');
         $xmlObject->addChild('AdjustStockBy', $this->getAdjustStockBy());

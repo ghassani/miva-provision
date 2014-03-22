@@ -119,10 +119,10 @@ class PackagingRulesUpdate implements FragmentInterface
         
         $boxPacking = $this->getBoxPacking();
         $boxPackingXml = $xmlObject->addChild('BoxPacking');
-        $boxPackingXml->setAttribute('type', $boxPacking['type']);
+        $boxPackingXml->addAttribute('type', $boxPacking['type']);
         
         if(isset($boxPacking['module_code']) && $boxPacking['module_code']) {
-            $boxPackingXml->setAttribute('module_code', $boxPacking['module_code']);
+            $boxPackingXml->addAttribute('module_code', $boxPacking['module_code']);
         }
         
         return $xmlObject;

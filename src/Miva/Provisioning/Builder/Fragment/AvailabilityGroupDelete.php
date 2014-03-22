@@ -55,7 +55,7 @@ class AvailabilityGroupDelete implements FragmentInterface
 
         $xmlObject = new \SimpleXmlElement('<AvailabilityGroup_Delete />');
         
-        $xmlObject->setAttribute('name', $this->getName());
+        $xmlObject->addAttribute('name', $this->getName());
         
         return $xmlObject;
     }

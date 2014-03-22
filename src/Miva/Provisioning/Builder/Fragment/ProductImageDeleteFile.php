@@ -81,8 +81,8 @@ class ProductImageDeleteFile implements FragmentInterface
     {
         $xmlObject = new \SimpleXmlElement('<ProductImage_Delete_File></ProductImage_Delete_File>');
 
-        $xmlObject->setAttribute('product_code', $this->getProductCode());
-        $xmlObject->setAttribute('filepath', $this->getFilePath());
+        $xmlObject->addAttribute('product_code', $this->getProductCode());
+        $xmlObject->addAttribute('filepath', $this->getFilePath());
         
         return $xmlObject;
     }

@@ -105,15 +105,15 @@ class GroupAdd implements FragmentInterface
     {
         $xmlObject = new \SimpleXmlElement('<Group_Add></Group_Add>');
         
-        $xmlObject->setAttribute('name', $this->getName());
+        $xmlObject->addAttribute('name', $this->getName());
         
         foreach($this->getPrivileges() as $privilege) {
             $privilege = $xmlObject->addChild('Privilege');
-            $privilege->setAttribute('code', $privilege['code']);
-            $privilege->setAttribute('view', $privilege['view']);
-            $privilege->setAttribute('add', $privilege['add']);
-            $privilege->setAttribute('modify', $privilege['modify']);
-            $privilege->setAttribute('delete', $privilege['delete']);
+            $privilege->addAttribute('code', $privilege['code']);
+            $privilege->addAttribute('view', $privilege['view']);
+            $privilege->addAttribute('add', $privilege['add']);
+            $privilege->addAttribute('modify', $privilege['modify']);
+            $privilege->addAttribute('delete', $privilege['delete']);
         }
 
         return $xmlObject;
