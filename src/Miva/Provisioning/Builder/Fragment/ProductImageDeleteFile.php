@@ -79,16 +79,12 @@ class ProductImageDeleteFile implements FragmentInterface
     */
     public function toXml()
     {
+        $xmlObject = new \SimpleXmlElement('<ProductImage_Delete_File></ProductImage_Delete_File>');
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-
+        $xmlObject->setAttribute('product_code', $this->getProductCode());
+        $xmlObject->setAttribute('filepath', $this->getFilePath());
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        return $xmlObject;
     }
     
 } 

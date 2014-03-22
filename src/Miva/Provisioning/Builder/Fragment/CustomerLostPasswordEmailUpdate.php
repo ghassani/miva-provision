@@ -138,15 +138,14 @@ class CustomerLostPasswordEmailUpdate implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-
-
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject = new \SimpleXmlElement('<CustomerLostPasswordEmail_Update></CustomerLostPasswordEmail_Update>');
         
-        return $xml;
+        $xmlObject->addChild('EmailFrom', $this->getEmailFrom());
+        $xmlObject->addChild('EmailCC', $this->getEmailCC());
+        $xmlObject->addChild('Subject', $this->getSubject());
+        $xmlObject->addChild('HeaderText', $this->getHeaderText());
+        
+        return $xmlObject;
     }
 
 }

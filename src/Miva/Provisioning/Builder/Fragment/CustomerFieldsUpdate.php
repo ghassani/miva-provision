@@ -55,7 +55,7 @@ class CustomerFieldsUpdate implements FragmentInterface
     
     /** @var array */
     private $availableFieldChoices = array(
-        'Required', 'Hidden', 'Optional',
+        'required', 'hidden', 'optional',
     );
     
     /**
@@ -77,8 +77,7 @@ class CustomerFieldsUpdate implements FragmentInterface
     */
     public function setBilling($billing)
     {
-        $this->billing = $billing;
-        return $this;
+        return $this->setField('billing', $billing);
     }
 
     /**
@@ -100,8 +99,7 @@ class CustomerFieldsUpdate implements FragmentInterface
     */
     public function setFirstName($firstName)
     {
-        $this->firstName = $firstName;
-        return $this;
+        return $this->setField('firstName', $firstName);
     }
     
     /**
@@ -123,8 +121,7 @@ class CustomerFieldsUpdate implements FragmentInterface
     */
     public function setLastName($lastName)
     {
-        $this->lastName = $lastName;
-        return $this;
+        return $this->setField('lastName', $lastName);
     }
 
     /**
@@ -146,8 +143,7 @@ class CustomerFieldsUpdate implements FragmentInterface
     */
     public function setEmail($email)
     {
-        $this->email = $email;
-        return $this;
+        return $this->setField('email', $email);
     }
 
     /**
@@ -169,8 +165,7 @@ class CustomerFieldsUpdate implements FragmentInterface
     */
     public function setPhone($phone)
     {
-        $this->phone = $phone;
-        return $this;
+        return $this->setField('phone', $phone);
     }
    
 
@@ -193,8 +188,7 @@ class CustomerFieldsUpdate implements FragmentInterface
     */
     public function setFax($fax)
     {
-        $this->fax = $fax;
-        return $this;
+        return $this->setField('fax', $fax);
     }
 
 
@@ -217,8 +211,7 @@ class CustomerFieldsUpdate implements FragmentInterface
     */
     public function setCompany($company)
     {
-        $this->company = $company;
-        return $this;
+        return $this->setField('company', $company);
     }
     
     /**
@@ -240,8 +233,7 @@ class CustomerFieldsUpdate implements FragmentInterface
     */
     public function setAddress($address)
     {
-        $this->address = $address;
-        return $this;
+        return $this->setField('address', $address);
     }
 
     /**
@@ -263,8 +255,7 @@ class CustomerFieldsUpdate implements FragmentInterface
     */
     public function setCity($city)
     {
-        $this->city = $city;
-        return $this;
+        return $this->setField('city', $city);
     }
 
     /**
@@ -286,11 +277,10 @@ class CustomerFieldsUpdate implements FragmentInterface
     */
     public function setState($state)
     {
-        $this->state = $state;
-        return $this;
+        return $this->setField('state', $state);
+
     }
-
-
+    
     /**
      * getZip
      *
@@ -310,8 +300,7 @@ class CustomerFieldsUpdate implements FragmentInterface
     */
     public function setZip($zip)
     {
-        $this->zip = $zip;
-        return $this;
+        return $this->setField('zip', $zip);
     }
 
     /**
@@ -333,9 +322,27 @@ class CustomerFieldsUpdate implements FragmentInterface
     */
     public function setCountry($country)
     {
-        $this->country = $country;
-        return $this;
+        return $this->setField('country', $country);
     }
+    
+    /**
+     * setField
+     * 
+     * Set a field in this object and validate its input
+     * 
+     * @param string $field
+     * @param string $value
+     * 
+     * @throws Exception
+     */
+     private function setField($field, $value)
+     {
+         if(!in_array(strtolower($value), $this->availableFieldChoices)){
+             throw new \Exception('Customer Fields Must Be One of '.implode(', ', $this->availableFieldChoices));
+         }
+         $this->$field = $value;
+         return $this;
+     }
 
     /**
      * {@inheritDoc}
@@ -360,17 +367,22 @@ class CustomerFieldsUpdate implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-        $xmlObject->addChild('Name', $this->getName());
-        $xmlObject->addChild('Code', $this->getCode());
-        $xmlObject->addChild('ISO_Code', $this->getIsoCode());
-
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject = new \SimpleXmlElement('<CustomerFields_Update></CustomerFields_Update>');
         
-        return $xml;
+        $xmlObject->addChild('Billing', $this->getBilling());
+        $xmlObject->addChild('FirstName', $this->getFirstName());
+        $xmlObject->addChild('LastName', $this->getLastName());
+        $xmlObject->addChild('Email', $this->getEmail());
+        $xmlObject->addChild('Phone', $this->getPhone());
+        $xmlObject->addChild('Fax', $this->getFax());
+        $xmlObject->addChild('Company', $this->getCompany());
+        $xmlObject->addChild('Address', $this->getAddress());
+        $xmlObject->addChild('City', $this->getCity());
+        $xmlObject->addChild('State', $this->getState());
+        $xmlObject->addChild('Zip', $this->getZip());
+        $xmlObject->addChild('Country', $this->getCountry());
+        
+        return $xmlObject;
     }
     
 }  

@@ -111,15 +111,13 @@ class PriceGroupAdd implements FragmentInterface
     */
     public function toXml()
     {
+        $xmlObject = new \SimpleXmlElement('<PriceGroup_Add></PriceGroup_Add>');
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject->addChild('Name', $this->getName());
+        $xmlObject->addChild('Pricing', $this->getPricing());
+        $xmlObject->addChild('Amount', $this->getAmount());
         
-        return $xml;
+        return $xmlObject;
     }
 }
                 

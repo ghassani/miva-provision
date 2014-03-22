@@ -218,20 +218,18 @@ class InventoryEmailNotificationUpdate implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<InventoryEmailNotification_Update></InventoryEmailNotification_Update>');
         
 
+        $xmlObject->addChild('SendEmailOnLowStock', $this->getSendEmailOnLowStock());
+        $xmlObject->addChild('SendEmailOnNoStock', $this->getSendEmailOnNoStock());
         $xmlObject->addChild('EmailFrom', $this->getEmailFrom());
+        $xmlObject->addChild('EmailTo', $this->getEmailTo());
         $xmlObject->addChild('EmailCC', $this->getEmailCC());
         $xmlObject->addChild('Subject', $this->getSubject());
-        $xmlObject->addChild('HeaderText', $this->getHeaderText());
+        $xmlObject->addChild('Message', $this->getMessage());
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        return $xmlObject;
     }
 }
         

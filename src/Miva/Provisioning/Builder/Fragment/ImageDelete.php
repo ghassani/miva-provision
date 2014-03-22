@@ -64,13 +64,10 @@ class ImageDelete implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<Image_Delete></Image_Delete>');
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject->setAttribute('filepath', $this->getFilePath());
         
-        return $xml;
+        return $xmlObject;
     }
 }

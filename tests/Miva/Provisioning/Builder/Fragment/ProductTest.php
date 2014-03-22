@@ -9,14 +9,14 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
-use Miva\Provisioning\Builder\Fragment\ShippingMethod;
+use Miva\Provisioning\Builder\Fragment\Product;
 
 /**
-* ShippingMethodTest
+* ProductTest
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ShippingMethodTest extends \PHPUnit_Framework_TestCase
+class ProductTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -26,7 +26,7 @@ class ShippingMethodTest extends \PHPUnit_Framework_TestCase
      */
     public function testFunctionality()
     {
-        $fragment = new ShippingMethod();
+        $fragment = new Product();
         
         $fragment            
         ->setModuleCode('ModuleCode')    

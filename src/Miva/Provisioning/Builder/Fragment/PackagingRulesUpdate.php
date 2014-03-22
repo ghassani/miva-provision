@@ -19,10 +19,17 @@ class PackagingRulesUpdate implements FragmentInterface
     
     
     /** @var array */
-    protected $fallbackPackage = array(null,null,null);
+    protected $fallbackPackage = array(
+        'Width' => null,
+        'Length' => null,
+        'Height' => null,
+    );
     
     /** @var array */
-    protected $boxPacking = array(null, null);
+    protected $boxPacking = array(
+        'type' => null,
+        'module_code' => null,
+    );
    
 
     
@@ -47,7 +54,11 @@ class PackagingRulesUpdate implements FragmentInterface
     */
     public function setFallbackPackage($width, $length, $height)
     {
-        $this->fallbackPackage = array($width, $length, $height);
+        $this->fallbackPackage = array(
+            'Width' => $width,
+            'Length' => $length,
+            'Height' => $height,
+        );
         return $this;
     }
     
@@ -71,7 +82,10 @@ class PackagingRulesUpdate implements FragmentInterface
     */
     public function setBoxPacking($type, $moduleCode = null)
     {
-        $this->boxPacking = array($type, $moduleCode);        
+        $this->boxPacking = array(
+            'type' => $type,
+            'module_code' => $moduleCode,
+        );    
         return $this;
     }
     
@@ -94,15 +108,24 @@ class PackagingRulesUpdate implements FragmentInterface
     */
     public function toXml()
     {
+        $xmlObject = new \SimpleXmlElement('<PackagingRules_Update></PackagingRules_Update>');
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
+        $fallbackPackage = $this->getFallbackPackage();
+        $fallbackXml = $xmlObject->addChild('FallbackPackage');
+        
+        $fallbackXml->addChild('', $fallbackPackage['Width']);
+        $fallbackXml->addChild('', $fallbackPackage['Length']);
+        $fallbackXml->addChild('', $fallbackPackage['Height']);
+        
+        $boxPacking = $this->getBoxPacking();
+        $boxPackingXml = $xmlObject->addChild('BoxPacking');
+        $boxPackingXml->setAttribute('type', $boxPacking['type']);
+        
+        if(isset($boxPacking['module_code']) && $boxPacking['module_code']) {
+            $boxPackingXml->setAttribute('module_code', $boxPacking['module_code']);
         }
         
-        return $xml;
+        return $xmlObject;
     }
 }
         

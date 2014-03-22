@@ -68,11 +68,12 @@ class CountriesReplace implements DomainFragmentInterface
     {
 
         $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<Countries_Replace></Countries_Replace>');
 
 
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
+        foreach ($this->getCounties() as $country) {
+            $childXml = $xmlObject->addChild('Country', null);
+            $childXml->setAttribute('code', $country->getCode());
         }
         
         return $xml;

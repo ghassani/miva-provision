@@ -49,20 +49,15 @@ class AvailabilityGroupAdd implements FragmentInterface
      * Format:
      * 
      * <AvailabilityGroup_Add name="Thief" />
-     * <AvailabilityGroup_Update name="Thief" />
-     * <AvailabilityGroup_Delete name="Thief" />
     */
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<AvailabilityGroup_Add />');
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject->setAttribute('name', $this->getName());
         
-        return $xml;
+        return $xmlObject;
     }
 
 }

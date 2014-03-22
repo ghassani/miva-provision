@@ -137,20 +137,14 @@ class AffiliateLostPasswordEmailUpdate implements StoreFragmentInterface
     */
     public function toXml()
     {
-
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<AffiliateLostPasswordEmail_Update></AffiliateLostPasswordEmail_Update>');
         
 
         $xmlObject->addChild('EmailFrom', $this->getEmailFrom());
         $xmlObject->addChild('EmailCC', $this->getEmailCC());
         $xmlObject->addChild('Subject', $this->getSubject());
         $xmlObject->addChild('HeaderText', $this->getHeaderText());
-        
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+
+        return $xmlObject;
     }
 }

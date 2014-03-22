@@ -64,13 +64,10 @@ class ImageAdd implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<Image_Add></Image_Add>');
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject->setAttribute('filepath', $this->getFilePath());
         
-        return $xml;
+        return $xmlObject;
     }
 }

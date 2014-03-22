@@ -101,23 +101,16 @@ class ProductImageAdd implements FragmentInterface
      * Format:
      * 
      *  <ProductImage_Add product_code="test" filepath="graphics/00000001/s2k_silver_front.jpg" type_code="test_3" />
-     *  <ProductImage_Delete product_code="test" filepath="graphics/00000001/s2k_silver_front.jpg" />
-     *  <ProductImage_Delete_File product_code="test" filepath="graphics/00000001/s2k_silver_front.gif" />
-     *  <ProductImage_Update_Type product_code="test" filepath="graphics/00000001/s2k_silver_front.jpg" type_code="type_2" />
-     *  <ProductImage_Delete_All_Product product_code="p1" />
     */
     public function toXml()
     {
+        $xmlObject = new \SimpleXmlElement('<ProductImage_Add></ProductImage_Add>');
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-
+        $xmlObject->setAttribute('product_code', $this->getProductCode());
+        $xmlObject->setAttribute('filepath', $this->getFilePath());
+        $xmlObject->setAttribute('type_code', $this->getTypeCode());
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        return $xmlObject;
     }
     
 } 

@@ -168,13 +168,14 @@ class UpsoldProductAdd implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<UpsoldProduct_Add></UpsoldProduct_Add>');
 
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject->addChild('ProductCode', $this->getProductCode());
+        $xmlObject->addChild('Display', $this->getDisplay());
+        $xmlObject->addChild('RequiredAmount', $this->getRequiredAmount());
+        $xmlObject->addChild('Pricing', $this->getPricing());
+        $xmlObject->addChild('Price', $this->getPrice());
         
-        return $xml;
+        return $xmlObject;
     }
 }

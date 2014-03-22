@@ -194,8 +194,7 @@ class AffiliateEmailNotificationUpdate implements StoreFragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<AffiliateEmailNotification_Update></AffiliateEmailNotification_Update>');
         
 
         $xmlObject->addChild('SendEmailOnAffiliateSignups', $this->getSendEmailOnAffiliateSignups());
@@ -205,10 +204,6 @@ class AffiliateEmailNotificationUpdate implements StoreFragmentInterface
         $xmlObject->addChild('Subject', $this->getSubject());
         $xmlObject->addChild('HeaderText', $this->getHeaderText());
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        return $xmlObject;
     }
 }

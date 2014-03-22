@@ -41,8 +41,8 @@ class ProductAttributeAdd implements FragmentInterface
     /** @var int */
     protected $weight;
     
-    /** @var string */
-    protected $required;
+    /** @var boolean */
+    protected $required = false;
     
     /**
      * getProductCode
@@ -231,7 +231,7 @@ class ProductAttributeAdd implements FragmentInterface
     /**
      * getRequired
      *
-     * @return string
+     * @return boolean
     */
     public function getRequired()
     {
@@ -241,11 +241,11 @@ class ProductAttributeAdd implements FragmentInterface
     /**
      * setRequired
      *
-     * @param string $required
+     * @param boolean $required
      *
      * @return self
     */
-    public function setRequired($required)
+    public function setRequired(boolean $required)
     {
         $this->required = $required;
         return $this;
@@ -271,15 +271,20 @@ class ProductAttributeAdd implements FragmentInterface
     */
     public function toXml()
     {
+        $xmlObject = new \SimpleXmlElement('<ProductAttribute_Add></ProductAttribute_Add>');
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject->setAttribute('product_code', $this->getProductCode());
         
-        return $xml;
+        $xmlObject->addChild('Code', $this->getCode());
+        $xmlObject->addChild('Type', $this->getType());
+        $xmlObject->addChild('Prompt', sprintf('<![CDATA[%s]]>', $this->getPrompt()));
+        $xmlObject->addChild('Image', $this->getImage());
+        $xmlObject->addChild('Price', $this->getPrice());
+        $xmlObject->addChild('Cost', $this->getCost());
+        $xmlObject->addChild('Weight', $this->getWeight());
+        $xmlObject->addChild('Required', $this->getRequired() ? 'Yes' : 'No');
+
+        return $xmlObject;
     }
 }
         

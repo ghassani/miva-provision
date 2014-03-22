@@ -87,13 +87,11 @@ class MivaMailerSettingsUpdate implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<MivaMailerSettings_Update></MivaMailerSettings_Update>');
 
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject->addChild('Account', $this->getAccount());
+        $xmlObject->addChild('Server', $this->getServer());
         
-        return $xml;
+        return $xmlObject;
     }
 }

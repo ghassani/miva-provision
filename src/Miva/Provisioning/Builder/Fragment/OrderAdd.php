@@ -306,7 +306,20 @@ class OrderAdd implements FragmentInterface
         return $this;
     }
     
-
+    
+    /**
+     * addItem
+     *
+     * @param OrderItem $item
+     *
+     * @return self
+    */
+    public function addItem(OrderItem $item)
+    {
+        $this->items[] = $item;
+        return $this;
+    }
+    
     /**
      * {@inheritDoc}
      * 
@@ -349,15 +362,39 @@ class OrderAdd implements FragmentInterface
     */
     public function toXml()
     {
-
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject = new \SimpleXmlElement('<Order_Add></Order_Add>');
         
-        return $xml;
+        $xmlObject->addChild('ShipFirstName', $this->getShipFirstName());
+        $xmlObject->addChild('ShipLastName', $this->getShipLastName());
+        $xmlObject->addChild('ShipEmail', $this->getShipEmail());
+        $xmlObject->addChild('ShipPhone', $this->getShipPhone());
+        $xmlObject->addChild('ShipAddress1', $this->getShipAddress1());
+        $xmlObject->addChild('ShipAddress2', $this->getShipAddress2());
+        $xmlObject->addChild('ShipCity', $this->getShipCity());
+        $xmlObject->addChild('ShipState', $this->getShipState());
+        $xmlObject->addChild('ShipZip', $this->getShipZip());
+        $xmlObject->addChild('ShipCountry', $this->getShipCountry());
+
+        $itemsXml = $xmlObject->addChild('Items');
+        
+        foreach ($this->getItems() as $item) {
+            $itemXml = $itemsXml->addChild('Item');
+            $itemXml->addChild('Code', $this->getCode());
+            $itemXml->addChild('Name', $this->getName());
+            $itemXml->addChild('Price', $this->getPrice());
+            $itemXml->addChild('Weight', $this->getWeight());
+            $itemXml->addChild('Quantity', $this->getQuantity());
+            
+            $optionsXml = $itemXml->addChild('Options');
+            foreach($item->getOptions() as $option) {
+                $optionXml = $optionsXml->addChild('Option');
+                
+                $optionXml->addChild('AttributeCode', $this->getAttributeCode());
+                $optionXml->addChild('Price', $this->getPrice());
+                $optionXml->addChild('OptionCode', $this->getOptionCode());
+            }
+        }
+        return $xmlObject;
     }
 }
         

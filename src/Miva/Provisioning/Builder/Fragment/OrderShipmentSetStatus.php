@@ -171,14 +171,24 @@ class OrderShipmentSetStatus implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<OrderShipment_SetStatus></OrderShipment_SetStatus>');
 
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
+        $xmlObject->setAttribute('code', $this->getCode());
+        
+        $xmlObject->addChild('MarkAsShipped', $this->getMarkAsShipped());
+        $xmlObject->addChild('TrackingNumber', $this->getTrackingNumber());
+        $xmlObject->addChild('TrackingType', $this->getTrackingType());
+        
+        if ($this->getShipDate() instanceof \DateTime) {
+            $shipDateXml = $xmlObject->addChild('ShipDate');
+            $shipDateXml->addChild('Day', $this->getShipDate()->format('d'));
+            $shipDateXml->addChild('Month', $this->getShipDate()->format('m'));
+            $shipDateXml->addChild('Year', $this->getShipDate()->format('Y'));
+            $shipDateXml->addChild('Minute', $this->getShipDate()->format('i'));
+            $shipDateXml->addChild('Hour', $this->getShipDate()->format('h'));
         }
         
-        return $xml;
+        return $xmlObject;
     }
 }
         

@@ -79,14 +79,12 @@ class AttributeTemplateAdd implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<AttributeTemplate_Add></AttributeTemplate_Add>');
 
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject->setAttribute('code', $this->getCode());
+        $xmlObject->setAttribute('prompt', $this->getPrompt());
         
-        return $xml;
+        return $xmlObject;
     }     
 }
 

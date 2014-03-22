@@ -35,11 +35,11 @@ class ProductAdd implements FragmentInterface
     /** @var string */
     protected $description;
     
-    /** @var string */
-    protected $taxable;
+    /** @var boolean */
+    protected $taxable = false;
     
-    /** @var string */
-    protected $active;
+    /** @var boolean */
+    protected $active = true;
     
     /** @var string */
     protected $canonicalCategoryCode;
@@ -196,7 +196,7 @@ class ProductAdd implements FragmentInterface
     /**
      * getTaxable
      *
-     * @return string
+     * @return boolean
     */
     public function getTaxable()
     {
@@ -206,11 +206,11 @@ class ProductAdd implements FragmentInterface
     /**
      * setTaxable
      *
-     * @param string $taxable
+     * @param boolean $taxable
      *
      * @return self
     */
-    public function setTaxable($taxable)
+    public function setTaxable(boolean $taxable)
     {
         $this->taxable = $taxable;
         return $this;
@@ -219,7 +219,7 @@ class ProductAdd implements FragmentInterface
     /**
      * getActive
      *
-     * @return string
+     * @return boolean
     */
     public function getActive()
     {
@@ -229,11 +229,11 @@ class ProductAdd implements FragmentInterface
     /**
      * setActive
      *
-     * @param string $active
+     * @param boolean $active
      *
      * @return self
     */
-    public function setActive($active)
+    public function setActive(boolean $active)
     {
         $this->active = $active;
         return $this;
@@ -355,14 +355,21 @@ class ProductAdd implements FragmentInterface
     */
     public function toXml()
     {
+        $xmlObject = new \SimpleXmlElement('<Product_Add></Product_Add>');
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject->addChild('Code', $this->getCode());
+        $xmlObject->addChild('Name', sprintf('<![CDATA[%s]]>', $this->getName()));
+        $xmlObject->addChild('Price', $this->getPrice());
+        $xmlObject->addChild('Cost', $this->getCost());
+        $xmlObject->addChild('Weight', $this->getWeight());
+        $xmlObject->addChild('Description', sprintf('<![CDATA[%s]]>', $this->getDescription()));
+        $xmlObject->addChild('Taxable', $this->getTaxable() ? 'Yes' : 'No');
+        $xmlObject->addChild('Active', $this->getActive() ? 'Yes' : 'No');
+        $xmlObject->addChild('CanonicalCategoryCode', $this->getCanonicalCategoryCode());
+        $xmlObject->addChild('AlternateDisplayPage', $this->getAlternateDisplayPage());
+        $xmlObject->addChild('ThumbnailImage', $this->getThumbnailImage());
+        $xmlObject->addChild('FullSizeImage', $this->getFullSizeImage());
         
-        return $xml;
+        return $xmlObject;
     }
 }

@@ -80,15 +80,12 @@ class PriceGroupProductAssign implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<PriceGroupProduct_Assign />');
 
+        $xmlObject->setAttribute('group_name', $this->getGroupName());
+        $xmlObject->setAttribute('product_code', $this->getProductCode());
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        return $xmlObject;
     }
 
 }

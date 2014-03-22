@@ -25,18 +25,9 @@ class StateDeleteAll implements FragmentInterface
     */
     public function toXml()
     {
-
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-        $xmlObject->addChild('Name', sprintf('<![CDATA[%s]]>', $this->getName()));
-        $xmlObject->addChild('Code', $this->getCode());
-
+        $xmlObject = new \SimpleXmlElement('<State_DeleteAll />');
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        return $xmlObject;
     }
 
 }

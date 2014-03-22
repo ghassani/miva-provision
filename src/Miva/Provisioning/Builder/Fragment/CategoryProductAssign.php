@@ -91,16 +91,12 @@ class CategoryProductAssign implements FragmentInterface
     */
     public function toXml()
     {
+        $xmlObject = new \SimpleXmlElement('<CategoryProduct_Assign />');
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-
+        $xmlObject->setAttribute('category_code', $this->getCategoryCode());
+        $xmlObject->setAttribute('product_code', $this->getProductCode());
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        return $xmlObject;
     }
 
 }

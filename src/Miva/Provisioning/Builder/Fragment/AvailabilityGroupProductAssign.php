@@ -79,15 +79,12 @@ class AvailabilityGroupProductAssign implements FragmentInterface
     */
     public function toXml()
     {
-
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<AvailabilityGroupCustomer_Assign />');
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject->setAttribute('group_name', $this->getGroupName());
+        $xmlObject->setAttribute('product_code', $this->getProductCode());
         
-        return $xml;
+        return $xmlObject;
     }
 
 }

@@ -23,8 +23,8 @@ class CategoryAdd implements FragmentInterface
     /** @var string */
     protected $code;
 
-    /** @var string */
-    protected $active;
+    /** @var boolean */
+    protected $active = true;
 
 
     /**
@@ -34,7 +34,7 @@ class CategoryAdd implements FragmentInterface
      * @param string $code
      * @param string $active
      */
-    public function __construct($name = null, $code = null, $active = 'Yes')
+    public function __construct($name = null, $code = null, boolean $active = true)
     {
         $this->name = $name;
         $this->code = $code;
@@ -90,11 +90,11 @@ class CategoryAdd implements FragmentInterface
     /**
     * setActive
     *
-    * @param string $active
+    * @param boolean $active
     *
     * @return self
     */
-    public function setActive($active)
+    public function setActive(boolean $active)
     {
         $this->active = $active;
         return $this;
@@ -103,7 +103,7 @@ class CategoryAdd implements FragmentInterface
     /**
     * getActive
     *
-    * @return string
+    * @return boolean
     */
     public function getActive()
     {
@@ -124,18 +124,12 @@ class CategoryAdd implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<Category_Add></Category_Add>');
         $xmlObject->addChild('Name', sprintf('<![CDATA[%s]]>', $this->getName()));
         $xmlObject->addChild('Code', $this->getCode());
-        $xmlObject->addChild('Active', $this->getActive() ? $this->getActive() : 'Yes');
+        $xmlObject->addChild('Active', $this->getActive() ? 'Yes' : 'No');
 
-        
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        return $xmlObject;
     }
 
 }

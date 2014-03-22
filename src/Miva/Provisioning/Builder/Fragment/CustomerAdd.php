@@ -703,17 +703,35 @@ class CustomerAdd implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-        $xmlObject->addChild('Name', $this->getName());
-        $xmlObject->addChild('Code', $this->getCode());
-        $xmlObject->addChild('ISO_Code', $this->getIsoCode());
+        $xmlObject = new \SimpleXmlElement('<Customer_Add></Customer_Add>');
 
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        $xmlObject->addChild('Login', $this->getLogin());
+        $xmlObject->addChild('LostPasswordEmail', $this->getLostPasswordEmail());
+        $xmlObject->addChild('Password', $this->getPassword());
+        $xmlObject->addChild('ShipFirstName', $this->getShipFirstName());
+        $xmlObject->addChild('ShipLastName', $this->getShipLastName());
+        $xmlObject->addChild('ShipEmail', $this->getShipEmail());
+        $xmlObject->addChild('ShipPhone', $this->getShipPhone());
+        $xmlObject->addChild('ShipFax', $this->getShipFax());
+        $xmlObject->addChild('ShipCompany', $this->getShipCompany());
+        $xmlObject->addChild('ShipAddress', $this->getShipAddress());
+        $xmlObject->addChild('ShipCity', $this->getShipCity());
+        $xmlObject->addChild('ShipStateCode', $this->getShipStateCode());
+        $xmlObject->addChild('ShipZip', $this->getShipZip());
+        $xmlObject->addChild('ShipCountryCode', $this->getShipCountryCode());
+        $xmlObject->addChild('BillFirstName', $this->getBillFirstName());
+        $xmlObject->addChild('BillLastName', $this->getBillLastName());
+        $xmlObject->addChild('BillEmail', $this->getBillEmail());
+        $xmlObject->addChild('BillPhone', $this->getBillPhone());
+        $xmlObject->addChild('BillFax', $this->getBillFax());
+        $xmlObject->addChild('BillCompany', $this->getBillCompany());
+        $xmlObject->addChild('BillAddress', $this->getBillAddress());
+        $xmlObject->addChild('BillCity', $this->getBillCity());
+        $xmlObject->addChild('BillStateCode', $this->getBillStateCode());
+        $xmlObject->addChild('BillZip', $this->getBillZip());
+        $xmlObject->addChild('BillCountryCode', $this->getBillCountryCode());
+
+        return $xmlObject;
     }
 
 }

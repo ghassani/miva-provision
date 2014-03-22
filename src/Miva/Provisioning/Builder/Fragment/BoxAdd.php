@@ -20,8 +20,8 @@ class BoxAdd implements FragmentInterface
     /** @var string */
     protected $description;
     
-    /** @var string */
-    protected $enabled;    
+    /** @var boolean */
+    protected $enabled = true;    
     
     /** @var float */
     protected $width;    
@@ -33,8 +33,11 @@ class BoxAdd implements FragmentInterface
     protected $height;
     
     /** @var array */
-    protected $boxPackageSettings = array(null, null);
-    
+    protected $boxPackageSettings = array(
+        'MaxWeight' => null, 
+        'MaxQuantity' => null,
+    );
+
     /**
      * getDescription
      *
@@ -61,7 +64,7 @@ class BoxAdd implements FragmentInterface
     /**
      * getEnabled
      *
-     * @return string
+     * @return boolean
     */
     public function getEnabled()
     {
@@ -75,7 +78,7 @@ class BoxAdd implements FragmentInterface
      *
      * @return self
     */
-    public function setEnabled($enabled)
+    public function setEnabled(boolean $enabled)
     {
         $this->enabled = $enabled;
         return $this;
@@ -195,13 +198,23 @@ class BoxAdd implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<Box_Add></Box_Add>');
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
+        $xmlObject->addChild('Description', $this->getDescription());
+        $xmlObject->addChild('Enabled', $this->getEnabled() ? 'Yes' : 'No');
+        $xmlObject->addChild('Width', $this->getWidth());
+        $xmlObject->addChild('Length', $this->getLength());
+        $xmlObject->addChild('Height', $this->getHeight());
+        
+        $boxPackingSettings = $this->getBoxPackingSettings();
+        
+        if(implode('',$boxPackingSettings)) {
+            $boxPackingSettingsXml = $xmlObject->addChild('BoxPackingSettings');
+            foreach($boxPackingSettings as $name => $value) {
+                $boxPackingSettingsXml->addChild($name, $value);
+            }
         }
-        
+ 
         return $xml;
     }
 

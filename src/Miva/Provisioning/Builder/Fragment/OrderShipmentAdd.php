@@ -126,14 +126,21 @@ class OrderShipmentAdd implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<OrderShipment_Add></OrderShipment_Add>');
 
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
+        $xmlObject->setAttribute('order_id', $this->getOrderId());
+        
+        $productListXml = $xmlObject->addChild('ProductList');
+        
+        foreach($this->getProductList() as $product) {
+            $productXml = $productListXml->addChild('Product');
+            $productXml->setAttribute('product_code', $product->getProductCode());
+            $productXml->setAttribute('quantity', $product->getQuantity());
         }
         
-        return $xml;
+        $xmlObject->addChild('Code', $this->getCode());
+        
+        return $xmlObject;
     }
 }
                

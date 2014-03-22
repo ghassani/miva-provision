@@ -24,7 +24,10 @@ class CategoryUpdate implements FragmentInterface
     protected $code;
 
     /** @var string */
-    protected $active;
+    protected $previousCode;
+
+    /** @var boolean */
+    protected $active = true;
     
     /** @var string */
     protected $parentCategoryCode;
@@ -34,10 +37,12 @@ class CategoryUpdate implements FragmentInterface
      * Constructor
      * 
      * @param string $code
+     * @param string $previousCode
      */
-    public function __construct($code = null)
+    public function __construct($code = null, $previousCode = null)
     {
         $this->code = $code;
+        $this->previousCode = $previousCode;
     }
 
     /**
@@ -85,15 +90,39 @@ class CategoryUpdate implements FragmentInterface
     {
         return $this->code;
     }
+    
+    /**
+     * getPreviousCode
+     *
+     * @return string
+    */
+    public function getPreviousCode()
+    {
+        return $this->previousCode;
+    }
+    
+    /**
+     * setPreviousCode
+     *
+     * @param string $previousCode
+     *
+     * @return self
+    */
+    public function setPreviousCode($previousCode)
+    {
+    	$this->previousCode = $previousCode;
+        return $this;
+    }
+
 
     /**
     * setActive
     *
-    * @param string $active
+    * @param boolean $active
     *
     * @return self
     */
-    public function setActive($active)
+    public function setActive(boolean $active)
     {
         $this->active = $active;
         return $this;
@@ -102,7 +131,7 @@ class CategoryUpdate implements FragmentInterface
     /**
     * getActive
     *
-    * @return string
+    * @return boolean
     */
     public function getActive()
     {
@@ -147,18 +176,15 @@ class CategoryUpdate implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<Category_Update></Category_Update>');
+        
+        $xmlObject->setAttribute('code', $this->getPreviousCode() ? $this->getPreviousCode() : $this->getCode());
+        
         $xmlObject->addChild('Name', sprintf('<![CDATA[%s]]>', $this->getName()));
         $xmlObject->addChild('Code', $this->getCode());
-        $xmlObject->addChild('Active', $this->getActive() ? $this->getActive() : 'Yes');
+        $xmlObject->addChild('Active', $this->getActive() ? 'Yes' : 'No');
 
-        
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        return $xmlObject;
     }
 
 }

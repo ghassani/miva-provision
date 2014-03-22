@@ -19,6 +19,9 @@ class ImageTypeUpdate implements FragmentInterface
     
     /** @var string */
     protected $code;
+
+    /** @var string */
+    protected $newCode;
     
     /** @var string */
     protected $description;
@@ -47,6 +50,30 @@ class ImageTypeUpdate implements FragmentInterface
     }
 
     /**
+     * getNewCode
+     *
+     * @return string
+    */
+    public function getNewCode()
+    {
+        return $this->newCode;
+    }
+    
+    /**
+     * setNewCode
+     *
+     * @param string $newCode
+     *
+     * @return self
+    */
+    public function setNewCode($newCode)
+    {
+    	$this->newCode = $newCode;
+        return $this;
+    }
+
+
+    /**
      * getDescription
      *
      * @return string
@@ -70,26 +97,28 @@ class ImageTypeUpdate implements FragmentInterface
     }
 
 
+
     /**
      * {@inheritDoc}
      * 
      * Format:
-     *
+     * 
      * <ImageType_Update code="type_1">
-     *     <Code>type_a</Code>
+     *       <Code>type_a</Code>
      * </ImageType_Update>
-     *   
     */
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<ImageType_Update></ImageType_Update>');
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
+        $xmlObject->setAttribute('code', $this->getCode());
+        $xmlObject->addChild('Description', $this->getDescription());
+        
+        if ($this->getNewCode()) {
+            $xmlObject->addChild('Code', $this->getNewCode());
         }
-        
-        return $xml;
+                
+        return $xmlObject;
     }
 }

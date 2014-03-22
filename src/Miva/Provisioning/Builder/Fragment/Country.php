@@ -114,34 +114,10 @@ class Country implements DomainFragmentInterface
      * 
      * Format:
      * 
-     *  <Country_Add>
-     *       <Name>Burchtopia</Name>
-     *       <Code>BR</Code>
-     *       <ISO_Code>123</ISO_Code>
-     *   </Country_Add>
-     *
-     *  <Country_Update name="Burchtopia">
-     *       <Name>Burchtopia is great</Name>
-     *      <Code>BG</Code>
-     *     <ISO_Code>321</ISO_Code>
-     * </Country_Update>
-     *
-     *  <Country_Delete name="Burchtopia is great" />
     */
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-        $xmlObject->addChild('Name', $this->getName());
-        $xmlObject->addChild('Code', $this->getCode());
-        $xmlObject->addChild('ISO_Code', $this->getIsoCode());
-
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
     }
 
 }

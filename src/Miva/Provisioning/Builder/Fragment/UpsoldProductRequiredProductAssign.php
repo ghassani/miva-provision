@@ -91,16 +91,12 @@ class UpsoldProductRequiredProductAssign implements FragmentInterface
     */
     public function toXml()
     {
+        $xmlObject = new \SimpleXmlElement('<UpsoldProductRequiredProduct_Assign></UpsoldProductRequiredProduct_Assign>');
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-
+        $xmlObject->setAttribute('upsoldproduct_code', $this->getUpsoldProductCode());
+        $xmlObject->setAttribute('requiredproduct_code', $this->getRequiredProductCode());
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        return $xmlObject;
     }
 
 }

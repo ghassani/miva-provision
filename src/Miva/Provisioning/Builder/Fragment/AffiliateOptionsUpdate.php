@@ -272,8 +272,7 @@ class AffiliateOptionsUpdate implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<AffiliateOptions_Update></AffiliateOptions_Update>');
         
         $xmlObject->addChild('Active', $this->getActive());
         $xmlObject->addChild('ApplicationStatus', $this->getApplicationStatus());
@@ -286,10 +285,6 @@ class AffiliateOptionsUpdate implements FragmentInterface
         $xmlObject->addChild('Terms', $this->getTerms());
 
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        return $xmlObject;
     }
 }

@@ -19,8 +19,8 @@ class InventoryProductSettingsUpdate implements FragmentInterface
     /** @var string */
     protected $productCode;
     
-    /** @var string */
-    protected $trackProduct;
+    /** @var boolean */
+    protected $trackProduct = false;
     
     /** @var int */
     protected $adjustStockBy;
@@ -31,8 +31,8 @@ class InventoryProductSettingsUpdate implements FragmentInterface
     /** @var string */
     protected $inStockMessageLong;
     
-    /** @var string */
-    protected $trackLowStockLevel;
+    /** @var boolean */
+    protected $trackLowStockLevel = false;
     
     /** @var string */
     protected $lowStockLevel;
@@ -43,11 +43,11 @@ class InventoryProductSettingsUpdate implements FragmentInterface
     /** @var string */
     protected $lowStockMessageLong;
     
-    /** @var string */
-    protected $trackOutOfStockLevel;
+    /** @var boolean */
+    protected $trackOutOfStockLevel = false;
     
     /** @var string */
-    protected $hideOutOfStockProducts;
+    protected $hideOutOfStockProducts = false;
     
     /** @var string */
     protected $outOfStockLevel;
@@ -87,7 +87,7 @@ class InventoryProductSettingsUpdate implements FragmentInterface
     /**
      * getTrackProduct
      *
-     * @return string
+     * @return boolean
     */
     public function getTrackProduct()
     {
@@ -97,11 +97,11 @@ class InventoryProductSettingsUpdate implements FragmentInterface
     /**
      * setTrackProduct
      *
-     * @param string $trackProduct
+     * @param boolean $trackProduct
      *
      * @return self
     */
-    public function setTrackProduct($trackProduct)
+    public function setTrackProduct(boolean $trackProduct)
     {
         $this->trackProduct = $trackProduct;
         return $this;
@@ -202,7 +202,7 @@ class InventoryProductSettingsUpdate implements FragmentInterface
     /**
      * getTrackLowStockLevel
      *
-     * @return string
+     * @return boolean
     */
     public function getTrackLowStockLevel()
     {
@@ -212,11 +212,11 @@ class InventoryProductSettingsUpdate implements FragmentInterface
     /**
      * setTrackLowStockLevel
      *
-     * @param string $trackLowStockLevel
+     * @param boolean $trackLowStockLevel
      *
      * @return self
     */
-    public function setTrackLowStockLevel($trackLowStockLevel)
+    public function setTrackLowStockLevel(boolean $trackLowStockLevel)
     {
         $this->trackLowStockLevel = $trackLowStockLevel;
         return $this;
@@ -271,7 +271,7 @@ class InventoryProductSettingsUpdate implements FragmentInterface
     /**
      * getTrackOutOfStockLevel
      *
-     * @return string
+     * @return boolean
     */
     public function getTrackOutOfStockLevel()
     {
@@ -281,16 +281,38 @@ class InventoryProductSettingsUpdate implements FragmentInterface
     /**
      * setTrackOutOfStockLevel
      *
-     * @param string $trackOutOfStockLevel
+     * @param boolean $trackOutOfStockLevel
      *
      * @return self
     */
-    public function setTrackOutOfStockLevel($trackOutOfStockLevel)
+    public function setTrackOutOfStockLevel(boolean $trackOutOfStockLevel)
     {
         $this->trackOutOfStockLevel = $trackOutOfStockLevel;
         return $this;
     }
     
+    /**
+     * getHideOutOfStockProducts
+     *
+     * @return boolean
+    */
+    public function getHideOutOfStockProducts()
+    {
+        return $this->hideOutOfStockProducts;
+    }
+    
+    /**
+     * setHideOutOfStockProducts
+     *
+     * @param boolean $hideOutOfStockProducts
+     *
+     * @return self
+    */
+    public function setHideOutOfStockProducts(boolean $hideOutOfStockProducts)
+    {
+    	$this->hideOutOfStockProducts = $hideOutOfStockProducts;
+        return $this;
+    }
 
 
 
@@ -319,20 +341,26 @@ class InventoryProductSettingsUpdate implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<InventoryProductSettings_Update></InventoryProductSettings_Update>');
         
+        $xmlObject->setAttribute('product_code', $this->getProductCode());
+        
+        $xmlObject->addChild('TrackProduct', $this->getTrackProduct() ? 'Yes' : 'No');
+        $xmlObject->addChild('AdjustStockBy', $this->getAdjustStockBy());
+        $xmlObject->addChild('InStockMessageShort', sprintf('<![CDATA[%s]]>',$this->getInStockMessageShort()));
+        $xmlObject->addChild('InStockMessageLong', sprintf('<![CDATA[%s]]>',$this->getInStockMessageLong()));
+        $xmlObject->addChild('TrackLowStockLevel', $this->getTrackLowStockLevel() ? 'Yes' : 'No');
+        $xmlObject->addChild('LowStockLevel', $this->getLowStockLevel());
+        $xmlObject->addChild('LowStockMessageShort', sprintf('<![CDATA[%s]]>',$this->getLowStockMessageShort()));
+        $xmlObject->addChild('LowStockMessageLong', sprintf('<![CDATA[%s]]>',$this->getLowStockMessageLong()));
+        $xmlObject->addChild('TrackOutOfStockLevel', $this->getTrackOutOfStockLevel() ? 'Yes' : 'No');
+        $xmlObject->addChild('HideOutOfStockProducts', $this->getHideOutOfStockProducts() ? 'Yes' : 'No');
+        $xmlObject->addChild('OutOfStockLevel', $this->getOutOfStockLevel());
+        $xmlObject->addChild('OutOfStockMessageShort', sprintf('<![CDATA[%s]]>',$this->getOutOfStockMessageShort()));
+        $xmlObject->addChild('OutOfStockMessageLong', sprintf('<![CDATA[%s]]>',$this->getOutOfStockMessageLong()));
+        $xmlObject->addChild('LimitedStockMessage', sprintf('<![CDATA[%s]]>',$this->getLimitedStockMessage()));
 
-        $xmlObject->addChild('EmailFrom', $this->getEmailFrom());
-        $xmlObject->addChild('EmailCC', $this->getEmailCC());
-        $xmlObject->addChild('Subject', $this->getSubject());
-        $xmlObject->addChild('HeaderText', $this->getHeaderText());
-        
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        return $xmlObject;
     }
 }
         

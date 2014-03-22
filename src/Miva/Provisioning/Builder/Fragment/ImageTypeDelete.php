@@ -57,13 +57,10 @@ class ImageTypeDelete implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<ImageType_Delete></ImageType_Delete>');
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject->setAttribute('code', $this->getCode());
         
-        return $xml;
+        return $xmlObject;
     }
 }

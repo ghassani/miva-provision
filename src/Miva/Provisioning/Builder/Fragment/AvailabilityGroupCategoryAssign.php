@@ -79,13 +79,11 @@ class AvailabilityGroupCategoryAssign implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<AvailabilityGroupCategory_Assign />');
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject->setAttribute('group_name', $this->getGroupName());
+        $xmlObject->setAttribute('category_code', $this->getCategoryCode());
         
-        return $xml;
+        return $xmlObject;
     }
 }

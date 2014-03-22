@@ -18,8 +18,8 @@ class InventorySettingsUpdate implements FragmentInterface
 {
     
     
-    /** @var string */
-    protected $trackInventory;
+    /** @var boolean */
+    protected $trackInventory = false;
     
     /** @var string */
     protected $inStockMessageShort;
@@ -27,8 +27,8 @@ class InventorySettingsUpdate implements FragmentInterface
     /** @var string */
     protected $inStockMessageLong;
     
-    /** @var string */
-    protected $trackLowStockLevel;
+    /** @var boolean */
+    protected $trackLowStockLevel = false;
     
     /** @var int */
     protected $lowStockLevel;
@@ -40,13 +40,13 @@ class InventorySettingsUpdate implements FragmentInterface
     protected $lowStockMessageLong;
     
     /** @var string */
-    protected $trackOutOfStockProducts;
+    protected $trackOutOfStockProducts = false;
     
     /** @var int */
     protected $trackOutOfStockLevel;
     
     /** @var string */
-    protected $hideOutOfStockProducts;
+    protected $hideOutOfStockProducts = false;
     
     /** @var string */
     protected $outOfStockMessageShort;
@@ -62,7 +62,7 @@ class InventorySettingsUpdate implements FragmentInterface
     /**
      * getTrackInventory
      *
-     * @return string
+     * @return boolean
     */
     public function getTrackInventory()
     {
@@ -72,11 +72,11 @@ class InventorySettingsUpdate implements FragmentInterface
     /**
      * setTrackInventory
      *
-     * @param string $trackInventory
+     * @param boolean $trackInventory
      *
      * @return self
     */
-    public function setTrackInventory($trackInventory)
+    public function setTrackInventory(boolean $trackInventory)
     {
         $this->trackInventory = $trackInventory;
         return $this;
@@ -131,7 +131,7 @@ class InventorySettingsUpdate implements FragmentInterface
     /**
      * getTrackLowStockLevel
      *
-     * @return string
+     * @return boolean
     */
     public function getTrackLowStockLevel()
     {
@@ -141,11 +141,11 @@ class InventorySettingsUpdate implements FragmentInterface
     /**
      * setTrackLowStockLevel
      *
-     * @param string $trackLowStockLevel
+     * @param boolean $trackLowStockLevel
      *
      * @return self
     */
-    public function setTrackLowStockLevel($trackLowStockLevel)
+    public function setTrackLowStockLevel(boolean $trackLowStockLevel)
     {
         $this->trackLowStockLevel = $trackLowStockLevel;
         return $this;
@@ -223,7 +223,7 @@ class InventorySettingsUpdate implements FragmentInterface
     /**
      * getTrackOutOfStockProducts
      *
-     * @return string
+     * @return boolean
     */
     public function getTrackOutOfStockProducts()
     {
@@ -233,11 +233,11 @@ class InventorySettingsUpdate implements FragmentInterface
     /**
      * setTrackOutOfStockProducts
      *
-     * @param string $trackOutOfStockProducts
+     * @param boolean $trackOutOfStockProducts
      *
      * @return self
     */
-    public function setTrackOutOfStockProducts($trackOutOfStockProducts)
+    public function setTrackOutOfStockProducts(boolean $trackOutOfStockProducts)
     {
         $this->trackOutOfStockProducts = $trackOutOfStockProducts;
         return $this;
@@ -269,7 +269,7 @@ class InventorySettingsUpdate implements FragmentInterface
     /**
      * getHideOutOfStockProducts
      *
-     * @return string
+     * @return boolean
     */
     public function getHideOutOfStockProducts()
     {
@@ -279,11 +279,11 @@ class InventorySettingsUpdate implements FragmentInterface
     /**
      * setHideOutOfStockProducts
      *
-     * @param string $hideOutOfStockProducts
+     * @param boolean $hideOutOfStockProducts
      *
      * @return self
     */
-    public function setHideOutOfStockProducts($hideOutOfStockProducts)
+    public function setHideOutOfStockProducts(boolean $hideOutOfStockProducts)
     {
         $this->hideOutOfStockProducts = $hideOutOfStockProducts;
         return $this;
@@ -364,26 +364,40 @@ class InventorySettingsUpdate implements FragmentInterface
      * 
      * Format:
      * 
-     *  <InventorySettings_Update><TrackInventory>Yes</TrackInventory><InStockMessageShort><![CDATA[Fully stocked]]></InStockMessageShort><InStockMessageLong><![CDATA[We've got plenty so order away]]></InStockMessageLong><TrackLowStockLevel>Yes</TrackLowStockLevel><LowStockLevel>10</LowStockLevel><LowStockMessageShort><![CDATA[Limited supply]]></LowStockMessageShort><LowStockMessageLong><![CDATA[There are only a few left in stock, so you better get em while you can]]></LowStockMessageLong>
-     *       <TrackOutOfStockProducts>Yes</TrackOutOfStockProducts>
-     *       <TrackOutOfStockLevel>-5</TrackOutOfStockLevel>
-     *       <HideOutOfStockProducts>No</HideOutOfStockProducts>
-     *       <OutOfStockMessageShort><![CDATA[Out Of Stock]]></OutOfStockMessageShort>
-     *       <OutOfStockMessageLong><![CDATA[This product is <B>SOLD OUT</B> but hopefully we'll get more in soon]]></OutOfStockMessageLong>
-     *       <LimitedStockMessage><![CDATA[I know you want these, but we only have %inv_available% left. Try ordering a smaller amount]]></LimitedStockMessage>
+     *  <InventorySettings_Update>
+     *      <TrackInventory>Yes</TrackInventory>
+     *      <InStockMessageShort><![CDATA[Fully stocked]]></InStockMessageShort>
+     *      <InStockMessageLong><![CDATA[We've got plenty so order away]]></InStockMessageLong>
+     *      <TrackLowStockLevel>Yes</TrackLowStockLevel>
+     *      <LowStockLevel>10</LowStockLevel><LowStockMessageShort><![CDATA[Limited supply]]></LowStockMessageShort>
+     *      <LowStockMessageLong><![CDATA[There are only a few left in stock, so you better get em while you can]]></LowStockMessageLong>
+     *      <TrackOutOfStockProducts>Yes</TrackOutOfStockProducts>
+     *      <TrackOutOfStockLevel>-5</TrackOutOfStockLevel>
+     *      <HideOutOfStockProducts>No</HideOutOfStockProducts>
+     *      <OutOfStockMessageShort><![CDATA[Out Of Stock]]></OutOfStockMessageShort>
+     *      <OutOfStockMessageLong><![CDATA[This product is <B>SOLD OUT</B> but hopefully we'll get more in soon]]></OutOfStockMessageLong>
+     *      <LimitedStockMessage><![CDATA[I know you want these, but we only have %inv_available% left. Try ordering a smaller amount]]></LimitedStockMessage>
      *  </InventorySettings_Update>
      *
     */
     public function toXml()
     {
+        $xmlObject = new \SimpleXmlElement('<InventorySettings_Update></InventorySettings_Update>');
+                
+        $xmlObject->addChild('TrackInventory', $this->getTrackInventory() ? 'Yes' : 'No');
+        $xmlObject->addChild('InStockMessageShort', sprintf('<![CDATA[%s]]>',$this->getInStockMessageShort()));
+        $xmlObject->addChild('InStockMessageLong', sprintf('<![CDATA[%s]]>',$this->getInStockMessageLong()));
+        $xmlObject->addChild('TrackLowStockLevel', $this->getTrackLowStockLevel() ? 'Yes' : 'No');
+        $xmlObject->addChild('LowStockLevel', $this->getLowStockLevel());
+        $xmlObject->addChild('LowStockMessageShort', sprintf('<![CDATA[%s]]>',$this->getLowStockMessageShort()));
+        $xmlObject->addChild('LowStockMessageLong', sprintf('<![CDATA[%s]]>',$this->getLowStockMessageLong()));
+        $xmlObject->addChild('TrackOutOfStockProducts', $this->getTrackOutOfStockProducts() ? 'Yes' : 'No');
+        $xmlObject->addChild('TrackOutOfStockLevel', $this->getTrackOutOfStockLevel());
+        $xmlObject->addChild('HideOutOfStockProducts', $this->getHideOutOfStockProducts() ? 'Yes' : 'No');
+        $xmlObject->addChild('OutOfStockMessageShort', sprintf('<![CDATA[%s]]>',$this->getOutOfStockMessageShort()));
+        $xmlObject->addChild('OutOfStockMessageLong', sprintf('<![CDATA[%s]]>',$this->getOutOfStockMessageLong()));
+        $xmlObject->addChild('LimitedStockMessage', sprintf('<![CDATA[%s]]>',$this->getLimitedStockMessage()));
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        return $xmlObject;
     }
 }

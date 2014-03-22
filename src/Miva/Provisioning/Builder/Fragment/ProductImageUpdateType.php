@@ -104,16 +104,13 @@ class ProductImageUpdateType implements FragmentInterface
     */
     public function toXml()
     {
+        $xmlObject = new \SimpleXmlElement('<ProductImage_Update_Type></ProductImage_Update_Type>');
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-
+        $xmlObject->setAttribute('product_code', $this->getProductCode());
+        $xmlObject->setAttribute('filepath', $this->getFilePath());
+        $xmlObject->setAttribute('type_code', $this->getTypeCode());
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        return $xmlObject;
     }
     
 } 

@@ -110,18 +110,14 @@ class CustomerSettingsUpdate implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-        $xmlObject->addChild('Name', sprintf('<![CDATA[%s]]>', $this->getName()));
-        $xmlObject->addChild('Code', $this->getCode());
-        $xmlObject->addChild('Active', $this->getActive() ? $this->getActive() : 'Yes');
+        $xmlObject = new \SimpleXmlElement('<CustomerSettings_Update></CustomerSettings_Update>');
+        
+        $xmlObject->addChild('MinimumPasswordLength', $this->getMinimumPasswordLength());
+        $xmlObject->addChild('PasswordComplexity', $this->getPasswordComplexity());
+        $xmlObject->addChild('ResetLinkExpiration', $this->getResetLinkExpiration());
 
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        return $xmlObject;
     }
 
 }

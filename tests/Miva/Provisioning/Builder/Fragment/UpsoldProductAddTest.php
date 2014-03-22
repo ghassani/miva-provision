@@ -1,0 +1,56 @@
+<?php
+/*
+* This file is part of the Miva PHP Provision package.
+*
+* (c) Gassan Idriss <gidriss@mivamerchant.com>
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+*/
+namespace Miva\Provisioning\Builder\Fragment;
+
+use Miva\Provisioning\Builder\Fragment\UpsoldProductAdd;
+
+/**
+* UpsoldProductAddTest
+*
+* @author Gassan Idriss <gidriss@mivamerchant.com>
+*/
+class UpsoldProductAddTest extends \PHPUnit_Framework_TestCase
+{
+
+    /**
+     * testFunctionality
+     * 
+     * Test basic class functionality
+     */
+    public function testFunctionality()
+    {
+        $fragment = new UpsoldProductAdd();
+        
+        $fragment            
+        ->setProductCode('ProductCode')    
+        ->setDisplay('Display')    
+        ->setRequiredAmount('RequiredAmount')    
+        ->setPricing('Pricing')    
+        ->setPrice('Price');
+        
+        
+        $this->assertEquals($fragment->getProductCode(), 'ProductCode');    
+        $this->assertEquals($fragment->getDisplay(), 'Display');    
+        $this->assertEquals($fragment->getRequiredAmount(), 'RequiredAmount');    
+        $this->assertEquals($fragment->getPricing(), 'Pricing');    
+        $this->assertEquals($fragment->getPrice(), 'Price');
+      
+
+          
+        $expectedXml = '<UpsoldProduct_Add>
+            <ProductCode>ProductCode</ProductCode>
+            <Display>Display</Display>
+            <Required_Amount>RequiredAmount</Required_Amount>
+            <Pricing>Pricing</Pricing>
+            <Price>Price</Price>
+        </UpsoldProduct_Add>';
+    }
+}
+        

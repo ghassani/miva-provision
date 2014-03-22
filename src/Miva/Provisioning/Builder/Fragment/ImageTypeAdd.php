@@ -75,21 +75,20 @@ class ImageTypeAdd implements FragmentInterface
      * 
      * Format:
      *
-     * <ImageType_Update code="type_1">
-     *     <Code>type_a</Code>
-     * </ImageType_Update>
+     * <ImageType_Add>
+     *     <Code>type_1</Code>
+     *     <Description>this is the description for type_1</Description>
+     * </ImageType_Add>
      *   
     */
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<ImageType_Add></ImageType_Add>');
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject->addChild('Code', $this->getCode());
+        $xmlObject->addChild('Description', $this->getDescription());
         
-        return $xml;
+        return $xmlObject;
     }
 }

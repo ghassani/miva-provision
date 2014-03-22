@@ -245,15 +245,19 @@ class ProductAttributeOptionAdd implements FragmentInterface
     */
     public function toXml()
     {
+        $xmlObject = new \SimpleXmlElement('<ProductAttributeOption_Add></ProductAttributeOption_Add>');
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject->setAttribute('product_code', $this->getProductCode());
+        $xmlObject->setAttribute('attribute_code', $this->getAttributeCode());
         
-        return $xml;
+        $xmlObject->addChild('Code', $this->getCode());
+        $xmlObject->addChild('Prompt', sprintf('<![CDATA[%s]]>', $this->getPrompt()));
+        $xmlObject->addChild('Image', $this->getImage());
+        $xmlObject->addChild('Price', $this->getPrice());
+        $xmlObject->addChild('Cost', $this->getCost());
+        $xmlObject->addChild('Weight', $this->getWeight());
+
+        return $xmlObject;
     }
 }
         

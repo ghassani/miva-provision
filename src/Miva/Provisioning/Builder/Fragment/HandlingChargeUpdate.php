@@ -164,18 +164,18 @@ class HandlingChargeUpdate implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
-        $xmlObject->addChild('Name', sprintf('<![CDATA[%s]]>', $this->getName()));
-        $xmlObject->addChild('Code', $this->getCode());
-        $xmlObject->addChild('Active', $this->getActive() ? $this->getActive() : 'Yes');
-
+        $xmlObject = new \SimpleXmlElement('<HandlingCharge_Update></HandlingCharge_Update>');
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject->addChild('TriggerType', $this->getTriggerType());
+        $xmlObject->addChild('TriggerMinimumValue', $this->getTriggerMinimumValue());
+        $xmlObject->addChild('TriggerMaximumValue', $this->getTriggerMaximumValue());
+        $xmlObject->addChild('AmountType', $this->getAmountType());
+        $xmlObject->addChild('Amount', $this->getAmount());
+        $xmlObject->addChild('SeparateLineItem', $this->getSeparateLineItem());
+        $xmlObject->addChild('Description', $this->getDescription());
+        $xmlObject->addChild('TaxExempt', $this->getTaxExempt());
         
-        return $xml;
+        return $xmlObject;
     }
 
 }

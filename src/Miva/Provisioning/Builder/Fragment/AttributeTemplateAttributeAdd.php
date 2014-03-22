@@ -16,7 +16,9 @@ namespace Miva\Provisioning\Builder\Fragment;
 */
 class AttributeTemplateAttributeAdd implements FragmentInterface
 {
-
+    /** @var string */
+    protected $templateCode;
+    
     /** @var string */
     protected $code;
 
@@ -38,9 +40,33 @@ class AttributeTemplateAttributeAdd implements FragmentInterface
     /** @var float */
     protected $weight;
     
-    /** @var string */
-    protected $required;
+    /** @var boolean  */
+    protected $required = false;
+
+    /**
+     * getTemplateCode
+     *
+     * @return string
+    */
+    public function getTemplateCode()
+    {
+        return $this->templateCode;
+    }
     
+    /**
+     * setTemplateCode
+     *
+     * @param string $templateCode
+     *
+     * @return self
+    */
+    public function setTemplateCode($templateCode)
+    {
+    	$this->templateCode = $templateCode;
+        return $this;
+    }
+
+
     /**
      * getCode
      *
@@ -205,7 +231,7 @@ class AttributeTemplateAttributeAdd implements FragmentInterface
     /**
      * getRequired
      *
-     * @return string
+     * @return boolean 
     */
     public function getRequired()
     {
@@ -215,13 +241,13 @@ class AttributeTemplateAttributeAdd implements FragmentInterface
     /**
      * setRequired
      *
-     * @param string required
+     * @param boolean $required
      *
      * @return self
     */
-    public function setRequired($required)
+    public function setRequired(boolean $required)
     {
-        $this->required = $required;
+        $this->required = true === $required ? $required : false;
         return $this;
     }
         
@@ -244,9 +270,10 @@ class AttributeTemplateAttributeAdd implements FragmentInterface
     public function toXml()
     {
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new \SimpleXmlElement('<AttributeTemplateAttribute_Add></AttributeTemplateAttribute_Add>');
 
+        $xmlObject->setAttribute('template_code', $this->getTemplateCode());
+        
         $xmlObject->addChild('Code',$this->getCode());
         $xmlObject->addChild('Type',$this->getType());
         $xmlObject->addChild('Prompt',sprintf('<![CDATA[%s]]>', $this->getPrompt()));
@@ -254,12 +281,9 @@ class AttributeTemplateAttributeAdd implements FragmentInterface
         $xmlObject->addChild('Price',$this->getPrice());
         $xmlObject->addChild('Cost',$this->getCost());
         $xmlObject->addChild('Weight',$this->getWeight());
-        $xmlObject->addChild('Required',$this->getRequired());
+        $xmlObject->addChild('Required',$this->getRequired() ? 'Yes' : 'No');
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
         
-        return $xml;
+        return $xmlObject;
     }     
 }

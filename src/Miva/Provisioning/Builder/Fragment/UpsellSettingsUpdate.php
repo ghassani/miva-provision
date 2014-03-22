@@ -86,14 +86,11 @@ class UpsellSettingsUpdate implements FragmentInterface
     */
     public function toXml()
     {
+        $xmlObject = new \SimpleXmlElement('<UpsellSettings_Update></UpsellSettings_Update>');
 
-        $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject->addChild('ProductsToShow', $this->getProductsToShow());
+        $xmlObject->addChild('MaxProductsToSelect', $this->getMaxProductsToSelect());
 
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        return $xmlObject;
     }
 }
