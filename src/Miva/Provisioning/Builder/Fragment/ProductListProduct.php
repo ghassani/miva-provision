@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * ProductListProduct
 *
@@ -112,7 +114,7 @@ class ProductListProduct implements FragmentFragmentInterface
      *       </DateInStock>
      * </Product>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xml = null;

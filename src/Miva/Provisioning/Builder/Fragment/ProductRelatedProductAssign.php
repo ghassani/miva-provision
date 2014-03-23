@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * ProductRelatedProductAssign
 *
@@ -77,7 +79,7 @@ class ProductRelatedProductAssign implements StoreFragmentInterface
      * 
      *  <ProductRelatedProduct_Assign product_code="bolts" relatedproduct_code="bolts-silver" />
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xml = null;

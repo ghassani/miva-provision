@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * CountriesReplace
 *
@@ -64,7 +66,7 @@ class CountriesReplace implements StoreFragmentInterface
      *      <Country code="US"/>
      *  </Countries_Replace>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xml = null;

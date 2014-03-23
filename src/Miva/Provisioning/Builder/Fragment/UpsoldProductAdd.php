@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * UpsoldProductAdd
 *
@@ -165,7 +167,7 @@ class UpsoldProductAdd implements StoreFragmentInterface
      *  </UpsoldProduct_Add>
      *
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<UpsoldProduct_Add></UpsoldProduct_Add>');

@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * CustomerSettingsUpdate
 *
@@ -107,7 +109,7 @@ class CustomerSettingsUpdate implements StoreFragmentInterface
      *       <ResetLinkExpiration>1440</ResetLinkExpiration>
      *   </CustomerSettings_Update>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<CustomerSettings_Update></CustomerSettings_Update>');

@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * CustomerAdd
 *
@@ -700,7 +702,7 @@ class CustomerAdd implements StoreFragmentInterface
      *       <BillCountryCode>US</BillCountryCode>
      *   </Customer_Add>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<Customer_Add></Customer_Add>');

@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * SettingsUpdate
 *
@@ -32,7 +34,7 @@ class SettingsUpdate implements DomainFragmentInterface
      *       <ImageJPEGQuality>12</ImageJPEGQuality>
      *  </Settings_Update>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<InventoryEmailNotification_Update></InventoryEmailNotification_Update>');

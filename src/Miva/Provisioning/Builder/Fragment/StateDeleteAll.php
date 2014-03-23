@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * StateAdd
 *
@@ -23,7 +25,7 @@ class StateDeleteAll implements StoreFragmentInterface
      * 
      *  <State_DeleteAll/>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
         $xmlObject = new \SimpleXmlElement('<State_DeleteAll />');
         

@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * PackagingRulesUpdate
 *
@@ -106,7 +108,7 @@ class PackagingRulesUpdate implements StoreFragmentInterface
      *       <BoxPacking type="module" module_code="packbyweight" />
      *   </PackagingRules_Update>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
         $xmlObject = new \SimpleXmlElement('<PackagingRules_Update></PackagingRules_Update>');
 

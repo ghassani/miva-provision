@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * AvailabilityGroupCategoryAssign
 *
@@ -76,7 +78,7 @@ class AvailabilityGroupCategoryAssign implements StoreFragmentInterface
      * 
      * <AvailabilityGroupCategory_Assign group_name="Monk" category_code="Exotic" />
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<AvailabilityGroupCategory_Assign />');

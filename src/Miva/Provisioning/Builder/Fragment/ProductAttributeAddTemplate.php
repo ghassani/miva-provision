@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 use Miva\Provisioning\Builder\Helper\XmlHelper;
 
 /**
@@ -135,7 +137,7 @@ class ProductAttributeAddTemplate implements FragmentInterface
      *      <AttributeTemplateCode>spikes-shield</AttributeTemplateCode>
      * </ProductAttribute_Add_Template>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
         $xmlObject = new \SimpleXmlElement('<ProductAttribute_Add_Template></ProductAttribute_Add_Template>');
         

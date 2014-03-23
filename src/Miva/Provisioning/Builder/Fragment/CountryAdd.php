@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * CountryAdd
 *
@@ -121,7 +123,7 @@ class CountryAdd implements DomainFragmentInterface
      *       <ISO_Code>123</ISO_Code>
      *   </Country_Add>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
         $xmlObject = new \SimpleXmlElement('<Country_Add></Country_Add>');
         

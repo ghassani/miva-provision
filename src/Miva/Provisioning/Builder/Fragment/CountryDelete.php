@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * CountryDelete
 *
@@ -60,7 +62,7 @@ class CountryDelete implements DomainFragmentInterface
      * 
      * <Country_Delete name="Burchtopia is great" />
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<Country_Delete></Country_Delete>');

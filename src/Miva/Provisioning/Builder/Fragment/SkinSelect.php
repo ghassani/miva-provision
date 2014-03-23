@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * SkinSelect
 *
@@ -61,7 +63,7 @@ class SkinSelect implements StoreFragmentInterface
      * 
      *  <Skin_Select code="fresh1" />
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<Skin_Select />');

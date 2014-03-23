@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * UpsellSettingsUpdate
 *
@@ -84,7 +86,7 @@ class UpsellSettingsUpdate implements StoreFragmentInterface
      * </UpsellSettings_Update>
      *
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
         $xmlObject = new \SimpleXmlElement('<UpsellSettings_Update></UpsellSettings_Update>');
 

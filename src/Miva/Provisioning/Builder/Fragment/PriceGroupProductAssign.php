@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * PriceGroupProductAssign
 *
@@ -77,7 +79,7 @@ class PriceGroupProductAssign implements StoreFragmentInterface
      * 
      *  <PriceGroupProduct_Assign group_name="Healer" product_code="kit-healers" />
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<PriceGroupProduct_Assign />');

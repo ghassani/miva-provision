@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * AffiliateEmailNotificationUpdate
 *
@@ -191,7 +193,7 @@ class AffiliateEmailNotificationUpdate implements StoreFragmentInterface
      *        <HeaderText>HeaderText</HeaderText>
      *    </AffiliateEmailNotification_Update>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<AffiliateEmailNotification_Update></AffiliateEmailNotification_Update>');

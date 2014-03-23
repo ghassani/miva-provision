@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * OrderBackorderItems
 *
@@ -102,7 +104,7 @@ class OrderBackorderItems implements StoreFragmentInterface
      *       </ProductList>
      *   </Order_Backorder_Items>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xml = null;

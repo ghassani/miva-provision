@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * ShippingRulesUpdate
 *
@@ -91,7 +93,7 @@ class ShippingRulesUpdate implements StoreFragmentInterface
      *  </ShippingRules_Update>
      *
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xml = null;

@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * ProductImageAdd
 *
@@ -102,7 +104,7 @@ class ProductImageAdd implements StoreFragmentInterface
      * 
      *  <ProductImage_Add product_code="test" filepath="graphics/00000001/s2k_silver_front.jpg" type_code="test_3" />
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
         $xmlObject = new \SimpleXmlElement('<ProductImage_Add></ProductImage_Add>');
 

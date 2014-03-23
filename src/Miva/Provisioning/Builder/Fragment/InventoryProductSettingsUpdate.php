@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * InventoryProductSettingsUpdate
 *
@@ -338,7 +340,7 @@ class InventoryProductSettingsUpdate implements StoreFragmentInterface
      *     <LimitedStockMessage><![CDATA[]]></LimitedStockMessage>
      * </InventoryProductSettings_Update>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<InventoryProductSettings_Update></InventoryProductSettings_Update>');

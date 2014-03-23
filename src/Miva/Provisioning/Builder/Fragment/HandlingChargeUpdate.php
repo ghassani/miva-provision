@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * HandlingChargeUpdate
 *
@@ -161,7 +163,7 @@ class HandlingChargeUpdate implements StoreFragmentInterface
      *      <TaxExempt>No</TaxExempt>
      *   </HandlingCharge_Update>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<HandlingCharge_Update></HandlingCharge_Update>');

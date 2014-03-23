@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * InventoryEmailNotificationUpdate
 *
@@ -215,7 +217,7 @@ class InventoryEmailNotificationUpdate implements StoreFragmentInterface
      *       <Message>Product- %product_name% (%product_code%) is out of stock (Currently at %inv_available%)</Message>
      * </InventoryEmailNotification_Update>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<InventoryEmailNotification_Update></InventoryEmailNotification_Update>');

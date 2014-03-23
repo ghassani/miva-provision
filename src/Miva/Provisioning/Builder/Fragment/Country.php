@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * Country
 *
@@ -115,7 +117,7 @@ class Country implements FragmentFragmentInterface
      * Format:
      * 
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
     }

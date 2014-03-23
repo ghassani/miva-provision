@@ -10,6 +10,7 @@
 namespace Miva\Provisioning\Builder;
 
 use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Version;
 
 /**
  * Builder
@@ -23,15 +24,42 @@ class Builder
 
     /**
     * Constructor
+     * 
+     * @param string $storeCode
+     * @param float $version - A vaid version constant from Miva\Version
     */
-    public function __construct($storeCode = null)
+    public function __construct($storeCode = null, $version = Version::CURRENT)
     {
         $this->root = new \SimpleXMLElement('<Provision><Domain></Domain></Provision>');
+        $this->version = (float) $version;
         
         if (!is_null($storeCode)) {
             $this->addStore($storeCode);
         }
     }
+    
+    /**
+     * getVersion
+     *
+     * @return float
+    */
+    public function getVersion()
+    {
+    	return $this->version;
+    }
+
+    /**
+     * setVersion
+     *
+     * @param float version
+     *
+     * @return self
+    */
+    public function setVersion($version)
+    {
+	    $this->version = (float) $version;
+	    return $this;
+    }  
 
     /**
      * getRoot
@@ -129,7 +157,9 @@ class Builder
             throw new \Exception(sprintf('Store Never Created or Store Not Found For Code %s', $storeCode));
          }
                   
-         XmlHelper::appendToParent($store, $fragment);
+         $fragmentXml = $fragment->toXml($this->getVersion(), array());
+         
+         XmlHelper::appendToParent($store, $fragmentXml);
          
          return $this;
     }
@@ -150,7 +180,9 @@ class Builder
             throw new \Exception('Domain Fragment Not Found');
          }
          
-         XmlHelper::appendToParent($domain, $fragment);
+         $fragmentXml = $fragment->toXml($this->getVersion(), array());
+         
+         XmlHelper::appendToParent($domain, $fragmentXml);
          
          return $this;
     }

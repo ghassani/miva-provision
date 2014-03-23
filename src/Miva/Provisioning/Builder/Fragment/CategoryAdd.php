@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * CategoryAdd
 *
@@ -121,7 +123,7 @@ class CategoryAdd implements StoreFragmentInterface
      *     <Active>Yes</Active>
      *  </Category_Add> 
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<Category_Add></Category_Add>');

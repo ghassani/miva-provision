@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * CategoryProduct
 *
@@ -89,7 +91,7 @@ class CategoryProductAssign implements StoreFragmentInterface
      * 
      *  <CategoryProduct_Assign category_code="Food" product_code="ale-gallon" />
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
         $xmlObject = new \SimpleXmlElement('<CategoryProduct_Assign />');
 

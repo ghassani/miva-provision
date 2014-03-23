@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * OrderAdd
 *
@@ -360,7 +362,7 @@ class OrderAdd implements StoreFragmentInterface
      *       </Items>
      *   </Order_Add>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
         $xmlObject = new \SimpleXmlElement('<Order_Add></Order_Add>');
         

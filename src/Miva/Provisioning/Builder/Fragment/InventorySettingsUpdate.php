@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * InventorySettingsUpdate
 *
@@ -380,7 +382,7 @@ class InventorySettingsUpdate implements StoreFragmentInterface
      *  </InventorySettings_Update>
      *
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
         $xmlObject = new \SimpleXmlElement('<InventorySettings_Update></InventorySettings_Update>');
                 

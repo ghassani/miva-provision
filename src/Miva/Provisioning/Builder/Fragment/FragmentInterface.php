@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * FragmentInterface
 *
@@ -16,7 +18,16 @@ namespace Miva\Provisioning\Builder\Fragment;
 */
 interface FragmentInterface 
 {
-    
-    public function toXml();
+    /**
+     * toXml
+     * 
+     * This method will build the proper XML for the fragment
+     * 
+     * @param float $version - Version of Miva to build for
+     * @param array $options - Customizable options to pass to the fragment
+     * 
+     * @return SimpleXMLElement
+     */
+    public function toXml($version = Version::CURRENT, array $options = array());
     
 }

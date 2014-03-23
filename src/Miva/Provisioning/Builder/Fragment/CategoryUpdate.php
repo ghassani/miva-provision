@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * CategoryUpdate
 *
@@ -173,7 +175,7 @@ class CategoryUpdate implements StoreFragmentInterface
      *      <ParentCategoryCode>Goods</ParentCategoryCode>
      *  </Category_Update>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<Category_Update></Category_Update>');

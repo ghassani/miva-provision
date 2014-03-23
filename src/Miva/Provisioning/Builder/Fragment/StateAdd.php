@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * StateAdd
 *
@@ -90,7 +92,7 @@ class StateAdd implements StoreFragmentInterface
      * 
      *  <State_Add code="" name="Outside the Realms" />
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
         $xmlObject = new \SimpleXmlElement('<State_Add></State_Add>');
        

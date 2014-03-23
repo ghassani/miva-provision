@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * Product
 *
@@ -353,7 +355,7 @@ class ProductAdd implements StoreFragmentInterface
      *   </Product_Add>
      *
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
         $xmlObject = new \SimpleXmlElement('<Product_Add></Product_Add>');
 

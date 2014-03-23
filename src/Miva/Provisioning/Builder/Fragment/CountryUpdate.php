@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * CountryUpdate
 *
@@ -121,7 +123,7 @@ class CountryUpdate implements DomainFragmentInterface
      *       <ISO_Code>321</ISO_Code>
      *   </Country_Update>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<Country_Update></Country_Update>');

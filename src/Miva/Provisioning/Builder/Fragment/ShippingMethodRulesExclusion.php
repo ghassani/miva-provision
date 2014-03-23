@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * ShippingMethodRules
 *
@@ -82,7 +84,7 @@ class ShippingMethodRulesExclusion implements FragmentFragmentInterface
      * <ExcludedBy module_code="baseunit" method_code="base_2day" />  
      *
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xml = null;

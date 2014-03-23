@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * PriceGroupAdd
 *
@@ -109,7 +111,7 @@ class PriceGroupAdd implements StoreFragmentInterface
      *  </PriceGroup_Add>
      *
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
         $xmlObject = new \SimpleXmlElement('<PriceGroup_Add></PriceGroup_Add>');
 

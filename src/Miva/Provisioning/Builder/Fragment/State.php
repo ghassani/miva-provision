@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * State
 *
@@ -90,7 +92,7 @@ class State implements FragmentFragmentInterface
      * 
      *  <State_Add code="" name="Outside the Realms" />
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xml = null;

@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * AttributeTemplateAdd
 *
@@ -76,7 +78,7 @@ class AttributeTemplateAdd implements StoreFragmentInterface
      * 
      * <AttributeTemplate_Add code="spikes-armor" prompt="Armor Spikes" />
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<AttributeTemplate_Add></AttributeTemplate_Add>');

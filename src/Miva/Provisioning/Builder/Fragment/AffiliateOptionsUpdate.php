@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * AffiliateOptionsUpdate
 *
@@ -269,7 +271,7 @@ class AffiliateOptionsUpdate implements StoreFragmentInterface
      *        <Terms>Terms</Terms>
      *    </AffiliateOptions_Update>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<AffiliateOptions_Update></AffiliateOptions_Update>');

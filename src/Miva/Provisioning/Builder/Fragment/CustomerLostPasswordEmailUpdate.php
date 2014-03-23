@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * CustomerLostPasswordEmailUpdate
 *
@@ -135,7 +137,7 @@ class CustomerLostPasswordEmailUpdate implements StoreFragmentInterface
      *     <HeaderText>Here is the account information you requested.</HeaderText>
      * </CustomerLostPasswordEmail_Update>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<CustomerLostPasswordEmail_Update></CustomerLostPasswordEmail_Update>');

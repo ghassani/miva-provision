@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * ProductKitDelete
 *
@@ -50,7 +52,7 @@ class ProductKitDelete implements StoreFragmentInterface
      * 
      *  <ProductKit_Delete_All product_code="test"/>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
         $xmlObject = new \SimpleXmlElement('<ProductKit_Delete_All></ProductKit_Delete_All>');
 

@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * BoxAdd
 *
@@ -195,7 +197,7 @@ class BoxAdd implements StoreFragmentInterface
      *        </BoxPackingSettings>
      *    </Box_Add>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<Box_Add></Box_Add>');

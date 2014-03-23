@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * CustomerFieldsUpdate
 *
@@ -364,7 +366,7 @@ class CustomerFieldsUpdate implements StoreFragmentInterface
      *      <Country>Hidden</Country>
      *  </CustomerFields_Update>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<CustomerFields_Update></CustomerFields_Update>');

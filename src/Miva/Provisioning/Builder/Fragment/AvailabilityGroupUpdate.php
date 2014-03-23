@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * AvailabilityGroupUpdate
 *
@@ -50,7 +52,7 @@ class AvailabilityGroupUpdate implements StoreFragmentInterface
      * 
      * <AvailabilityGroup_Update name="Thief" />
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<AvailabilityGroup_Update />');

@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * ImageTypeAdd
 *
@@ -81,7 +83,7 @@ class ImageTypeAdd implements StoreFragmentInterface
      * </ImageType_Add>
      *   
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
 
         $xmlObject = new \SimpleXmlElement('<ImageType_Add></ImageType_Add>');

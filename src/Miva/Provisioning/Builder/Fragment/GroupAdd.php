@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * GroupAdd
 *
@@ -101,7 +103,7 @@ class GroupAdd implements StoreFragmentInterface
      *       <Privilege code="AFLT" view="1" add="0" modify="0" delete="0" /> <!-- MANY OK -->
      *   </Group_Add>
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
         $xmlObject = new \SimpleXmlElement('<Group_Add></Group_Add>');
         

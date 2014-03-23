@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+
 /**
 * UpsoldProductRequiredProductAssign
 *
@@ -89,7 +91,7 @@ class UpsoldProductRequiredProductAssign implements StoreFragmentInterface
      * 
      *  <UpsoldProductRequiredProduct_Assign upsoldproduct_code="shield-large" requiredproduct_code="mail-chain" />
     */
-    public function toXml()
+    public function toXml($version = Version::CURRENT, array $options = array())
     {
         $xmlObject = new \SimpleXmlElement('<UpsoldProductRequiredProduct_Assign></UpsoldProductRequiredProduct_Assign>');
 
