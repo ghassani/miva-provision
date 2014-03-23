@@ -57,7 +57,18 @@ $productAdd->setCode('some_code')
 $builder->addFragmentToStore($productAdd, $storeCode)
 // alternately:
 // $builder->addFragment($productAdd, $storeCode);
-echo $builder->toXml();
+
+$xml = $builder->toXml(); //completed XML Document
+
+// you can then send it with the client
+
+$client = new Client('https://www.mystorefront.com/mm5/', 'MYTOKENHERE');
+
+$request = new Request($xml);
+
+$response = $client->doRequest($request);
+
+echo $response->getContent(); 
 ```
 
 Installation
