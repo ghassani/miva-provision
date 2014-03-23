@@ -10,29 +10,15 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 /**
- * {name}
+ * FragmentInterface
  *
+ * This interface is used to enforce only allowing fragments
+ * to be added to another fragment and not directly being able
+ * to add them to the domain or store nodes when building.
+ * 
  * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class {name} implements FragmentInterface
+interface FragmentFragmentInterface extends FragmentInterface 
 {
-    
-    {properties}
-
-    {methods}
-
-    /**
-     * {@inheritDoc}
-     * 
-     * Format:
-     * 
-     * {example_xml}
-    */
-    public function toXml()
-    {
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
         
-        return $xmlObject;
-    }
 }
-        

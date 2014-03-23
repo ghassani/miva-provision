@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ShippingMethodRulesUpdate implements FragmentInterface
+class ShippingMethodRulesUpdate implements StoreFragmentInterface
 {
     
     /** @var string */

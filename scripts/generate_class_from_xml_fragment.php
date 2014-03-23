@@ -35,8 +35,23 @@ foreach($xml->children() as $child) {
     $camelName = $name;
     $camelName[0] = strtolower($camelName[0]);
     
-    $methods .= generate_method($name, $camelName, is_numeric((string) $child->__toString()) ? 'int' : 'string');
-    $properties .= generate_property($camelName, is_numeric((string) $child->__toString()) ? 'int' : 'string');
+    if(count($child->children())) {
+        $variableType = 'array';
+    } else {
+        $value = (string) $child->__toString();
+        if ($value == 'Yes' || $value == 'No') {
+           $variableType = 'boolean'; 
+        } else if(is_float($value)) {
+            $variableType = 'float';
+        } else if(is_numeric($value)) {
+            $variableType = 'int';
+        } else {
+            $variableType = 'string';
+        }
+    }
+    
+    $methods .= generate_method($name, $camelName, $variableType);
+    $properties .= generate_property($camelName, $variableType);
     
 }
 

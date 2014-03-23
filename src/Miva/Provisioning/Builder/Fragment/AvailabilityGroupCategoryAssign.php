@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class AvailabilityGroupCategoryAssign implements FragmentInterface
+class AvailabilityGroupCategoryAssign implements StoreFragmentInterface
 {
     
     /** @var string */

@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class GroupAdd implements FragmentInterface
+class GroupAdd implements StoreFragmentInterface
 {
     
     /** @var string */

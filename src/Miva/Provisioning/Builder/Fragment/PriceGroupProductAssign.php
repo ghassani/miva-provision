@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class PriceGroupProductAssign implements FragmentInterface
+class PriceGroupProductAssign implements StoreFragmentInterface
 {
     
     /** @var string */

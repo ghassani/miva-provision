@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class AttributeTemplateAttributeAdd implements FragmentInterface
+class AttributeTemplateAttributeAdd implements StoreFragmentInterface
 {
     /** @var string */
     protected $templateCode;

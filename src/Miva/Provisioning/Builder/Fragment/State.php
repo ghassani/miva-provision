@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class State implements FragmentInterface
+class State implements FragmentFragmentInterface
 {
     
     /** @var string */

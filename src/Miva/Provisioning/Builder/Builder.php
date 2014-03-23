@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning\Builder;
 
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+
 /**
  * Builder
  *
@@ -78,7 +80,7 @@ class Builder
     public function getStore($storeCode)
     {
         if(empty($storeCode)){
-            $store = $this->getRoot()->xpath(sprintf("/Provision/Store", $storeCode));
+            $store = $this->getRoot()->xpath("/Provision/Store");
         } else {
             $store = $this->getRoot()->xpath(sprintf("/Provision/Store[@code='%s']", $storeCode));
         }
@@ -126,10 +128,8 @@ class Builder
          if (false === $store) {
             throw new \Exception(sprintf('Store Never Created or Store Not Found For Code %s', $storeCode));
          }
-         
-         $fragmentXml = $fragment->toXml();
-         
-         simplexml_import_xml($store, $fragmentXml->saveXml());
+                  
+         XmlHelper::appendToParent($store, $fragment);
          
          return $this;
     }
@@ -140,6 +140,7 @@ class Builder
      * @param Fragment\DomainFragmentInterface $fragment
      * 
      * @return self
+     * @throws Exception - When domain not found in root document
      */
     public function addFragmentToDomain(Fragment\DomainFragmentInterface $fragment)
     {
@@ -149,13 +150,41 @@ class Builder
             throw new \Exception('Domain Fragment Not Found');
          }
          
-         $fragmentXml = $fragment->toXml();
-         
-         simplexml_import_xml($domain, $fragmentXml->saveXml());
+         XmlHelper::appendToParent($domain, $fragment);
          
          return $this;
     }
     
+    /**
+     * addFragment
+     * 
+     * @param Fragment\FragmentInterface $fragment
+     * @param string $storeCode
+     * 
+     * @return self
+     * @throws Exception
+     */
+     public function addFragment(Fragment\FragmentInterface $fragment, $storeCode = null) 
+     {
+         if ($fragment instanceof Fragment\StoreFragmentInterface && $fragment instanceof DomainFragmentInterface) {
+             throw new \Exception('Passed fragtment is both of domain and store fragment iterface. Use desired method to add this fragment');
+         }
+         
+         if($fragment instanceof Fragment\FragmentFragmentInterface) {
+            throw new \Exception('Fragment is of FragmentFrgmentInterface as can\'t be added to the document directly, it belongs to some other fragment type');   
+         }
+         
+         if ($fragment instanceof Fragment\StoreFragmentInterface) {
+            return $this->addFragmentToStore($fragment, $storeCode);
+         } 
+         
+         if ($fragment instanceof Fragment\DomainFragmentInterface) {
+            return $this->addFragmentToDomain($fragment);
+         } 
+         
+         throw new \Exception('Passed fragment could not be determined to a section of the document.');
+     }
+     
     /**
      * toXml
      *

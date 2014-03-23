@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class UpsoldProductRequiredProductAssign implements FragmentInterface
+class UpsoldProductRequiredProductAssign implements StoreFragmentInterface
 {
     
     /** @var string */

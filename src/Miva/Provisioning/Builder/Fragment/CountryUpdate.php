@@ -10,12 +10,13 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 /**
-* Country
+* CountryUpdate
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class Country implements FragmentFragmentInterface
+class CountryUpdate implements DomainFragmentInterface
 {
+
     /** @var string */
     protected $name;
 
@@ -108,16 +109,28 @@ class Country implements FragmentFragmentInterface
     {
         return $this->isoCode;
     }
-
+    
     /**
      * {@inheritDoc}
      * 
      * Format:
      * 
+     * <Country_Update name="Burchtopia">
+     *       <Name>Burchtopia is great</Name>
+     *       <Code>BG</Code>
+     *       <ISO_Code>321</ISO_Code>
+     *   </Country_Update>
     */
     public function toXml()
     {
 
+        $xmlObject = new \SimpleXmlElement('<Country_Update></Country_Update>');
+        
+        $xmlObject->addChild('Name', $this->getName());
+        $xmlObject->addChild('Code', $this->getCode());
+        $xmlObject->addChild('ISO_Code', $this->getIsoCode());
+        
+        return $xmlObject;
     }
-
 }
+        

@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class AvailabilityGroupUpdate implements FragmentInterface
+class AvailabilityGroupUpdate implements StoreFragmentInterface
 {
     
     /** @var strint */

@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ProductImageDeleteFile implements FragmentInterface
+class ProductImageDeleteFile implements StoreFragmentInterface
 {
         
     /** @var string */

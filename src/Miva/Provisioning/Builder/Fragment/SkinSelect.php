@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class SkinSelect implements FragmentInterface
+class SkinSelect implements StoreFragmentInterface
 {
 
     /** @var string */

@@ -33,12 +33,30 @@ This library allows you to programatically construct a valid Miva Merchant Provi
 use Miva\Provisioning\Builder\Builder;
 use Miva\Provisioning\Builder\Builder\Fragment;
 
-$builder = new Builder();
+$storeCode = 'STORE_CODE';
+
+$builder = new Builder($storeCode);
 
 $storeCreate = new Fragment\StoreCreate();
 
-$builder->createStore($storeCreate);
+$builder->addFragmentToDomain($storeCreate);
+// alternately:
+// $builder->addFragment($storeCreate);
 
+$productAdd = new Fragment\ProductAdd();
+
+$productAdd->setCode('some_code')
+  ->setName('Product Name')
+  ->setPrice(20.00)
+  ->setCode(10.00)
+  ->setWeight(1.00)
+  ->setDescription('Product Description')
+  ->setTaxable(true)
+  ->setActive(true);
+
+$builder->addFragmentToStore($productAdd, $storeCode)
+// alternately:
+// $builder->addFragment($productAdd, $storeCode);
 echo $builder->toXml();
 ```
 

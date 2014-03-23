@@ -10,37 +10,47 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 /**
-* AvailabilityGroupDelete
+* CountryDelete
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class AvailabilityGroupDelete implements StoreFragmentInterface
+class CountryDelete implements DomainFragmentInterface
 {
-    
-    /** @var strint */
+
+    /** @var string */
     protected $name;
-    
+
     /**
-     * getName
-     *
-     * @return string
-    */
-    public function getName()
+     * Constructor
+     * 
+     * @param string $name
+     */
+    public function __construct($name = null)
     {
-        return $this->name;
+        $this->name = $name;
     }
 
     /**
-     * setName
-     *
-     * @param string name
-     *
-     * @return self
+    * setName
+    *
+    * @param string $name
+    *
+    * @return self
     */
     public function setName($name)
     {
         $this->name = $name;
         return $this;
+    }
+
+    /**
+    * getName
+    *
+    * @return string
+    */
+    public function getName()
+    {
+        return $this->name;
     }
     
     /**
@@ -48,17 +58,16 @@ class AvailabilityGroupDelete implements StoreFragmentInterface
      * 
      * Format:
      * 
-     * <AvailabilityGroup_Delete name="Thief" />
+     * <Country_Delete name="Burchtopia is great" />
     */
     public function toXml()
     {
 
-        $xmlObject = new \SimpleXmlElement('<AvailabilityGroup_Delete />');
+        $xmlObject = new \SimpleXmlElement('<Country_Delete></Country_Delete>');
         
         $xmlObject->addAttribute('name', $this->getName());
         
         return $xmlObject;
     }
-
 }
-    
+        

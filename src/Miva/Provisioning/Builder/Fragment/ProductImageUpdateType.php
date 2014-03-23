@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ProductImageUpdateType implements FragmentInterface
+class ProductImageUpdateType implements StoreFragmentInterface
 {
         
     /** @var string */

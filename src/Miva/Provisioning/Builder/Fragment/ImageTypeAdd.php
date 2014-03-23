@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ImageTypeAdd implements FragmentInterface
+class ImageTypeAdd implements StoreFragmentInterface
 {
     
     /** @var string */

@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class InventorySettingsUpdate implements FragmentInterface
+class InventorySettingsUpdate implements StoreFragmentInterface
 {
     
     

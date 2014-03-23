@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class StateAdd implements FragmentInterface
+class StateAdd implements StoreFragmentInterface
 {
     
     /** @var string */

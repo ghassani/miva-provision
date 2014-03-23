@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class InventoryProductSettingsUpdate implements FragmentInterface
+class InventoryProductSettingsUpdate implements StoreFragmentInterface
 {
     /** @var string */
     protected $productCode;

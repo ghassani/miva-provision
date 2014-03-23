@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class OrderBackorderItems implements FragmentInterface
+class OrderBackorderItems implements StoreFragmentInterface
 {
     
     /** @var int */

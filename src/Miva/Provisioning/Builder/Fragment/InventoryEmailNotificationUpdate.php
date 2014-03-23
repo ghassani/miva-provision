@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class InventoryEmailNotificationUpdate implements FragmentInterface
+class InventoryEmailNotificationUpdate implements StoreFragmentInterface
 {
 
     /** @var string */

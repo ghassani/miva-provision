@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class PackagingRulesUpdate implements FragmentInterface
+class PackagingRulesUpdate implements StoreFragmentInterface
 {
     
     

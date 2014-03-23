@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class CustomerLostPasswordEmailUpdate implements FragmentInterface
+class CustomerLostPasswordEmailUpdate implements StoreFragmentInterface
 {
 
 

@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class CountriesReplace implements DomainFragmentInterface
+class CountriesReplace implements StoreFragmentInterface
 {
     /** @var array */
     protected $countries = array();

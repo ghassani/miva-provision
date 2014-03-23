@@ -4,9 +4,19 @@
  * 
  */
 function generate_property($variableName, $type = 'string') {
-    return str_replace(array('{variableName}', '{type}'), array($variableName, $type), '
+    $variableInitializer = '';
+    
+    if($type == 'array') {
+        $variableInitializer = ' = array()';
+    }
+    
+    if($type == 'boolean') {
+        $variableInitializer = ' = false';
+    }
+    
+    return str_replace(array('{variableName}', '{type}', '{variableInitializer}'), array($variableName, $type, $variableInitializer), '
     /** @var {type} */
-    protected ${variableName};
+    protected ${variableName}{variableInitializer};
     ');
 }
 
@@ -14,9 +24,19 @@ function generate_property($variableName, $type = 'string') {
  * 
  */
 function generate_method($functionName, $variableName, $type = 'string') {
+    $typeHint = '';
+    
+    if($type == 'array') {
+        $typeHint = 'array ';
+    }
+    
+    if($type == 'boolean') {
+        $typeHint = 'boolean ';
+    }
+    
     return str_replace(
-        array('{functionName}','{variableName}','{type}'), 
-        array($functionName, $variableName, $type), '
+        array('{functionName}','{variableName}','{type}', '{typehint}'), 
+        array($functionName, $variableName, $type, $typeHint), '
     /**
      * get{functionName}
      *
@@ -34,13 +54,12 @@ function generate_method($functionName, $variableName, $type = 'string') {
      *
      * @return self
     */
-    public function set{functionName}(${variableName})
+    public function set{functionName}({typehint}${variableName})
     {
         $this->{variableName} = ${variableName};
         return $this;
     }
     ');
-    
 }
 
 /**

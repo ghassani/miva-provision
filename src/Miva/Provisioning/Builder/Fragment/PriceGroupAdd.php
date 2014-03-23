@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class PriceGroupAdd implements FragmentInterface
+class PriceGroupAdd implements StoreFragmentInterface
 {
     
     

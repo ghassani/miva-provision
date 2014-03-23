@@ -14,7 +14,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class Product implements FragmentInterface
+class Product implements FragmentFragmentInterface
 {
 
     /** @var string */
