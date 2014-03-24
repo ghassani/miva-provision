@@ -46,7 +46,7 @@ class SoapConnector {
      * @param string $password
      * 
      * @return self
-     */
+    */
     public function __construct($entryUrl, $username, $password)
     {
         try{
@@ -62,7 +62,7 @@ class SoapConnector {
      * Destructor
      * 
      * Kill the session on destruct
-     */
+    */
     public function __destruct()
     {
         $this->getConnection()->endSession($this->getSession());
@@ -75,7 +75,7 @@ class SoapConnector {
      * 
      * @return SoapClient
      * 
-     */
+    */
     public function getConnection()
     {
         return $this->connection;
@@ -89,7 +89,7 @@ class SoapConnector {
      * @param SoapClient $connection
      * 
      * @return self
-     */
+    */
     public function setConnection(\SoapClient $connection)
     {
         $this->connection = $connection;
@@ -100,7 +100,7 @@ class SoapConnector {
      * getSession
      * 
      * @return string
-     */
+    */
     public function getSession()
     {
         return $this->session;
@@ -114,7 +114,7 @@ class SoapConnector {
      * @param string $session
      * 
      * @return self
-     */
+    */
     public function setSession($session){
         $this->session = $session;
         return $this;
@@ -131,7 +131,7 @@ class SoapConnector {
      * @param mixed $parameters
      * 
      * @return mixed
-     */
+    */
     public function customRequest($callName, $parameters)
     {
         return $this->sendRequest($callName,  $parameters);
@@ -146,7 +146,7 @@ class SoapConnector {
      * @param DateTime $dateFrom
      * @param DateTime $dateTo
      * @param string $dateFormat - Defaults to Y-m-d
-     */
+    */
     public function getOrdersInRange(\DateTime $dateFrom, \DateTime $dateTo, $dateFormat = 'Y-m-d')
     {
         $requestParams = array(
@@ -161,7 +161,7 @@ class SoapConnector {
       * getOrdersById
       * 
       * @param array $orders - An array of Order Increment IDs
-      */
+     */
     public function getOrdersById(array $orders)
     {
         $_orders = array();
@@ -183,7 +183,7 @@ class SoapConnector {
      * 
      * Statuses which are pulled are set in member variable $incompleteStatuses
      * 
-     */
+    */
     public function getIncompleteOrders()
     {
         $requestParams = array(
@@ -201,7 +201,7 @@ class SoapConnector {
      * 
      * @param DateTime $afterDate
      * @param string $dateFormat = Format of the date, defaults to Y-m-d
-     */
+    */
     public function getIncompleteOrdersAfter(\DateTime $afterDate, $dateFormat = 'Y-m-d')
     {
         $requestParams = array(
@@ -222,7 +222,7 @@ class SoapConnector {
      * @param string $carrierCode
      * @param string $trackingNumber
      * @param string $trackingTitle
-     */
+    */
     public function addTrackingToShipment($shipmentId, $carrierCode, $trackingNumber, $trackingTitle = '')
     {
         return $this->sendRequest('sales_order_shipment.addTrack',  array(
@@ -241,7 +241,7 @@ class SoapConnector {
      * 
      * @param int $shipmentId
      * @param int $trackingId
-     */
+    */
     public function removeTrackingFromShipment($shipmentId, $trackingId)
     {
         return $this->sendRequest('sales_order_shipment.removeTrack',  array($shipmentId,$trackingId));
@@ -257,7 +257,7 @@ class SoapConnector {
      * @param string $comment
      * @param bool $email - Notify customer
      * @param bool $emailComments - Include Comments in Email
-     */
+    */
     public function addCommentToShipment($shipmentId, $comment, $email = true, $emailComments = true)
     {
         return $this->sendRequest('sales_order_shipment.addComment',  array(
@@ -274,7 +274,7 @@ class SoapConnector {
      * Retrieve an carrier codes for an order
      * 
      * @param int $orderId
-     */
+    */
     public function getCarrierCodes($orderId)
     {
         return $this->sendRequest('sales_order_shipment.getCarriers',  $orderId);
@@ -286,7 +286,7 @@ class SoapConnector {
      * Retreive an order
      * 
      * @param int $orderId
-     */
+    */
     public function getOrder($orderId)
     {
         return $this->sendRequest('sales_order.info',  $orderId);
@@ -298,7 +298,7 @@ class SoapConnector {
      * Cancel an Order
      * 
      * @param int $orderId
-     */
+    */
     public function cancelOrder($orderId)
     {
         return $this->sendRequest('sales_order.cancel',  $orderId);
@@ -310,7 +310,7 @@ class SoapConnector {
      * Put an order on Hold
      * 
      * @param int $orderId
-     */
+    */
     public function holdOrder($orderId)
     {
         return $this->sendRequest('sales_order.hold',  $orderId);
@@ -322,7 +322,7 @@ class SoapConnector {
      * Take an order out of a hold status
      * 
      * @param int $orderId
-     */
+    */
     public function unholdOrder($orderId)
     {
         return $this->sendRequest('sales_order.unhold',  $orderId);
@@ -335,7 +335,7 @@ class SoapConnector {
      * @param string $status
      * @param string $comment
      * @param bool $notify
-     */
+    */
     public function addOrderComment($orderId, $status, $comment = null, $notify = false)
     {
         $params = array('orderIncrementId' => $orderId, 'status' => $status);
@@ -348,27 +348,32 @@ class SoapConnector {
     }
     
     /**
-     * function createShipment
-    * Create a Shipment for an Order
-    *
-    * @param int $orderID - the incremental_id of the order
-    * @param array $qty
-    * @param string $comment
-    * @param bool $email
-    * @param bool $emailComments
-    * @return string New Shipment ID
+     * createShipment
+     * 
+     * Create a Shipment for an Order
+     *
+     * @param int $orderID - the incremental_id of the order
+     * @param array $qty
+     * @param string $comment
+     * @param bool $email
+     * @param bool $emailComments
+     * @return string New Shipment ID
     */
-    public function createShipment($orderId, array $qty, $comment=null, $email = true, $emailComments = true){
+    public function createShipment($orderId, array $qty, $comment=null, $email = true, $emailComments = true)
+    {
         return $this->sendRequest('sales_order_shipment.create',  array($orderId,$qty,$comment,$email,$emailComments));
     }
-    /*
-     * function searchShipments
-    * Get a Shipment
-    *
-    * @param int $orderId
-    * @return array Shipments or error
+    
+    /**
+     * searchShipments
+     * 
+     * Get a Shipment
+     *
+     * @param int $orderId
+     * @return array Shipments or error
     */
-    public function findOrderShipment($orderId){
+    public function findOrderShipment($orderId)
+    {
         $requestParams = array(array('order_id'=>array('eq'=>$orderId)));
     
         $result = $this->sendRequest('sales_order_shipment.list',  $requestParams);
@@ -380,26 +385,31 @@ class SoapConnector {
         }
         return;
     }
-    /*
-     * function getShipment
-    * Get a Shipment
-    *
-    * @param int $shipmentId
-    * @return array Shipment
+    
+    /**
+     * getShipment
+     * 
+     * Get a Shipment
+     *
+     * @param int $shipmentId
+     * @return array Shipment
     */
-    public function getShipment($shipmentId){
+    public function getShipment($shipmentId)
+    {
         return $this->sendRequest('sales_order_shipment.info',  $shipmentId);
     }
     
-    /*
-     * function sendRequest
-    * Send a Request to the API
-    *
-    * @param string $callName - The Magento API Call Name
-    * @param mixed $parameters
-    * @return mixed call results
+    /**
+     * sendRequest
+     * 
+     * Send a Request to the API
+     *
+     * @param string $callName - The Magento API Call Name
+     * @param mixed $parameters
+     * @return mixed call results
     */
-    protected function sendRequest($callName, $parameters){
+    protected function sendRequest($callName, $parameters)
+    {
         array_push($this->callStack,array($callName,$parameters));
         try{
             $this->lastResponse = $this
@@ -412,51 +422,61 @@ class SoapConnector {
         return $this->lastResponse;
     }
     
-    /*
-     * function getInvoice
-    * Get a Invoice
-    *
-    * @param int $invoiceId
-    * @return mixed|array,string Invoice
+    /**
+     * getInvoice
+     * 
+     * Get a Invoice
+     *
+     * @param int $invoiceId
+     * @return mixed|array,string Invoice
     */
-    public function getInvoice($invoiceId){
+    public function getInvoice($invoiceId)
+    {
         return $this->sendRequest('sales_order_invoice.info',  $invoiceId);
     }
-    /*
-     * function createInvoice
-    * Create a Invoice for an Order
-    *
-    * @param int $orderID - the incremental_id of the order
-    * @param array $qty
-    * @param string $comment
-    * @param bool $email
-    * @param bool $emailComments
-    * @return string New Shipment ID
+    
+    /**
+     * createInvoice
+     * 
+     * Create a Invoice for an Order
+     *
+     * @param int $orderID - the incremental_id of the order
+     * @param array $qty
+     * @param string $comment
+     * @param bool $email
+     * @param bool $emailComments
+     * @return string New Shipment ID
     */
-    public function createInvoice($orderId, array $qty, $comment=null, $email = true, $emailComments = true){
+    public function createInvoice($orderId, array $qty, $comment=null, $email = true, $emailComments = true)
+    {
         return $this->sendRequest('sales_order_invoice.create',  array($orderId,$qty,$comment,$email,$emailComments));
     }
-    /*
-     * function getProduct
-    * Get a Products Info by SKU or ID
-    *
-    * @param int $productId - the product ID or product SKU
-    * @param int|array $storeView - Optional Store View(s)
-    * @param array $attributes - Optional Attribtes to Select
-    * @return array Product
+    
+    /**
+     * getProduct
+     * 
+     * Get a Products Info by SKU or ID
+     *
+     * @param int $productId - the product ID or product SKU
+     * @param int|array $storeView - Optional Store View(s)
+     * @param array $attributes - Optional Attribtes to Select
+     * @return array Product
     */
-    public function getProduct($productId, $storeView=null, $attributes = array()){
+    public function getProduct($productId, $storeView=null, $attributes = array())
+    {
         return $this->sendRequest('product.info', array($productId,$storeView,$attributes));
     }
     
-    /*
-     * function getOrderInvoices
-    * Get Invoices For Order
-    *
-    * @param int $orderId
-    * @return mixed|array,string Invoices
+    /**
+     * getOrderInvoices
+     * 
+     * Get Invoices For Order
+     *
+     * @param int $orderId
+     * @return mixed|array,string Invoices
     */
-    public function getOrderInvoices($orderId){
+    public function getOrderInvoices($orderId)
+    {
         $requestParams = array(
             array(
                 'increment_id' => array('eq' => $orderId),
@@ -473,8 +493,9 @@ class SoapConnector {
      * @param string $comment
      * @param bool $notifyCustomer
      *
-     */
-    public function createCreditMemo($orderId, $refundToStoreCreditAmount = null, $comment = null, $notifyCustomer = false, $includeComment = true, array $creditmemoData = array()){
+    */
+    public function createCreditMemo($orderId, $refundToStoreCreditAmount = null, $comment = null, $notifyCustomer = false, $includeComment = true, array $creditmemoData = array())
+    {
          $params = array('orderIncrementId' => $orderId);
          
          foreach(array('creditmemoData','comment','notifyCustomer','includeComment','refundToStoreCreditAmount') as $field){
