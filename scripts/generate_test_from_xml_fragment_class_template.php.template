@@ -32,10 +32,19 @@ class {name}Test extends \PHPUnit_Framework_TestCase
             {setters}
         ;
         
-        {assertions}  
-
-          
+        {assertions}          
+    }
+    
+    /**
+     * testValidXml
+     *
+     * Test to see we get the XML this fragment requires
+    */
+    public function testValidXml()
+    {
         $expectedXml = '{expected_xml}';
+        
+        {xml_assertions}
     }
 }
         

@@ -9,6 +9,10 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
+
 /**
  * {name}
  *
@@ -30,7 +34,7 @@ class {name} implements FragmentInterface
     */
     public function toXml()
     {
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new SimpleXmlElement('<Fragment />');
         
         return $xmlObject;
     }
