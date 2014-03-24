@@ -1,4 +1,4 @@
-<Provision oncomplete="archive|delete">
+<Provision>
 	<Domain>
 		<Store_Create>
 			<Code>GES</Code>
@@ -41,48 +41,6 @@
 		</Country_Update>
 
 		<Country_Delete name="Burchtopia is great" />
-
-		<User_Add>
-			<Name>Test</Name>
-			<Password>password</Password>
-			<DefaultPagination>10</DefaultPagination>
-			<Administrator>Yes</Administrator>
-			<CanCreateUsers>No</CanCreateUsers>
-			<StartInSimpleMode>No</StartInSimpleMode>
-			<ForcePasswordChange>Yes</ForcePasswordChange>
-
-			<ExpiresIn units="minutes,hours,days">10</ExpiresIn>
-				- or -
-			<ExpirationDate>
-				<Year>2012</Year>
-				<Month>7</Month>
-				<Day>5</Day>
-				<Hour>13</Hour>
-				<Minute>50</Minute>
-				<Second>23</Second>
-			</ExpirationDate>
-		</User_Add>
-
-		<User_Update name="username">
-			<Name>Test</Name>
-			<Password>password</Password>
-			<DefaultPagination>10</DefaultPagination>
-			<Administrator>Yes</Administrator>
-			<CanCreateUsers>No</CanCreateUsers>
-			<StartInSimpleMode>No</StartInSimpleMode>
-			<ForcePasswordChange>Yes</ForcePasswordChange>
-
-			<ExpiresIn units="minutes,hours,days">10</ExpiresIn>
-				- or -
-			<ExpirationDate>
-				<Year>2012</Year>
-				<Month>7</Month>
-				<Day>5</Day>
-				<Hour>13</Hour>
-				<Minute>50</Minute>
-				<Second>23</Second>
-			</ExpirationDate>
-		</User_Update>
 
 		<Settings_Update>
 			<ForcePasswordAfterDays>10</ForcePasswordAfterDays>
@@ -167,7 +125,6 @@
 			<MinimumPasswordLength>3</MinimumPasswordLength>
 			<PasswordComplexity>none,alphanum,mixed</PasswordComplexity>
 			<ResetLinkExpiration>1440</ResetLinkExpiration>
-			<PasswordChangeRequiresReauth>Yes</PasswordChangeRequiresReauth>
 		</CustomerSettings_Update>
 
 		<CustomerLostPasswordEmail_Update>
@@ -466,7 +423,6 @@
 		</Category_Update>
 		<Product_Add>
 			<Code>ale-gallon</Code>
-			<SKU>sku</SKU>
 			<Name><![CDATA[Ale, gallon jug]]></Name>
 			<Price>2.00</Price>
 			<Cost>1.50</Cost>
@@ -479,21 +435,6 @@
 			<ThumbnailImage></ThumbnailImage>
 			<FullSizeImage></FullSizeImage>
 		</Product_Add>
-		<Product_Update code="existing_product_code">
-			<Code>ale-gallon</Code>
-			<SKU>sku</SKU>
-			<Name><![CDATA[Ale, gallon jug]]></Name>
-			<Price>2.00</Price>
-			<Cost>1.50</Cost>
-			<Weight>8.00</Weight>
-			<Description><![CDATA[A gallon jug of quality ale.]]></Description>
-			<Taxable>Yes</Taxable>
-			<Active>Yes</Active>
-			<CanonicalCategoryCode>food</CanonicalCategoryCode>
-			<AlternateDisplayPage>PROD</AlternateDisplayPage>
-			<ThumbnailImage></ThumbnailImage>
-			<FullSizeImage></FullSizeImage>
-		</Product_Update>
 		<CategoryProduct_Assign category_code="Food" product_code="ale-gallon" />
 		<InventoryProductSettings_Update product_code="ale-gallon">
 			<TrackProduct>Yes</TrackProduct>
@@ -4149,36 +4090,6 @@
 			<Product_Add code="wine-bottle" rate="2.50" />
 			<Product_Add code="wine-pitcher" rate="2.50" />
 		</Module>
-		<Module code="customfields" feature="util">
-			<Group_Add>
-				<Code>group_code</Code>
-				<Name>Group Name</Name>
-			</Group_Add>			
-			<CustomerField_Add>
-				<Code>code</Code>
-				<Name>name</Name>
-			</CustomerField_Add>
-			<OrderField_Add>
-				<Code>code</Code>
-				<Name>name</Name>
-				<FieldType>textarea</FieldType>
-				<Info>This is test info</Info>
-				<Group>group_code</Group>
-			</OrderField_Add>			
-			<OrderField_Update code="code">
-				<Code>new_code</Code>
-			</OrderField_Update>			
-			<ProductField_Add>
-				<Code>code</Code>
-				<Name>name</Name>
-				<FieldType>dropdown</FieldType>
-				<Info>This is test info</Info>
-			</ProductField_Add>
-			<ProductFieldTypeOption_Add code="code" value="test1" />
-			<ProductFieldTypeOption_Add code="code" value="test2" />
-			<ProductFieldTypeOption_Add code="code" value="test3" />
-			<ProductFieldTypeOption_Delete code="code" value="test2" />
-		</Module>
 		<Module code="customfields" feature="fields_cat">
 			<CategoryField_Add>
 				<Code>code</Code>
@@ -4408,151 +4319,6 @@
 
 			<TriggerFulfillmentModules />
 		</Order_Add>
-		
-		<Order_Add>
-			<ID>1000</ID>											(Optional)
-			<ShipFirstName>Jonathan</ShipFirstName>
-			<ShipLastName>Burchmore</ShipLastName>
-			<ShipEmail>jburchmore@mivamerchant.com</ShipEmail>
-			<ShipPhone>858-361-5922</ShipPhone>
-			<ShipAddress1>5060 Shoreham Place</ShipAddress1>
-			<ShipAddress2>Suite 330</ShipAddress2>
-			<ShipCity>San Diego</ShipCity>
-			<ShipState>CA</ShipState>
-			<ShipZip>92122</ShipZip>
-			<ShipCountry>US</ShipCountry>
-
-			<Items>
-				<Item>
-					<Code>test</Code>
-					<Name>Test Product #1</Name>
-					<Price>1</Price>
-					<Weight>0</Weight>
-					<Quantity>1</Quantity>
-
-					<Options>
-						<Option>
-							<AttributeCode>test</AttributeCode>
-						</Option>
-
-						<Option>
-							<AttributeCode>template_attr</AttributeCode>
-							<Price>1.00</Price>
-							<OptionCode>v1</OptionCode>
-						</Option>
-					</Options>
-				</Item>
-				
-				<Item>
-					<code>test1</code>
-					<Name>Test Product #2</Name>
-					<Price>1</Price>
-					<Weight>0</Weight>
-					<Quantity>1</Quantity>
-					<TrackingNumber>1111111111</TrackingNumber>			(Optional)
-					<TrackingType>FedEx</TrackingType>					(Optional)
-				</Item>
-			</Items>
-			
-			<Shipment>													(Optional)
-				<Code>Ship_Code</Code>									(Optional)
-				<Cost>1</Cost>											(Optional)
-				<MarkAsShipped>Yes</MarkAsShipped>						(Optional)
-				<TrackingNumber>1111111111</TrackingNumber>				(Required)
-				<TrackingType>FedEx</TrackingType>						(Required)
-				<ShipDate>												(Optional)
-					<Day>7</Day>
-					<Month>9</Month>
-					<Year>2012</Year>
-				</ShipDate>
-			</Shipment>
-			
-			<Shipment />												(Optional)
-		</Order_Add>
-		
-		<Order_Add_Item order_id="1000"> 								(Required - order_id)
-			<Code>test</Code>
-			<Name>Test Product #1</Name>
-			<Price>1</Price>
-			<Weight>0</Weight>
-			<Quantity>1</Quantity>
-			
-			<Options>
-				<Option>
-					<AttributeCode>test</AttributeCode>
-				</Option>
-
-				<Option>
-					<AttributeCode>template_attr</AttributeCode>
-					<Price>1.00</Price>
-					<OptionCode>v1</OptionCode>
-				</Option>
-			</Options>
-			
-			<Shipment>													(Optional)
-				<Code>Ship_Code</Code>									(Optional)
-				<Cost>1</Cost>											(Optional)
-				<MarkAsShipped>Yes</MarkAsShipped>						(Optional)
-				<TrackingNumber>1111111111</TrackingNumber>				(Required)
-				<TrackingType>FedEx</TrackingType>						(Required)
-				<ShipDate>												(Optional)
-					<Day>7</Day>
-					<Month>9</Month>
-					<Year>2012</Year>
-				</ShipDate>
-			</Shipment>
-			
-			<Shipment />												(Optional)
-		</Order_Add_Item>
-		
-		<Order_Add_Product order_id="1000" code="test">					(Required, order_id, code)
-			<Quantity>1</Quantity>
-			
-			<Options>
-				<Option>
-					<AttributeCode>test</AttributeCode>
-					<Value>Yes</Value>
-				</Option>
-
-				<Option>
-					<AttributeCode>template</AttributeCode>
-					<AttributeTemplateAttributeCode>template_attr</AttributeTemplateAttributeCode>
-					<Value>v1</Value>
-				</Option>
-			</Options>
-			
-			<Shipment>													(Optional)
-				<Code>Ship_Code</Code>									(Optional)
-				<Cost>1</Cost>											(Optional)
-				<MarkAsShipped>Yes</MarkAsShipped>						(Optional)
-				<TrackingNumber>1111111111</TrackingNumber>				(Required)
-				<TrackingType>FedEx</TrackingType>						(Required)
-				<ShipDate>												(Optional)
-					<Day>7</Day>
-					<Month>9</Month>
-					<Year>2012</Year>
-				</ShipDate>
-			</Shipment>
-			
-			<Shipment />												(Optional)
-		</Order_Add_Product>
-		
-		<OrderShipment_Add order_id="1000">								(Required, order_id)
-			<ProductList>
-				<Product product_code="test" quantity="1" />
-			</ProductList>
-			
-			<Code>Ship_Code</Code>									(Optional)
-			<Cost>1</Cost>											(Optional)
-			<MarkAsShipped>Yes</MarkAsShipped>						(Optional)
-			<TrackingNumber>1111111111</TrackingNumber>				(Required)
-			<TrackingType>FedEx</TrackingType>						(Required)
-			<ShipDate>												(Optional)
-				<Day>7</Day>
-				<Month>9</Month>
-				<Year>2012</Year>
-			</ShipDate>
-		</OrderShipment_Add>
 
 		<ProductKit_Update product_code="test">
 			<Attribute_Option attribute_code="select" option_code="s1" />
@@ -4755,7 +4521,7 @@
 		
 		<ImageType_Add>
 			<Code>type_1</Code>
-			<Description>this is the description for type_1</div>
+			<Description>this is the description for type_1</Description>
 		</ImageType_Add>
 
 		<ImageType_Update code="type_1">
@@ -4870,7 +4636,6 @@
 		<ShippingMethodRules_Update module_code="upsxml" method_code="02">
 			<Priority>5</Priority>
 			<Description>2 Day Air</Description>
-			<RateAdjustment type="none|fixed|percent">1.23</RateAdjustment>
 			<MinimumSubTotal>0.00</MinimumSubTotal>
 			<MaximumSubTotal>0.00</MaximumSubTotal>
 			<MinimumQuantity>0</MinimumQuantity>
@@ -4902,11 +4667,6 @@
 				<Length>1.23</Length>
 				<Height>1.23</Height>
 			</FallbackPackage>
-
-			<VariantPackingMode>Master|Parts|PartsEven|PartsProportional</VariantPackingMode>
-			<PartAdjustmentUp>Yes|No</PartAdjustmentUp>
-			<PartAdjustmentDown>Yes|No</PartAdjustmentDown>
-			<PartAdjustmentNegative>Yes|No</PartAdjustmentNegative>
 
 			<BoxPacking type="fallback" />
 				- or -
