@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * ImageTypeDelete
@@ -59,7 +61,7 @@ class ImageTypeDelete implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<ImageType_Delete></ImageType_Delete>');
+        $xmlObject = new SimpleXMLElement('<ImageType_Delete></ImageType_Delete>');
         
         $xmlObject->addAttribute('code', $this->getCode());
         

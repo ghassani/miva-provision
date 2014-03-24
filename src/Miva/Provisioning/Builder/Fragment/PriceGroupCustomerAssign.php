@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * PriceGroupCustomerAssign
@@ -81,7 +83,7 @@ class PriceGroupCustomerAssign implements StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new \SimpleXmlElement('<PriceGroupCustomer_Assign />');
+        $xmlObject = new SimpleXMLElement('<PriceGroupCustomer_Assign />');
 
         $xmlObject->addAttribute('group_name', $this->getGroupName());
         $xmlObject->addAttribute('customer_login', $this->getCustomerLogin());

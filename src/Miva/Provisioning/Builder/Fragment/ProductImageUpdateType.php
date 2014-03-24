@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * ProductImageUpdateType
@@ -106,7 +108,7 @@ class ProductImageUpdateType implements StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new \SimpleXmlElement('<ProductImage_Update_Type></ProductImage_Update_Type>');
+        $xmlObject = new SimpleXMLElement('<ProductImage_Update_Type></ProductImage_Update_Type>');
 
         $xmlObject->addAttribute('product_code', $this->getProductCode());
         $xmlObject->addAttribute('filepath', $this->getFilePath());

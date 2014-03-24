@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * CategoryAdd
@@ -96,7 +98,7 @@ class CategoryAdd implements StoreFragmentInterface
     *
     * @return self
     */
-    public function setActive(boolean $active)
+    public function setActive($active)
     {
         $this->active = $active;
         return $this;
@@ -126,7 +128,7 @@ class CategoryAdd implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<Category_Add></Category_Add>');
+        $xmlObject = new SimpleXMLElement('<Category_Add></Category_Add>');
         $xmlObject->addChild('Name', sprintf('<![CDATA[%s]]>', $this->getName()));
         $xmlObject->addChild('Code', $this->getCode());
         $xmlObject->addChild('Active', $this->getActive() ? 'Yes' : 'No');

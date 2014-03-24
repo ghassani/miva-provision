@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * ShippingMethodRules
@@ -88,7 +90,7 @@ class ShippingMethodRulesExclusion implements FragmentFragmentInterface
     {
 
         $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new SimpleXMLElement('<Fragment></Fragment>');
 
         foreach ($xmlObject->children() as $child) {
             $xml .= $child->saveXml();

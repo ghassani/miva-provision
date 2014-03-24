@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * AttributeTemplateAdd
@@ -81,7 +83,7 @@ class AttributeTemplateAdd implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<AttributeTemplate_Add></AttributeTemplate_Add>');
+        $xmlObject = new SimpleXMLElement('<AttributeTemplate_Add></AttributeTemplate_Add>');
 
         $xmlObject->addAttribute('code', $this->getCode());
         $xmlObject->addAttribute('prompt', $this->getPrompt());

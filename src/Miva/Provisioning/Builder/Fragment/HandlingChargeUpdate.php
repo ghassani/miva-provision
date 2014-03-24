@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * HandlingChargeUpdate
@@ -166,7 +168,7 @@ class HandlingChargeUpdate implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<HandlingCharge_Update></HandlingCharge_Update>');
+        $xmlObject = new SimpleXMLElement('<HandlingCharge_Update></HandlingCharge_Update>');
         
         $xmlObject->addChild('TriggerType', $this->getTriggerType());
         $xmlObject->addChild('TriggerMinimumValue', $this->getTriggerMinimumValue());

@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * OrderShipmentAdd
@@ -128,7 +130,7 @@ class OrderShipmentAdd implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<OrderShipment_Add></OrderShipment_Add>');
+        $xmlObject = new SimpleXMLElement('<OrderShipment_Add></OrderShipment_Add>');
 
         $xmlObject->addAttribute('order_id', $this->getOrderId());
         

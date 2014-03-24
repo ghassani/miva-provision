@@ -16,7 +16,7 @@ use Miva\Provisioning\Builder\Fragment\ProductImageDeleteFile;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ProductImageDeleteTest extends \PHPUnit_Framework_TestCase
+class ProductImageDeleteFileTest extends \PHPUnit_Framework_TestCase
 {
 
     /**

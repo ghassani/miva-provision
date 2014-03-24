@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * CountryAdd
@@ -125,7 +127,7 @@ class CountryAdd implements DomainFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new \SimpleXmlElement('<Country_Add></Country_Add>');
+        $xmlObject = new SimpleXMLElement('<Country_Add></Country_Add>');
         
         $xmlObject->addChild('Name', $this->getName());
         $xmlObject->addChild('Code', $this->getCode());

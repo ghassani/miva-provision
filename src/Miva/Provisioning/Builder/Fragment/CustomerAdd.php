@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * CustomerAdd
@@ -705,7 +707,7 @@ class CustomerAdd implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<Customer_Add></Customer_Add>');
+        $xmlObject = new SimpleXMLElement('<Customer_Add></Customer_Add>');
 
         $xmlObject->addChild('Login', $this->getLogin());
         $xmlObject->addChild('LostPasswordEmail', $this->getLostPasswordEmail());

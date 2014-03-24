@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * AffiliateEmailNotificationUpdate
@@ -196,7 +198,7 @@ class AffiliateEmailNotificationUpdate implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<AffiliateEmailNotification_Update></AffiliateEmailNotification_Update>');
+        $xmlObject = new SimpleXMLElement('<AffiliateEmailNotification_Update></AffiliateEmailNotification_Update>');
         
 
         $xmlObject->addChild('SendEmailOnAffiliateSignups', $this->getSendEmailOnAffiliateSignups());

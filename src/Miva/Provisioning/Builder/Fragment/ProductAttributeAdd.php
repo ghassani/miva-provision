@@ -10,6 +10,7 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * ProductAttributeAdd
@@ -247,7 +248,7 @@ class ProductAttributeAdd implements StoreFragmentInterface
      *
      * @return self
     */
-    public function setRequired(boolean $required)
+    public function setRequired($required)
     {
         $this->required = $required;
         return $this;
@@ -273,7 +274,7 @@ class ProductAttributeAdd implements StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new \SimpleXmlElement('<ProductAttribute_Add></ProductAttribute_Add>');
+        $xmlObject = new SimpleXMLElement('<ProductAttribute_Add></ProductAttribute_Add>');
 
         $xmlObject->addAttribute('product_code', $this->getProductCode());
         

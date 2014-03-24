@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * AvailabilityGroupDelete
@@ -55,7 +57,7 @@ class AvailabilityGroupDelete implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<AvailabilityGroup_Delete />');
+        $xmlObject = new SimpleXMLElement('<AvailabilityGroup_Delete />');
         
         $xmlObject->addAttribute('name', $this->getName());
         

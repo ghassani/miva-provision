@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * CountryDelete
@@ -65,7 +67,7 @@ class CountryDelete implements DomainFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<Country_Delete></Country_Delete>');
+        $xmlObject = new SimpleXMLElement('<Country_Delete></Country_Delete>');
         
         $xmlObject->addAttribute('name', $this->getName());
         

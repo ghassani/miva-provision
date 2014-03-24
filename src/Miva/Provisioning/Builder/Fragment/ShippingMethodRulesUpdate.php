@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
  * ShippingMethodRulesUpdate
@@ -375,7 +377,7 @@ class ShippingMethodRulesUpdate implements FragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new SimpleXMLElement('<Fragment></Fragment>');
         
         return $xmlObject;
     }

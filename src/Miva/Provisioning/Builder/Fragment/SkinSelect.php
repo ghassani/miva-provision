@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * SkinSelect
@@ -66,7 +68,7 @@ class SkinSelect implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<Skin_Select />');
+        $xmlObject = new SimpleXMLElement('<Skin_Select />');
         
         $xmlObject->addAttribute('code', $this->getCode());
         

@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * SettingsUpdate
@@ -37,7 +39,7 @@ class SettingsUpdate implements DomainFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<InventoryEmailNotification_Update></InventoryEmailNotification_Update>');
+        $xmlObject = new SimpleXMLElement('<InventoryEmailNotification_Update></InventoryEmailNotification_Update>');
         
         return $xmlObject;
     }

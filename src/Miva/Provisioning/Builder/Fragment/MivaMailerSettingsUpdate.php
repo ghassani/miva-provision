@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * MivaMailerSettingsUpdate
@@ -89,7 +91,7 @@ class MivaMailerSettingsUpdate implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<MivaMailerSettings_Update></MivaMailerSettings_Update>');
+        $xmlObject = new SimpleXMLElement('<MivaMailerSettings_Update></MivaMailerSettings_Update>');
 
         $xmlObject->addChild('Account', $this->getAccount());
         $xmlObject->addChild('Server', $this->getServer());

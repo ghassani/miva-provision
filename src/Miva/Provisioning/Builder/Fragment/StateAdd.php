@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * StateAdd
@@ -94,7 +96,7 @@ class StateAdd implements StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new \SimpleXmlElement('<State_Add></State_Add>');
+        $xmlObject = new SimpleXMLElement('<State_Add></State_Add>');
        
         $xmlObject->addAttribute('code', $this->getCode());
         $xmlObject->addAttribute('name', $this->getName());

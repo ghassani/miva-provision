@@ -10,8 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
-
 use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
  * ProductAttributeAddTemplate
@@ -139,7 +139,7 @@ class ProductAttributeAddTemplate implements FragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new \SimpleXmlElement('<ProductAttribute_Add_Template></ProductAttribute_Add_Template>');
+        $xmlObject = new SimpleXMLElement('<ProductAttribute_Add_Template></ProductAttribute_Add_Template>');
         
         $xmlObject->addAttribute('product_code', $this->getProductCode());
         

@@ -12,9 +12,10 @@
     "require": {
 
     },
-    "autoload": {
-        "psr-0": { 
-            "Miva\\": "src/"
-        }
+    "suggest": {
+		"symfony/http-foundation": "dev-master"
+    },
+	"autoload": {
+        "psr-0": { "": "src/" }
     }
 }

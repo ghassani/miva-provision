@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * InventoryProductSettingsUpdate
@@ -103,7 +105,7 @@ class InventoryProductSettingsUpdate implements StoreFragmentInterface
      *
      * @return self
     */
-    public function setTrackProduct(boolean $trackProduct)
+    public function setTrackProduct($trackProduct)
     {
         $this->trackProduct = $trackProduct;
         return $this;
@@ -218,7 +220,7 @@ class InventoryProductSettingsUpdate implements StoreFragmentInterface
      *
      * @return self
     */
-    public function setTrackLowStockLevel(boolean $trackLowStockLevel)
+    public function setTrackLowStockLevel($trackLowStockLevel)
     {
         $this->trackLowStockLevel = $trackLowStockLevel;
         return $this;
@@ -287,7 +289,7 @@ class InventoryProductSettingsUpdate implements StoreFragmentInterface
      *
      * @return self
     */
-    public function setTrackOutOfStockLevel(boolean $trackOutOfStockLevel)
+    public function setTrackOutOfStockLevel($trackOutOfStockLevel)
     {
         $this->trackOutOfStockLevel = $trackOutOfStockLevel;
         return $this;
@@ -310,7 +312,7 @@ class InventoryProductSettingsUpdate implements StoreFragmentInterface
      *
      * @return self
     */
-    public function setHideOutOfStockProducts(boolean $hideOutOfStockProducts)
+    public function setHideOutOfStockProducts($hideOutOfStockProducts)
     {
     	$this->hideOutOfStockProducts = $hideOutOfStockProducts;
         return $this;
@@ -343,7 +345,7 @@ class InventoryProductSettingsUpdate implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<InventoryProductSettings_Update></InventoryProductSettings_Update>');
+        $xmlObject = new SimpleXMLElement('<InventoryProductSettings_Update></InventoryProductSettings_Update>');
         
         $xmlObject->addAttribute('product_code', $this->getProductCode());
         

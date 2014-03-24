@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * CustomerLostPasswordEmailUpdate
@@ -140,7 +142,7 @@ class CustomerLostPasswordEmailUpdate implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<CustomerLostPasswordEmail_Update></CustomerLostPasswordEmail_Update>');
+        $xmlObject = new SimpleXMLElement('<CustomerLostPasswordEmail_Update></CustomerLostPasswordEmail_Update>');
         
         $xmlObject->addChild('EmailFrom', $this->getEmailFrom());
         $xmlObject->addChild('EmailCC', $this->getEmailCC());

@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * PackagingRulesUpdate
@@ -110,7 +112,7 @@ class PackagingRulesUpdate implements StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new \SimpleXmlElement('<PackagingRules_Update></PackagingRules_Update>');
+        $xmlObject = new SimpleXMLElement('<PackagingRules_Update></PackagingRules_Update>');
 
         $fallbackPackage = $this->getFallbackPackage();
         $fallbackXml = $xmlObject->addChild('FallbackPackage');

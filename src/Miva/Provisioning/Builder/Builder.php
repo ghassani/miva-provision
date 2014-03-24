@@ -26,11 +26,24 @@ class Builder
     * Constructor
      * 
      * @param string $storeCode
+     * @param string $startFileOrInput - Load an existing file to work from or a whole xml string
      * @param float $version - A vaid version constant from Miva\Version
     */
-    public function __construct($storeCode = null, $version = Version::CURRENT)
+    public function __construct($storeCode = null, $startFileOrInput = null, $version = Version::CURRENT)
     {
-        $this->root = new \SimpleXMLElement('<Provision><Domain></Domain></Provision>');
+        
+        if (!is_null($startFileOrInput)) {
+            if(is_file($startFileOrInput) && !is_dir($startFileOrInput)) {
+                $_xml = file_get_contents($startFileOrInput);
+            } else {
+                $_xml = $startFileOrInput;
+            }
+        } else {
+            $_xml = '<Provision><Domain></Domain></Provision>';
+        }
+        
+        $this->root = simplexml_load_string($_xml, '\\Miva\\Provisioning\\Builder\\SimpleXMLElement');
+        
         $this->version = (float) $version;
         
         if (!is_null($storeCode)) {

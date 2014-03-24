@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * CustomerSettingsUpdate
@@ -112,7 +114,7 @@ class CustomerSettingsUpdate implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<CustomerSettings_Update></CustomerSettings_Update>');
+        $xmlObject = new SimpleXMLElement('<CustomerSettings_Update></CustomerSettings_Update>');
         
         $xmlObject->addChild('MinimumPasswordLength', $this->getMinimumPasswordLength());
         $xmlObject->addChild('PasswordComplexity', $this->getPasswordComplexity());

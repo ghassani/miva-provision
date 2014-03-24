@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * OrderShipmentSetStatus
@@ -173,7 +175,7 @@ class OrderShipmentSetStatus implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<OrderShipment_SetStatus></OrderShipment_SetStatus>');
+        $xmlObject = new SimpleXMLElement('<OrderShipment_SetStatus></OrderShipment_SetStatus>');
 
         $xmlObject->addAttribute('code', $this->getCode());
         

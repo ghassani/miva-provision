@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * BoxAdd
@@ -80,7 +82,7 @@ class BoxAdd implements StoreFragmentInterface
      *
      * @return self
     */
-    public function setEnabled(boolean $enabled)
+    public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
         return $this;
@@ -200,7 +202,7 @@ class BoxAdd implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<Box_Add></Box_Add>');
+        $xmlObject = new SimpleXMLElement('<Box_Add></Box_Add>');
         
         $xmlObject->addChild('Description', $this->getDescription());
         $xmlObject->addChild('Enabled', $this->getEnabled() ? 'Yes' : 'No');

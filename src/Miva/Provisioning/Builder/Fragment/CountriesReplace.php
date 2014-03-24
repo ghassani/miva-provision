@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * CountriesReplace
@@ -70,7 +72,7 @@ class CountriesReplace implements StoreFragmentInterface
     {
 
         $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Countries_Replace></Countries_Replace>');
+        $xmlObject = new SimpleXMLElement('<Countries_Replace></Countries_Replace>');
 
 
         foreach ($this->getCounties() as $country) {

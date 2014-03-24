@@ -9,14 +9,14 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
-use Miva\Provisioning\Builder\Fragment\Product;
+use Miva\Provisioning\Builder\Fragment\ShippingMethod;
 
 /**
-* ProductTest
+* ShippingMethodTest
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ProductTest extends \PHPUnit_Framework_TestCase
+class ShippingMethodTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -26,35 +26,14 @@ class ProductTest extends \PHPUnit_Framework_TestCase
      */
     public function testFunctionality()
     {
-        $fragment = new Product();
+        $fragment = new ShippingMethod();
         
         $fragment            
-        ->setCode('Code')    
-        ->setName('Name')    
-        ->setPrice('Price')    
-        ->setCost('Cost')    
-        ->setWeight('Weight')    
-        ->setDescription('Description')    
-        ->setTaxable('Taxable')    
-        ->setActive('Active')    
-        ->setCanonicalCategoryCode('CanonicalCategoryCode')    
-        ->setAlternateDisplayPage('AlternateDisplayPage')    
-        ->setThumbnailImage('ThumbnailImage')    
-        ->setFullSizeImage('FullSizeImage');
+        ->setCode('Code');
         
         
         $this->assertEquals($fragment->getCode(), 'Code');    
-        $this->assertEquals($fragment->getName(), 'Name');
-        $this->assertEquals($fragment->getPrice(), 'Price');    
-        $this->assertEquals($fragment->getCost(), 'Cost');    
-        $this->assertEquals($fragment->getWeight(), 'Weight');    
-        $this->assertEquals($fragment->getDescription(), 'Description');    
-        $this->assertEquals($fragment->getTaxable(), 'Taxable');    
-        $this->assertEquals($fragment->getActive(), 'Active');    
-        $this->assertEquals($fragment->getCanonicalCategoryCode(), 'CanonicalCategoryCode');    
-        $this->assertEquals($fragment->getAlternateDisplayPage(), 'AlternateDisplayPage');
-        $this->assertEquals($fragment->getThumbnailImage(), 'ThumbnailImage');   
-        $this->assertEquals($fragment->getFullSizeImage(), 'FullSizeImage');
+
 
         $expectedXml = '<Product_Add>
             <Code>Code</Code>

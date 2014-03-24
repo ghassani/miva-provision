@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * ImageTypeUpdate
@@ -112,7 +114,7 @@ class ImageTypeUpdate implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<ImageType_Update></ImageType_Update>');
+        $xmlObject = new SimpleXMLElement('<ImageType_Update></ImageType_Update>');
         
         $xmlObject->addAttribute('code', $this->getCode());
         $xmlObject->addChild('Description', $this->getDescription());

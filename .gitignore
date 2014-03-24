@@ -1,2 +1,5 @@
 /vendor/
 /.project
+/test.php
+/phpunit.xml
+/autoload.php

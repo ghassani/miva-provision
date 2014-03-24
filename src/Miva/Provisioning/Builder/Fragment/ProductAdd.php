@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * Product
@@ -212,7 +214,7 @@ class ProductAdd implements StoreFragmentInterface
      *
      * @return self
     */
-    public function setTaxable(boolean $taxable)
+    public function setTaxable($taxable)
     {
         $this->taxable = $taxable;
         return $this;
@@ -235,7 +237,7 @@ class ProductAdd implements StoreFragmentInterface
      *
      * @return self
     */
-    public function setActive(boolean $active)
+    public function setActive($active)
     {
         $this->active = $active;
         return $this;
@@ -357,21 +359,21 @@ class ProductAdd implements StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new \SimpleXmlElement('<Product_Add></Product_Add>');
-
+        $xmlObject = new SimpleXmlElement('<Product_Add />');
+        
         $xmlObject->addChild('Code', $this->getCode());
-        $xmlObject->addChild('Name', sprintf('<![CDATA[%s]]>', $this->getName()));
+        $xmlObject->addChild('Name', $this->getName())->addAttribute('method-call', 'addCDATA');
         $xmlObject->addChild('Price', $this->getPrice());
         $xmlObject->addChild('Cost', $this->getCost());
         $xmlObject->addChild('Weight', $this->getWeight());
-        $xmlObject->addChild('Description', sprintf('<![CDATA[%s]]>', $this->getDescription()));
+        $xmlObject->addChild('Description', $this->getDescription())->addAttribute('method-call', 'addCDATA');
         $xmlObject->addChild('Taxable', $this->getTaxable() ? 'Yes' : 'No');
         $xmlObject->addChild('Active', $this->getActive() ? 'Yes' : 'No');
         $xmlObject->addChild('CanonicalCategoryCode', $this->getCanonicalCategoryCode());
         $xmlObject->addChild('AlternateDisplayPage', $this->getAlternateDisplayPage());
         $xmlObject->addChild('ThumbnailImage', $this->getThumbnailImage());
         $xmlObject->addChild('FullSizeImage', $this->getFullSizeImage());
-        
+
         return $xmlObject;
     }
 }

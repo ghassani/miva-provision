@@ -17,7 +17,7 @@ use Miva\Provisioning\Builder\Fragment\CategoryUpdate;
  *
  * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class CategoryAddTest extends \PHPUnit_Framework_TestCase
+class CategoryUpdateTest extends \PHPUnit_Framework_TestCase
 {
 
     /**

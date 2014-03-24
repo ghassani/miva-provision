@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
  * OrderItem
@@ -205,7 +207,7 @@ class OrderItem implements FragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new \SimpleXmlElement('<Item></Item>');
+        $xmlObject = new SimpleXMLElement('<Item></Item>');
         
         $xmlObject->addChild('Code', $this->getCode());
         $xmlObject->addChild('Name', $this->getName());

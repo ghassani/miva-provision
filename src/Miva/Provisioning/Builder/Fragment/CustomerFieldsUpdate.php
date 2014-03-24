@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * CustomerFieldsUpdate
@@ -369,7 +371,7 @@ class CustomerFieldsUpdate implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<CustomerFields_Update></CustomerFields_Update>');
+        $xmlObject = new SimpleXMLElement('<CustomerFields_Update></CustomerFields_Update>');
         
         $xmlObject->addChild('Billing', $this->getBilling());
         $xmlObject->addChild('FirstName', $this->getFirstName());

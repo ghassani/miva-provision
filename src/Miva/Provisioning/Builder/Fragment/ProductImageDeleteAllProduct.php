@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * ProductImageDelete
@@ -55,7 +57,7 @@ class ProductImageDelete implements StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new \SimpleXmlElement('<ProductImage_Delete_All_Product></ProductImage_Delete_All_Product>');
+        $xmlObject = new SimpleXMLElement('<ProductImage_Delete_All_Product></ProductImage_Delete_All_Product>');
 
         $xmlObject->addAttribute('product_code', $this->getProductCode());
         

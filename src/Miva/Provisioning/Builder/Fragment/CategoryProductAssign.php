@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * CategoryProduct
@@ -93,7 +95,7 @@ class CategoryProductAssign implements StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new \SimpleXmlElement('<CategoryProduct_Assign />');
+        $xmlObject = new SimpleXMLElement('<CategoryProduct_Assign />');
 
         $xmlObject->addAttribute('category_code', $this->getCategoryCode());
         $xmlObject->addAttribute('product_code', $this->getProductCode());

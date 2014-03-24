@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * GroupAdd
@@ -105,7 +107,7 @@ class GroupAdd implements StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new \SimpleXmlElement('<Group_Add></Group_Add>');
+        $xmlObject = new SimpleXMLElement('<Group_Add></Group_Add>');
         
         $xmlObject->addAttribute('name', $this->getName());
         

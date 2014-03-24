@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * InventorySettingsUpdate
@@ -78,7 +80,7 @@ class InventorySettingsUpdate implements StoreFragmentInterface
      *
      * @return self
     */
-    public function setTrackInventory(boolean $trackInventory)
+    public function setTrackInventory($trackInventory)
     {
         $this->trackInventory = $trackInventory;
         return $this;
@@ -147,7 +149,7 @@ class InventorySettingsUpdate implements StoreFragmentInterface
      *
      * @return self
     */
-    public function setTrackLowStockLevel(boolean $trackLowStockLevel)
+    public function setTrackLowStockLevel($trackLowStockLevel)
     {
         $this->trackLowStockLevel = $trackLowStockLevel;
         return $this;
@@ -239,7 +241,7 @@ class InventorySettingsUpdate implements StoreFragmentInterface
      *
      * @return self
     */
-    public function setTrackOutOfStockProducts(boolean $trackOutOfStockProducts)
+    public function setTrackOutOfStockProducts($trackOutOfStockProducts)
     {
         $this->trackOutOfStockProducts = $trackOutOfStockProducts;
         return $this;
@@ -285,7 +287,7 @@ class InventorySettingsUpdate implements StoreFragmentInterface
      *
      * @return self
     */
-    public function setHideOutOfStockProducts(boolean $hideOutOfStockProducts)
+    public function setHideOutOfStockProducts($hideOutOfStockProducts)
     {
         $this->hideOutOfStockProducts = $hideOutOfStockProducts;
         return $this;
@@ -384,7 +386,7 @@ class InventorySettingsUpdate implements StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new \SimpleXmlElement('<InventorySettings_Update></InventorySettings_Update>');
+        $xmlObject = new SimpleXMLElement('<InventorySettings_Update></InventorySettings_Update>');
                 
         $xmlObject->addChild('TrackInventory', $this->getTrackInventory() ? 'Yes' : 'No');
         $xmlObject->addChild('InStockMessageShort', sprintf('<![CDATA[%s]]>',$this->getInStockMessageShort()));

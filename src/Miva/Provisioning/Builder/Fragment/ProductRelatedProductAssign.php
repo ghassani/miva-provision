@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * ProductRelatedProductAssign
@@ -83,7 +85,7 @@ class ProductRelatedProductAssign implements StoreFragmentInterface
     {
 
         $xml = null;
-        $xmlObject = new \SimpleXmlElement('<Fragment></Fragment>');
+        $xmlObject = new SimpleXMLElement('<Fragment></Fragment>');
 
         
         foreach ($xmlObject->children() as $child) {

@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * UpsoldProductRequiredProductAssign
@@ -93,7 +95,7 @@ class UpsoldProductRequiredProductAssign implements StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new \SimpleXmlElement('<UpsoldProductRequiredProduct_Assign></UpsoldProductRequiredProduct_Assign>');
+        $xmlObject = new SimpleXMLElement('<UpsoldProductRequiredProduct_Assign></UpsoldProductRequiredProduct_Assign>');
 
         $xmlObject->addAttribute('upsoldproduct_code', $this->getUpsoldProductCode());
         $xmlObject->addAttribute('requiredproduct_code', $this->getRequiredProductCode());

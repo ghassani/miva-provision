@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * CategoryUpdate
@@ -124,7 +126,7 @@ class CategoryUpdate implements StoreFragmentInterface
     *
     * @return self
     */
-    public function setActive(boolean $active)
+    public function setActive($active)
     {
         $this->active = $active;
         return $this;
@@ -178,7 +180,7 @@ class CategoryUpdate implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new \SimpleXmlElement('<Category_Update></Category_Update>');
+        $xmlObject = new SimpleXMLElement('<Category_Update></Category_Update>');
         
         $xmlObject->addAttribute('code', $this->getPreviousCode() ? $this->getPreviousCode() : $this->getCode());
         

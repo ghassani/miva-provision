@@ -10,6 +10,8 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
+use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * UpsellSettingsUpdate
@@ -88,7 +90,7 @@ class UpsellSettingsUpdate implements StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new \SimpleXmlElement('<UpsellSettings_Update></UpsellSettings_Update>');
+        $xmlObject = new SimpleXMLElement('<UpsellSettings_Update></UpsellSettings_Update>');
 
         $xmlObject->addChild('ProductsToShow', $this->getProductsToShow());
         $xmlObject->addChild('MaxProductsToSelect', $this->getMaxProductsToSelect());
