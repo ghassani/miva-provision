@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ShippingRulesUpdate implements StoreFragmentInterface
+class ShippingRulesUpdate implements Model\StoreFragmentInterface
 {
     
     
@@ -26,7 +26,11 @@ class ShippingRulesUpdate implements StoreFragmentInterface
     protected $requiredShippingRedirectPageCode;
     
     /** @var array */
-    protected $fallbackShippingMethod = array(null, null, null);
+    protected $fallbackShippingMethod = array(
+        'Description' => null,
+        'Type' => null, 
+        'Amount' => null
+    );
     
 
     
@@ -98,13 +102,18 @@ class ShippingRulesUpdate implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xml = null;
-        $xmlObject = new SimpleXMLElement('<Fragment></Fragment>');
-
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
+        $xmlObject = new SimpleXMLElement('<ShippingRules_Update />');
         
-        return $xml;
+        $xmlObject->addChild('RequiredShippingRedirectPageCode', $this->getRequiredShippingRedirectPageCode());
+        
+        $fallbackShipping = $this->getFallbackShippingMethod();
+        $fallbackShippingXml = $xmlObject->addChild('FallbackShippingMethod');
+       
+        foreach (array('Description', 'Type', 'Amount') as $field) {
+            $value = isset($fallbackShipping[$field]) && !empty($fallbackShipping[$field]) ? $fallbackShipping[$field] : null;
+            $fallbackShippingXml->addChild($field, $value);
+        }
+               
+        return $xmlObject;
     }
 }        

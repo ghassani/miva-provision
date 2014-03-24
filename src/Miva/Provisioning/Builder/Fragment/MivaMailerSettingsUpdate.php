@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class MivaMailerSettingsUpdate implements StoreFragmentInterface
+class MivaMailerSettingsUpdate implements Model\StoreFragmentInterface
 {
     
     

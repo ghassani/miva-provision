@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class SkinSelect implements StoreFragmentInterface
+class SkinSelect implements Model\StoreFragmentInterface
 {
 
     /** @var string */

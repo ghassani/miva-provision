@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class UpsoldProductAdd implements StoreFragmentInterface
+class UpsoldProductAdd implements Model\StoreFragmentInterface
 {
     
     

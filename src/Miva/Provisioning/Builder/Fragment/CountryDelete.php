@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class CountryDelete implements DomainFragmentInterface
+class CountryDelete implements Model\DomainFragmentInterface
 {
 
     /** @var string */

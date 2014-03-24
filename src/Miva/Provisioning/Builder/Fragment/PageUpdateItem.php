@@ -14,22 +14,19 @@ use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
- * Module
+ * PageUpdateItem
  * 
- * Since these items vary from module to module we just use an array to xml
+ * Since these items vary from item to item we just use an array to xml
  * to make a generic item. Maybe in the future something for specific
- * modules can be added
+ * item types can be added
  * 
  * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class Module implements Model\FragmentFragmentInterface
+class PageUpdateItem implements Model\FragmentFragmentInterface
 {
 
     /** @var string */
     protected $code;
-
-    /** @var string */
-    protected $feature;
     
     /** @var array */
     protected $data = array();
@@ -38,13 +35,11 @@ class Module implements Model\FragmentFragmentInterface
      * Constructor
      * 
      * @param string $code
-     * @param string $feature
      * @param array $data
      */
-    public function __construct($code = null, $feature = null, array $data = array())
+    public function __construct($code = null, array $data = array())
     {
         $this->code = $code;
-        $this->feature = $feature;
         $this->data = $data;
     }
     
@@ -71,29 +66,6 @@ class Module implements Model\FragmentFragmentInterface
         return $this;
     }
 
-    /**
-     * getFeature
-     *
-     * @return string
-    */
-    public function getFeature()
-    {
-    	return $this->feature;
-    }
-
-    /**
-     * setFeature
-     *
-     * @param string feature
-     *
-     * @return self
-    */
-    public function setFeature($feature)
-    {
-	    $this->feature = $feature;
-	    return $this;
-    }
-        
     /**
      * getData
      * 
@@ -122,16 +94,15 @@ class Module implements Model\FragmentFragmentInterface
      * 
      * Format:
      * 
-     * <Module code="packbyweight" feature="boxpacking">
-     *     
-     * </Module>
+     * <Item code="product_display">
+     *      <ImageDimensions constrain="no"/>
+     * </Item>
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<Module />');
+        $xmlObject = new SimpleXMLElement('<Item />');
         
         $xmlObject->addAttribute('code', $this->getCode());
-        $xmlObject->addAttribute('feature', $this->getFeature());
         
         XmlHelper::appendArrayToParent($xmlObject, $this->getData());
                 

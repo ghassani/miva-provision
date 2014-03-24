@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
  *
  * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class OrderItem implements FragmentInterface
+class OrderItem implements Model\FragmentInterface
 {
     
     
@@ -173,14 +173,32 @@ class OrderItem implements FragmentInterface
      * @param array $options
      *
      * @return self
+     * @throws InvalidArgumentException
     */
     public function setOptions(array $options)
     {
+        foreach ($options as $option) {
+            if(!$option instanceof OrderItemOption) {
+                throw new \InvalidArgumentException('OrderItem::setOptions must be an array of OrderItemOption');
+            }
+        }
         $this->options = $options;
         return $this;
     }
     
-
+    /**
+     * addOption
+     *
+     * @param OrderItemOption $option
+     *
+     * @return self
+    */
+    public function addOption(OrderItemOption $option)
+    {
+        $this->options[] = $options;
+        return $this;
+    }
+    
     /**
      * {@inheritDoc}
      * 
@@ -215,9 +233,10 @@ class OrderItem implements FragmentInterface
         $xmlObject->addChild('Weight', $this->getWeight());
         $xmlObject->addChild('Quantity', $this->getQuantity());
         
-        if($this->getOptions()) {
-            foreach($this->getOptions() as $options) {
-                
+        if(count($this->getOptions())) {
+            $optionsXmlRoot = $xmlObject->addChild('Options');
+            foreach($this->getOptions() as $option) {
+                XmlHelper::appendToParent($optionsXmlRoot, $option->toXml($version, $options));
             }
         }
         

@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class BoxAdd implements StoreFragmentInterface
+class BoxAdd implements Model\StoreFragmentInterface
 {
     
     /** @var string */
@@ -219,7 +219,7 @@ class BoxAdd implements StoreFragmentInterface
             }
         }
  
-        return $xml;
+        return $xmlObject;
     }
 
 }

@@ -73,6 +73,32 @@ class XmlHelper
     }
     
     /**
+     * appendArrayToParent
+     * 
+     * @param SimpleXMLElement $parent
+     * @param array $childArray
+     * 
+     * @return void
+     */
+    public static function appendArrayToParent(\SimpleXMLElement $parent, array $childArray)
+    {
+        $recursiveBuilder = function($xmlObject, $field, $value) use (&$recursiveBuilder) {
+            if (is_array($value)) {
+                $xmlObjectA = $xmlObject->addChild($field);
+                foreach ($value as $_field => $_value) {
+                    $recursiveBuilder($xmlObjectA, $_field, $_value);
+                }
+            } else {
+                $xmlObject->addChild($field, $value);
+            }
+        };
+        
+        foreach ($childArray as $field => $value) {
+            $recursiveBuilder($xmlObject, $field, $value);
+        }
+    }
+    
+    /**
      * stripDeclaration
      * 
      * Strings an XML Document Declaration from the top of the xml string

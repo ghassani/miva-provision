@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class OrderShipmentSetStatus implements StoreFragmentInterface
+class OrderShipmentSetStatus implements Model\StoreFragmentInterface
 {
     
     /** @var string */
@@ -179,9 +179,17 @@ class OrderShipmentSetStatus implements StoreFragmentInterface
 
         $xmlObject->addAttribute('code', $this->getCode());
         
-        $xmlObject->addChild('MarkAsShipped', $this->getMarkAsShipped());
-        $xmlObject->addChild('TrackingNumber', $this->getTrackingNumber());
-        $xmlObject->addChild('TrackingType', $this->getTrackingType());
+        if ($this->getMarkAsShipped()) {
+            $xmlObject->addChild('MarkAsShipped', $this->getMarkAsShipped());
+        }
+        
+        if ($this->getTrackingNumber()) {
+            $xmlObject->addChild('TrackingNumber', $this->getTrackingNumber());
+        }
+        
+        if ($this->getTrackingType()) {
+            $xmlObject->addChild('TrackingType', $this->getTrackingType());
+        }
         
         if ($this->getShipDate() instanceof \DateTime) {
             $shipDateXml = $xmlObject->addChild('ShipDate');

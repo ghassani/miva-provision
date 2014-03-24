@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class AffiliateEmailNotificationUpdate implements StoreFragmentInterface
+class AffiliateEmailNotificationUpdate implements Model\StoreFragmentInterface
 {
 
     /** @var string */
@@ -198,7 +198,7 @@ class AffiliateEmailNotificationUpdate implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new SimpleXMLElement('<AffiliateEmailNotification_Update></AffiliateEmailNotification_Update>');
+        $xmlObject = new SimpleXMLElement('<AffiliateEmailNotification_Update />');
         
 
         $xmlObject->addChild('SendEmailOnAffiliateSignups', $this->getSendEmailOnAffiliateSignups());

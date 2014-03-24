@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class AttributeTemplateAdd implements StoreFragmentInterface
+class AttributeTemplateAdd implements Model\StoreFragmentInterface
 {
 
     /** @var string */
@@ -83,7 +83,7 @@ class AttributeTemplateAdd implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new SimpleXMLElement('<AttributeTemplate_Add></AttributeTemplate_Add>');
+        $xmlObject = new SimpleXMLElement('<AttributeTemplate_Add />');
 
         $xmlObject->addAttribute('code', $this->getCode());
         $xmlObject->addAttribute('prompt', $this->getPrompt());

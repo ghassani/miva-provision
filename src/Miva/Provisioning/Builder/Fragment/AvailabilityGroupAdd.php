@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class AvailabilityGroupAdd implements StoreFragmentInterface
+class AvailabilityGroupAdd implements Model\StoreFragmentInterface
 {
     
     /** @var strint */

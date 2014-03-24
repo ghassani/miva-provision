@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class AffiliateLostPasswordEmailUpdate implements StoreFragmentInterface
+class AffiliateLostPasswordEmailUpdate implements Model\StoreFragmentInterface
 {
 
     /** @var string */
@@ -141,8 +141,7 @@ class AffiliateLostPasswordEmailUpdate implements StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<AffiliateLostPasswordEmail_Update></AffiliateLostPasswordEmail_Update>');
-        
+        $xmlObject = new SimpleXMLElement('<AffiliateLostPasswordEmail_Update />');
 
         $xmlObject->addChild('EmailFrom', $this->getEmailFrom());
         $xmlObject->addChild('EmailCC', $this->getEmailCC());

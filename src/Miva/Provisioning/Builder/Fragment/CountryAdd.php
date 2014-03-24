@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class CountryAdd implements DomainFragmentInterface
+class CountryAdd implements Model\DomainFragmentInterface
 {
 
     /** @var string */

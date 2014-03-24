@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ProductImageDeleteFile implements StoreFragmentInterface
+class ProductImageDeleteFile implements Model\StoreFragmentInterface
 {
         
     /** @var string */

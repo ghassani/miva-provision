@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class CustomerSettingsUpdate implements StoreFragmentInterface
+class CustomerSettingsUpdate implements Model\StoreFragmentInterface
 {
 
     /** @var int */

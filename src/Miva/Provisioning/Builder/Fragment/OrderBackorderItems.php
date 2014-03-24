@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class OrderBackorderItems implements StoreFragmentInterface
+class OrderBackorderItems implements Model\StoreFragmentInterface
 {
     
     /** @var int */
@@ -68,6 +68,11 @@ class OrderBackorderItems implements StoreFragmentInterface
     */
     public function setProducts(array $products)
     {
+        foreach($products as $product) {
+            if (!$product instanceof ProductListProduct) {
+                throw new \InvalidArgumentException('OrderBackorderItems::setProducts requires an array of ProductListProduct');
+            }
+        }
         $this->products = $products;
         return $this;
     }
@@ -108,15 +113,21 @@ class OrderBackorderItems implements StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-
-        $xml = null;
-        $xmlObject = new SimpleXMLElement('<Fragment></Fragment>');
+        $xmlObject = new SimpleXMLElement('<Order_Backorder_Items />');
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
+        $xmlObject->addAttribute('order_id', $this->getOrderId());
+        
+        if (!count($this->getProducts())) {
+            throw new \Exception('OrderBackorderItems requires at least one Product in ProductList');
         }
         
-        return $xml;
+        $productListXmlRoot = $xmlObject->addChild('ProductList');
+        
+        foreach ($this->getProducts() as $product) {
+            XmlHelper::appentToParent($productListXmlRoot, $product->toXml($version, $options));
+        }
+        
+        return $xmlObject;
     }
 }
 

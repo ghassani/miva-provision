@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class StateDeleteAll implements StoreFragmentInterface
+class StateDeleteAll implements Model\StoreFragmentInterface
 {  
     /**
      * {@inheritDoc}

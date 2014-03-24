@@ -18,21 +18,46 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ProductVariantAdd implements StoreFragmentInterface
+class ProductVariantAdd implements Model\StoreFragmentInterface
 {
-    
-    /** @var string */
+    /** @var string $productCode */
     protected $productCode;
     
     /** @var array */
-    protected $options;
+    protected $options = array();
     
     /** @var array */
     protected $parts = array();
     
     /** @var array */
-    protected $productVariantPricing = array(null, null, null, null);
+    protected $productVariantPricing = array(
+        'Method' => null,
+        'Price' => null,
+        'Cost' => null,
+        'Weight' => null
+    );
     
+    /**
+     * Constructor
+     * 
+     * @param string $productCode
+     * @param array $options
+     * @param array $parts
+     * @param array $productVariantPricing
+     */
+     public function __construct($productCode = null, array $options = array(), array $parts = array(), array $productVariantPricing = array())
+     {
+         $this->productCode = $productCode;
+         $this->setOptions($options);
+         $this->setParts($parts);
+         
+         foreach(array_keys($this->productVariantPricing) as $key) {
+             if(isset($productVariantPricing[$key])){
+                 $this->productVariantPricing = $productVariantPricing[$key];
+             }
+         }
+     }
+
     /**
      * getProductCode
      *
@@ -42,11 +67,11 @@ class ProductVariantAdd implements StoreFragmentInterface
     {
         return $this->productCode;
     }
-    
+
     /**
      * setProductCode
      *
-     * @param string $productCode
+     * @param string productCode
      *
      * @return self
     */
@@ -55,8 +80,8 @@ class ProductVariantAdd implements StoreFragmentInterface
         $this->productCode = $productCode;
         return $this;
     }
-
     
+
     /**
      * getOptions
      *
@@ -66,16 +91,21 @@ class ProductVariantAdd implements StoreFragmentInterface
     {
         return $this->options;
     }
-    
+
     /**
      * setOptions
      *
-     * @param array $options
+     * @param array options
      *
      * @return self
     */
     public function setOptions(array $options)
     {
+        foreach($options as $option) {
+            if (!$option instanceof Model\ProductVariantOptionFragmentInterface) {
+                throw new \InvalidArgumentException('ProductVariantAdd::setOptions requires an array of ProductVariantOptionFragmentInterface');
+            }
+        }
         $this->options = $options;
         return $this;
     }
@@ -83,11 +113,11 @@ class ProductVariantAdd implements StoreFragmentInterface
     /**
      * addOption
      *
-     * @param ProductVariantOption $option
+     * @param ProductVariantOption options
      *
      * @return self
     */
-    public function addOption(ProductVariantOption $option)
+    public function addOption(Model\ProductVariantOptionFragmentInterface $option)
     {
         $this->options[] = $option;
         return $this;
@@ -102,27 +132,33 @@ class ProductVariantAdd implements StoreFragmentInterface
     {
         return $this->parts;
     }
-    
+
     /**
      * setParts
      *
-     * @param string $parts
+     * @param array parts
      *
-     * @return array
+     * @return self
     */
     public function setParts(array $parts)
     {
+        foreach($parts as $part) {
+            if (!$part instanceof ProductVariantPart) {
+                throw new \InvalidArgumentException('ProductVariantAdd::setParts Requires an array of ProductVariantPart');
+            }
+        }
         $this->parts = $parts;
         return $this;
     }
+    
     /**
      * addPart
      *
-     * @param Part $part
-     * 
+     * @param ProductVariantPart parts
+     *
      * @return self
     */
-    public function addPart(Part $part)
+    public function addPart(ProductVariantPart $part)
     {
         $this->parts[] = $part;
         return $this;
@@ -137,60 +173,82 @@ class ProductVariantAdd implements StoreFragmentInterface
     {
         return $this->productVariantPricing;
     }
-    
+
     /**
      * setProductVariantPricing
      *
-     * @param string $method
-     * @param float $price
+     * @param string $method 
+     * @param float $price 
      * @param float $cost
-     * @param float $weight
+     * @parma float $weight
      *
      * @return self
     */
-    public function setProductVariantPricing($method, $price, $cost, $weight)
+    public function setProductVariantPricing($method = null, $price = null, $cost = null, $weight = null)
     {
-        $this->productVariantPricing = array($method, $price, $cost, $weight);
+        $this->productVariantPricing =  array(
+            'Method' => $method,
+            'Price' => $price,
+            'Cost' => $cost,
+            'Weight' => $weight
+        );
         return $this;
     }
     
-
     /**
      * {@inheritDoc}
      * 
      * Format:
      * 
-     *  <ProductVariant_Add product_code="test">
-     *       <Options>
-     *           <Attribute_Option attribute_code="select" option_code="s1" />
-     *           <Attribute_Boolean attribute_code="text" present="true" />
-     *           <AttributeTemplateAttribute_Boolean attribute_code="test" attributetemplateattribute_code="checkbox" present="false" />
-     *           <AttributeTemplateAttribute_Option attribute_code="test" attributetemplateattribute_code="radio" option_code="r2" />
-     *       </Options>
-     *
-     *       <Parts>
-     *           <Part product_code="part" quantity="5" />
-     *       </Parts>
-     *
-     *       <ProductVariantPricing>
-     *           <Method>specific</Method>
-     *           <Price>5.43</Price>
-     *           <Cost>4.31</Cost>
-     *           <Weight>3.21</Weight>
-     *       </ProductVariantPricing>
-     *   </ProductVariant_Add>
-     *
+     * <ProductVariant_Add product_code="test">
+     *      <Options>
+     *          <Attribute_Option attribute_code="select" option_code="s1"/>
+     *          <Attribute_Boolean attribute_code="text" present="true"/>
+     *          <AttributeTemplateAttribute_Boolean attribute_code="test" attributetemplateattribute_code="checkbox" present="false"/>
+     *          <AttributeTemplateAttribute_Option attribute_code="test" attributetemplateattribute_code="radio" option_code="r2"/>
+     *      </Options>
+     *      <Parts>
+     *          <Part product_code="part" quantity="2"/>
+     *          <Part product_code="test" quantity="100"/>
+     *      </Parts>
+     *      <ProductVariantPricing>
+     *          <Method>master</Method>
+     *          <Price>5.43</Price>
+     *          <Cost>4.31</Cost>
+     *          <Weight>3.21</Weight>
+     *      </ProductVariantPricing>
+     * </ProductVariant_Add>
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xml = null;
-        $xmlObject = new SimpleXMLElement('<Fragment></Fragment>');
+        $xmlObject = new SimpleXMLElement('<ProductVariant_Add />');
 
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
+        $xmlObject->addAttribute('product_code', $this->getProductCode());
+        
+        if (count($this->getOptions())) {
+            $optionsRootXml = $xmlObject->addChild('Options');
+            foreach($this->getOptions() as $option) {
+                XmlHelper::appendToParent($optionsRootXml, $option->toXml());
+            }
         }
         
-        return $xml;
-    }
+        if (count($this->getParts())) {
+            $partsRootXml = $xmlObject->addChild('Parts');
+            foreach($this->getParts() as $part) {
+                XmlHelper::appendToParent($partsRootXml, $part->toXml());
+            }
+        }
+        
+        $productVariantPricing = $this->getProductVariantPricing();
+        if (implode('', $productVariantPricing)) {
+            $productVariantPricingXml = $xmlObject->addChild('ProductVariantPricing');
+            foreach(array('Method','Price','Cost','Weight') as $field) {
+                if (isset($productVariantPricing[$field]) && !empty($productVariantPricing[$field])) {
+                    $productVariantPricingXml->addChild($field, $productVariantPricing[$field]);
+                }
+            }
+        }
+        return $xmlObject;
+    }     
 }

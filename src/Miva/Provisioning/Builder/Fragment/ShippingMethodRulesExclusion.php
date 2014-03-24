@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ShippingMethodRulesExclusion implements FragmentFragmentInterface
+class ShippingMethodRulesExclusion implements Model\FragmentFragmentInterface
 {
     
     /** @var string */
@@ -27,7 +27,8 @@ class ShippingMethodRulesExclusion implements FragmentFragmentInterface
     /** @var string */
     protected $methodCode;
     
-    
+    /** @var bool */
+    protected $excludedBy = false;
    
     /**
      * getMethodCode
@@ -76,7 +77,29 @@ class ShippingMethodRulesExclusion implements FragmentFragmentInterface
         return $this;
     }
 
+    /**
+     * getExcludedBy
+     *
+     * @return bool
+    */
+    public function getExcludedBy()
+    {
+    	return $this->excludedBy;
+    }
 
+    /**
+     * setExcludedBy
+     *
+     * @param bool excludedBy
+     *
+     * @return self
+    */
+    public function setExcludedBy($excludedBy)
+    {
+	    $this->excludedBy = $excludedBy;
+	    return $this;
+    }
+    
     /**
      * {@inheritDoc}
      * 
@@ -88,14 +111,15 @@ class ShippingMethodRulesExclusion implements FragmentFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-
-        $xml = null;
-        $xmlObject = new SimpleXMLElement('<Fragment></Fragment>');
-
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
+        if (true === $this->getExcludedBy()) {
+            $xmlObject = new SimpleXMLElement('<ExcludedBy />');
+        } else {
+            $xmlObject = new SimpleXMLElement('<Excludes />');
         }
         
-        return $xml;
+        $xmlObject->addAttribute('module_code', $this->getModuleCode());
+        $xmlObject->addAttribute('method_code', $this->getMethodCode());
+        
+        return $xmlObject;
     }
 }

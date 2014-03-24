@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class InventoryEmailNotificationUpdate implements StoreFragmentInterface
+class InventoryEmailNotificationUpdate implements Model\StoreFragmentInterface
 {
 
     /** @var string */

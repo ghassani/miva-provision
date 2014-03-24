@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class InventorySettingsUpdate implements StoreFragmentInterface
+class InventorySettingsUpdate implements Model\StoreFragmentInterface
 {
     
     
@@ -389,18 +389,18 @@ class InventorySettingsUpdate implements StoreFragmentInterface
         $xmlObject = new SimpleXMLElement('<InventorySettings_Update></InventorySettings_Update>');
                 
         $xmlObject->addChild('TrackInventory', $this->getTrackInventory() ? 'Yes' : 'No');
-        $xmlObject->addChild('InStockMessageShort', sprintf('<![CDATA[%s]]>',$this->getInStockMessageShort()));
-        $xmlObject->addChild('InStockMessageLong', sprintf('<![CDATA[%s]]>',$this->getInStockMessageLong()));
+        $xmlObject->addChild('InStockMessageShort', $this->getInStockMessageShort())->addAttribute('method-call', 'addCDATA');
+        $xmlObject->addChild('InStockMessageLong', $this->getInStockMessageLong())->addAttribute('method-call', 'addCDATA');
         $xmlObject->addChild('TrackLowStockLevel', $this->getTrackLowStockLevel() ? 'Yes' : 'No');
         $xmlObject->addChild('LowStockLevel', $this->getLowStockLevel());
-        $xmlObject->addChild('LowStockMessageShort', sprintf('<![CDATA[%s]]>',$this->getLowStockMessageShort()));
-        $xmlObject->addChild('LowStockMessageLong', sprintf('<![CDATA[%s]]>',$this->getLowStockMessageLong()));
+        $xmlObject->addChild('LowStockMessageShort', $this->getLowStockMessageShort())->addAttribute('method-call', 'addCDATA');;
+        $xmlObject->addChild('LowStockMessageLong', $this->getLowStockMessageLong())->addAttribute('method-call', 'addCDATA');;
         $xmlObject->addChild('TrackOutOfStockProducts', $this->getTrackOutOfStockProducts() ? 'Yes' : 'No');
         $xmlObject->addChild('TrackOutOfStockLevel', $this->getTrackOutOfStockLevel());
         $xmlObject->addChild('HideOutOfStockProducts', $this->getHideOutOfStockProducts() ? 'Yes' : 'No');
-        $xmlObject->addChild('OutOfStockMessageShort', sprintf('<![CDATA[%s]]>',$this->getOutOfStockMessageShort()));
-        $xmlObject->addChild('OutOfStockMessageLong', sprintf('<![CDATA[%s]]>',$this->getOutOfStockMessageLong()));
-        $xmlObject->addChild('LimitedStockMessage', sprintf('<![CDATA[%s]]>',$this->getLimitedStockMessage()));
+        $xmlObject->addChild('OutOfStockMessageShort', $this->getOutOfStockMessageShort())->addAttribute('method-call', 'addCDATA');;
+        $xmlObject->addChild('OutOfStockMessageLong', $this->getOutOfStockMessageLong())->addAttribute('method-call', 'addCDATA');;
+        $xmlObject->addChild('LimitedStockMessage', $this->getLimitedStockMessage())->addAttribute('method-call', 'addCDATA');;
 
         return $xmlObject;
     }

@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class PriceGroupAdd implements StoreFragmentInterface
+class PriceGroupAdd implements Model\StoreFragmentInterface
 {
     
     

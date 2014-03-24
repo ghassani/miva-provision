@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ShippingMethodRulesUpdate implements StoreFragmentInterface
+class ShippingMethodRulesUpdate implements Model\StoreFragmentInterface
 {
     
     /** @var string */

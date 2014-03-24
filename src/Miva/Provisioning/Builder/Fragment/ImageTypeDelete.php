@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ImageTypeDelete implements StoreFragmentInterface
+class ImageTypeDelete implements Model\StoreFragmentInterface
 {
     
     /** @var string */

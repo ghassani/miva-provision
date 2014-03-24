@@ -18,10 +18,9 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class OrderAdd implements StoreFragmentInterface
+class OrderAdd implements Model\StoreFragmentInterface
 {
-    
-    
+
     /** @var string */
     protected $shipFirstName;
     
@@ -379,25 +378,15 @@ class OrderAdd implements StoreFragmentInterface
         $xmlObject->addChild('ShipZip', $this->getShipZip());
         $xmlObject->addChild('ShipCountry', $this->getShipCountry());
 
-        $itemsXml = $xmlObject->addChild('Items');
         
-        foreach ($this->getItems() as $item) {
-            $itemXml = $itemsXml->addChild('Item');
-            $itemXml->addChild('Code', $this->getCode());
-            $itemXml->addChild('Name', $this->getName());
-            $itemXml->addChild('Price', $this->getPrice());
-            $itemXml->addChild('Weight', $this->getWeight());
-            $itemXml->addChild('Quantity', $this->getQuantity());
-            
-            $optionsXml = $itemXml->addChild('Options');
-            foreach($item->getOptions() as $option) {
-                $optionXml = $optionsXml->addChild('Option');
-                
-                $optionXml->addChild('AttributeCode', $this->getAttributeCode());
-                $optionXml->addChild('Price', $this->getPrice());
-                $optionXml->addChild('OptionCode', $this->getOptionCode());
+        
+        if (count($this->getItems())) {
+            $itemsXml = $xmlObject->addChild('Items');
+            foreach ($this->getItems() as $item) {
+                XmlHelper::appendToParent($itemsXml, $item->toXml($version, $options));
             }
         }
+        
         return $xmlObject;
     }
 }

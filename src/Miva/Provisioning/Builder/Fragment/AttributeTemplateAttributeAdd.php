@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class AttributeTemplateAttributeAdd implements StoreFragmentInterface
+class AttributeTemplateAttributeAdd implements Model\StoreFragmentInterface
 {
     /** @var string */
     protected $templateCode;
@@ -280,7 +280,7 @@ class AttributeTemplateAttributeAdd implements StoreFragmentInterface
         
         $xmlObject->addChild('Code',$this->getCode());
         $xmlObject->addChild('Type',$this->getType());
-        $xmlObject->addChild('Prompt',sprintf('<![CDATA[%s]]>', $this->getPrompt()));
+        $xmlObject->addChild('Prompt', $this->getPrompt())->addAttribute('method-call', 'addCDATA');
         $xmlObject->addChild('Image',$this->getImage());
         $xmlObject->addChild('Price',$this->getPrice());
         $xmlObject->addChild('Cost',$this->getCost());

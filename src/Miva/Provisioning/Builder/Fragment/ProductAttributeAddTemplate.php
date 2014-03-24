@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
  *
  * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ProductAttributeAddTemplate implements FragmentInterface
+class ProductAttributeAddTemplate implements Model\FragmentInterface
 {
     
     /** @var string */
@@ -144,7 +144,7 @@ class ProductAttributeAddTemplate implements FragmentInterface
         $xmlObject->addAttribute('product_code', $this->getProductCode());
         
         $xmlObject->addChild('Code', $this->getCode());
-        $xmlObject->addChild('Prompt', XmlHelper::wrapCDATA($this->getPrompt()));
+        $xmlObject->addChild('Prompt', $this->getPrompt())->addAttribute('method-call', 'addCDATA');
         $xmlObject->addChild('AttributeTemplateCode', $this->getAttributeTemplateCode());
                
         

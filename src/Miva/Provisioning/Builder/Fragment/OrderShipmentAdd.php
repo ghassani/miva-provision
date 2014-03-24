@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class OrderShipmentAdd implements StoreFragmentInterface
+class OrderShipmentAdd implements Model\StoreFragmentInterface
 {
 
     /** @var int */

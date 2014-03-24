@@ -18,53 +18,20 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class Country implements FragmentFragmentInterface
+class Country implements Model\FragmentFragmentInterface
 {
-    /** @var string */
-    protected $name;
 
     /** @var string */
     protected $code;
 
-    /** @var string */
-    protected $isoCode;
-
-
     /**
      * Constructor
      * 
-     * @param string $name
      * @param string $code
-     * @param string $isoCode
      */
-    public function __construct($name = null, $code = null, $isoCode = null)
+    public function __construct($code = null)
     {
-        $this->name = $name;
         $this->code = $code;
-        $this->isoCode = $isoCode;
-    }
-
-    /**
-    * setName
-    *
-    * @param string $name
-    *
-    * @return self
-    */
-    public function setName($name)
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    /**
-    * getName
-    *
-    * @return string
-    */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -91,37 +58,19 @@ class Country implements FragmentFragmentInterface
     }
 
     /**
-    * setIsoCode
-    *
-    * @param string $isoCode
-    *
-    * @return self
-    */
-    public function setIsoCode($isoCode)
-    {
-        $this->isoCode = $isoCode;
-        return $this;
-    }
-
-    /**
-    * getIsoCode
-    *
-    * @return string
-    */
-    public function getIsoCode()
-    {
-        return $this->isoCode;
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * Format:
      * 
+     * <Country code="US" />
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-
+        $xmlObject = new SimpleXMLElement('<Country />');
+        
+        $xmlObject->addAttribute('code', $this->getCode());
+        
+        return $xmlObject;
     }
 
 }

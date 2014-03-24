@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class AffiliateOptionsUpdate implements StoreFragmentInterface
+class AffiliateOptionsUpdate implements Model\StoreFragmentInterface
 {
 
     /** @var string */
@@ -276,7 +276,7 @@ class AffiliateOptionsUpdate implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new SimpleXMLElement('<AffiliateOptions_Update></AffiliateOptions_Update>');
+        $xmlObject = new SimpleXMLElement('<AffiliateOptions_Update />');
         
         $xmlObject->addChild('Active', $this->getActive());
         $xmlObject->addChild('ApplicationStatus', $this->getApplicationStatus());

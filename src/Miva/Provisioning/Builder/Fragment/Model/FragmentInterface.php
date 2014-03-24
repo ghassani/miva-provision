@@ -7,11 +7,9 @@
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
 */
-namespace Miva\Provisioning\Builder\Fragment;
+namespace Miva\Provisioning\Builder\Fragment\Model;
 
 use Miva\Version;
-use Miva\Provisioning\Builder\Helper\XmlHelper;
-use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
 * FragmentInterface

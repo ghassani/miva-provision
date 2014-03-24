@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ImageAdd implements StoreFragmentInterface
+class ImageAdd implements Model\StoreFragmentInterface
 {
     
     /** @var string */

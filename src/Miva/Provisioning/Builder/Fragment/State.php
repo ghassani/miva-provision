@@ -18,11 +18,8 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class State implements FragmentFragmentInterface
+class State implements Model\FragmentFragmentInterface
 {
-    
-    /** @var string */
-    protected $name;
 
     /** @var string */
     protected $code;
@@ -31,36 +28,12 @@ class State implements FragmentFragmentInterface
     /**
      * Constructor
      * 
-     * @param string $name
      * @param string $code
      */
-    public function __construct($name = null, $code = null)
+    public function __construct($code = null)
     {
         $this->name = $name;
         $this->code = $code;
-    }
-
-    /**
-    * setName
-    *
-    * @param string $name
-    *
-    * @return self
-    */
-    public function setName($name)
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    /**
-    * getName
-    *
-    * @return string
-    */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -92,22 +65,15 @@ class State implements FragmentFragmentInterface
      * 
      * Format:
      * 
-     *  <State_Add code="" name="Outside the Realms" />
+     *  <State code="code" />
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-
-        $xml = null;
-        $xmlObject = new SimpleXMLElement('<Fragment></Fragment>');
-        $xmlObject->addChild('Name', sprintf('<![CDATA[%s]]>', $this->getName()));
-        $xmlObject->addChild('Code', $this->getCode());
-
+        $xmlObject = new SimpleXMLElement('<State />');
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        $xmlObject->addAttribute('code', $this->getName());
+
+        return $xmlObject;
     }
 
 }

@@ -14,24 +14,30 @@ use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
-* OrderItemOption
+* AttributeOption
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class OrderItemOption implements Model\FragmentFragmentInterface
+class AttributeOption implements Model\ProductVariantOptionFragmentInterface
 {
-    
-    
     /** @var string */
     protected $attributeCode;
-    
-    /** @var int */
-    protected $price;
-    
+
     /** @var string */
     protected $optionCode;
+   
+    /**
+     * Constructor
+     * 
+     * @param string $attributeCode
+     * @param string $optionCode
+    */
+    public function __construct($attributeCode = null, $optionCode = null)
+    {
+        $this->attributeCode = $attributeCode;
+        $this->optionCode = $optionCode;
+    }
     
-
     /**
      * getAttributeCode
      *
@@ -41,40 +47,17 @@ class OrderItemOption implements Model\FragmentFragmentInterface
     {
         return $this->attributeCode;
     }
-    
+
     /**
-     * addAttributeCode
+     * setAttributeCode
      *
-     * @param string $attributeCode
+     * @param string attributeCode
      *
      * @return self
     */
-    public function addAttributeCode($attributeCode)
+    public function setAttributeCode($attributeCode)
     {
         $this->attributeCode = $attributeCode;
-        return $this;
-    }
-    
-    /**
-     * getPrice
-     *
-     * @return int
-    */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-    
-    /**
-     * setPrice
-     *
-     * @param int $price
-     *
-     * @return self
-    */
-    public function setPrice($price)
-    {
-        $this->price = $price;
         return $this;
     }
     
@@ -87,11 +70,11 @@ class OrderItemOption implements Model\FragmentFragmentInterface
     {
         return $this->optionCode;
     }
-    
+
     /**
      * setOptionCode
      *
-     * @param string $optionCode
+     * @param string optionCode
      *
      * @return self
     */
@@ -100,35 +83,22 @@ class OrderItemOption implements Model\FragmentFragmentInterface
         $this->optionCode = $optionCode;
         return $this;
     }
-    
 
     /**
      * {@inheritDoc}
      * 
      * Format:
      * 
-     * <Option>
-     *      <AttributeCode>template_attr</AttributeCode>
-     *      <Price>1.00</Price>
-     *      <OptionCode>v1</OptionCode>
-     * </Option>
-     *
+     *  <Attribute_Option attribute_code="select" option_code="s1" />
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<Option />');
 
-        $xmlObject->addChild('AttributeCode', $this->getAttributeCode());
-        
-        if (0 <= $this->getPrice()) {
-            $xmlObject->addChild('Price', $this->getPrice());
-        }
+        $xmlObject = new SimpleXMLElement('<Attribute_Option />');
 
-        if ($this->getOptionCode()) {
-            $xmlObject->addChild('OptionCode', $this->getOptionCode());
-        }
-
+        $xmlObject->addAttribute('attribute_code', $this->getAttributeCode());
+        $xmlObject->addAttribute('option_code', $this->getOptionCode());        
+                
         return $xmlObject;
-    }
+    }     
 }
-        

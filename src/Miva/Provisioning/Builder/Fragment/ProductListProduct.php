@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ProductListProduct implements FragmentFragmentInterface
+class ProductListProduct implements Model\FragmentFragmentInterface
 {
     
     /** @var string */
@@ -119,14 +119,21 @@ class ProductListProduct implements FragmentFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xml = null;
-        $xmlObject = new SimpleXMLElement('<Fragment></Fragment>');
+        $xmlObject = new SimpleXMLElement('<Product> />');
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
+        $xmlObject->addChild('Code', $this->getCode());
+        $xmlObject->addChild('Quantity', $this->getQuantity());
+        
+        if ($this->getDateInStock() instanceof \DateTime) {
+            $dateInStockXml = $xmlObject->addChild('DateInStock');
+            $dateInStockXml->addChild('Day', $this->getDateInStock()->format('d'));
+            $dateInStockXml->addChild('Month', $this->getDateInStock()->format('m'));
+            $dateInStockXml->addChild('Year', $this->getDateInStock()->format('Y'));
+            $dateInStockXml->addChild('Hour', $this->getDateInStock()->format('h'));
+            $dateInStockXml->addChild('Minute', $this->getDateInStock()->format('i'));
         }
         
-        return $xml;
+        return $xmlObject;
     }
 }
 

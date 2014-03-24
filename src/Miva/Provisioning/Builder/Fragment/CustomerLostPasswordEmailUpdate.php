@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class CustomerLostPasswordEmailUpdate implements StoreFragmentInterface
+class CustomerLostPasswordEmailUpdate implements Model\StoreFragmentInterface
 {
 
 

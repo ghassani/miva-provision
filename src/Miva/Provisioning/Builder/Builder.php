@@ -10,11 +10,38 @@
 namespace Miva\Provisioning\Builder;
 
 use Miva\Provisioning\Builder\Helper\XmlHelper;
+use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
+use Miva\Provisioning\Builder\Fragment\Model\DomainFragmentInterface;
+use Miva\Provisioning\Builder\Fragment\Model\FragmentFragmentInterface;
+use Miva\Provisioning\Builder\Fragment\Model\FragmentInterface;
 use Miva\Version;
 
 /**
  * Builder
- *
+ * 
+ * This class uses fragments to build a provisioning XML document
+ * 
+ * Usage:
+ * 
+ * <code>
+ *  $builder = new Builder('STORE_A');
+ *  
+ *  $builder = new Builder('STORE_A', null, Miva\Version::FIVE_FIVE_PR8);
+ * 
+ *  $builder = new Builder('STORE_A', '<Provision><Domain></Domain></Provision>');
+ * 
+ *  $builder = new Builder('STORE_A', '/path/to/some/xml/file.xml');
+ * 
+ *  $fragment = new StoreAdd()
+ *  // .. some object manipulation here
+ * 
+ *  $builder->addFragment($fragment);
+ *  // or 
+ *  // $builder->addFragmentToDomain($fragment);
+ * 
+ * </code>
+ * 
+ * @see /docs for more information and usage
  * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
 class Builder
@@ -53,8 +80,12 @@ class Builder
     
     /**
      * getVersion
+     * 
+     * The version number of Miva Merchant this builder 
+     * instance should build for
      *
      * @return float
+     * @see Miva\Version
     */
     public function getVersion()
     {
@@ -156,13 +187,13 @@ class Builder
     /**
      * addFragmentToStore
      * 
-     * @param Fragment\StoreFragmentInterface $fragment
+     * @param StoreFragmentInterface $fragment
      * @param string $storeCode - If null, the first store in the document is used
      * 
      * @return self
      * @throws Exception - If no store is added or store not found by passed code
      */
-    public function addFragmentToStore(Fragment\StoreFragmentInterface $fragment, $storeCode = null)
+    public function addFragmentToStore(StoreFragmentInterface $fragment, $storeCode = null)
     {
          $store = $this->getStore($storeCode);
          
@@ -180,12 +211,12 @@ class Builder
     /**
      * addFragmentToDomain
      * 
-     * @param Fragment\DomainFragmentInterface $fragment
+     * @param DomainFragmentInterface $fragment
      * 
      * @return self
      * @throws Exception - When domain not found in root document
      */
-    public function addFragmentToDomain(Fragment\DomainFragmentInterface $fragment)
+    public function addFragmentToDomain(DomainFragmentInterface $fragment)
     {
          $domain = $this->getDomain();
          
@@ -203,27 +234,27 @@ class Builder
     /**
      * addFragment
      * 
-     * @param Fragment\FragmentInterface $fragment
+     * @param FragmentInterface $fragment
      * @param string $storeCode
      * 
      * @return self
      * @throws Exception
      */
-     public function addFragment(Fragment\FragmentInterface $fragment, $storeCode = null) 
+     public function addFragment(FragmentInterface $fragment, $storeCode = null) 
      {
-         if ($fragment instanceof Fragment\StoreFragmentInterface && $fragment instanceof DomainFragmentInterface) {
+         if ($fragment instanceof StoreFragmentInterface && $fragment instanceof DomainFragmentInterface) {
              throw new \Exception('Passed fragtment is both of domain and store fragment iterface. Use desired method to add this fragment');
          }
          
-         if($fragment instanceof Fragment\FragmentFragmentInterface) {
+         if($fragment instanceof FragmentFragmentInterface) {
             throw new \Exception('Fragment is of FragmentFrgmentInterface as can\'t be added to the document directly, it belongs to some other fragment type');   
          }
          
-         if ($fragment instanceof Fragment\StoreFragmentInterface) {
+         if ($fragment instanceof StoreFragmentInterface) {
             return $this->addFragmentToStore($fragment, $storeCode);
          } 
          
-         if ($fragment instanceof Fragment\DomainFragmentInterface) {
+         if ($fragment instanceof DomainFragmentInterface) {
             return $this->addFragmentToDomain($fragment);
          } 
          

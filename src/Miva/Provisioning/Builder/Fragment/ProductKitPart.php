@@ -14,19 +14,27 @@ use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
-* ProductImageDelete
+* ProductKitPart
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ProductImageDelete implements Model\StoreFragmentInterface
+class ProductKitPart implements Model\FragmentFragmentInterface
 {
-        
     /** @var string */
     protected $productCode;
+
+    /** @var int */
+    protected $quantity;
     
-    /** @var string */
-    protected $filePath; 
-        
+    /**
+     * 
+     */
+     public function __construct($productCode = null, $quantity = null)
+     {
+        $this->productCode = $productCode;
+        $this->quantity = $quantity;    
+     }
+     
     /**
      * getProductCode
      *
@@ -36,11 +44,11 @@ class ProductImageDelete implements Model\StoreFragmentInterface
     {
         return $this->productCode;
     }
-    
+
     /**
      * setProductCode
      *
-     * @param string $productCode
+     * @param string productCode
      *
      * @return self
     */
@@ -49,47 +57,45 @@ class ProductImageDelete implements Model\StoreFragmentInterface
         $this->productCode = $productCode;
         return $this;
     }
-       
-    /**
-     * getFilePath
-     *
-     * @return string
-    */
-    public function getFilePath()
-    {
-        return $this->filePath;
-    }
     
     /**
-     * setFilePath
+     * getQuantity
      *
-     * @param string $filePath
+     * @return int
+    */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * setQuantity
+     *
+     * @param int quantity
      *
      * @return self
     */
-    public function setFilePath($filePath)
+    public function setQuantity($quantity)
     {
-        $this->filePath = $filePath;
+        $this->quantity = $quantity;
         return $this;
     }
-   
-
+    
     /**
      * {@inheritDoc}
      * 
      * Format:
      * 
-     *  <ProductImage_Delete product_code="test" filepath="graphics/00000001/s2k_silver_front.jpg" />
+     *  <Part product_code="part" quantity="2"/>
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<ProductImage_Add></ProductImage_Add>');
+
+        $xmlObject = new SimpleXMLElement('<Part />');
 
         $xmlObject->addAttribute('product_code', $this->getProductCode());
-        $xmlObject->addAttribute('filepath', $this->getFilePath());
-        
+        $xmlObject->addAttribute('quantity', $this->getQuantity());        
+                
         return $xmlObject;
-    }
-    
-} 
-    
+    }     
+}

@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class Product implements FragmentFragmentInterface
+class Product implements Model\FragmentFragmentInterface
 {
 
     /** @var string */

@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class UpsellSettingsUpdate implements StoreFragmentInterface
+class UpsellSettingsUpdate implements Model\StoreFragmentInterface
 {
     
     

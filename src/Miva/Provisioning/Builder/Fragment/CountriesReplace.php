@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class CountriesReplace implements StoreFragmentInterface
+class CountriesReplace implements Model\StoreFragmentInterface
 {
     /** @var array */
     protected $countries = array();

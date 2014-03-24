@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class CategoryUpdate implements StoreFragmentInterface
+class CategoryUpdate implements Model\StoreFragmentInterface
 {
     
     /** @var string */
@@ -184,7 +184,7 @@ class CategoryUpdate implements StoreFragmentInterface
         
         $xmlObject->addAttribute('code', $this->getPreviousCode() ? $this->getPreviousCode() : $this->getCode());
         
-        $xmlObject->addChild('Name', sprintf('<![CDATA[%s]]>', $this->getName()));
+        $xmlObject->addChild('Name', $this->getName());
         $xmlObject->addChild('Code', $this->getCode());
         $xmlObject->addChild('Active', $this->getActive() ? 'Yes' : 'No');
 

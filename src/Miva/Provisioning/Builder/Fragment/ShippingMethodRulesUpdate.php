@@ -18,7 +18,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
  *
  * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ShippingMethodRulesUpdate implements FragmentInterface
+class ShippingMethodRulesUpdate implements Model\FragmentInterface
 {
     
     /** @var string */
@@ -54,8 +54,8 @@ class ShippingMethodRulesUpdate implements FragmentInterface
     /** @var array */
     protected $states = array();
     
-    /** @var string */
-    protected $zipCodes;
+    /** @var array */
+    protected $zipCodes = array();
     
     /** @var array */
     protected $countries = array();
@@ -268,14 +268,32 @@ class ShippingMethodRulesUpdate implements FragmentInterface
     */
     public function setStates(array $states)
     {
+        foreach ($states as $state) {
+            if (!$state instanceof State) {
+                throw new \InvalidArgumentException('ShippingMethodRulesUpdate::setStates requires an array of State');
+            }
+        }
         $this->states = $states;
+        return $this;
+    }
+    
+    /**
+     * addState
+     * 
+     * @param State $state
+     * 
+     * @return self
+     */
+    public function addState(State $state)
+    {
+        $this->states[] = $state;
         return $this;
     }
     
     /**
      * getZipCodes
      *
-     * @return string
+     * @return array
     */
     public function getZipCodes()
     {
@@ -285,13 +303,26 @@ class ShippingMethodRulesUpdate implements FragmentInterface
     /**
      * setZipCodes
      *
-     * @param string $zipCodes
+     * @param array $zipCodes
      *
      * @return self
     */
-    public function setZipCodes($zipCodes)
+    public function setZipCodes(array $zipCodes)
     {
         $this->zipCodes = $zipCodes;
+        return $this;
+    }
+    
+    /**
+     * addZipCode
+     *
+     * @param string $zipCode
+     *
+     * @return self
+    */
+    public function addZipCode($zipCode)
+    {
+        $this->zipCodes[] = $zipCode;
         return $this;
     }
     
@@ -314,7 +345,26 @@ class ShippingMethodRulesUpdate implements FragmentInterface
     */
     public function setCountries(array $countries)
     {
+        foreach ($countries as $country) {
+            if (!$country instanceof Country) {
+                throw new \InvalidArgumentException('ShippingMethodRulesUpdate::setCountries requires an array of Country');
+            }
+        }
         $this->countries = $countries;
+        return $this;
+    }
+    
+    
+    /**
+     * addCountry
+     * 
+     * @param Country $country
+     * 
+     * @return self
+     */
+    public function addCountry(Country $country)
+    {
+        $this->countries[] = $country;
         return $this;
     }
     
@@ -337,7 +387,25 @@ class ShippingMethodRulesUpdate implements FragmentInterface
     */
     public function setExclusions(array $exclusions)
     {
+        foreach ($exclusions as $exclusion) {
+            if (!$exclusion instanceof ShippingMethodRulesExclusion) {
+                throw new \InvalidArgumentException('ShippingMethodRulesUpdate::setExclusions requires an array of ShippingMethodRulesExclusion');
+            }
+        }
         $this->exclusions = $exclusions;
+        return $this;
+    }
+    
+    /**
+     * addExclusion
+     * 
+     * @param ShippingMethodRulesExclusion $exclusion
+     * 
+     * @return self
+     */
+    public function addExclusion(ShippingMethodRulesExclusion $exclusion)
+    {
+        $this->exclusions[] = $exclusion;
         return $this;
     }
     
@@ -370,14 +438,51 @@ class ShippingMethodRulesUpdate implements FragmentInterface
      *            </Countries>
      *
      *            <Exclusions>
-     *                <Excludes module_code="flatrate" method_code="flat_2day"/>     ()
-     *                <ExcludedBy module_code="baseunit" method_code="base_2day"/>   ()
+     *                <Excludes module_code="flatrate" method_code="flat_2day"/>     
+     *                <ExcludedBy module_code="baseunit" method_code="base_2day"/>  
      *            </Exclusions>
      *        </ShippingMethodRules_Update>
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<Fragment></Fragment>');
+        $xmlObject = new SimpleXMLElement('<ShippingMethodRules_Update />');
+        
+        $xmlObject->addAttribute('module_code', $this->getModuleCode());
+        $xmlObject->addAttribute('method_code', $this->getMethodCode());
+        
+        $xmlObject->addChild('Priority', $this->getPriority());
+        $xmlObject->addChild('Description', $this->getDescription());
+        $xmlObject->addChild('MinimumSubTotal', $this->getMinimumSubTotal());
+        $xmlObject->addChild('MaximumSubTotal', $this->getMaximumSubTotal());
+        $xmlObject->addChild('MinimumQuantity', $this->getMinimumQuantity());
+        $xmlObject->addChild('MaximumQuantity', $this->getMaximumQuantity());
+        $xmlObject->addChild('MinimumWeight', $this->getMinimumWeight());
+        $xmlObject->addChild('MaximumWeight', $this->getMaximumWeight());
+        
+        if (count($this->getStates())) {
+           $statesXmlRoot = $xmlObject->addChild('States');
+           foreach ($this->getStates() as $state) {
+               XmlHelper::appendToParent($statesXmlRoot, $state->toXml($version, $options));
+           } 
+        }
+        
+        if (count($this->getZipCodes())) {
+           $xmlObject->addChild('ZipCodes', implode(',', $this->getZipCodes()));
+        }
+
+        if (count($this->getCountries())) {
+           $countriesXmlRoot = $xmlObject->addChild('Countries');
+           foreach ($this->getCountries() as $country) {
+               XmlHelper::appendToParent($countriesXmlRoot, $country->toXml($version, $options));
+           } 
+        }
+
+        if (count($this->getExclusions())) {
+            $exclusionsXmlRoot = $xmlObject->addChild('Exclusions');
+            foreach ($this->getExclusions() as $exclusion ) {
+                XmlHelper::appendToParent($exclusionsXmlRoot, $exclusion->toXml($version, $options));
+            }
+        }
         
         return $xmlObject;
     }
