@@ -259,8 +259,34 @@ class Builder
          } 
          
          throw new \Exception('Passed fragment could not be determined to a section of the document.');
-     }
+    }
      
+    /**
+     * setOnComplete
+     * 
+     * Sets the Provision tag oncomplete attribute
+     * 
+     * @param string $onComplete - archive, delete, or null to unset
+     * 
+     * @return self
+    */
+    public function setOnComplete($onComplete)
+    {    
+         if(is_null($onComplete) && isset($this->root['oncomplete'])) {
+            unset($this->root['oncomplete']);
+            return;
+         }
+         
+         $onComplete = strtolower($onComplete);
+         
+         if(!in_array($onComplete, array('archive','delete'))){
+             throw new \InvalidArgumentException('Builder::setOnComplete requires a string of archive, delete, or null');
+         }
+         
+         $this->root->addAttribute('oncomplete', $onComplete);
+         return $this;
+    }
+    
     /**
      * toXml
      *

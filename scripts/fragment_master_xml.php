@@ -1,7 +1,7 @@
 <?php
 require_once(dirname(__FILE__).'/functions.php');
 
-$masterXml = simplexml_load_file(dirname(__FILE__).'/../doc/master_provide_clean.xml');
+$masterXml = simplexml_load_file(dirname(__FILE__).'/../doc/master_provide.xml');
 $fragmentsLocation = dirname(__FILE__).'/../src/Miva/Provisioning/Builder/Fragment';
 
 if(!is_dir($fragmentsLocation)) {
@@ -29,8 +29,10 @@ foreach($masterXml->xpath('/Provision/Store') as $s) {
 foreach($storeNames as $s => $e){
     $_s = str_replace('_','', $s);
     $path = sprintf('%s/%s.php', $fragmentsLocation, $_s);
+    
     if(!file_exists($path)){
-        file_put_contents($path, $e->asXml());
+        print_line($_s . ' - ' . $s);
+        //file_put_contents($path, $e->asXml());
     }
 }
 

@@ -4719,7 +4719,7 @@
 			<Header />												
 			<AutoMap />
 			<Map>													<!-- Required if AutoMap is not present, not allowed if it is present -->
-				<Field id="field" />								<!-- One or more fields are required
+				<Field id="field" />								<!-- One or more fields are required -->
 			</Map>
 
 			<Settings>
@@ -4755,7 +4755,7 @@
 		
 		<ImageType_Add>
 			<Code>type_1</Code>
-			<Description>this is the description for type_1</div>
+			<Description>this is the description for type_1</Description>
 		</ImageType_Add>
 
 		<ImageType_Update code="type_1">

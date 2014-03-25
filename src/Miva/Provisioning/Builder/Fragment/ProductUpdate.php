@@ -25,6 +25,9 @@ class ProductAdd implements Model\StoreFragmentInterface
     protected $code;
     
     /** @var string */
+    protected $newCode;
+    
+    /** @var string */
     protected $name;
     
     /** @var string */
@@ -86,6 +89,30 @@ class ProductAdd implements Model\StoreFragmentInterface
     }
     
     /**
+     * getNewCode
+     *
+     * @return string
+    */
+    public function getNewCode()
+    {
+        return $this->newCode;
+    }
+    
+    /**
+     * setNewCode
+     *
+     * @param string $newCode
+     *
+     * @return self
+    */
+    public function setNewCode($newCode)
+    {
+    	$this->newCode = $newCode;
+        return $this;
+    }
+
+    
+    /**
      * getName
      *
      * @return string
@@ -127,7 +154,7 @@ class ProductAdd implements Model\StoreFragmentInterface
     */
     public function setSku($sku)
     {
-    	$this->sku = $sku;
+        $this->sku = $sku;
         return $this;
     }
 
@@ -368,28 +395,30 @@ class ProductAdd implements Model\StoreFragmentInterface
      * 
      * Format:
      * 
-     * <Product_Add>
-     *       <Code>ale-gallon</Code>
-     *       <Name><![CDATA[Ale, gallon jug]]></Name>
-     *       <SKU>sku</SKU>
-     *       <Price>2.00</Price>
-     *       <Cost>1.50</Cost>
-     *       <Weight>8.00</Weight>
-     *       <Description><![CDATA[A gallon jug of quality ale.]]></Description>
-     *       <Taxable>Yes</Taxable>
-     *       <Active>Yes</Active>
-     *       <CanonicalCategoryCode>food</CanonicalCategoryCode>
-     *       <AlternateDisplayPage>PROD</AlternateDisplayPage>
-     *       <ThumbnailImage></ThumbnailImage>
-     *       <FullSizeImage></FullSizeImage>
-     *   </Product_Add>
+     * <Product_Update code="existing_product_code">
+     *      <Code>ale-gallon</Code>
+     *      <SKU>sku</SKU>
+     *      <Name><![CDATA[Ale, gallon jug]]></Name>
+     *      <Price>2.00</Price>
+     *      <Cost>1.50</Cost>
+     *      <Weight>8.00</Weight>
+     *      <Description><![CDATA[A gallon jug of quality ale.]]></Description>
+     *      <Taxable>Yes</Taxable>
+     *      <Active>Yes</Active>
+     *      <CanonicalCategoryCode>food</CanonicalCategoryCode>
+     *      <AlternateDisplayPage>PROD</AlternateDisplayPage>
+     *      <ThumbnailImage></ThumbnailImage>
+     *      <FullSizeImage></FullSizeImage>
+     * </Product_Update>
      *
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXmlElement('<Product_Add />');
+        $xmlObject = new SimpleXmlElement('<Product_Update />');
         
-        $xmlObject->addChild('Code', $this->getCode());
+        $xmlObject->addAttribute('code', $this->getCode());
+        
+        $xmlObject->addChild('Code', $this->getNewCode() ? $this->getNewCode() : $this->getCode());
         $xmlObject->addChild('Name', $this->getName())->addAttribute('method-call', 'addCDATA');
         $xmlObject->addChild('SKU', $this->getSku());
         $xmlObject->addChild('Price', $this->getPrice());
