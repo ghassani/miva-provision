@@ -22,13 +22,13 @@ class ImageTypeUpdate implements Model\StoreFragmentInterface
 {
     
     /** @var string */
-    protected $code;
+    public $code;
 
     /** @var string */
-    protected $newCode;
+    public $newCode;
     
     /** @var string */
-    protected $description;
+    public $description;
 
     /**
      * getCode

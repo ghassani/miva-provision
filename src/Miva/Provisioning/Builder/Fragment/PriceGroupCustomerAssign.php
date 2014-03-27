@@ -22,10 +22,10 @@ class PriceGroupCustomerAssign implements Model\StoreFragmentInterface
 {
     
     /** @var string */
-    protected $groupName;
+    public $groupName;
 
     /** @var string */
-    protected $customerLogin;
+    public $customerLogin;
    
     /**
      * getGroupName

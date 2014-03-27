@@ -21,16 +21,16 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 class ProductVariantUpdate implements Model\StoreFragmentInterface
 {
     /** @var string $productCode */
-    protected $productCode;
+    public $productCode;
     
     /** @var array */
-    protected $options = array();
+    public $options = array();
     
     /** @var array */
-    protected $parts = array();
+    public $parts = array();
     
     /** @var array */
-    protected $productVariantPricing = array(
+    public $productVariantPricing = array(
         'Method' => null,
         'Price' => null,
         'Cost' => null,

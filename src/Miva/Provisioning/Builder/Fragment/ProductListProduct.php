@@ -22,13 +22,13 @@ class ProductListProduct implements Model\FragmentFragmentInterface
 {
     
     /** @var string */
-    protected $code;
+    public $code;
     
     /** @var int */
-    protected $quantity;
+    public $quantity;
 
     /** @var DateTime|null */
-    protected $dateInStock;
+    public $dateInStock;
     /**
      * getCode
      *

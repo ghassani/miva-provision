@@ -22,7 +22,7 @@ class ImageTypeDelete implements Model\StoreFragmentInterface
 {
     
     /** @var string */
-    protected $code;
+    public $code;
     
 
     /**

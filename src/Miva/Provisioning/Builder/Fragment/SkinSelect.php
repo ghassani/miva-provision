@@ -22,7 +22,7 @@ class SkinSelect implements Model\StoreFragmentInterface
 {
 
     /** @var string */
-    protected $code;
+    public $code;
 
     /**
      * Constructor

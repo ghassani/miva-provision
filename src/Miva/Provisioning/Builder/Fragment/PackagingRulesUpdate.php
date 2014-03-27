@@ -23,14 +23,14 @@ class PackagingRulesUpdate implements Model\StoreFragmentInterface
     
     
     /** @var array */
-    protected $fallbackPackage = array(
+    public $fallbackPackage = array(
         'Width' => null,
         'Length' => null,
         'Height' => null,
     );
     
     /** @var array */
-    protected $boxPacking = array(
+    public $boxPacking = array(
         'type' => null,
         'module_code' => null,
     );

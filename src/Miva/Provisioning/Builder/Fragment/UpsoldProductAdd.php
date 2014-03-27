@@ -23,19 +23,19 @@ class UpsoldProductAdd implements Model\StoreFragmentInterface
     
     
     /** @var string */
-    protected $productCode;
+    public $productCode;
     
     /** @var string */
-    protected $display;
+    public $display;
     
     /** @var int */
-    protected $requiredAmount;
+    public $requiredAmount;
     
     /** @var string */
-    protected $pricing;
+    public $pricing;
     
     /** @var int */
-    protected $price;
+    public $price;
     
 
     

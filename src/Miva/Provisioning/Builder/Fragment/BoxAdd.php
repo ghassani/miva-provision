@@ -22,22 +22,22 @@ class BoxAdd implements Model\StoreFragmentInterface
 {
     
     /** @var string */
-    protected $description;
+    public $description;
     
     /** @var boolean */
-    protected $enabled = true;    
+    public $enabled = true;    
     
     /** @var float */
-    protected $width;    
+    public $width;    
     
     /** @var float */
-    protected $length;    
+    public $length;    
     
     /** @var float */
-    protected $height;
+    public $height;
     
     /** @var array */
-    protected $boxPackageSettings = array(
+    public $boxPackageSettings = array(
         'MaxWeight' => null, 
         'MaxQuantity' => null,
     );

@@ -22,7 +22,7 @@ class ProductKitDelete implements Model\StoreFragmentInterface
 {
         
     /** @var string */
-    protected $productCode;
+    public $productCode;
         
     /**
      * getProductCode

@@ -22,79 +22,79 @@ class CustomerAdd implements Model\StoreFragmentInterface
 {
 
     /** @var string */
-    protected $login;
+    public $login;
     
     /** @var string */
-    protected $lostPasswordEmail;
+    public $lostPasswordEmail;
     
     /** @var string */
-    protected $password;
+    public $password;
     
     /** @var string */
-    protected $shipFirstName;
+    public $shipFirstName;
     
     /** @var string */
-    protected $shipLastName;
+    public $shipLastName;
     
     /** @var string */
-    protected $shipEmail;
+    public $shipEmail;
     
     /** @var string */
-    protected $shipPhone;
+    public $shipPhone;
     
     /** @var string */
-    protected $shipFax;
+    public $shipFax;
     
     /** @var string */
-    protected $shipCompany;
+    public $shipCompany;
     
     /** @var string */
-    protected $shipAddress;
+    public $shipAddress;
     
     /** @var string */
-    protected $shipCity;
+    public $shipCity;
     
     /** @var string */
-    protected $shipStateCode;
+    public $shipStateCode;
     
     /** @var string */
-    protected $shipZip;
+    public $shipZip;
     
     /** @var string */
-    protected $shipCountryCode;
+    public $shipCountryCode;
     
     /** @var string */
-    protected $billFirstName;
+    public $billFirstName;
     
     /** @var string */
-    protected $billLastName;
+    public $billLastName;
     
     /** @var string */
-    protected $billEmail;
+    public $billEmail;
     
     /** @var string */
-    protected $billPhone;
+    public $billPhone;
     
     /** @var string */
-    protected $billFax;
+    public $billFax;
     
     /** @var string */
-    protected $billCompany;
+    public $billCompany;
     
     /** @var string */
-    protected $billAddress;
+    public $billAddress;
     
     /** @var string */
-    protected $billCity;
+    public $billCity;
     
     /** @var string */
-    protected $billStateCode;
+    public $billStateCode;
     
     /** @var string */
-    protected $billZip;
+    public $billZip;
     
     /** @var string */
-    protected $billCountryCode;
+    public $billCountryCode;
     
     /**
      * getLogin

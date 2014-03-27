@@ -22,10 +22,10 @@ class GroupAdd implements Model\StoreFragmentInterface
 {
     
     /** @var string */
-    protected $name;
+    public $name;
 
     /** @var array */
-    protected $privileges = array();
+    public $privileges = array();
     
     /**
     * setName

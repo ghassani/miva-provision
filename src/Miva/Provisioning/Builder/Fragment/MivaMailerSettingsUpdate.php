@@ -23,10 +23,10 @@ class MivaMailerSettingsUpdate implements Model\StoreFragmentInterface
     
     
     /** @var string */
-    protected $account;
+    public $account;
     
     /** @var string */
-    protected $server;
+    public $server;
     
 
     

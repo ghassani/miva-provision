@@ -22,31 +22,31 @@ class AffiliateOptionsUpdate implements Model\StoreFragmentInterface
 {
 
     /** @var string */
-    protected $active;
+    public $active;
     
     /** @var string */
-    protected $applicationStatus;
+    public $applicationStatus;
     
     /** @var float */
-    protected $defaultCommissionHit;
+    public $defaultCommissionHit;
     
     /** @var float */
-    protected $defaultCommissionPercentOfOrder;
+    public $defaultCommissionPercentOfOrder;
     
     /** @var float */
-    protected $defaultCommissionOrderFlatFee;
+    public $defaultCommissionOrderFlatFee;
     
     /** @var float */
-    protected $payoutThreshold;
+    public $payoutThreshold;
     
     /** @var string */
-    protected $linkImage;
+    public $linkImage;
     
     /** @var string */
-    protected $linkText;
+    public $linkText;
     
     /** @var string */
-    protected $terms;
+    public $terms;
 
     /**
     * getActive

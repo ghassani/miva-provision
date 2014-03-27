@@ -21,10 +21,10 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 class ProductVariantDelete implements Model\StoreFragmentInterface
 {
     /** @var string $productCode */
-    protected $productCode;
+    public $productCode;
     
     /** @var array */
-    protected $options = array();
+    public $options = array();
     
         
     /**

@@ -22,10 +22,10 @@ class ProductImageDelete implements Model\StoreFragmentInterface
 {
         
     /** @var string */
-    protected $productCode;
+    public $productCode;
     
     /** @var string */
-    protected $filePath; 
+    public $filePath; 
         
     /**
      * getProductCode

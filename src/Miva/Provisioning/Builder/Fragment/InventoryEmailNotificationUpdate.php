@@ -22,25 +22,25 @@ class InventoryEmailNotificationUpdate implements Model\StoreFragmentInterface
 {
 
     /** @var string */
-    protected $sendEmailOnLowStock;
+    public $sendEmailOnLowStock;
     
     /** @var string */
-    protected $sendEmailOnNoStock;
+    public $sendEmailOnNoStock;
     
     /** @var string */
-    protected $emailFrom;
+    public $emailFrom;
     
     /** @var string */
-    protected $emailTo;
+    public $emailTo;
 
     /** @var string */
-    protected $emailCC;
+    public $emailCC;
     
     /** @var string */
-    protected $subject;
+    public $subject;
     
     /** @var string */
-    protected $message;
+    public $message;
 
     /**
      * getSendEmailOnLowStock

@@ -22,19 +22,19 @@ class SettingsUpdate implements Model\DomainFragmentInterface
 {
 
     /** @var int */
-    protected $forcePasswordAfterDays;
+    public $forcePasswordAfterDays;
     
     /** @var int */
-    protected $passwordReuse;
+    public $passwordReuse;
     
     /** @var int */
-    protected $minimumPasswordLength;
+    public $minimumPasswordLength;
     
     /** @var string */
-    protected $passwordComplexity;
+    public $passwordComplexity;
     
     /** @var int */
-    protected $imageJPEGQuality;
+    public $imageJPEGQuality;
     
     /**
      * getForcePasswordAfterDays

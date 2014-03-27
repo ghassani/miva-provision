@@ -21,13 +21,13 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 class AttributeTemplateAttributeOption implements Model\ProductVariantOptionFragmentInterface
 {
     /** @var string */
-    protected $attributeCode;
+    public $attributeCode;
     
     /** @var string */
-    protected $attributeTemplateAttributeCode;
+    public $attributeTemplateAttributeCode;
 
     /** @var string */
-    protected $optionCode;
+    public $optionCode;
     
     /**
      * Constructor

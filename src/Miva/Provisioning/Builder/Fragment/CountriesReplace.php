@@ -21,7 +21,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 class CountriesReplace implements Model\StoreFragmentInterface
 {
     /** @var array */
-    protected $countries = array();
+    public $countries = array();
 
     /**
      * getCountries

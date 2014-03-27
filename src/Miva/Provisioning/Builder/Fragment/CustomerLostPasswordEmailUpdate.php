@@ -23,16 +23,16 @@ class CustomerLostPasswordEmailUpdate implements Model\StoreFragmentInterface
 
 
     /** @var string */
-    protected $emailFrom;
+    public $emailFrom;
     
     /** @var string */
-    protected $emailCC;
+    public $emailCC;
     
     /** @var string */
-    protected $subject;
+    public $subject;
     
     /** @var string */
-    protected $headerText;
+    public $headerText;
     
 
     /**

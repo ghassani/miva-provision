@@ -22,40 +22,40 @@ class CustomerFieldsUpdate implements Model\StoreFragmentInterface
 {
 
     /** @var string */
-    protected $billing;
+    public $billing;
     
     /** @var string */
-    protected $firstName;
+    public $firstName;
     
     /** @var string */
-    protected $lastName;
+    public $lastName;
     
     /** @var string */
-    protected $email;
+    public $email;
     
     /** @var string */
-    protected $phone;
+    public $phone;
     
     /** @var string */
-    protected $fax;
+    public $fax;
     
     /** @var string */
-    protected $company;
+    public $company;
     
     /** @var string */
-    protected $address;
+    public $address;
     
     /** @var string */
-    protected $city;
+    public $city;
     
     /** @var string */
-    protected $state;
+    public $state;
     
     /** @var string */
-    protected $zip;
+    public $zip;
     
     /** @var string */
-    protected $country;
+    public $country;
     
     /** @var array */
     private $availableFieldChoices = array(

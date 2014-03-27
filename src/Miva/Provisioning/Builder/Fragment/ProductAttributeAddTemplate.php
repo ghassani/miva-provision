@@ -22,16 +22,16 @@ class ProductAttributeAddTemplate implements Model\FragmentInterface
 {
     
     /** @var string */
-    protected $productCode;
+    public $productCode;
     
     /** @var string */
-    protected $code;
+    public $code;
     
     /** @var string */
-    protected $prompt;
+    public $prompt;
     
     /** @var string */
-    protected $attributeTemplateCode;
+    public $attributeTemplateCode;
     
     /**
      * getProductCode

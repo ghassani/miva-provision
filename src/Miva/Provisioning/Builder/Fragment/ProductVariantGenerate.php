@@ -22,13 +22,13 @@ class ProductVariantGenerate implements Model\StoreFragmentInterface
 {
         
     /** @var string */
-    protected $productCode;
+    public $productCode;
         
     /** @var string */
-    protected $pricingMethod;
+    public $pricingMethod;
 
     /** @var string */
-    protected $delimiter = '_';
+    public $delimiter = '_';
         
     /**
      * getProductCode

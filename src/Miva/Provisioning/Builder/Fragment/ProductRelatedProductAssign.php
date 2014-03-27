@@ -22,10 +22,10 @@ class ProductRelatedProductAssign implements Model\StoreFragmentInterface
 {
     
     /** @var string */
-    protected $productCode;
+    public $productCode;
 
     /** @var string */
-    protected $relatedProductCode;
+    public $relatedProductCode;
     
     /**
      * getProductCode

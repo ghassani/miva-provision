@@ -22,28 +22,28 @@ class HandlingChargeUpdate implements Model\StoreFragmentInterface
 {
 
    /** @var string */
-   protected $triggerType;
+   public $triggerType;
    
    /** @var float */
-   protected $triggerMinimumValue;
+   public $triggerMinimumValue;
    
    /** @var float */
-   protected $triggerMaximumValue;  
+   public $triggerMaximumValue;  
    
    /** @var string */
-   protected $amountType;
+   public $amountType;
    
    /** @var float */
-   protected $amount;
+   public $amount;
    
    /** @var string */
-   protected $separateLineItem;
+   public $separateLineItem;
    
    /** @var string */
-   protected $description;
+   public $description;
    
    /** @var string */
-   protected $taxExempt;
+   public $taxExempt;
    
    /** @var array */
    private $triggerTypeChoices = array(

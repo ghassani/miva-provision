@@ -23,22 +23,22 @@ class OrderItem implements Model\FragmentInterface
     
     
     /** @var string */
-    protected $code;
+    public $code;
     
     /** @var string */
-    protected $name;
+    public $name;
     
     /** @var int */
-    protected $price;
+    public $price;
     
     /** @var int */
-    protected $weight;
+    public $weight;
     
     /** @var int */
-    protected $quantity;
+    public $quantity;
     
     /** @var array */
-    protected $options = array();
+    public $options = array();
     
 
     

@@ -21,31 +21,31 @@ class ProductAttributeAdd implements Model\StoreFragmentInterface
 {
     
     /** @var string */
-    protected $productCode;
+    public $productCode;
     
     /** @var string */
-    protected $code;
+    public $code;
     
     /** @var string */
-    protected $type;
+    public $type;
     
     /** @var string */
-    protected $prompt;
+    public $prompt;
     
     /** @var string */
-    protected $image;
+    public $image;
     
     /** @var int */
-    protected $price;
+    public $price;
     
     /** @var int */
-    protected $cost;
+    public $cost;
     
     /** @var int */
-    protected $weight;
+    public $weight;
     
     /** @var boolean */
-    protected $required = false;
+    public $required = false;
     
     /**
      * getProductCode

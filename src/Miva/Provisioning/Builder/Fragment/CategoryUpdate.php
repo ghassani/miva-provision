@@ -22,19 +22,19 @@ class CategoryUpdate implements Model\StoreFragmentInterface
 {
     
     /** @var string */
-    protected $name;
+    public $name;
 
     /** @var string */
-    protected $code;
+    public $code;
 
     /** @var string */
-    protected $previousCode;
+    public $previousCode;
 
     /** @var boolean */
-    protected $active = true;
+    public $active = true;
     
     /** @var string */
-    protected $parentCategoryCode;
+    public $parentCategoryCode;
 
 
     /**

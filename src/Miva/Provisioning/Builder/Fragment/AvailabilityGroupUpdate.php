@@ -22,7 +22,7 @@ class AvailabilityGroupUpdate implements Model\StoreFragmentInterface
 {
     
     /** @var strint */
-    protected $name;
+    public $name;
     
     /**
      * getName

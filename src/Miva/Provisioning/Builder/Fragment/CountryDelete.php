@@ -22,7 +22,7 @@ class CountryDelete implements Model\DomainFragmentInterface
 {
 
     /** @var string */
-    protected $name;
+    public $name;
 
     /**
      * Constructor

@@ -23,13 +23,13 @@ class OrderItemOption implements Model\FragmentFragmentInterface
     
     
     /** @var string */
-    protected $attributeCode;
+    public $attributeCode;
     
     /** @var int */
-    protected $price;
+    public $price;
     
     /** @var string */
-    protected $optionCode;
+    public $optionCode;
     
 
     /**

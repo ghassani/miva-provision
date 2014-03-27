@@ -22,7 +22,7 @@ class Country implements Model\FragmentFragmentInterface
 {
 
     /** @var string */
-    protected $code;
+    public $code;
 
     /**
      * Constructor

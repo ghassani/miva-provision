@@ -22,10 +22,10 @@ class CategoryProductAssign implements Model\StoreFragmentInterface
 {
 
     /** @var string */
-    protected $categoryCode;
+    public $categoryCode;
     
     /** @var string */
-    protected $productCode;
+    public $productCode;
 
 
     /**

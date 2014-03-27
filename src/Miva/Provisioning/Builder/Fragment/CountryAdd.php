@@ -22,13 +22,13 @@ class CountryAdd implements Model\DomainFragmentInterface
 {
 
     /** @var string */
-    protected $name;
+    public $name;
 
     /** @var string */
-    protected $code;
+    public $code;
 
     /** @var string */
-    protected $isoCode;
+    public $isoCode;
 
 
     /**

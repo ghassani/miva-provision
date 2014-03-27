@@ -22,10 +22,10 @@ class AttributeBoolean implements Model\ProductVariantOptionFragmentInterface
 {
     
     /** @var string */
-    protected $attributeCode;
+    public $attributeCode;
     
     /** @var bool */
-    protected $present = false;
+    public $present = false;
    
     /**
      * Constructor

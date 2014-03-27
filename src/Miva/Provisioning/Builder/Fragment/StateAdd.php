@@ -22,10 +22,10 @@ class StateAdd implements Model\StoreFragmentInterface
 {
     
     /** @var string */
-    protected $name;
+    public $name;
 
     /** @var string */
-    protected $code;
+    public $code;
 
 
     /**

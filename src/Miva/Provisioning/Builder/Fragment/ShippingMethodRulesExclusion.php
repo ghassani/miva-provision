@@ -22,13 +22,13 @@ class ShippingMethodRulesExclusion implements Model\FragmentFragmentInterface
 {
     
     /** @var string */
-    protected $moduleCode;
+    public $moduleCode;
     
     /** @var string */
-    protected $methodCode;
+    public $methodCode;
     
     /** @var bool */
-    protected $excludedBy = false;
+    public $excludedBy = false;
    
     /**
      * getMethodCode

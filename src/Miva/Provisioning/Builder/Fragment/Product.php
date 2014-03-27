@@ -22,40 +22,40 @@ class Product implements Model\FragmentFragmentInterface
 {
 
     /** @var string */
-    protected $code;
+    public $code;
     
     /** @var string */
-    protected $name;
+    public $name;
     
     /** @var int */
-    protected $price;
+    public $price;
     
     /** @var int */
-    protected $cost;
+    public $cost;
     
     /** @var int */
-    protected $weight;
+    public $weight;
     
     /** @var string */
-    protected $description;
+    public $description;
     
     /** @var string */
-    protected $taxable;
+    public $taxable;
     
     /** @var string */
-    protected $active;
+    public $active;
     
     /** @var string */
-    protected $canonicalCategoryCode;
+    public $canonicalCategoryCode;
     
     /** @var string */
-    protected $alternateDisplayPage;
+    public $alternateDisplayPage;
     
     /** @var string */
-    protected $thumbnailImage;
+    public $thumbnailImage;
     
     /** @var string */
-    protected $fullSizeImage;
+    public $fullSizeImage;
     
 
     

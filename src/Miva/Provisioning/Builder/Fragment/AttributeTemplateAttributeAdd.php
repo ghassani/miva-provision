@@ -21,31 +21,31 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 class AttributeTemplateAttributeAdd implements Model\StoreFragmentInterface
 {
     /** @var string */
-    protected $templateCode;
+    public $templateCode;
     
     /** @var string */
-    protected $code;
+    public $code;
 
     /** @var string */
-    protected $type;
+    public $type;
 
     /** @var string */
-    protected $prompt;
+    public $prompt;
 
     /** @var string */
-    protected $image;
+    public $image;
 
     /** @var float */
-    protected $price;
+    public $price;
 
     /** @var float */
-    protected $cost;
+    public $cost;
 
     /** @var float */
-    protected $weight;
+    public $weight;
     
     /** @var boolean  */
-    protected $required = false;
+    public $required = false;
 
     /**
      * getTemplateCode

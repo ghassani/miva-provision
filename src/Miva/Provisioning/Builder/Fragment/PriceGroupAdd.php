@@ -23,13 +23,13 @@ class PriceGroupAdd implements Model\StoreFragmentInterface
     
     
     /** @var string */
-    protected $name;
+    public $name;
     
     /** @var string */
-    protected $pricing;
+    public $pricing;
     
     /** @var int */
-    protected $amount;
+    public $amount;
 
     /**
      * getName

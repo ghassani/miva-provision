@@ -288,6 +288,20 @@ class Builder
     }
     
     /**
+     * query
+     *
+     * Run an XPath query against the current document
+     *
+     * @param string $xpathExpression
+     * 
+     * @return array
+    */
+    public function query($xpathExpression)
+    {
+        return $this->root->xpath($xpath);
+    }
+    
+    /**
      * toXml
      *
      * Outputs current builder to a XML string

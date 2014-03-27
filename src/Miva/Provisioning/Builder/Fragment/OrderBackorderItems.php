@@ -22,10 +22,10 @@ class OrderBackorderItems implements Model\StoreFragmentInterface
 {
     
     /** @var int */
-    protected $orderId;
+    public $orderId;
     
     /** @var array */
-    protected $products = array();
+    public $products = array();
 
     /**
      * getOrderId

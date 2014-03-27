@@ -22,37 +22,37 @@ class OrderAdd implements Model\StoreFragmentInterface
 {
 
     /** @var string */
-    protected $shipFirstName;
+    public $shipFirstName;
     
     /** @var string */
-    protected $shipLastName;
+    public $shipLastName;
     
     /** @var string */
-    protected $shipEmail;
+    public $shipEmail;
     
     /** @var string */
-    protected $shipPhone;
+    public $shipPhone;
     
     /** @var string */
-    protected $shipAddress1;
+    public $shipAddress1;
     
     /** @var string */
-    protected $shipAddress2;
+    public $shipAddress2;
     
     /** @var string */
-    protected $shipCity;
+    public $shipCity;
     
     /** @var string */
-    protected $shipState;
+    public $shipState;
     
     /** @var int */
-    protected $shipZip;
+    public $shipZip;
     
     /** @var string */
-    protected $shipCountry;
+    public $shipCountry;
     
     /** @var array */
-    protected $items = array();
+    public $items = array();
     
 
     

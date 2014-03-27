@@ -21,13 +21,13 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 class AttributeTemplateAttributeBoolean implements Model\ProductVariantOptionFragmentInterface
 {
     /** @var string */
-    protected $attributeCode;
+    public $attributeCode;
     
     /** @var string */
-    protected $attributeTemplateAttributeCode;
+    public $attributeTemplateAttributeCode;
 
     /** @var bool */
-    protected $present = false;
+    public $present = false;
    
     /**
      * Constructor

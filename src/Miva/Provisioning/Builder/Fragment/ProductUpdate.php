@@ -14,54 +14,54 @@ use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
-* Product
+* ProductUpdate
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ProductAdd implements Model\StoreFragmentInterface
+class ProductUpdate implements Model\StoreFragmentInterface
 {
 
     /** @var string */
-    protected $code;
+    public $code;
     
     /** @var string */
-    protected $newCode;
+    public $newCode;
     
     /** @var string */
-    protected $name;
+    public $name;
     
     /** @var string */
-    protected $sku;
+    public $sku;
     
     /** @var int */
-    protected $price;
+    public $price;
     
     /** @var int */
-    protected $cost;
+    public $cost;
     
     /** @var int */
-    protected $weight;
+    public $weight;
     
     /** @var string */
-    protected $description;
+    public $description;
     
     /** @var boolean */
-    protected $taxable = false;
+    public $taxable = false;
     
     /** @var boolean */
-    protected $active = true;
+    public $active = true;
     
     /** @var string */
-    protected $canonicalCategoryCode;
+    public $canonicalCategoryCode;
     
     /** @var string */
-    protected $alternateDisplayPage;
+    public $alternateDisplayPage;
     
     /** @var string */
-    protected $thumbnailImage;
+    public $thumbnailImage;
     
     /** @var string */
-    protected $fullSizeImage;
+    public $fullSizeImage;
     
 
     

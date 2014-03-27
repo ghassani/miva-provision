@@ -21,10 +21,10 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 class ProductVariantPart implements Model\FragmentFragmentInterface
 {
     /** @var string */
-    protected $productCode;
+    public $productCode;
 
     /** @var int */
-    protected $quantity;
+    public $quantity;
     
     /**
      * 

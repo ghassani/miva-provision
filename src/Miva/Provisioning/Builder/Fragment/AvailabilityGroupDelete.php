@@ -22,7 +22,7 @@ class AvailabilityGroupDelete implements Model\StoreFragmentInterface
 {
     
     /** @var strint */
-    protected $name;
+    public $name;
     
     /**
      * getName

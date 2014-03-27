@@ -26,10 +26,10 @@ class PageUpdateItem implements Model\FragmentFragmentInterface
 {
 
     /** @var string */
-    protected $code;
+    public $code;
     
     /** @var array */
-    protected $data = array();
+    public $data = array();
     
     /**
      * Constructor

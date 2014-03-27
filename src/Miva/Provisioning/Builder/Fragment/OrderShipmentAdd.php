@@ -22,13 +22,13 @@ class OrderShipmentAdd implements Model\StoreFragmentInterface
 {
 
     /** @var int */
-    protected $orderId;
+    public $orderId;
     
     /** @var string */
-    protected $productList = array();
+    public $productList = array();
     
     /** @var string */
-    protected $code;
+    public $code;
     
 
     /**

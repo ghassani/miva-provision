@@ -22,10 +22,10 @@ class UpsoldProductRequiredProductAssign implements Model\StoreFragmentInterface
 {
     
     /** @var string */
-    protected $upsoldProductCode;
+    public $upsoldProductCode;
 
     /** @var string */
-    protected $requiredProductCode;
+    public $requiredProductCode;
 
 
     /**

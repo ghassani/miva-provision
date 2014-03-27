@@ -22,7 +22,7 @@ class State implements Model\FragmentFragmentInterface
 {
 
     /** @var string */
-    protected $code;
+    public $code;
 
 
     /**

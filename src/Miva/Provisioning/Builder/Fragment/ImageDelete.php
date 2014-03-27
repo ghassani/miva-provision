@@ -22,7 +22,7 @@ class ImageDelete implements Model\StoreFragmentInterface
 {
     
     /** @var string */
-    protected $filePath;
+    public $filePath;
 
     /**
      * Constructor

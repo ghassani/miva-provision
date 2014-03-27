@@ -22,13 +22,13 @@ class ProductImageAdd implements Model\StoreFragmentInterface
 {
         
     /** @var string */
-    protected $productCode;
+    public $productCode;
     
     /** @var string */
-    protected $filePath;
+    public $filePath;
     
     /** @var string */
-    protected $typeCode;    
+    public $typeCode;    
         
     /**
      * getProductCode

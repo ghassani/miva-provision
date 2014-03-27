@@ -22,46 +22,46 @@ class ShippingMethodRulesUpdate implements Model\StoreFragmentInterface
 {
     
     /** @var string */
-    protected $moduleCode;
+    public $moduleCode;
     
     /** @var string */
-    protected $methodCode;
+    public $methodCode;
     
     /** @var int */
-    protected $priority;
+    public $priority;
     
     /** @var string */
-    protected $description;
+    public $description;
     
     /** @var int */
-    protected $minimumSubTotal;
+    public $minimumSubTotal;
     
     /** @var int */
-    protected $maximumSubTotal;
+    public $maximumSubTotal;
     
     /** @var int */
-    protected $minimumQuantity;
+    public $minimumQuantity;
     
     /** @var int */
-    protected $maximumQuantity;
+    public $maximumQuantity;
     
     /** @var int */
-    protected $minimumWeight;
+    public $minimumWeight;
     
     /** @var int */
-    protected $maximumWeight;
+    public $maximumWeight;
     
     /** @var array */
-    protected $states = array();
+    public $states = array();
     
     /** @var string */
-    protected $zipCodes = array();
+    public $zipCodes = array();
     
     /** @var array */
-    protected $countries = array();
+    public $countries = array();
     
     /** @var array */
-    protected $exclusions = array();
+    public $exclusions = array();
     
     
     /**

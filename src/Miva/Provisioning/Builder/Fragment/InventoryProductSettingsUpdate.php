@@ -21,49 +21,49 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 class InventoryProductSettingsUpdate implements Model\StoreFragmentInterface
 {
     /** @var string */
-    protected $productCode;
+    public $productCode;
     
     /** @var boolean */
-    protected $trackProduct = false;
+    public $trackProduct = false;
     
     /** @var int */
-    protected $adjustStockBy;
+    public $adjustStockBy;
     
     /** @var string */
-    protected $inStockMessageShort;
+    public $inStockMessageShort;
     
     /** @var string */
-    protected $inStockMessageLong;
+    public $inStockMessageLong;
     
     /** @var boolean */
-    protected $trackLowStockLevel = false;
+    public $trackLowStockLevel = false;
     
     /** @var string */
-    protected $lowStockLevel;
+    public $lowStockLevel;
     
     /** @var string */
-    protected $lowStockMessageShort;
+    public $lowStockMessageShort;
     
     /** @var string */
-    protected $lowStockMessageLong;
+    public $lowStockMessageLong;
     
     /** @var boolean */
-    protected $trackOutOfStockLevel = false;
+    public $trackOutOfStockLevel = false;
     
     /** @var string */
-    protected $hideOutOfStockProducts = false;
+    public $hideOutOfStockProducts = false;
     
     /** @var string */
-    protected $outOfStockLevel;
+    public $outOfStockLevel;
     
     /** @var string */
-    protected $outOfStockMessageShort;
+    public $outOfStockMessageShort;
     
     /** @var string */
-    protected $outOfStockMessageLong;
+    public $outOfStockMessageLong;
     
     /** @var string */
-    protected $limitedStockMessage;
+    public $limitedStockMessage;
     
     /**
      * getProductCode

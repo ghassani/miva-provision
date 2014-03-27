@@ -22,10 +22,10 @@ class ImageTypeAdd implements Model\StoreFragmentInterface
 {
     
     /** @var string */
-    protected $code;
+    public $code;
     
     /** @var string */
-    protected $description;
+    public $description;
 
     /**
      * getCode

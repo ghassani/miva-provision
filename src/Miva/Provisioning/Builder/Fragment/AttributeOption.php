@@ -21,10 +21,10 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 class AttributeOption implements Model\ProductVariantOptionFragmentInterface
 {
     /** @var string */
-    protected $attributeCode;
+    public $attributeCode;
 
     /** @var string */
-    protected $optionCode;
+    public $optionCode;
    
     /**
      * Constructor
