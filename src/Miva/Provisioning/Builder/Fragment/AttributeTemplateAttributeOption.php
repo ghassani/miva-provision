@@ -33,7 +33,7 @@ class AttributeTemplateAttributeOption implements Model\ProductVariantOptionFrag
      * Constructor
      * 
      * @param string $attributeCode
-     * @parma string $attributeTemplateAttributeCode
+     * @param string $attributeTemplateAttributeCode
      * @param string $optionCode
     */
     public function __construct($attributeCode = null, $attributeTemplateAttributeCode = null, $optionCode = null)
