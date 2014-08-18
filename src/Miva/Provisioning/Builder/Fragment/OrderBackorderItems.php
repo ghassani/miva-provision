@@ -124,7 +124,7 @@ class OrderBackorderItems implements Model\StoreFragmentInterface
         $productListXmlRoot = $xmlObject->addChild('ProductList');
         
         foreach ($this->getProducts() as $product) {
-            XmlHelper::appentToParent($productListXmlRoot, $product->toXml($version, $options));
+            XmlHelper::appendToParent($productListXmlRoot, $product->toXml($version, $options));
         }
         
         return $xmlObject;
