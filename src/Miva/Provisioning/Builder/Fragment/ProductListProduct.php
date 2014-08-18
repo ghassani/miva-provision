@@ -119,7 +119,7 @@ class ProductListProduct implements Model\FragmentFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new SimpleXMLElement('<Product> />');
+        $xmlObject = new SimpleXMLElement('<Product />');
         
         $xmlObject->addChild('Code', $this->getCode());
         $xmlObject->addChild('Quantity', $this->getQuantity());
