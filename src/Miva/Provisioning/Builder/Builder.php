@@ -308,8 +308,17 @@ class Builder
      *
      * @return string
     */
-    public function toXml()
+    public function toXml($formatted = false)
     {
+        if(true === $formatted){
+            $xml = $this->root->saveXml();
+            $dom = new \DOMDocument('1.0');
+            $dom->preserveWhiteSpace = false;
+            $dom->formatOutput = true;
+            $dom->loadXML($xml);
+            return $dom->saveXML();
+        }
         return $this->root->saveXml();
+
     }
 }
