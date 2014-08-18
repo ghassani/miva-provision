@@ -138,12 +138,12 @@ class OrderShipmentAdd implements Model\StoreFragmentInterface
         
         foreach($this->getProductList() as $product) {
             $productXml = $productListXml->addChild('Product');
-            $productXml->addAttribute('product_code', $product->getProductCode());
+            $productXml->addAttribute('product_code', $product->getCode());
             $productXml->addAttribute('quantity', $product->getQuantity());
         }
         
         $xmlObject->addChild('Code', $this->getCode());
-        
+                
         return $xmlObject;
     }
 }
