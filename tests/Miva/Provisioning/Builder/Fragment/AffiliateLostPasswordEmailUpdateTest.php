@@ -38,13 +38,33 @@ class AffiliateLostPasswordEmailUpdateTest extends \PHPUnit_Framework_TestCase
           $this->assertEquals($fragment->getEmailCC(), 'EmailCC');
           $this->assertEquals($fragment->getSubject(), 'Subject');
           $this->assertEquals($fragment->getHeaderText(), 'HeaderText');
+
+    }
+
+
+    /**
+     * testValidXML
+     * 
+     * Make sure it builds valid XML
+     */
+    public function testValidXML()
+    {
+        
+        $fragment = new AffiliateLostPasswordEmailUpdate();
+        
+        $fragment->setEmailFrom('EmailFrom')
+          ->setEmailCC('EmailCC')
+          ->setSubject('Subject')
+          ->setHeaderText('HeaderText');
           
-          $expectedXml = '<AffiliateLostPasswordEmail_Update>
+        $expectedXml = '<AffiliateLostPasswordEmail_Update>
                 <EmailFrom>EmailFrom</EmailFrom>
                 <EmailCC>EmailCC</EmailCC>
                 <Subject>Subject</Subject>
                 <HeaderText>HeaderText</HeaderText>
             </AffiliateLostPasswordEmail_Update>';
+        
+        $this->assertXmlStringEqualsXmlString($expectedXml, $fragment->toXML()->saveXML());
     }
-
+    
 }

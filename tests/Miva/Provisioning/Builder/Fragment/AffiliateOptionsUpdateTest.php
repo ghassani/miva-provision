@@ -49,7 +49,29 @@ class AffiliateOptionsUpdateTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($fragment->getLinkImage(), 'LinkImage');    
         $this->assertEquals($fragment->getLinkText(), 'LinkText');    
         $this->assertEquals($fragment->getTerms(), 'Terms');
-      
+
+    }
+
+    /**
+     * testValidXML
+     * 
+     * Make sure it builds valid XML
+     */
+    public function testValidXML()
+    {
+        
+        $fragment = new AffiliateOptionsUpdate();
+        
+        $fragment
+        ->setActive('Active')
+        ->setApplicationStatus('ApplicationStatus')    
+        ->setDefaultCommissionHit('DefaultCommissionHit')    
+        ->setDefaultCommissionPercentOfOrder('DefaultCommissionPercentOfOrder')    
+        ->setDefaultCommissionOrderFlatFee('DefaultCommissionOrderFlatFee')
+        ->setPayoutThreshold('PayoutThreshold')    
+        ->setLinkImage('LinkImage')    
+        ->setLinkText('LinkText')    
+        ->setTerms('Terms');
 
           
         $expectedXml = '<AffiliateOptions_Update>
@@ -63,6 +85,8 @@ class AffiliateOptionsUpdateTest extends \PHPUnit_Framework_TestCase
             <LinkText>LinkText</LinkText>
             <Terms>Terms</Terms>
         </AffiliateOptions_Update>';
+        
+        $this->assertXmlStringEqualsXmlString($expectedXml, $fragment->toXML()->saveXML());
     }
 }
         
