@@ -143,7 +143,7 @@ class OrderShipmentAdd implements Model\StoreFragmentInterface
         }
         
         $xmlObject->addChild('Code', $this->getCode());
-                
+        
         return $xmlObject;
     }
 }
