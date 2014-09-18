@@ -16,12 +16,8 @@ namespace Miva\Provisioning;
 */
 class Response
 {
-    
-    /** @var int */
-    protected $status = null;
-    
-    /** @var string */
-    protected $content = null;
+    /** @var array */
+    protected $response = array();
     
     /**
      * Constructor
@@ -29,10 +25,9 @@ class Response
      * @param string $content
      * @param int $status
      */
-     public function __construct($content, $status = null)
+     public function __construct($content)
      {
-         $this->content = $content;
-         $this->status = $status;
+         $this->response = json_decode($content, true);
      }
      
     /**
@@ -54,7 +49,7 @@ class Response
     */
     public function setContent($content)
     {
-    	$this->content = $content;
+        $this->content = $content;
         return $this;
     }
     
@@ -63,24 +58,21 @@ class Response
      *
      * @return int
     */
-    public function getStatus()
+    public function isSuccess()
     {
-        return $this->status;
+        return isset($this->response['success']) && $this->response['success'] == 1;
     }
     
-    /**
-     * setStatus
-     *
-     * @param int $status
-     *
-     * @return self
-    */
-    public function setStatus($status)
+
+    public function getErrorMessage()
     {
-    	$this->status = $status;
-        return $this;
+        return isset($this->response['error_message']) ? $this->response['error_message'] : null;
     }
 
+    public function getErrorCode()
+    {
+        return isset($this->response['error_code']) ? $this->response['error_code'] : null;
+    }
 
     
 }
