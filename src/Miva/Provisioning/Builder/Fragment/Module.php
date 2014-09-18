@@ -22,7 +22,7 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
  * 
  * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class Module implements Model\FragmentFragmentInterface
+class Module implements Model\StoreFragmentInterface
 {
 
     /** @var string */
@@ -133,7 +133,10 @@ class Module implements Model\FragmentFragmentInterface
         $xmlObject->addAttribute('code', $this->getCode());
         $xmlObject->addAttribute('feature', $this->getFeature());
         
-        XmlHelper::appendArrayToParent($xmlObject, $this->getData());
+        foreach ($this->getData() as $data) {
+            XmlHelper::appendToParent($xmlObject, $data->toXml($version, $options));
+        }
+        
                 
         return $xmlObject;
     }

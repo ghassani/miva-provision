@@ -94,7 +94,7 @@ class XmlHelper
         };
         
         foreach ($childArray as $field => $value) {
-            $recursiveBuilder($xmlObject, $field, $value);
+            $recursiveBuilder($parent, $field, $value);
         }
     }
     
