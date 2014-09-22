@@ -67,7 +67,7 @@ class Client
     */
     public function setUri($uri)
     {
-    	$this->uri = $uri;
+        $this->uri = $uri;
         return $this;
     }
 
@@ -90,7 +90,7 @@ class Client
     */
     public function setToken($token)
     {
-    	$this->token = $token;
+        $this->token = $token;
         return $this;
     }
     
@@ -158,9 +158,9 @@ class Client
         
         // get the response status code
         $statusCode = curl_getinfo($this->connection, CURLINFO_HTTP_CODE);
+        $contentType = curl_getinfo($this->connection, CURLINFO_CONTENT_TYPE );
         
-        
-        return new Response($response, $statusCode);
+        return new Response($response, $contentType);
     }
 
 }

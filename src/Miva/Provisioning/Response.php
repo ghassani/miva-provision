@@ -25,10 +25,15 @@ class Response
      * @param string $content
      * @param int $status
      */
-     public function __construct($content)
+     public function __construct($content, $contentType)
      {
-         $this->response = json_decode($content, true);
+         if ($contentType == 'text/xml') {
+             $this->response = simplexml_load_string($content);
+         } else {
+             $this->response = json_decode($content, true);
+         }  
      }
+
      
     /**
      * getContent
@@ -60,18 +65,47 @@ class Response
     */
     public function isSuccess()
     {
-        return isset($this->response['success']) && $this->response['success'] == 1;
+        if ($this->response instanceof \SimpleXMLElement) {
+            return true;
+        }
+
+        if (!$this->response instanceof \SimpleXMLElement && isset($this->response['success']) && $this->response['success']) {
+            return true;
+        }
+
+        return false;
     }
     
 
     public function getErrorMessage()
     {
+        if ($this->response instanceof \SimpleXMLElement) {
+            return $this->getMessages();
+        }
+
         return isset($this->response['error_message']) ? $this->response['error_message'] : null;
     }
 
     public function getErrorCode()
     {
         return isset($this->response['error_code']) ? $this->response['error_code'] : null;
+    }
+
+
+    public function getMessages()
+    {
+        $return = array();
+
+        if (!$this->response instanceof \SimpleXMLElement) {
+            return $return;
+        }
+
+        foreach($this->response->xpath('Message') as $message) {
+            $attributes = $message->attributes();
+            $return[] = 'Line: '.$attributes['lineno'].' - '.((string) $message);
+        }
+
+        return $return;
     }
 
     
