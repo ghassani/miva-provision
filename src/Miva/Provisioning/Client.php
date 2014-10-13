@@ -123,9 +123,6 @@ class Client
            if($request->getUrl()) {
                $url = $request->getUrl();
            }
-        } elseif (class_exists('\Symfony\Component\HttpFoundation\Request') && $request instanceof \Symfony\Component\HttpFoundation\Request) { 
-            // support a symfony2 request object
-            $content = (string) $request->getContent();
         } else {
             $content = (string) $request;   
         }
@@ -137,13 +134,12 @@ class Client
         if(!strlen($content)) {
             throw new \Exception('Request object has no content to send');
         }
-        
+
         curl_setopt_array($this->connection, array(
             CURLOPT_URL => $url,
             CURLOPT_POST => true,
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_SSL_VERIFYHOST => false,
-            CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_POSTFIELDS => $content,
             CURLOPT_HTTPHEADER => array(
@@ -152,7 +148,10 @@ class Client
                 'MMProvision-Access-Token: '.$this->getToken(),
             )
         ));
-        
+
+        if (!ini_get('open_basedir') && !ini_get('safe_mode')) {
+            curl_setopt($this->connection, CURLOPT_FOLLOWLOCATION, true);
+        }
 
         $response = curl_exec($this->connection);
         
