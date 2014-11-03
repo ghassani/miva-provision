@@ -98,6 +98,10 @@ class Client
         return $this;
     }
 
+    public function createRequest($requestType)
+    {
+
+    }
 
     public function send(RequestInterface $request)
     {

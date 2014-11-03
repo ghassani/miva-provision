@@ -1,6 +1,8 @@
 <?php
 namespace Miva\Json\Request;
 
+use Symfony\Component\HttpFoundation\ParameterBag;
+
 /**
  * Class Request
  *
@@ -9,40 +11,47 @@ namespace Miva\Json\Request;
  */
 class Request implements RequestInterface
 {
-    protected $parameters = array(
-        'session_type' => self::SESSION_TYPE_RUNTIME
-    );
+    protected $parameters = null;
 
+    /**
+     * @param ParameterBag $parameters
+     */
+    public function __construct(ParameterBag $parameters = null)
+    {
+        $this->parameters = is_null($parameters) ? new ParameterBag() : $parameters;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function validate()
     {
         return true;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getParameters()
     {
         return $this->parameters;
     }
 
     /**
-     * @param $key
-     * @return null
+     * {@inheritDoc}
      */
-    public function getParameter($key)
+    public function setParameters(ParameterBag $parameters)
     {
-        $key = strtolower($key);
-        return isset($this->parameters[$key]) ? $this->parameters[$key] : null;
-    }
-
-    /**
-     * @param $key
-     * @param $value
-     * @return $this
-     */
-    public function setParameter($key, $value)
-    {
-        $this->parameters[strtolower($key)] = $value;
+        $this->parameters = $parameters;
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function getFunction()
+    {
+        return static::JSON_FUNCTION;
+    }
 
-} 
+}
