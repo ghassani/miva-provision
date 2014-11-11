@@ -11,8 +11,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.3",
-        "symfony/http-foundation": "2.3.*",
-        "guzzlehttp/guzzle": ">=4,<6"
+        "symfony/http-foundation": "2.3.*"
     },
     "suggest": {
 
