@@ -65,7 +65,7 @@ class Response
     */
     public function isSuccess()
     {
-        if ($this->response instanceof \SimpleXMLElement) {
+        if (!count($this->getErrorMessage())) {
             return true;
         }
 
@@ -86,12 +86,17 @@ class Response
         return isset($this->response['error_message']) ? $this->response['error_message'] : null;
     }
 
+    /**
+     * 
+     */
     public function getErrorCode()
     {
         return isset($this->response['error_code']) ? $this->response['error_code'] : null;
     }
 
-
+    /**
+     *
+     */
     public function getMessages()
     {
         $return = array();
