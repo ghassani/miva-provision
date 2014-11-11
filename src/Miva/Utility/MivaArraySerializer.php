@@ -1,8 +1,22 @@
-<?php 
-
+<?php
+/*
+* This file is part of the Miva PHP Provision package.
+*
+* (c) Gassan Idriss <gidriss@mivamerchant.com>
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+*/
 namespace Miva\Utility;
 
 
+/**
+* MivaArraySerializer
+ * 
+ * Takes a PHP array and serializes it for use in MivaScript
+ *
+ * @author Gassan Idriss <gidriss@mivamerchant.com>
+*/
 class MivaArraySerializer
 {
    
@@ -88,7 +102,7 @@ class MivaArraySerializer
                    }
                }      
            } else {
-               $serializedData[] = $_key.'='.$value;
+               $serializedData[] = $_key.'='.urlencode($value);
            }
        }
        
