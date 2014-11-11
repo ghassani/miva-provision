@@ -80,7 +80,7 @@ class Client
     {
         return $this->token;
     }
-    
+
     /**
      * setToken
      *
@@ -95,11 +95,11 @@ class Client
     }
     
     /**
-     * getUrl
+     * buildUrl
      * 
      * @return string
      */
-     public function getUrl()
+     public function buildUrl()
      {
          return sprintf('%s?Function=Module&Module_Code=remoteprovisioning&Module_Function=XML',
             $this->getUrl()
@@ -116,7 +116,7 @@ class Client
      */
     public function doRequest($request)
     {
-        $url = $this->getUrl();
+        $url = $this->buildUrl();
         
         if ($request instanceof Request) {
            $content = (string) $request->getContent();
