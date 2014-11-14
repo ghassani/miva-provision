@@ -389,19 +389,42 @@ class ProductAdd implements Model\StoreFragmentInterface
     {
         $xmlObject = new SimpleXmlElement('<Product_Add />');
         
-        $xmlObject->addChild('Code', $this->getCode());
-        $xmlObject->addChild('Name', $this->getName())->addAttribute('method-call', 'addCDATA');
-        $xmlObject->addChild('SKU', $this->getSku());
-        $xmlObject->addChild('Price', $this->getPrice());
-        $xmlObject->addChild('Cost', $this->getCost());
-        $xmlObject->addChild('Weight', $this->getWeight());
-        $xmlObject->addChild('Description', $this->getDescription())->addAttribute('method-call', 'addCDATA');
+        $xmlObject->addChild('Code',    $this->getCode());
+        $xmlObject->addChild('Name',    $this->getName())->addAttribute('method-call', 'addCDATA');        
+        $xmlObject->addChild('Price',   $this->getPrice());
         $xmlObject->addChild('Taxable', $this->getTaxable() ? 'Yes' : 'No');
-        $xmlObject->addChild('Active', $this->getActive() ? 'Yes' : 'No');
-        $xmlObject->addChild('CanonicalCategoryCode', $this->getCanonicalCategoryCode());
-        $xmlObject->addChild('AlternateDisplayPage', $this->getAlternateDisplayPage());
-        $xmlObject->addChild('ThumbnailImage', $this->getThumbnailImage());
-        $xmlObject->addChild('FullSizeImage', $this->getFullSizeImage());
+        $xmlObject->addChild('Active',  $this->getActive()  ? 'Yes' : 'No');
+
+        if ($this->getSku()) {
+            $xmlObject->addChild('SKU', $this->getSku());
+        }
+
+        if ($this->getCost()) {
+            $xmlObject->addChild('Cost', $this->getCost());
+        }
+
+        if ($this->getWeight()) {
+            $xmlObject->addChild('Weight', $this->getWeight());
+        }
+        if ($this->getDescription()) {
+            $xmlObject->addChild('Description', $this->getDescription())->addAttribute('method-call', 'addCDATA');
+        }
+
+        if ($this->getCanonicalCategoryCode()) {
+            $xmlObject->addChild('CanonicalCategoryCode', $this->getCanonicalCategoryCode());
+        }
+        
+        if ($this->getAlternateDisplayPage()) {
+            $xmlObject->addChild('AlternateDisplayPage', $this->getAlternateDisplayPage());
+        }
+
+        if ($this->getThumbnailImage()) {
+           $xmlObject->addChild('ThumbnailImage', $this->getThumbnailImage());
+        }
+        
+        if ($this->getFullSizeImage()) {
+            $xmlObject->addChild('FullSizeImage', $this->getFullSizeImage());
+        }
 
         return $xmlObject;
     }

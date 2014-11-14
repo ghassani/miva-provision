@@ -18,7 +18,7 @@ class Client
 {
     
     /** @var string */
-    protected $uri;
+    protected $url;
 
     /** @var string */
     protected $token;
@@ -29,12 +29,12 @@ class Client
     /**
     * Constructor
     * 
-    * @param string $uri - The Entry Point to MM5 Root, ex: http://mydomain.com/mm5
+    * @param string $url - The URL to Miva Merchant's json.mvc
     * @param string $token - The Access Token to the API
     */
-    public function __construct($uri, $token)
+    public function __construct($url, $token)
     {
-        $this->uri = $uri;
+        $this->url = $url;
         $this->token = $token;  
     }
     
@@ -49,25 +49,25 @@ class Client
      }
      
     /**
-     * getUri
+     * getUrl
      *
      * @return string
     */
-    public function getUri()
+    public function getUrl()
     {
-        return $this->uri;
+        return $this->url;
     }
     
     /**
-     * setUri
+     * setUrl
      *
-     * @param string $uri
+     * @param string $url
      *
      * @return self
     */
-    public function setUri($uri)
+    public function setUrl($url)
     {
-        $this->uri = $uri;
+        $this->url = $url;
         return $this;
     }
 
@@ -80,7 +80,7 @@ class Client
     {
         return $this->token;
     }
-    
+
     /**
      * setToken
      *
@@ -95,14 +95,14 @@ class Client
     }
     
     /**
-     * getUrl
+     * buildUrl
      * 
      * @return string
      */
-     public function getUrl()
+     public function buildUrl()
      {
-         return sprintf('%s/json.mvc?Function=Module&Module_Code=remoteprovisioning&Module_Function=XML',
-            $this->getUri()
+         return sprintf('%s?Function=Module&Module_Code=remoteprovisioning&Module_Function=XML',
+            $this->getUrl()
          );
      }
 
@@ -116,7 +116,7 @@ class Client
      */
     public function doRequest($request)
     {
-        $url = $this->getUrl();
+        $url = $this->buildUrl();
         
         if ($request instanceof Request) {
            $content = (string) $request->getContent();
@@ -156,8 +156,8 @@ class Client
         $response = curl_exec($this->connection);
         
         // get the response status code
-        $statusCode = curl_getinfo($this->connection, CURLINFO_HTTP_CODE);
-        $contentType = curl_getinfo($this->connection, CURLINFO_CONTENT_TYPE );
+        $statusCode  = curl_getinfo($this->connection, CURLINFO_HTTP_CODE);
+        $contentType = curl_getinfo($this->connection, CURLINFO_CONTENT_TYPE);
         
         return new Response($response, $contentType);
     }
