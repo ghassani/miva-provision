@@ -15,20 +15,22 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 
 /**
-* ProductFieldAdd
+* ProductFieldUpdate
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ProductFieldAdd implements StoreFragmentInterface
+class ProductFieldUpdate implements StoreFragmentInterface
 {
 
     public $code;
     
+    public $newCode;
+    
     public $name;
     
-    public $fieldType;
+    public $fieldType;    
     
-    public $info = 'Generated from miva-provisioning package';
+    public $info;
 
     /**
      * @return mixed
@@ -65,7 +67,7 @@ class ProductFieldAdd implements StoreFragmentInterface
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getInfo()
     {
@@ -73,7 +75,7 @@ class ProductFieldAdd implements StoreFragmentInterface
     }
 
     /**
-     * @param string $info
+     * @param mixed $info
      */
     public function setInfo($info)
     {
@@ -97,8 +99,23 @@ class ProductFieldAdd implements StoreFragmentInterface
         $this->name = $name;
         return $this;
     }
-        
 
+    /**
+     * @return mixed
+     */
+    public function getNewCode()
+    {
+        return $this->newCode;
+    }
+
+    /**
+     * @param mixed $newCode
+     */
+    public function setNewCode($newCode)
+    {
+        $this->newCode = $newCode;
+        return $this;
+    }   
     
     /**
      * {@inheritDoc}
@@ -106,12 +123,10 @@ class ProductFieldAdd implements StoreFragmentInterface
      * Format:
      * 
      * <Module code="customfields" feature="fields_prod">
-     *  <ProductField_Add>
-     *      <Code>Shipping</Code>
-     *      <Name>Shipping</Name>
-     *      <FieldType>textfield</FieldType>
-     *      <Info><![CDATA[Transferred from Previous Store]]></Info>
-     * </ProductField_Add>
+     *  <ProductField_Update code="code">
+     *      <Code>code</Code>
+     *      <Name>name</Name>
+     *  </ProductField_Update>
      * </Module>
     */
     public function toXml($version = Version::CURRENT, array $options = array())
@@ -123,13 +138,27 @@ class ProductFieldAdd implements StoreFragmentInterface
         $xmlObject->addAttribute('feature', 'fields_prod');
         
         
-        $mainTag = $xmlObject->addChild('ProductField_Add');
+        $mainTag = $xmlObject->addChild('ProductField_Update');
         
-        $mainTag->addChild('Code', $this->getCode());
-        $mainTag->addChild('Name', $this->getName())->addAttribute('method-call', 'addCDATA');
-        $mainTag->addChild('FieldType', $this->getFieldType());
-        $mainTag->addChild('Info', $this->getInfo())->addAttribute('method-call', 'addCDATA');
-
+        $mainTag->addAttribute('code', $this->getCode());
+        
+        if ($this->getNewCode() && $this->getCode() != $this->getNewCode()) {
+            $mainTag->addChild('Code', $this->getNewCode());
+        } else {
+            $mainTag->addChild('Code', $this->getCode());
+        }        
+        
+        if ($this->getName()) {
+            $mainTag->addChild('Name', $this->getName())->addAttribute('method-call', 'addCDATA');
+        }
+        
+        if ($this->getFieldType()) {
+            $mainTag->addChild('FieldType', $this->getFieldType());
+        }
+        
+        if ($this->getInfo()) {
+            $mainTag->addChild('Info', $this->getInfo())->addAttribute('method-call', 'addCDATA');
+        }
         
         return $xmlObject;
     }

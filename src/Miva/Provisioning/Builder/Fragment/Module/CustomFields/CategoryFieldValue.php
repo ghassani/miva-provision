@@ -15,11 +15,11 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 
 /**
-* ProductFieldValue
+* CategoryFieldValue
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ProductFieldValue implements StoreFragmentInterface
+class CategoryFieldValue implements StoreFragmentInterface
 {
 
     public $productCode;
@@ -60,8 +60,8 @@ class ProductFieldValue implements StoreFragmentInterface
      * 
      * Format:
      * 
-     * <Module code="customfields" feature="fields_prod">
-     *  <ProductField_Value product="FOIL-HYDRANGEA-4OZ" field="shippingexemptind">No</ProductField_Value>
+     * <Module code="customfields" feature="fields_cat">
+     *  <CategoryField_Value product="FOIL-HYDRANGEA-4OZ" field="shippingexemptind">No</CategoryField_Value>
      * </Module>
     */
     public function toXml($version = Version::CURRENT, array $options = array())
@@ -70,10 +70,10 @@ class ProductFieldValue implements StoreFragmentInterface
         $xmlObject = new SimpleXMLElement('<Module />');
         
         $xmlObject->addAttribute('code',    'customfields');
-        $xmlObject->addAttribute('feature', 'fields_prod');
+        $xmlObject->addAttribute('feature', 'fields_cat');
         
         
-        $mainTag = $xmlObject->addChild('ProductField_Value', $this->getValue());
+        $mainTag = $xmlObject->addChild('CategoryField_Value', $this->getValue());
         
         $mainTag->addAttribute('product', $this->getProductCode());
         $mainTag->addAttribute('field', $this->getFieldCode());

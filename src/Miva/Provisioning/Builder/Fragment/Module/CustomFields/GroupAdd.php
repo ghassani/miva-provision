@@ -15,53 +15,61 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 
 /**
-* ProductFieldValue
+* GroupAdd
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ProductFieldValue implements StoreFragmentInterface
+class GroupAdd implements StoreFragmentInterface
 {
 
-    public $productCode;
+    public $code;
     
-    public $fieldCode;
-    
-    public $value;
+    public $name;
 
     /**
-     * @param mixed $fieldCode
+     * @return mixed
      */
-    public function setFieldCode($fieldCode)
+    public function getCode()
     {
-        $this->fieldCode = $fieldCode;
-        return $this;
+        return $this->code;
     }
 
     /**
-     * @param mixed $productCode
+     * @param mixed $code
      */
-    public function setProductCode($productCode)
+    public function setCode($code)
     {
-        $this->productCode = $productCode;
-        return $this;
+        $this->code = $code;
+        return $$this;
     }
 
     /**
-     * @param mixed $value
+     * @return mixed
      */
-    public function setValue($value)
+    public function getName()
     {
-        $this->value = $value;
-        return $this;
+        return $this->name;
     }
-        
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $$this;
+    }
+            
     /**
      * {@inheritDoc}
      * 
      * Format:
      * 
-     * <Module code="customfields" feature="fields_prod">
-     *  <ProductField_Value product="FOIL-HYDRANGEA-4OZ" field="shippingexemptind">No</ProductField_Value>
+     * <Module code="customfields" feature="util">
+     *   <Group_Add>
+     *      <Code>group_code</Code>
+     *      <Name>Group Name</Name>
+     *  </Group_Add>
      * </Module>
     */
     public function toXml($version = Version::CURRENT, array $options = array())
@@ -70,13 +78,13 @@ class ProductFieldValue implements StoreFragmentInterface
         $xmlObject = new SimpleXMLElement('<Module />');
         
         $xmlObject->addAttribute('code',    'customfields');
-        $xmlObject->addAttribute('feature', 'fields_prod');
+        $xmlObject->addAttribute('feature', 'util');
         
         
-        $mainTag = $xmlObject->addChild('ProductField_Value', $this->getValue());
+        $mainTag = $xmlObject->addChild('Group_Add');
         
-        $mainTag->addAttribute('product', $this->getProductCode());
-        $mainTag->addAttribute('field', $this->getFieldCode());
+        $mainTag->addChild('Code', $this->getCode());
+        $mainTag->addChild('Name', $this->getName())->addAttribute('method-call', 'addCDATA');
 
         
         return $xmlObject;

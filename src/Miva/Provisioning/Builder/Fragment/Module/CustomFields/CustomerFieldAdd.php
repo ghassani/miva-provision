@@ -15,11 +15,11 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 
 /**
-* ProductFieldAdd
+* CustomerFieldAdd
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ProductFieldAdd implements StoreFragmentInterface
+class CustomerFieldAdd implements StoreFragmentInterface
 {
 
     public $code;
@@ -105,13 +105,13 @@ class ProductFieldAdd implements StoreFragmentInterface
      * 
      * Format:
      * 
-     * <Module code="customfields" feature="fields_prod">
-     *  <ProductField_Add>
+     * <Module code="customfields" feature="fields_cust">
+     *  <CustomerField_Add>
      *      <Code>Shipping</Code>
      *      <Name>Shipping</Name>
      *      <FieldType>textfield</FieldType>
      *      <Info><![CDATA[Transferred from Previous Store]]></Info>
-     * </ProductField_Add>
+     * </CustomerField_Add>
      * </Module>
     */
     public function toXml($version = Version::CURRENT, array $options = array())
@@ -120,10 +120,10 @@ class ProductFieldAdd implements StoreFragmentInterface
         $xmlObject = new SimpleXMLElement('<Module />');
         
         $xmlObject->addAttribute('code',    'customfields');
-        $xmlObject->addAttribute('feature', 'fields_prod');
+        $xmlObject->addAttribute('feature', 'fields_cust');
         
         
-        $mainTag = $xmlObject->addChild('ProductField_Add');
+        $mainTag = $xmlObject->addChild('CustomerField_Add');
         
         $mainTag->addChild('Code', $this->getCode());
         $mainTag->addChild('Name', $this->getName())->addAttribute('method-call', 'addCDATA');

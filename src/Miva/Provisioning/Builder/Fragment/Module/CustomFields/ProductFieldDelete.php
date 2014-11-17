@@ -15,55 +15,42 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 
 /**
-* ProductFieldValue
+* ProductFieldDelete
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class ProductFieldValue implements StoreFragmentInterface
+class ProductFieldDelete implements StoreFragmentInterface
 {
 
-    public $productCode;
-    
-    public $fieldCode;
-    
-    public $value;
+    public $code;
 
     /**
-     * @param mixed $fieldCode
+     * @return mixed
      */
-    public function setFieldCode($fieldCode)
+    public function getCode()
     {
-        $this->fieldCode = $fieldCode;
-        return $this;
+        return $this->code;
     }
 
     /**
-     * @param mixed $productCode
+     * @param mixed $code
      */
-    public function setProductCode($productCode)
+    public function setCode($code)
     {
-        $this->productCode = $productCode;
-        return $this;
+        $this->code = $code;
+        return $$this;
     }
 
-    /**
-     * @param mixed $value
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
-        return $this;
-    }
-        
+            
     /**
      * {@inheritDoc}
      * 
      * Format:
      * 
      * <Module code="customfields" feature="fields_prod">
-     *  <ProductField_Value product="FOIL-HYDRANGEA-4OZ" field="shippingexemptind">No</ProductField_Value>
-     * </Module>
-    */
+     *      <ProductField_Delete code="code" />
+     *  </Module>
+     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
@@ -72,11 +59,9 @@ class ProductFieldValue implements StoreFragmentInterface
         $xmlObject->addAttribute('code',    'customfields');
         $xmlObject->addAttribute('feature', 'fields_prod');
         
+        $mainTag = $xmlObject->addChild('ProductField_Delete');
         
-        $mainTag = $xmlObject->addChild('ProductField_Value', $this->getValue());
-        
-        $mainTag->addAttribute('product', $this->getProductCode());
-        $mainTag->addAttribute('field', $this->getFieldCode());
+        $mainTag->addAttribute('Code', $this->getCode());
 
         
         return $xmlObject;
