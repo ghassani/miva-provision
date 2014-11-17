@@ -7,20 +7,20 @@
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
 */
-namespace Miva\Provisioning\Builder\Fragment;
+namespace Miva\Provisioning\Builder\Fragment\Module\UltimateGiftCertificates;
 
 use Miva\Version;
 use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
-
+use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
-* UltimateGiftCertificatesAddKey
+* UpdateKey
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class UltimateGiftCertificatesAddKey implements StoreFragmentInterface
+class UpdateKey implements StoreFragmentInterface
 {
     
     public $certKey;
@@ -32,6 +32,12 @@ class UltimateGiftCertificatesAddKey implements StoreFragmentInterface
     public $issued;
 
     public $expires;
+
+    public $issued;
+
+    public $expires;
+
+    public $balance;
 
     public $lastUsed;
 
@@ -143,6 +149,63 @@ class UltimateGiftCertificatesAddKey implements StoreFragmentInterface
     public function setExpires($expires)
     {
         $this->expires = $expires;
+        return $this;
+    }
+
+    /**
+     *
+     * @return the unknown_type
+     */
+    public function getIssued()
+    {
+        return $this->issued;
+    }
+
+    /**
+     *
+     * @param unknown_type $issued            
+     */
+    public function setIssued($issued)
+    {
+        $this->issued = $issued;
+        return $this;
+    }
+
+    /**
+     *
+     * @return the unknown_type
+     */
+    public function getExpires()
+    {
+        return $this->expires;
+    }
+
+    /**
+     *
+     * @param unknown_type $expires            
+     */
+    public function setExpires($expires)
+    {
+        $this->expires = $expires;
+        return $this;
+    }
+
+    /**
+     *
+     * @return the unknown_type
+     */
+    public function getBalance()
+    {
+        return $this->balance;
+    }
+
+    /**
+     *
+     * @param unknown_type $balance            
+     */
+    public function setBalance($balance)
+    {
+        $this->balance = $balance;
         return $this;
     }
 
@@ -323,27 +386,10 @@ class UltimateGiftCertificatesAddKey implements StoreFragmentInterface
      * 
      * Format:    
      *                    
-     * <UltimateGiftCertificates_AddKey certcode="TEST_ADD">  
-     *    <Certkey>TEST2</Certkey>
-     *    <Balance>5000</Balance> 
-     *    <Expires>11</Expires> 
-     *    <Issued>TIMESTAMP</Issued> 
-     *    <Expires>TIMESTAMP</Expires> 
-     *    <Balance>FLOAT</Balance> 
-     *    <Lastused>TIMESTAMP</Lastused> 
-     *       <Order>INTEGER</Order> 
-     *       <Status>INTEGER</Status> 
-     *        <RecipientEmail>STRING</RecipientEmail> 
-     *       <RecipientName>STRING</RecipientName> 
-     *      <RecipientMessage>STRING</RecipientMessage> 
-     *       <SenderFirstName>STRING</SenderFirstName> 
-     *        <SenderLastName>STRING</SenderLastName> 
-     *        <SenderEmail>STRING</SenderEmail> 
-     *  </UltimateGiftCertificates_AddKey>
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<UltimateGiftCertificates_AddKey />');
+        $xmlObject = new SimpleXMLElement('<UltimateGiftCertificates_UpdateKey />');
 
         $xmlObject->addAttribute('certcode', $this->getCertCode());
 

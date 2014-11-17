@@ -14,7 +14,7 @@ use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
-* Product
+* ProductAdd
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */

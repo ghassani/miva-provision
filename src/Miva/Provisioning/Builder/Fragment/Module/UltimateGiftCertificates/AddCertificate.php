@@ -7,7 +7,7 @@
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
 */
-namespace Miva\Provisioning\Builder\Fragment;
+namespace Miva\Provisioning\Builder\Fragment\Module\UltimateGiftCertificates;
 
 use Miva\Version;
 use Miva\Provisioning\Builder\Helper\XmlHelper;
@@ -16,11 +16,11 @@ use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
-* UltimateGiftCertificatesAddCertificate
+* AddCertificate
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class UltimateGiftCertificatesAddCertificate implements StoreFragmentInterface
+class AddCertificate implements StoreFragmentInterface
 {
     
     public $code;

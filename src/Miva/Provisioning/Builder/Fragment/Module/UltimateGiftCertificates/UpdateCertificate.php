@@ -7,7 +7,7 @@
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
 */
-namespace Miva\Provisioning\Builder\Fragment;
+namespace Miva\Provisioning\Builder\Fragment\Module\UltimateGiftCertificates;
 
 use Miva\Version;
 use Miva\Provisioning\Builder\Helper\XmlHelper;
@@ -16,11 +16,11 @@ use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
-* UltimateGiftCertificatesUpdateCertificate
+* UpdateCertificate
 *
 * @author Gassan Idriss <gidriss@mivamerchant.com>
 */
-class UltimateGiftCertificatesUpdateCertificate implements StoreFragmentInterface
+class UpdateCertificate implements StoreFragmentInterface
 {
     
     public $code;
@@ -268,11 +268,13 @@ class UltimateGiftCertificatesUpdateCertificate implements StoreFragmentInterfac
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<Attribute_Option />');
+        $xmlObject = new SimpleXMLElement('<UltimateGiftCertificates_UpdateCertificate />');
 
-        $xmlObject->addAttribute('attribute_code', $this->getAttributeCode());
-        $xmlObject->addAttribute('option_code', $this->getOptionCode());        
-                
+        $xmlObject->addAttribute('code', $this->getCode());
+        
+        $xmlObject->addChild('Amount',  $this->getAmount());
+        $xmlObject->addChild('Expires', $this->getExpires());
+        
         return $xmlObject;
     }     
 }
