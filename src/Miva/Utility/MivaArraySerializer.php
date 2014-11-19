@@ -11,9 +11,10 @@ namespace Miva\Utility;
 
 
 /**
-* MivaArraySerializer
+ * MivaArraySerializer
  * 
- * Takes a PHP array and serializes it for use in MivaScript
+ * Takes a PHP array and serializes it for use in MivaScript which can then be
+ * deserialized to a miva structure/array
  *
  * @author Gassan Idriss <gidriss@mivamerchant.com>
 */

@@ -29,12 +29,28 @@ class ProductFieldValue implements StoreFragmentInterface
     public $value;
 
     /**
+     * @return mixed
+     */
+    public function getFieldCode()
+    {
+        return $this->fieldCode;
+    }
+
+    /**
      * @param mixed $fieldCode
      */
     public function setFieldCode($fieldCode)
     {
         $this->fieldCode = $fieldCode;
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProductCode()
+    {
+        return $this->productCode;
     }
 
     /**
@@ -47,6 +63,14 @@ class ProductFieldValue implements StoreFragmentInterface
     }
 
     /**
+     * @return mixed
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
      * @param mixed $value
      */
     public function setValue($value)
@@ -54,6 +78,8 @@ class ProductFieldValue implements StoreFragmentInterface
         $this->value = $value;
         return $this;
     }
+
+    
         
     /**
      * {@inheritDoc}

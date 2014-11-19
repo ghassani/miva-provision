@@ -42,7 +42,7 @@ class XmlHelper
         
         if (false !== $methodCall && !$child->count()) {
             $childNode = $parent->addChild($child->getName());
-            call_user_method($methodCall, $childNode, $child->__toString());
+            call_user_method($methodCall, $childNode, $child->__toString()); // @TODO: replace with call_user_func
         } else {
             $childNode = $parent->addChild($child->getName(), !$child->count() ? (string) $child : null);
         }

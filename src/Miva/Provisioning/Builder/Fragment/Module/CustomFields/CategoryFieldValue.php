@@ -22,11 +22,36 @@ use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 class CategoryFieldValue implements StoreFragmentInterface
 {
 
-    public $productCode;
+    public $categoryCode;
     
     public $fieldCode;
     
     public $value;
+
+    /**
+     * @return mixed
+     */
+    public function getCategoryCode()
+    {
+        return $this->categoryCode;
+    }
+
+    /**
+     * @param mixed $categoryCode
+     */
+    public function setCategoryCode($categoryCode)
+    {
+        $this->categoryCode = $categoryCode;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFieldCode()
+    {
+        return $this->fieldCode;
+    }
 
     /**
      * @param mixed $fieldCode
@@ -38,12 +63,11 @@ class CategoryFieldValue implements StoreFragmentInterface
     }
 
     /**
-     * @param mixed $productCode
+     * @return mixed
      */
-    public function setProductCode($productCode)
+    public function getValue()
     {
-        $this->productCode = $productCode;
-        return $this;
+        return $this->value;
     }
 
     /**
@@ -54,14 +78,15 @@ class CategoryFieldValue implements StoreFragmentInterface
         $this->value = $value;
         return $this;
     }
-        
+
+
     /**
      * {@inheritDoc}
      * 
      * Format:
      * 
      * <Module code="customfields" feature="fields_cat">
-     *  <CategoryField_Value product="FOIL-HYDRANGEA-4OZ" field="shippingexemptind">No</CategoryField_Value>
+     *  <CategoryField_Value category="code" field="code">No</CategoryField_Value>
      * </Module>
     */
     public function toXml($version = Version::CURRENT, array $options = array())
@@ -75,7 +100,7 @@ class CategoryFieldValue implements StoreFragmentInterface
         
         $mainTag = $xmlObject->addChild('CategoryField_Value', $this->getValue());
         
-        $mainTag->addAttribute('product', $this->getProductCode());
+        $mainTag->addAttribute('category', $this->getCategoryCode());
         $mainTag->addAttribute('field', $this->getFieldCode());
 
         

@@ -22,11 +22,36 @@ use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 class CustomerFieldValue implements StoreFragmentInterface
 {
 
-    public $productCode;
+    public $customerLogin;
     
     public $fieldCode;
     
     public $value;
+
+    /**
+     * @return mixed
+     */
+    public function getCustomerLogin()
+    {
+        return $this->customerLogin;
+    }
+
+    /**
+     * @param mixed $customerLogin
+     */
+    public function setCustomerLogin($customerLogin)
+    {
+        $this->customerLogin = $customerLogin;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFieldCode()
+    {
+        return $this->fieldCode;
+    }
 
     /**
      * @param mixed $fieldCode
@@ -38,12 +63,11 @@ class CustomerFieldValue implements StoreFragmentInterface
     }
 
     /**
-     * @param mixed $productCode
+     * @return mixed
      */
-    public function setProductCode($productCode)
+    public function getValue()
     {
-        $this->productCode = $productCode;
-        return $this;
+        return $this->value;
     }
 
     /**
@@ -61,7 +85,7 @@ class CustomerFieldValue implements StoreFragmentInterface
      * Format:
      * 
      * <Module code="customfields" feature="fields_cust">
-     *  <CustomerField_Value product="FOIL-HYDRANGEA-4OZ" field="shippingexemptind">No</CustomerField_Value>
+     *  <CustomerField_Value customer="login" field="code">No</CustomerField_Value>
      * </Module>
     */
     public function toXml($version = Version::CURRENT, array $options = array())
@@ -75,7 +99,7 @@ class CustomerFieldValue implements StoreFragmentInterface
         
         $mainTag = $xmlObject->addChild('CustomerField_Value', $this->getValue());
         
-        $mainTag->addAttribute('product', $this->getProductCode());
+        $mainTag->addAttribute('customer', $this->getCustomerLogin());
         $mainTag->addAttribute('field', $this->getFieldCode());
 
         
