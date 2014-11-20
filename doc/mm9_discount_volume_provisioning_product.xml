@@ -1,0 +1,81 @@
+<Product_Add>
+	<Code>discount_volume_provisioning_product</Code>
+	<Name>Volume Pricing Provisioning Test Product</Name>
+	<Price>99.95</Price>
+</Product_Add>
+
+<PriceGroup_Add>
+	<Name>Volume Pricing Product Provisioning Test 01</Name>
+	<Module>discount_volume</Module>
+	<Settings />
+</PriceGroup_Add>
+
+<PriceGroupProduct_Assign group_name="Volume Pricing Product Provisioning Test 01" product_code="discount_volume_provisioning_product" />
+
+<PriceGroup_Add>
+	<Name>Volume Pricing Product Provisioning Test 02</Name>
+	<Module>discount_volume</Module>
+	<Settings />
+</PriceGroup_Add>
+
+<PriceGroup_Add>
+	<Name>Volume Pricing Product Provisioning Test 03</Name>
+	<Module>discount_basket</Module>
+	<Settings />
+</PriceGroup_Add>
+
+<PriceGroup_Add>
+	<Name>Volume Pricing Product Provisioning Test 04</Name>
+	<Module>discount_volume</Module>
+	<Settings />
+</PriceGroup_Add>
+
+<PriceGroupProduct_Assign group_name="Volume Pricing Product Provisioning Test 04" product_code="discount_volume_provisioning_product" />
+
+<Module code="discount_volume" feature="discount">
+	<!-- Non-existent product -->
+	<ProductPricingTable group_name="Volume Pricing Product Provisioning Test 01" product_code="non-existent" />
+	
+	<!-- Non-existent price group -->
+	<ProductPricingTable group_name="non-existent" product_code="discount_volume_provisioning_product" />
+	
+	<!-- Non-volume price group -->
+	<ProductPricingTable group_name="Volume Pricing Product Provisioning Test 03" product_code="discount_volume_provisioning_product" />
+
+	<!-- Product not assigned to price group -->
+	<ProductPricingTable group_name="Volume Pricing Product Provisioning Test 02" product_code="discount_volume_provisioning_product" />
+
+	<!-- quantity <= 0 -->
+	<ProductPricingTable group_name="Volume Pricing Product Provisioning Test 01" product_code="discount_volume_provisioning_product">
+		<Entry quantity="-5" type="fixed" amount="1.23" />
+	</ProductPricingTable>
+
+	<!-- Duplicate quantity -->
+	<ProductPricingTable group_name="Volume Pricing Product Provisioning Test 01" product_code="discount_volume_provisioning_product">
+		<Entry quantity="1" type="fixed" amount="1.23" />
+		<Entry quantity="1" type="fixed" amount="1.23" />
+	</ProductPricingTable>
+
+	<!-- unknown tag -->
+	<ProductPricingTable group_name="Volume Pricing Product Provisioning Test 01" product_code="discount_volume_provisioning_product">
+		<Wombat />
+	</ProductPricingTable>
+
+	<!-- Valid Settings -->
+	<ProductPricingTable group_name="Volume Pricing Product Provisioning Test 01" product_code="discount_volume_provisioning_product">
+		<Entry quantity="100" type="fixed" amount="1.23" />
+	</ProductPricingTable>
+
+	<!-- Replace Valid Settings -->
+	<ProductPricingTable group_name="Volume Pricing Product Provisioning Test 01" product_code="discount_volume_provisioning_product">
+		<Entry quantity="99" type="absolute" amount="99.98" />
+		<Entry quantity="10" type="percent" amount="10" />
+		<Entry quantity="5" type="fixed" amount="5" />
+		<Entry quantity="101" type="fixed" amount="0" />
+	</ProductPricingTable>
+	
+	<!-- Settings for a second price group -->
+	<ProductPricingTable group_name="Volume Pricing Product Provisioning Test 04" product_code="discount_volume_provisioning_product" />
+</Module>
+
+

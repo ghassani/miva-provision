@@ -1,0 +1,69 @@
+<PriceGroup_Add>
+	<Name>Volume Pricing Provisioning Test 01</Name>
+	<Module>discount_volume</Module>
+	<Settings />
+</PriceGroup_Add>
+
+<PriceGroup_Add>
+	<Name>Volume Pricing Provisioning Test 02</Name>
+	<Module>discount_volume</Module>
+	<Settings>
+		<Grouping>All</Grouping>
+		<Method>Cumulative</Method>
+		<ProgressiveMode>HighestFirst</ProgressiveMode>
+		
+		<DefaultPricingTable>
+			<Entry quantity="25" type="percent" amount="10.21" />
+			<Entry quantity="3" type="fixed" amount="0.03" />
+		</DefaultPricingTable>
+	</Settings>
+</PriceGroup_Add>
+
+<PriceGroup_Add>
+	<Name>Volume Pricing Provisioning Test 03</Name>
+	<Module>discount_volume</Module>
+	<Settings>
+		<Grouping>SameProduct</Grouping>
+		<Method>Progressive</Method>
+		<ProgressiveMode>LowestFirst</ProgressiveMode>
+	</Settings>
+</PriceGroup_Add>
+
+<PriceGroup_Add>
+	<Name>Volume Pricing Provisioning Test 04</Name>
+	<Module>discount_volume</Module>
+	<Settings>
+		<Grouping>SameVariant</Grouping>
+	</Settings>
+</PriceGroup_Add>
+
+<PriceGroup_Add>
+	<Name>Volume Pricing Provisioning Test X</Name>
+	<Module>discount_volume</Module>
+	<Settings>
+		<DefaultPricingTable>
+			<Entry quantity="-5" type="percent" amount="50" />
+		</DefaultPricingTable>
+	</Settings>
+</PriceGroup_Add>
+
+<PriceGroup_Add>
+	<Name>Volume Pricing Provisioning Test X</Name>
+	<Module>discount_volume</Module>
+	<Settings>
+		<DefaultPricingTable>
+			<Entry quantity="5" type="percent" amount="50" />
+			<Entry quantity="5" type="fixed" amount="3.50" />
+		</DefaultPricingTable>
+	</Settings>
+</PriceGroup_Add>
+
+<PriceGroup_Add>
+	<Name>Volume Pricing Provisioning Test X</Name>
+	<Module>discount_volume</Module>
+	<Settings>
+		<DefaultPricingTable>
+			<Wombat />
+		</DefaultPricingTable>
+	</Settings>
+</PriceGroup_Add>
