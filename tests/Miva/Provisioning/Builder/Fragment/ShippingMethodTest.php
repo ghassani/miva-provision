@@ -29,26 +29,29 @@ class ShippingMethodTest extends \PHPUnit_Framework_TestCase
         $fragment = new ShippingMethod();
         
         $fragment            
-        ->setCode('Code');
+        ->setModuleCode('ModuleCode')
+        ->setMethodCode('MethodCode');        
         
+        $this->assertEquals($fragment->getModuleCode(), 'ModuleCode');
+        $this->assertEquals($fragment->getMethodCode(), 'MethodCode');
+    }
+    
+ /**
+     * testValidXML
+     * 
+     * Make sure it builds valid XML
+     */
+    public function testValidXML()
+    {
+        $fragment = new ShippingMethod();
         
-        $this->assertEquals($fragment->getCode(), 'Code');    
-
-
-        $expectedXml = '<Product_Add>
-            <Code>Code</Code>
-            <Name><![CDATA[Name]]></Name>
-            <Price>Price</Price>
-            <Cost>Cost</Cost>
-            <Weight>Weight</Weight>
-            <Description><![CDATA[Description]]></Description>
-            <Taxable>Taxable</Taxable>
-            <Active>Active</Active>
-            <CanonicalCategoryCode>CanonicalCategoryCode</CanonicalCategoryCode>
-            <AlternateDisplayPage>AlternateDisplayPage</AlternateDisplayPage>
-            <ThumbnailImage>ThumbnailImage</ThumbnailImage>
-            <FullSizeImage>FullSizeImage</FullSizeImage>
-        </Product_Add>';
+        $fragment            
+        ->setModuleCode('ModuleCode')
+        ->setMethodCode('MethodCode');        
+        
+        $expectedXml = '<ShippingMethod module_code="ModuleCode" method_code="MethodCode" />';
+        
+        $this->assertXmlStringEqualsXmlString($expectedXml, $fragment->toXML()->saveXML());
     }
 }
         

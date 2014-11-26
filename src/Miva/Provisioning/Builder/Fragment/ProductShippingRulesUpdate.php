@@ -14,465 +14,208 @@ use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
-* ShippingMethodRulesUpdate
-*
-* @author Gassan Idriss <gidriss@mivamerchant.com>
-*/
-class ShippingMethodRulesUpdate implements Model\StoreFragmentInterface
+ * ShippingMethodRulesUpdate
+ *
+ * @author Gassan Idriss <gidriss@mivamerchant.com>
+ */
+class ProductShippingRulesUpdate implements Model\StoreFragmentInterface
 {
-    
     /** @var string */
-    public $moduleCode;
-    
+    public $productCode;
+
+    /** @var bool */
+    public $shipsInOwnPackaging;
+
     /** @var string */
-    public $methodCode;
-    
-    /** @var int */
-    public $priority;
-    
+    public $width;
+
     /** @var string */
-    public $description;
-    
-    /** @var int */
-    public $minimumSubTotal;
-    
-    /** @var int */
-    public $maximumSubTotal;
-    
-    /** @var int */
-    public $minimumQuantity;
-    
-    /** @var int */
-    public $maximumQuantity;
-    
-    /** @var int */
-    public $minimumWeight;
-    
-    /** @var int */
-    public $maximumWeight;
-    
-    /** @var array */
-    public $states = array();
-    
+    public $length;
+
     /** @var string */
-    public $zipCodes = array();
+    public $height;
     
-    /** @var array */
-    public $countries = array();
-    
-    /** @var array */
-    public $exclusions = array();
-    
-    
+    /** @var bool */
+    public $limitShippingMethods;
+
+    /** @var array[ShippingMethod] */
+    public $shippingMethods = array();
+
     /**
-     * getMethodCode
-     *
-     * @return string
-    */
-    public function getMethodCode()
+     * @return mixed
+     */
+    public function getProductCode()
     {
-        return $this->methodCode;
+        return $this->productCode;
     }
-    
+
     /**
-     * setMethodCode
-     *
-     * @param string $methodCode
-     *
-     * @return self
-    */
-    public function setMethodCode($methodCode)
+     * @param mixed $productCode
+     */
+    public function setProductCode($productCode)
     {
-        $this->methodCode = $methodCode;
+        $this->productCode = $productCode;
         return $this;
     }
 
 
     /**
-     * getModuleCode
-     *
-     * @return string
-    */
-    public function getModuleCode()
+     * @return mixed
+     */
+    public function getHeight()
     {
-        return $this->moduleCode;
+        return $this->height;
     }
-    
+
     /**
-     * setModuleCode
-     *
-     * @param string $moduleCode
-     *
-     * @return self
-    */
-    public function setModuleCode($moduleCode)
+     * @param mixed $height
+     */
+    public function setHeight($height)
     {
-        $this->moduleCode = $moduleCode;
+        $this->height = $height;
         return $this;
     }
 
-    
     /**
-     * getPriority
-     *
-     * @return int
-    */
-    public function getPriority()
+     * @return mixed
+     */
+    public function getLength()
     {
-        return $this->priority;
+        return $this->length;
     }
-    
+
     /**
-     * setPriority
-     *
-     * @param int $priority
-     *
-     * @return self
-    */
-    public function setPriority($priority)
+     * @param mixed $length
+     */
+    public function setLength($length)
     {
-        $this->priority = $priority;
+        $this->length = $length;
         return $this;
     }
-    
+
     /**
-     * getDescription
-     *
-     * @return string
-    */
-    public function getDescription()
+     * @return mixed
+     */
+    public function getLimitShippingMethods()
     {
-        return $this->description;
+        return $this->limitShippingMethods;
     }
-    
+
     /**
-     * setDescription
-     *
-     * @param string $description
-     *
-     * @return self
-    */
-    public function setDescription($description)
+     * @param mixed $limitShippingMethods
+     */
+    public function setLimitShippingMethods($limitShippingMethods)
     {
-        $this->description = $description;
+        $this->limitShippingMethods = $limitShippingMethods;
         return $this;
     }
-    
+
     /**
-     * getMinimumSubTotal
-     *
-     * @return int
-    */
-    public function getMinimumSubTotal()
-    {
-        return $this->minimumSubTotal;
-    }
-    
-    /**
-     * setMinimumSubTotal
-     *
-     * @param int $minimumSubTotal
-     *
-     * @return self
-    */
-    public function setMinimumSubTotal($minimumSubTotal)
-    {
-        $this->minimumSubTotal = $minimumSubTotal;
-        return $this;
-    }
-    
-    /**
-     * getMaximumSubTotal
-     *
-     * @return int
-    */
-    public function getMaximumSubTotal()
-    {
-        return $this->maximumSubTotal;
-    }
-    
-    /**
-     * setMaximumSubTotal
-     *
-     * @param int $maximumSubTotal
-     *
-     * @return self
-    */
-    public function setMaximumSubTotal($maximumSubTotal)
-    {
-        $this->maximumSubTotal = $maximumSubTotal;
-        return $this;
-    }
-    
-    /**
-     * getMinimumQuantity
-     *
-     * @return int
-    */
-    public function getMinimumQuantity()
-    {
-        return $this->minimumQuantity;
-    }
-    
-    /**
-     * setMinimumQuantity
-     *
-     * @param int $minimumQuantity
-     *
-     * @return self
-    */
-    public function setMinimumQuantity($minimumQuantity)
-    {
-        $this->minimumQuantity = $minimumQuantity;
-        return $this;
-    }
-    
-    /**
-     * getMaximumQuantity
-     *
-     * @return int
-    */
-    public function getMaximumQuantity()
-    {
-        return $this->maximumQuantity;
-    }
-    
-    /**
-     * setMaximumQuantity
-     *
-     * @param int $maximumQuantity
-     *
-     * @return self
-    */
-    public function setMaximumQuantity($maximumQuantity)
-    {
-        $this->maximumQuantity = $maximumQuantity;
-        return $this;
-    }
-    
-    /**
-     * getMinimumWeight
-     *
-     * @return int
-    */
-    public function getMinimumWeight()
-    {
-        return $this->minimumWeight;
-    }
-    
-    /**
-     * setMinimumWeight
-     *
-     * @param int $minimumWeight
-     *
-     * @return self
-    */
-    public function setMinimumWeight($minimumWeight)
-    {
-        $this->minimumWeight = $minimumWeight;
-        return $this;
-    }
-    
-    /**
-     * getMaximumWeight
-     *
-     * @return int
-    */
-    public function getMaximumWeight()
-    {
-        return $this->maximumWeight;
-    }
-    
-    /**
-     * setMaximumWeight
-     *
-     * @param int $maximumWeight
-     *
-     * @return self
-    */
-    public function setMaximumWeight($maximumWeight)
-    {
-        $this->maximumWeight = $maximumWeight;
-        return $this;
-    }
-    
-    /**
-     * getStates
-     *
      * @return array
-    */
-    public function getStates()
+     */
+    public function getShippingMethods()
     {
-        return $this->states;
+        return $this->shippingMethods;
     }
-    
+
     /**
-     * setStates
-     *
-     * @param array $states
-     *
-     * @return self
-    */
-    public function setStates(array $states)
+     * @param array $shippingMethods
+     */
+    public function setShippingMethods(array $shippingMethods = array())
     {
-        $this->states = $states;
+        foreach ($shippingMethods as $method) {
+            if(!$method instanceof ShippingMethod) {
+                throw \InvalidArgumentException(sprintf('ProductShippingRulesUpdate::setShippingMethods requires an array of ShippingMethod'));
+            }
+        }
+        $this->shippingMethods = $shippingMethods;
         return $this;
     }
     
     /**
-     * addState
-     *
-     * @param State $state
-     *
-     * @return self
-    */
-    public function addState(State $state)
+     * @param ShippingMethod $method
+     */
+    public function addShippingMethod(ShippingMethod $shippingMethod)
     {
-        $this->states[] = $state;
+        $this->shippingMethods[] = $shippingMethod;
         return $this;
     }
-    
+
     /**
-     * getZipCodes
-     *
-     * @return array
-    */
-    public function getZipCodes()
+     * @return mixed
+     */
+    public function getShipsInOwnPackaging()
     {
-        return $this->zipCodes;
+        return $this->shipsInOwnPackaging;
     }
-    
+
     /**
-     * setZipCodes
-     *
-     * @param array $zipCodes
-     *
-     * @return self
-    */
-    public function setZipCodes(array $zipCodes)
+     * @param mixed $shipsInOwnPackaging
+     */
+    public function setShipsInOwnPackaging($shipsInOwnPackaging)
     {
-        $this->zipCodes = $zipCodes;
+        $this->shipsInOwnPackaging = $shipsInOwnPackaging;
         return $this;
     }
-    
+
     /**
-     * addZipcode
-     *
-     * @param string $zipcode
-     *
-     * @return self
-    */
-    public function addZipcode($zipcode)
+     * @return mixed
+     */
+    public function getWidth()
     {
-        $this->zipcodes[] = $zipcode;
+        return $this->width;
+    }
+
+    /**
+     * @param mixed $width
+     */
+    public function setWidth($width)
+    {
+        $this->width = $width;
         return $this;
     }
-    
-    /**
-     * getCountries
-     *
-     * @return array
-    */
-    public function getCountries()
-    {
-        return $this->countries;
-    }
-    
-    /**
-     * setCountries
-     *
-     * @param array $countries
-     *
-     * @return self
-    */
-    public function setCountries(array $countries)
-    {
-        $this->countries = $countries;
-        return $this;
-    }
-    
-    /**
-     * addCountry
-     *
-     * @param Country $country
-     *
-     * @return self
-    */
-    public function addCountry(Country $country)
-    {
-        $this->countries[] = $country;
-        return $this;
-    }
-    
-    /**
-     * getExclusions
-     *
-     * @return string
-    */
-    public function getExclusions()
-    {
-        return $this->exclusions;
-    }
-    
-    /**
-     * setExclusions
-     *
-     * @param string $exclusions
-     *
-     * @return self
-    */
-    public function setExclusions($exclusions)
-    {
-        $this->exclusions = $exclusions;
-        return $this;
-    }
-    
+
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * Format:
-     * 
-     * <ShippingMethodRules_Update module_code="upsxml" method_code="02">
-     *       <Priority>5</Priority>
-     *       <Description>2 Day Air</Description>
-     *       <MinimumSubTotal>0.00</MinimumSubTotal>
-     *       <MaximumSubTotal>0.00</MaximumSubTotal>
-     *       <MinimumQuantity>0</MinimumQuantity>
-     *       <MaximumQuantity>0</MaximumQuantity>
-     *       <MinimumWeight>0.00</MinimumWeight>
-     *       <MaximumWeight>0.00</MaximumWeight>
      *
-     *       <States>
-     *           <State code="CA"/>
-     *           <State code="OH"/>
-     *       </States>
+     * <ProductShippingRules_Update product_code="prod">
+     *  <ShipsInOwnPackaging>Yes</ShipsInOwnPackaging>
+     *  <Width>1.23</Width>
+     *  <Length>1.23</Length>
+     *  <Height>1.23</Height>
+     *  <LimitShippingMethods>No</LimitShippingMethods>
+     *  <ShippingMethods>
+     *      <ShippingMethod module_code="upsxml" method_code="02" />    (multiple allowed)
+     *  </ShippingMethods>
+     * </ProductShippingRules_Update>
      *
-     *       <ZipCodes>92109,44145</ZipCodes>
-     *
-     *       <Countries>
-     *           <Country code="US"/>
-     *           <Country code="GB"/>
-     *       </Countries>
-     *
-     *       <Exclusions>
-     *           <Excludes module_code="flatrate" method_code="flat_2day"/>        (multiple allowed)
-     *           <ExcludedBy module_code="baseunit" method_code="base_2day"/>    (multiple allowed)
-     *       </Exclusions>
-     *   </ShippingMethodRules_Update>
-     *
-    */
+     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xml = null;
-        $xmlObject = new SimpleXMLElement('<Fragment></Fragment>');
+        $xmlObject = new SimpleXMLElement('<ProductShippingRules_Update />');
 
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
+        $xmlObject->addAttribute('product_code', $this->getProductCode());
+
+        $xmlObject->addChild('ShipsInOwnPackaging', $this->getShipsInOwnPackaging() ? 'Yes' : 'No');
+        $xmlObject->addChild('Width',  $this->getWidth());
+        $xmlObject->addChild('Length', $this->getLength());
+        $xmlObject->addChild('Height', $this->getHeight());
+        $xmlObject->addChild('LimitShippingMethods', $this->getLimitShippingMethods() ? 'Yes' : 'No');
+
+        if (count($this->getShippingMethods())) {
+            $shippingMethodsXml = $xmlObject->addChild('ShippingMethods');
+            foreach ($this->getLimitShippingMethods() as $shippingMethod) {
+                $shippingMethodXml = $shippingMethodsXml->addChild('ShippingMethod');
+                $shippingMethodXml->addAttribute('module_code', $shippingMethod->getModuleCode());
+                $shippingMethodXml->addAttribute('method_code', $shippingMethod->getMethodCode());
+            }
         }
-        
-        return $xml;
+
+
+        return $xmlObject;
     }
 }
-        

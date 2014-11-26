@@ -10,6 +10,7 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Provisioning\Builder\Fragment\ProductShippingRulesUpdate;
+use Miva\Provisioning\Builder\Fragment\ShippingMethod;
 
 /**
 * ProductShippingRulesUpdateTest
@@ -45,7 +46,51 @@ class ProductShippingRulesUpdateTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($fragment->getHeight(), 'Height');    
         $this->assertEquals($fragment->getLimitShippingMethods(), 'LimitShippingMethods');    
         $this->assertEquals($fragment->getShippingMethods(), array());
-                
+        
+        $testMethods = array(array('bar','foo'),array('bin', 'baz'));
+        
+        foreach($testMethods as $testMethod) {
+            $method = new ShippingMethod();
+            $method->setModuleCode($testMethod[0])
+              ->setMethodCode($testMethod[1]);
+            
+            $fragment->addShippingMethod($method);
+        }
+        
+        $this->assertEquals(count($testMethods), count($fragment->getShippingMethods()));
+        
+        foreach ($fragment->getShippingMethods() as $testClass) {
+            $this->assertInstanceOf($testClass, 'Miva\Provisioning\Builder\Fragment\ShippingMethod');
+        }
+    }
+    /**
+     * testValidXML
+     * 
+     * Make sure it builds valid XML
+     */
+    public function testValidXML()
+    {
+        
+        $fragment = new ProductShippingRulesUpdate();
+        
+        $fragment 
+          ->setProductCode('ProductCode')
+          ->setShipsInOwnPackaging('ShipsInOwnPackaging')    
+          ->setWidth('Width')    
+          ->setLength('Length')
+          ->setHeight('Height')    
+          ->setLimitShippingMethods('LimitShippingMethods');
+          
+        $testMethods = array(array('bar','foo'),array('bin', 'baz'));
+        
+        foreach($testMethods as $testMethod) {
+            $method = new ShippingMethod();
+            $method->setModuleCode($testMethod[0])
+              ->setMethodCode($testMethod[1]);
+            
+            $fragment->addShippingMethod($method);
+        }
+              
         $expectedXml = '<ProductShippingRules_Update product_code="ProductCode">
             <ShipsInOwnPackaging>ShipsInOwnPackaging</ShipsInOwnPackaging>
             <Width>Width</Width>
@@ -53,10 +98,12 @@ class ProductShippingRulesUpdateTest extends \PHPUnit_Framework_TestCase
             <Height>Height</Height>
             <LimitShippingMethods>LimitShippingMethods</LimitShippingMethods>
             <ShippingMethods>
-                <ShippingMethod module_code="upsxml" method_code="02"/>    (multiple allowed)
+                <ShippingMethod module_code="bar" method_code="foo"/>
+                <ShippingMethod module_code="bin" method_code="baz"/>
             </ShippingMethods>
-        </ProductShippingRules_Update>
-';
+        </ProductShippingRules_Update>';
+        
+        $this->assertXmlStringEqualsXmlString($expectedXml, $fragment->toXML()->saveXML());
     }
 }
         
