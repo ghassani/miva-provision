@@ -37,7 +37,7 @@ class BoxAdd implements Model\StoreFragmentInterface
     public $height;
     
     /** @var array */
-    public $boxPackageSettings = array(
+    public $boxPackingSettings = array(
         'MaxWeight' => null, 
         'MaxQuantity' => null,
     );
@@ -158,25 +158,25 @@ class BoxAdd implements Model\StoreFragmentInterface
     }
     
     /**
-     * getBoxPackageSettings
+     * getBoxPackingSettings
      *
      * @return array
     */
-    public function getBoxPackageSettings()
+    public function getBoxPackingSettings()
     {
-        return $this->boxPackageSettings;
+        return $this->boxPackingSettings;
     }
 
     /**
-     * setBoxPackageSettings
+     * setBoxPackingSettings
      *
-     * @param array boxPackageSettings
+     * @param array boxPackingSettings
      *
      * @return self
     */
-    public function setBoxPackageSettings($maxWeight, $maxQuantity)
+    public function setBoxPackingSettings($maxWeight, $maxQuantity)
     {
-        $this->boxPackageSettings = array($maxWeight,$maxQuantity);
+        $this->boxPackingSettings = array($maxWeight,$maxQuantity);
         return $this;
     }
     
@@ -190,11 +190,11 @@ class BoxAdd implements Model\StoreFragmentInterface
      *        <Description>Box</Description>
      *        <Enabled>Yes</Enabled>
      *        <Width>10.11</Width>
-     *         <Length>10.11</Length>
+     *        <Length>10.11</Length>
      *        <Height>10.11</Height>
      *
      *        <BoxPackingSettings>                -- optional
-     *            <MaxWeight>1.23</MaxWeight>        -- packbyweight
+     *            <MaxWeight>1.23</MaxWeight>     -- packbyweight
      *            <MaxQuantity>5</MaxQuantity>    -- packbyquantity
      *        </BoxPackingSettings>
      *    </Box_Add>
@@ -202,13 +202,13 @@ class BoxAdd implements Model\StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new SimpleXMLElement('<Box_Add></Box_Add>');
-        
-        $xmlObject->addChild('Description', $this->getDescription());
+        $xmlObject = new SimpleXMLElement('<Box_Add />');
+                
         $xmlObject->addChild('Enabled', $this->getEnabled() ? 'Yes' : 'No');
-        $xmlObject->addChild('Width', $this->getWidth());
-        $xmlObject->addChild('Length', $this->getLength());
-        $xmlObject->addChild('Height', $this->getHeight());
+        $xmlObject->addChild('Width',   $this->getWidth());
+        $xmlObject->addChild('Length',  $this->getLength());
+        $xmlObject->addChild('Height',  $this->getHeight());
+        $xmlObject->addChild('Description', $this->getDescription());
         
         $boxPackingSettings = $this->getBoxPackingSettings();
         
