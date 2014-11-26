@@ -34,14 +34,14 @@ class BoxAddTest extends \PHPUnit_Framework_TestCase
           ->setWidth('Width')
           ->setLength('Length')
           ->setHeight('Height')
-          ->setBoxPackageSettings('MaxWeight', 'MaxQuantity');
+          ->setBoxPackingSettings('MaxWeight', 'MaxQuantity');
 
         $this->assertEquals($fragment->getDescription(), 'Description');
         $this->assertEquals($fragment->getEnabled(), 'Enabled');
         $this->assertEquals($fragment->getWidth(), 'Width');
         $this->assertEquals($fragment->getLength(), 'Length');
         $this->assertEquals($fragment->getHeight(), 'Height');
-        $this->assertEquals($fragment->getBoxPackageSettings(), array('MaxWeight','MaxQuantity'));
+        $this->assertEquals($fragment->getBoxPackingSettings(), array('MaxWeight','MaxQuantity'));
           
         $expectedXML = '<Box_Add>
              <Description>Description</Description>
