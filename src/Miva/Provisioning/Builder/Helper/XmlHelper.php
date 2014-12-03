@@ -33,6 +33,7 @@ class XmlHelper
         $methodCall = false;
         $attributes = array();
         foreach ($child->attributes() as $key => $value) {
+            $value = (string) $value;
             if ($key === 'method-call' && method_exists($child, $value)){
                 $methodCall = $value;
                 continue;
@@ -42,7 +43,8 @@ class XmlHelper
         
         if (false !== $methodCall && !$child->count()) {
             $childNode = $parent->addChild($child->getName());
-            call_user_method($methodCall, $childNode, $child->__toString()); // @TODO: replace with call_user_func
+            $childNode->$methodCall($child->__toString());            
+            
         } else {
             $childNode = $parent->addChild($child->getName(), !$child->count() ? (string) $child : null);
         }
