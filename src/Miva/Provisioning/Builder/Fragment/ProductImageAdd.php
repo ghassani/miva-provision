@@ -112,8 +112,8 @@ class ProductImageAdd implements Model\StoreFragmentInterface
 
         $xmlObject->addAttribute('product_code', $this->getProductCode());
         $xmlObject->addAttribute('filepath', $this->getFilePath());
-        $xmlObject->addAttribute('type_code', $this->getTypeCode());
-        
+        //$xmlObject->addAttribute('type_code', $this->getTypeCode()); // documentation shows this but it doesn't work, maybe an older version? TODO: find out and adjust xml based on version
+        $xmlObject->addAttribute('imagetype_code', $this->getTypeCode());
         return $xmlObject;
     }
     
