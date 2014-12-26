@@ -290,7 +290,7 @@ class PriceGroupAdd implements Model\StoreFragmentInterface
     /**
      * @return boolean
      */
-    public function isDisplayInBasket()
+    public function getDisplayInBasket()
     {
         return $this->displayInBasket;
     }
@@ -528,6 +528,7 @@ class PriceGroupAdd implements Model\StoreFragmentInterface
     public function addSetting($key, $value)
     {
         $this->settings[$key] = $value;
+        return $this;
     }
 
     /**
