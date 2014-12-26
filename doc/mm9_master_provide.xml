@@ -3753,16 +3753,18 @@
 		<AvailabilityGroupProduct_Assign group_name="Monk" product_code="nunchaku" />
 		<AvailabilityGroupProduct_Assign group_name="Monk" product_code="shuriken" />
 		<AvailabilityGroupProduct_Assign group_name="Monk" product_code="siangham" />
+
 		<PriceGroup_Add>
 			<Name>Warrior</Name>
 			<Eligbility>Coupon,All,Customer,LoggedIn</Eligibility>
+
 			<NotValidBefore>
-				<Day>01</Day>									(required)
-				<Month>01</Month>								(required)
-				<Year>1970</Year>								(required)
-				<Minute>30</Minute>								(optional)
-				<Hour>12</Hour>									(optional)
-			</NotValidBefore>
+			<Day>01</Day>									(required)
+			<Month>01</Month>								(required)
+			<Year>1970</Year>								(required)
+			<Minute>30</Minute>								(optional)
+			<Hour>12</Hour>									(optional)
+		</NotValidBefore>
 			<NotValidAfter>
 				<Day>01</Day>									(required)
 				<Month>01</Month>								(required)
@@ -3779,7 +3781,8 @@
 
 			<!-- or -->
 
-			<Module>discount_addon</Module>
+			<Module>discount_addon|discount_addon|discount_basket|discount_buyxgety|discount_product|discount_shipping_product|discount_shipping_basket| discount_saleprice|discount_volume</Module>
+
 			<Description>Textual Description</Description>
 			<DisplayInBasket>No</DisplayInBasket>
 			<QualifyingMinimumSubtotal>0.00</QualifyingMinimumSubtotal>
