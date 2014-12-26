@@ -29,7 +29,7 @@ class Version
     const FIVE_FIVE_PR8 = 5.58;
     const NINE          = 9;
     
-    const CURRENT       = 5.58;
+    const CURRENT       = 9;
     const REQUIRED      = 5.58;
 }
     
