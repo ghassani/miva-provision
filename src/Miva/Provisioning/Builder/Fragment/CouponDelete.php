@@ -50,6 +50,9 @@ class CouponDelete implements Model\StoreFragmentInterface
      */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
+        if ($version < Version::NINE) {
+            return;
+        }
 
         $xmlObject = new SimpleXMLElement('<Coupon_Delete />');
 

@@ -23,7 +23,7 @@ class PriceGroupAdd implements Model\StoreFragmentInterface
     const ELIGIBILITY_COUPON    = 'coupon';
     const ELIGIBILITY_ALL       = 'all';
     const ELIGIBILITY_CUSTOMER  = 'customer';
-    const ELIGIBILITY_LOGGEDIN  = 'loggedIn';
+    const ELIGIBILITY_LOGGEDIN  = 'loggedin';
 
     const PRICING_RETAIL        = 'retail';
     const PRICING_COST          = 'cost';
@@ -52,7 +52,7 @@ class PriceGroupAdd implements Model\StoreFragmentInterface
     public $amount;
 
     /** @var string */
-    public $eligbility;
+    public $eligibility;
 
     /** @var DateTime|null */
     public $notValidBefore;
@@ -188,17 +188,17 @@ class PriceGroupAdd implements Model\StoreFragmentInterface
     /**
      * @return string
      */
-    public function getEligbility()
+    public function getEligibility()
     {
-        return $this->eligbility;
+        return $this->eligibility;
     }
 
     /**
-     * @param string $eligbility
+     * @param string $eligibility
      */
-    public function setEligbility($eligbility)
+    public function setEligibility($eligibility)
     {
-        $this->eligbility = $eligbility;
+        $this->eligibility = $eligibility;
         return $this;
     }
 
@@ -569,7 +569,7 @@ class PriceGroupAdd implements Model\StoreFragmentInterface
      *
      *  <PriceGroup_Add>
      *      <Name>Warrior</Name>
-     *      <Eligbility>Coupon,All,Customer,LoggedIn</Eligibility>
+     *      <Eligibility>Coupon,All,Customer,LoggedIn</Eligibility>
      *      <NotValidBefore>
      *          <Day>01</Day>									(required)
      *          <Month>01</Month>								(required)
@@ -632,7 +632,7 @@ class PriceGroupAdd implements Model\StoreFragmentInterface
         }
 
         $xmlObject->addChild('Name', $this->getName());
-        $xmlObject->addChild('Eligbility', $this->getEligbility());
+        $xmlObject->addChild('Eligibility', $this->getEligibility());
 
         if ($this->getNotValidBefore() instanceof \DateTime) {
             $date = $this->getNotValidBefore();
