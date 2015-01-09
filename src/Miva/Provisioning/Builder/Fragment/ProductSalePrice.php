@@ -14,11 +14,11 @@ use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
- * ProductAdd
+ * ProductSalePrice
  *
  * @author Gassan Idriss <gidriss@mivamerchant.com>
  */
-class ProductAdd implements Model\StoreFragmentInterface
+class ProductSalePrice implements Model\StoreFragmentInterface
 {
 
     public $productCode;
