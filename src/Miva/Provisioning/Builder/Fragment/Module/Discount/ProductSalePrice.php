@@ -7,23 +7,24 @@
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
 */
-namespace Miva\Provisioning\Builder\Fragment;
+namespace Miva\Provisioning\Builder\Fragment\Module\Discount;
 
 use Miva\Version;
 use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
+use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 
 /**
  * ProductSalePrice
  *
  * @author Gassan Idriss <gidriss@mivamerchant.com>
  */
-class ProductSalePrice implements Model\StoreFragmentInterface
+class ProductSalePrice implements StoreFragmentInterface
 {
 
     public $productCode;
 
-    public $groupCode;
+    public $groupName;
 
     public $price;
 
@@ -47,19 +48,20 @@ class ProductSalePrice implements Model\StoreFragmentInterface
     /**
      * @return mixed
      */
-    public function getGroupCode()
+    public function getGroupName()
     {
-        return $this->groupCode;
+        return $this->groupName;
     }
 
     /**
-     * @param mixed $groupCode
+     * @param mixed $groupName
      */
-    public function setGroupCode($groupCode)
+    public function setGroupName($groupName)
     {
-        $this->groupCode = $groupCode;
+        $this->groupName = $groupName;
         return $this;
     }
+
 
     /**
      * @return mixed
@@ -95,10 +97,15 @@ class ProductSalePrice implements Model\StoreFragmentInterface
             return;
         }
 
-        $xmlObject = new SimpleXmlElement('<ProductSalePrice>'.$this->getPrice().'</ProductSalePrice>');
+        $xmlObject = new SimpleXmlElement('<Module />');
 
-        $xmlObject->addAttribute('product_code',  $this->getProductCode());
-        $xmlObject->addAttribute('group_name',    $this->getGroupCode());
+        $xmlObject->addAttribute('code',  'discount_saleprice');
+        $xmlObject->addAttribute('feature',    'discount');
+
+        $salePrice = $xmlObject->addChild('ProductSalePrice', $this->getPrice());
+
+        $salePrice->addAttribute('product_code',  $this->getProductCode());
+        $salePrice->addAttribute('group_name',    $this->getGroupName());
 
         return $xmlObject;
     }
