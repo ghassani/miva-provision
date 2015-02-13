@@ -186,7 +186,7 @@ class OrderAddItem implements Model\StoreFragmentInterface
     /**
      * @param OrderItemShipment $shipment
      */
-    public function addShipment(OrderItemShipment $shipment)
+    public function addShipment(OrderAddItemShipment $shipment)
     {
         $this->shipments[] = $shipment;
         return $this;

@@ -11,13 +11,14 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.3",
-        "symfony/http-foundation": "2.3.*",
-        "guzzlehttp/guzzle": ">=4,<6"
+        "ext-curl" : "*",
+        "symfony/http-foundation": "2.3@stable",
+        "guzzle/http": "~3.1@stable"
     },
     "suggest": {
 
     },
-	"autoload": {
+    "autoload": {
         "psr-0": { "": "src/" }
     }
 }

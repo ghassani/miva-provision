@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning;
 
+use Guzzle\Http\Client as HttpClient;
+
 /**
 * Client
 *
@@ -23,8 +25,8 @@ class Client
     /** @var string */
     protected $token;
     
-    /** @var resource */
-    protected $connection = null;
+    /** @var Guzzle\Http\Client */
+    protected $httpClient;
 
     /**
     * Constructor
@@ -35,19 +37,10 @@ class Client
     public function __construct($url, $token)
     {
         $this->url = $url;
-        $this->token = $token;  
+        $this->token = $token;
+        $this->httpClient = new HttpClient($url);
     }
-    
-    /**
-     * Destructor
-     */
-     public function __destruct()
-     {
-         if(is_resource($this->connection)) {
-             curl_close($this->connection);
-         }
-     }
-     
+
     /**
      * getUrl
      *
@@ -94,72 +87,36 @@ class Client
         return $this;
     }
     
-    /**
-     * buildUrl
-     * 
-     * @return string
-     */
-     public function buildUrl()
-     {
-         return sprintf('%s?Function=Module&Module_Code=remoteprovisioning&Module_Function=XML',
-            $this->getUrl()
-         );
-     }
 
     /**
      * doRequest
-     * 
-     * @param Request|string $request - String Request content or Request Object
-     * 
+     *
+     * @param $content - Content to be sent
+     *
      * @return Response
      * @throws Exception - When content length is 0
      */
-    public function doRequest($request)
+    public function doRequest($content)
     {
-        $url = $this->buildUrl();
-        
-        if ($request instanceof Request) {
-           $content = (string) $request->getContent();
-           if($request->getUrl()) {
-               $url = $request->getUrl();
-           }
-        } else {
-            $content = (string) $request;   
-        }
-        
-        if(!is_resource($this->connection)) {
-            $this->connection = curl_init();   
-        }
-                        
-        if(!strlen($content)) {
-            throw new \Exception('Request object has no content to send');
-        }
+        $request = $this->httpClient->post(
+            null,
+            array(
+                'MMProvision-Access-Token' => $this->getToken(),
+                'Content-Type' => 'text/xml'
+            ),
+            $content,
+            array()
+        );
 
-        curl_setopt_array($this->connection, array(
-            CURLOPT_URL => $url,
-            CURLOPT_POST => true,
-            CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_SSL_VERIFYHOST => false,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_POSTFIELDS => $content,
-            CURLOPT_HTTPHEADER => array(
-                'Content-type: text/xml',
-                'Content-length: '.strlen($content),
-                'MMProvision-Access-Token: '.$this->getToken(),
-            )
-        ));
+        $request->getQuery()
+            ->set('Function', 'Module')
+            ->set('Module_Code', 'remoteprovisioning')
+            ->set('Module_Function', 'XML');
 
-        if (!ini_get('open_basedir') && !ini_get('safe_mode')) {
-            curl_setopt($this->connection, CURLOPT_FOLLOWLOCATION, true);
-        }
 
-        $response = curl_exec($this->connection);
-        
-        // get the response status code
-        $statusCode  = curl_getinfo($this->connection, CURLINFO_HTTP_CODE);
-        $contentType = curl_getinfo($this->connection, CURLINFO_CONTENT_TYPE);
-        
-        return new Response($response, $contentType);
+        $response = $request->send();
+
+        return new Response($response->getBody(true), $response->getHeader('Content-Type'));
     }
 
 }

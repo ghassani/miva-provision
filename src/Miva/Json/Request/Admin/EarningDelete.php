@@ -1,0 +1,1 @@
+Earning_Delete

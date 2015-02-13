@@ -1,0 +1,1 @@
+ImageType_Delete

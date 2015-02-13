@@ -2,6 +2,8 @@
 
 namespace Miva\Json;
 
+use Guzzle\Http\Client as HttpClient;
+
 class Client
 {
 
@@ -26,6 +28,7 @@ class Client
         $this->entryPoint   = $entryPoint;
         $this->username     = $username;
         $this->password     = $password;
+        $this->storeCode    = $storeCode;
         $this->httpClient   = new HttpClient();
     }
 
