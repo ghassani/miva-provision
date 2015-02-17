@@ -116,7 +116,8 @@ class Client
 
         $response = $request->send();
 
-        return new Response($response->getBody(true), $response->getHeader('Content-Type'));
+
+        return new Response($response);
     }
 
 }

@@ -16,25 +16,34 @@ namespace Miva\Provisioning;
 */
 class Response
 {
+    const RESPONSE_XML = 'xml';
+
+    const RESPONSE_JSON = 'json';
+
     /** @var array */
     protected $response = array();
-    
+
+    protected $format = 'xml';
+
+
     /**
      * Constructor
      * 
      * @param string $content
      * @param int $status
      */
-     public function __construct($content, $contentType)
+     public function __construct(\Guzzle\Http\Message\Response $httpResponse)
      {
-         if ($contentType == 'text/xml') {
-             $this->response = simplexml_load_string($content);
+         $this->httpResponse = $httpResponse;
+         if ($this->httpResponse->getHeader('Content-Type') == 'text/xml') {
+             $this->response = simplexml_load_string($this->httpResponse->getBody(true));
+             $this->format = static::RESPONSE_XML;
          } else {
-             $this->response = json_decode($content, true);
-         }  
+             $this->response = json_decode($this->httpResponse->getBody(true), true);
+             $this->format = static::RESPONSE_JSON;
+         }
      }
 
-     
     /**
      * getContent
      *
@@ -42,22 +51,9 @@ class Response
     */
     public function getContent()
     {
-        return $this->content;
+        return $this->httpResponse->getBody(true);
     }
-    
-    /**
-     * setContent
-     *
-     * @param string $content
-     *
-     * @return self
-    */
-    public function setContent($content)
-    {
-        $this->content = $content;
-        return $this;
-    }
-    
+
     /**
      * getStatus
      *
@@ -65,25 +61,39 @@ class Response
     */
     public function isSuccess()
     {
-        if (!count($this->getErrorMessage())) {
-            return true;
+        if ($this->httpResponse->getStatusCode() !== 200) {
+            return false;
         }
 
-        if (!$this->response instanceof \SimpleXMLElement && isset($this->response['success']) && $this->response['success'] == true) {
-            return true;
+        if ($this->format == static::RESPONSE_XML) {
+            if (property_exists($this->response->attributes(), 'status') && (string) $this->response->attributes()->status == 'error') {
+                return false;
+            }
+        } else if($this->format == static::RESPONSE_JSON) {
+            if (isset($this->response['success']) && $this->response['success'] != true) {
+                return false;
+            }
         }
 
-        return false;
+        if (count($this->getErrorMessage())) {
+            return false;
+        }
+
+        return true;
     }
     
 
     public function getErrorMessage()
     {
-        if ($this->response instanceof \SimpleXMLElement) {
-            return $this->getMessages();
+        if ($this->format == static::RESPONSE_XML) {
+            if (property_exists($this->response, 'Error')) {
+                return (string) $this->response->Error;
+            }
+        } else if($this->format == static::RESPONSE_JSON) {
+            return isset($this->response['error_message']) ? $this->response['error_message'] : null;
         }
 
-        return isset($this->response['error_message']) ? $this->response['error_message'] : null;
+        return false;
     }
 
     /**
@@ -91,7 +101,16 @@ class Response
      */
     public function getErrorCode()
     {
-        return isset($this->response['error_code']) ? $this->response['error_code'] : null;
+        if ($this->format == static::RESPONSE_XML) {
+            if (property_exists($this->response, 'Error')) {
+                return (string) $this->response->Error->attributes()->code;
+            }
+        } else if($this->format == static::RESPONSE_JSON) {
+            return isset($this->response['error_code']) ? $this->response['error_code'] : null;
+        }
+
+        return false;
+
     }
 
     /**
