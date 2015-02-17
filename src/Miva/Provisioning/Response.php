@@ -69,7 +69,7 @@ class Response
             return true;
         }
 
-        if (!$this->response instanceof \SimpleXMLElement && isset($this->response['success']) && $this->response['success']) {
+        if (!$this->response instanceof \SimpleXMLElement && isset($this->response['success']) && $this->response['success'] == true) {
             return true;
         }
 

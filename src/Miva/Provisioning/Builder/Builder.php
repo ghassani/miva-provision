@@ -230,6 +230,16 @@ class Builder
          
          return $this;
     }
+
+    /**
+     * @param FragmentInterface $fragment
+     * @param null $storeCode
+     * @return mixed
+     */
+    public function add(FragmentInterface $fragment, $storeCode = null)
+    {
+        return $this->addFragment($fragment, $storeCode);
+    }
     
     /**
      * addFragment
