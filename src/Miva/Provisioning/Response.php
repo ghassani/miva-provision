@@ -10,10 +10,10 @@
 namespace Miva\Provisioning;
 
 /**
-* Response
-*
-* @author Gassan Idriss <gidriss@mivamerchant.com>
-*/
+ * Response
+ *
+ * @author Gassan Idriss <gidriss@mivamerchant.com>
+ */
 class Response
 {
     const RESPONSE_XML = 'xml';
@@ -28,27 +28,27 @@ class Response
 
     /**
      * Constructor
-     * 
+     *
      * @param string $content
      * @param int $status
      */
-     public function __construct(\Guzzle\Http\Message\Response $httpResponse)
-     {
-         $this->httpResponse = $httpResponse;
-         if ($this->httpResponse->getHeader('Content-Type') == 'text/xml') {
-             $this->response = simplexml_load_string($this->httpResponse->getBody(true));
-             $this->format = static::RESPONSE_XML;
-         } else {
-             $this->response = json_decode($this->httpResponse->getBody(true), true);
-             $this->format = static::RESPONSE_JSON;
-         }
-     }
+    public function __construct(\Guzzle\Http\Message\Response $httpResponse)
+    {
+        $this->httpResponse = $httpResponse;
+        if ($this->httpResponse->getHeader('Content-Type') == 'text/xml') {
+            $this->response = simplexml_load_string($this->httpResponse->getBody(true));
+            $this->format = static::RESPONSE_XML;
+        } else {
+            $this->response = json_decode($this->httpResponse->getBody(true), true);
+            $this->format = static::RESPONSE_JSON;
+        }
+    }
 
     /**
      * getContent
      *
      * @return string
-    */
+     */
     public function getContent()
     {
         return $this->httpResponse->getBody(true);
@@ -58,7 +58,7 @@ class Response
      * getStatus
      *
      * @return int
-    */
+     */
     public function isSuccess()
     {
         if ($this->httpResponse->getStatusCode() !== 200) {
@@ -75,13 +75,13 @@ class Response
             }
         }
 
-        if (count($this->getErrorMessage())) {
+        if (false !== $this->getErrorMessage()) {
             return false;
         }
 
         return true;
     }
-    
+
 
     public function getErrorMessage()
     {
@@ -90,14 +90,14 @@ class Response
                 return (string) $this->response->Error;
             }
         } else if($this->format == static::RESPONSE_JSON) {
-            return isset($this->response['error_message']) ? $this->response['error_message'] : null;
+            return isset($this->response['error_message']) ? $this->response['error_message'] : false;
         }
 
         return false;
     }
 
     /**
-     * 
+     *
      */
     public function getErrorCode()
     {
@@ -132,5 +132,5 @@ class Response
         return $return;
     }
 
-    
+
 }
