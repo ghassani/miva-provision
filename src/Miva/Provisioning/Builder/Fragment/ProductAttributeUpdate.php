@@ -10,19 +10,22 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
-use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
-* AttributeTemplateAttributeAdd
-*
-* @author Gassan Idriss <gidriss@mivamerchant.com>
-*/
-class AttributeTemplateAttributeAdd implements Model\StoreFragmentInterface
+ * ProductAttributeAdd
+ *
+ * @author Gassan Idriss <gidriss@mivamerchant.com>
+ */
+class ProductAttributeAdd implements Model\StoreFragmentInterface
 {
+
     /** @var string */
-    public $templateCode;
-    
+    public $productCode;
+
+    /** @var string */
+    public $attributeCode;
+
     /** @var string */
     public $code;
 
@@ -35,43 +38,61 @@ class AttributeTemplateAttributeAdd implements Model\StoreFragmentInterface
     /** @var string */
     public $image;
 
-    /** @var float */
+    /** @var int */
     public $price;
 
-    /** @var float */
+    /** @var int */
     public $cost;
 
-    /** @var float */
+    /** @var int */
     public $weight;
 
-    /** @var boolean  */
+    /** @var boolean */
     public $required = false;
 
-    /** @var boolean  */
+    /** @var boolean */
     public $inventory = false;
 
     /**
-     * getTemplateCode
+     * getProductCode
      *
      * @return string
-    */
-    public function getTemplateCode()
+     */
+    public function getProductCode()
     {
-        return $this->templateCode;
+        return $this->productCode;
     }
-    
+
     /**
-     * setTemplateCode
+     * setProductCode
      *
-     * @param string $templateCode
+     * @param string $productCode
      *
      * @return self
-    */
-    public function setTemplateCode($templateCode)
+     */
+    public function setProductCode($productCode)
     {
-    	$this->templateCode = $templateCode;
+        $this->productCode = $productCode;
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getAttributeCode()
+    {
+        return $this->attributeCode;
+    }
+
+    /**
+     * @param string $attributeCode
+     */
+    public function setAttributeCode($attributeCode)
+    {
+        $this->attributeCode = $attributeCode;
+        return $this;
+    }
+
 
 
     /**
@@ -87,7 +108,7 @@ class AttributeTemplateAttributeAdd implements Model\StoreFragmentInterface
     /**
      * setCode
      *
-     * @param string code
+     * @param string $code
      *
      * @return self
      */
@@ -96,7 +117,30 @@ class AttributeTemplateAttributeAdd implements Model\StoreFragmentInterface
         $this->code = $code;
         return $this;
     }
-    
+
+    /**
+     * getType
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * setType
+     *
+     * @param string $type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+        return $this;
+    }
+
     /**
      * getPrompt
      *
@@ -110,7 +154,7 @@ class AttributeTemplateAttributeAdd implements Model\StoreFragmentInterface
     /**
      * setPrompt
      *
-     * @param string prompt
+     * @param string $prompt
      *
      * @return self
      */
@@ -119,35 +163,12 @@ class AttributeTemplateAttributeAdd implements Model\StoreFragmentInterface
         $this->prompt = $prompt;
         return $this;
     }
-    
-    /**
-     * getType
-     *
-     * @return string
-    */
-    public function getType()
-    {
-        return $this->type;
-    }
 
-    /**
-     * setType
-     *
-     * @param string type
-     *
-     * @return self
-    */
-    public function setType($type)
-    {
-        $this->type = $type;
-        return $this;
-    }
-        
     /**
      * getImage
      *
      * @return string
-    */
+     */
     public function getImage()
     {
         return $this->image;
@@ -156,21 +177,21 @@ class AttributeTemplateAttributeAdd implements Model\StoreFragmentInterface
     /**
      * setImage
      *
-     * @param string image
+     * @param string $image
      *
      * @return self
-    */
+     */
     public function setImage($image)
     {
         $this->image = $image;
         return $this;
     }
-    
+
     /**
      * getPrice
      *
-     * @return float
-    */
+     * @return int
+     */
     public function getPrice()
     {
         return $this->price;
@@ -179,21 +200,21 @@ class AttributeTemplateAttributeAdd implements Model\StoreFragmentInterface
     /**
      * setPrice
      *
-     * @param float price
+     * @param int $price
      *
      * @return self
-    */
+     */
     public function setPrice($price)
     {
         $this->price = $price;
         return $this;
     }
-    
+
     /**
      * getCost
      *
-     * @return float
-    */
+     * @return int
+     */
     public function getCost()
     {
         return $this->cost;
@@ -202,21 +223,21 @@ class AttributeTemplateAttributeAdd implements Model\StoreFragmentInterface
     /**
      * setCost
      *
-     * @param float cost
+     * @param int $cost
      *
      * @return self
-    */
+     */
     public function setCost($cost)
     {
         $this->cost = $cost;
         return $this;
     }
-    
+
     /**
      * getWeight
      *
-     * @return float
-    */
+     * @return int
+     */
     public function getWeight()
     {
         return $this->weight;
@@ -225,10 +246,10 @@ class AttributeTemplateAttributeAdd implements Model\StoreFragmentInterface
     /**
      * setWeight
      *
-     * @param float weight
+     * @param int $weight
      *
      * @return self
-    */
+     */
     public function setWeight($weight)
     {
         $this->weight = $weight;
@@ -238,8 +259,8 @@ class AttributeTemplateAttributeAdd implements Model\StoreFragmentInterface
     /**
      * getRequired
      *
-     * @return boolean 
-    */
+     * @return boolean
+     */
     public function getRequired()
     {
         return $this->required;
@@ -251,10 +272,10 @@ class AttributeTemplateAttributeAdd implements Model\StoreFragmentInterface
      * @param boolean $required
      *
      * @return self
-    */
+     */
     public function setRequired($required)
     {
-        $this->required = true === $required ? $required : false;
+        $this->required = $required;
         return $this;
     }
 
@@ -280,34 +301,43 @@ class AttributeTemplateAttributeAdd implements Model\StoreFragmentInterface
         $this->inventory = true === $inventory ? $inventory : false;
         return $this;
     }
-        
+
     /**
      * {@inheritDoc}
-     * 
+     *
      * Format:
-     * 
-     *     <AttributeTemplateAttribute_Add template_code="spikes-armor">
-     *        <Code>spikes</Code>
-     *        <Type>checkbox</Type>
-     *        <Prompt><![CDATA[Would you like to add spikes to the armor? (+500 sp)]]></Prompt>
-     *        <Image></Image>
-     *        <Price>500.00</Price>
-     *        <Cost>375.00</Cost>
-     *        <Weight>0.00</Weight>
-     *        <Required>No</Required>
-     *        <Inventory>No</Inventory>
-     *    </AttributeTemplateAttribute_Add>
-    */
+     *
+     * <ProductAttribute_Update product_code="chest" attribute_code="bar">
+     *       <Code>lock</Code> <!-- Optional -->
+     *       <Type>select</Type> <!-- Optional -->
+     *       <Prompt><![CDATA[Lock]]></Prompt> <!-- Optional -->
+     *       <Image/> <!-- Optional -->
+     *       <Price>0.00</Price> <!-- Optional -->
+     *       <Cost>0.00</Cost> <!-- Optional -->
+     *       <Weight>0.00</Weight> <!-- Optional -->
+     *       <Required>Yes</Required> <!-- Optional -->
+     *       <Inventory>Yes</Inventory> <!-- Optional -->
+     * </ProductAttribute_Update>
+     *
+     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
+        $xmlObject = new SimpleXMLElement('<ProductAttribute_Update />');
 
-        $xmlObject = new SimpleXMLElement('<AttributeTemplateAttribute_Add />');
+        $xmlObject->addAttribute('product_code', $this->getProductCode());
+        $xmlObject->addAttribute('attribute_code', $this->getAttributeCode());
 
-        $xmlObject->addAttribute('template_code', $this->getTemplateCode());
-        
-        $xmlObject->addChild('Code',$this->getCode());
-        $xmlObject->addChild('Type',$this->getType());
-        $xmlObject->addChild('Prompt', $this->getPrompt())->addAttribute('method-call', 'addCDATA');
+        if ($this->getCode()) {
+            $xmlObject->addChild('Code',$this->getCode());
+        }
+
+        if ($this->getType()) {
+            $xmlObject->addChild('Type',$this->getType());
+        }
+
+        if ($this->getPrompt()) {
+            $xmlObject->addChild('Prompt', $this->getPrompt())->addAttribute('method-call', 'addCDATA');
+        }
 
         if ($this->getImage()) {
             $xmlObject->addChild('Image',$this->getImage());
@@ -328,9 +358,6 @@ class AttributeTemplateAttributeAdd implements Model\StoreFragmentInterface
         $xmlObject->addChild('Required',$this->getRequired() ? 'Yes' : 'No');
         $xmlObject->addChild('Inventory',$this->getInventory() ? 'Yes' : 'No');
 
-
-
-        
         return $xmlObject;
-    }     
+    }
 }

@@ -43,9 +43,12 @@ class ProductAttributeAdd implements Model\StoreFragmentInterface
     
     /** @var int */
     public $weight;
-    
+
     /** @var boolean */
     public $required = false;
+
+    /** @var boolean */
+    public $inventory = false;
     
     /**
      * getProductCode
@@ -253,7 +256,29 @@ class ProductAttributeAdd implements Model\StoreFragmentInterface
         $this->required = $required;
         return $this;
     }
-    
+
+    /**
+     * getInventory
+     *
+     * @return boolean
+     */
+    public function getInventory()
+    {
+        return $this->inventory;
+    }
+
+    /**
+     * setInventory
+     *
+     * @param boolean $inventory
+     *
+     * @return self
+     */
+    public function setInventory($inventory)
+    {
+        $this->inventory = true === $inventory ? $inventory : false;
+        return $this;
+    }
 
     /**
      * {@inheritDoc}
@@ -261,31 +286,46 @@ class ProductAttributeAdd implements Model\StoreFragmentInterface
      * Format:
      * 
      * <ProductAttribute_Add product_code="chest">
-     *       <Code>lock</Code>
-     *       <Type>select</Type>
-     *       <Prompt><![CDATA[Lock]]></Prompt>
-     *       <Image/>
-     *       <Price>0.00</Price>
-     *       <Cost>0.00</Cost>
-     *       <Weight>0.00</Weight>
-     *       <Required>Yes</Required>
+     *       <Code>lock</Code> <!-- Required -->
+     *       <Type>select</Type> <!-- Required -->
+     *       <Prompt><![CDATA[Lock]]></Prompt> <!-- Required -->
+     *       <Image/> <!-- Optional -->
+     *       <Price>0.00</Price> <!-- Optional -->
+     *       <Cost>0.00</Cost> <!-- Optional -->
+     *       <Weight>0.00</Weight> <!-- Optional -->
+     *       <Required>Yes</Required> <!-- Optional -->
+     *       <Inventory>Yes</Inventory> <!-- Optional -->
      * </ProductAttribute_Add>
      *
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<ProductAttribute_Add></ProductAttribute_Add>');
+        $xmlObject = new SimpleXMLElement('<ProductAttribute_Add />');
 
         $xmlObject->addAttribute('product_code', $this->getProductCode());
-        
-        $xmlObject->addChild('Code', $this->getCode());
-        $xmlObject->addChild('Type', $this->getType());
-        $xmlObject->addChild('Prompt', $this->getPrompt())->addAttribute('method-call', 'addCDATA');;
-        $xmlObject->addChild('Image', $this->getImage());
-        $xmlObject->addChild('Price', $this->getPrice());
-        $xmlObject->addChild('Cost', $this->getCost());
-        $xmlObject->addChild('Weight', $this->getWeight());
-        $xmlObject->addChild('Required', $this->getRequired() ? 'Yes' : 'No');
+
+        $xmlObject->addChild('Code',$this->getCode());
+        $xmlObject->addChild('Type',$this->getType());
+        $xmlObject->addChild('Prompt', $this->getPrompt())->addAttribute('method-call', 'addCDATA');
+
+        if ($this->getImage()) {
+            $xmlObject->addChild('Image',$this->getImage());
+        }
+
+        if ($this->getPrice()) {
+            $xmlObject->addChild('Price',$this->getPrice());
+        }
+
+        if ($this->getCost()) {
+            $xmlObject->addChild('Cost',$this->getCost());
+        }
+
+        if ($this->getWeight()) {
+            $xmlObject->addChild('Weight',$this->getWeight());
+        }
+
+        $xmlObject->addChild('Required',$this->getRequired() ? 'Yes' : 'No');
+        $xmlObject->addChild('Inventory',$this->getInventory() ? 'Yes' : 'No');
 
         return $xmlObject;
     }

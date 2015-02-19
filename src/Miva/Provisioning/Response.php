@@ -9,6 +9,8 @@
 */
 namespace Miva\Provisioning;
 
+use Guzzle\Http\Message\Response as HttpResponse;
+
 /**
  * Response
  *
@@ -32,7 +34,7 @@ class Response
      * @param string $content
      * @param int $status
      */
-    public function __construct(\Guzzle\Http\Message\Response $httpResponse)
+    public function __construct(HttpResponse $httpResponse)
     {
         $this->httpResponse = $httpResponse;
         if ($this->httpResponse->getHeader('Content-Type') == 'text/xml') {
@@ -106,7 +108,7 @@ class Response
                 return (string) $this->response->Error->attributes()->code;
             }
         } else if($this->format == static::RESPONSE_JSON) {
-            return isset($this->response['error_code']) ? $this->response['error_code'] : null;
+            return isset($this->response['error_code']) ? $this->response['error_code'] : false;
         }
 
         return false;
