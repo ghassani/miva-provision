@@ -12,7 +12,7 @@
     "require": {
         "php": ">=5.3.3",
         "ext-curl" : "*",
-        "symfony/http-foundation": "2.3@stable",
+        "symfony/http-foundation": ">=2.3@stable",
         "guzzle/http": "~3.1@stable"
     },
     "suggest": {
