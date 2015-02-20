@@ -83,16 +83,13 @@ class ProductRelatedProductAssign implements Model\StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
+        $xmlObject = new SimpleXMLElement('<ProductRelatedProduct_Assign />');
 
-        $xml = null;
-        $xmlObject = new SimpleXMLElement('<Fragment></Fragment>');
 
+        $xmlObject->addAttribute('product_code', $this->getProductCode());
+        $xmlObject->addAttribute('relatedproduct_code', $this->getRelatedProductCode());
         
-        foreach ($xmlObject->children() as $child) {
-            $xml .= $child->saveXml();
-        }
-        
-        return $xml;
+        return $xmlObject;
     }
 
 }

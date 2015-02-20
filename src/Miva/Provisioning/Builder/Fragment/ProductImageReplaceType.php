@@ -14,22 +14,21 @@ use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
- * ProductAttributeAddTemplateCopy
+ * ProductImageReplaceType
  *
  * @author Gassan Idriss <gidriss@mivamerchant.com>
  */
-class ProductAttributeAddTemplateCopy implements Model\StoreFragmentInterface
+class ProductImageReplaceType implements Model\StoreFragmentInterface
 {
 
     /** @var string */
     public $productCode;
 
-    /** @var string */
-    public $attributeTemplateCode;
+    public $filePath;
+
+    public $imageTypeCode;
 
     /**
-     * getProductCode
-     *
      * @return string
      */
     public function getProductCode()
@@ -38,11 +37,7 @@ class ProductAttributeAddTemplateCopy implements Model\StoreFragmentInterface
     }
 
     /**
-     * setProductCode
-     *
-     * @param string productCode
-     *
-     * @return self
+     * @param string $productCode
      */
     public function setProductCode($productCode)
     {
@@ -50,27 +45,37 @@ class ProductAttributeAddTemplateCopy implements Model\StoreFragmentInterface
         return $this;
     }
 
-
     /**
-     * getAttributeTemplateCode
-     *
-     * @return string
+     * @return mixed
      */
-    public function getAttributeTemplateCode()
+    public function getFilePath()
     {
-        return $this->attributeTemplateCode;
+        return $this->filePath;
     }
 
     /**
-     * setAttributeTemplateCode
-     *
-     * @param string $attributeTemplateCode
-     *
-     * @return self
+     * @param mixed $filePath
      */
-    public function setAttributeTemplateCode($attributeTemplateCode)
+    public function setFilePath($filePath)
     {
-        $this->attributeTemplateCode = $attributeTemplateCode;
+        $this->filePath = $filePath;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImageTypeCode()
+    {
+        return $this->imageTypeCode;
+    }
+
+    /**
+     * @param mixed $imageTypeCode
+     */
+    public function setImageTypeCode($imageTypeCode)
+    {
+        $this->imageTypeCode = $imageTypeCode;
         return $this;
     }
 
@@ -80,16 +85,18 @@ class ProductAttributeAddTemplateCopy implements Model\StoreFragmentInterface
      *
      * Format:
      *
-     * <ProductAttribute_Add_TemplateCopy product_code="shield-small" attribute_template_code="" />
+     *   <ProductImage_Replace_Type login="BAR" />
      */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<ProductAttribute_Add_TemplateCopy />');
+
+        $xmlObject = new SimpleXMLElement('<ProductImage_Replace_Type />');
 
         $xmlObject->addAttribute('product_code', $this->getProductCode());
-        $xmlObject->addAttribute('attribute_template_code', $this->getAttributeTemplateCode());
-
+        $xmlObject->addAttribute('filepath', $this->getFilePath());
+        $xmlObject->addAttribute('imagetype_code', $this->getImageTypeCode());
 
         return $xmlObject;
     }
+
 }

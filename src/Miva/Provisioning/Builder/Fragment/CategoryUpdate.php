@@ -20,15 +20,15 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 */
 class CategoryUpdate implements Model\StoreFragmentInterface
 {
-    
+
+    /** @var string */
+    public $categoryCode;
+
     /** @var string */
     public $name;
 
     /** @var string */
     public $code;
-
-    /** @var string */
-    public $previousCode;
 
     /** @var boolean */
     public $active = true;
@@ -36,18 +36,6 @@ class CategoryUpdate implements Model\StoreFragmentInterface
     /** @var string */
     public $parentCategoryCode;
 
-
-    /**
-     * Constructor
-     * 
-     * @param string $code
-     * @param string $previousCode
-     */
-    public function __construct($code = null, $previousCode = null)
-    {
-        $this->code = $code;
-        $this->previousCode = $previousCode;
-    }
 
     /**
     * setName
@@ -94,29 +82,25 @@ class CategoryUpdate implements Model\StoreFragmentInterface
     {
         return $this->code;
     }
-    
+
     /**
-     * getPreviousCode
-     *
      * @return string
-    */
-    public function getPreviousCode()
+     */
+    public function getCategoryCode()
     {
-        return $this->previousCode;
+        return $this->categoryCode;
     }
-    
+
     /**
-     * setPreviousCode
-     *
-     * @param string $previousCode
-     *
-     * @return self
-    */
-    public function setPreviousCode($previousCode)
+     * @param string $categoryCode
+     */
+    public function setCategoryCode($categoryCode)
     {
-    	$this->previousCode = $previousCode;
+        $this->categoryCode = $categoryCode;
         return $this;
     }
+    
+
 
 
     /**
@@ -180,13 +164,20 @@ class CategoryUpdate implements Model\StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new SimpleXMLElement('<Category_Update></Category_Update>');
+        $xmlObject = new SimpleXMLElement('<Category_Update />');
         
-        $xmlObject->addAttribute('code', $this->getPreviousCode() ? $this->getPreviousCode() : $this->getCode());
-        
-        $xmlObject->addChild('Name', $this->getName());
-        $xmlObject->addChild('Code', $this->getCode());
+        $xmlObject->addAttribute('code', $this->getCategoryCode());
+
+        if ($this->getName()) {
+            $xmlObject->addChild('Name', $this->getName());
+        }
+
+        if ($this->getCode()) {
+            $xmlObject->addChild('Code', $this->getCode());
+        }
+
         $xmlObject->addChild('Active', $this->getActive() ? 'Yes' : 'No');
+
 
         return $xmlObject;
     }

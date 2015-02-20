@@ -14,18 +14,18 @@ use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
- * ProductAttributeAddTemplateCopy
+ * ProductRelatedProductUnassign
  *
  * @author Gassan Idriss <gidriss@mivamerchant.com>
  */
-class ProductAttributeAddTemplateCopy implements Model\StoreFragmentInterface
+class ProductRelatedProductUnassign implements Model\StoreFragmentInterface
 {
 
     /** @var string */
     public $productCode;
 
     /** @var string */
-    public $attributeTemplateCode;
+    public $relatedProductCode;
 
     /**
      * getProductCode
@@ -40,7 +40,7 @@ class ProductAttributeAddTemplateCopy implements Model\StoreFragmentInterface
     /**
      * setProductCode
      *
-     * @param string productCode
+     * @param string $productCode
      *
      * @return self
      */
@@ -50,27 +50,26 @@ class ProductAttributeAddTemplateCopy implements Model\StoreFragmentInterface
         return $this;
     }
 
-
     /**
-     * getAttributeTemplateCode
+     * getRelatedProductCode
      *
      * @return string
      */
-    public function getAttributeTemplateCode()
+    public function getRelatedProductCode()
     {
-        return $this->attributeTemplateCode;
+        return $this->relatedProductCode;
     }
 
     /**
-     * setAttributeTemplateCode
+     * setRelatedProductCode
      *
-     * @param string $attributeTemplateCode
+     * @param string $relatedProductCode
      *
      * @return self
      */
-    public function setAttributeTemplateCode($attributeTemplateCode)
+    public function setRelatedProductCode($relatedProductCode)
     {
-        $this->attributeTemplateCode = $attributeTemplateCode;
+        $this->relatedProductCode = $relatedProductCode;
         return $this;
     }
 
@@ -80,16 +79,17 @@ class ProductAttributeAddTemplateCopy implements Model\StoreFragmentInterface
      *
      * Format:
      *
-     * <ProductAttribute_Add_TemplateCopy product_code="shield-small" attribute_template_code="" />
+     *  <ProductRelatedProduct_Unassign product_code="bolts" relatedproduct_code="bolts-silver" />
      */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<ProductAttribute_Add_TemplateCopy />');
+        $xmlObject = new SimpleXMLElement('<ProductRelatedProduct_Unassign />');
+
 
         $xmlObject->addAttribute('product_code', $this->getProductCode());
-        $xmlObject->addAttribute('attribute_template_code', $this->getAttributeTemplateCode());
-
+        $xmlObject->addAttribute('relatedproduct_code', $this->getRelatedProductCode());
 
         return $xmlObject;
     }
+
 }

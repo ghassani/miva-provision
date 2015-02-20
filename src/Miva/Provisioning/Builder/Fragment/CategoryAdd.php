@@ -30,21 +30,6 @@ class CategoryAdd implements Model\StoreFragmentInterface
     /** @var boolean */
     public $active = true;
 
-
-    /**
-     * Constructor
-     * 
-     * @param string $name
-     * @param string $code
-     * @param string $active
-     */
-    public function __construct($name = null, $code = null, boolean $active = true)
-    {
-        $this->name = $name;
-        $this->code = $code;
-        $this->active = $active;
-    }
-
     /**
     * setName
     *

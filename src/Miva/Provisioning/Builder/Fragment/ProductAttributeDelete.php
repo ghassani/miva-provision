@@ -76,7 +76,7 @@ class ProductAttributeDelete implements Model\StoreFragmentInterface
      */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<ProductAttribute_Update />');
+        $xmlObject = new SimpleXMLElement('<ProductAttribute_Delete />');
 
         $xmlObject->addAttribute('product_code', $this->getProductCode());
         $xmlObject->addAttribute('attribute_code', $this->getAttributeCode());

@@ -10,22 +10,18 @@
 namespace Miva\Provisioning\Builder\Fragment;
 
 use Miva\Version;
-use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
- * ProductAttributeAddTemplateCopy
+ * ProductAttributeDelete
  *
  * @author Gassan Idriss <gidriss@mivamerchant.com>
  */
-class ProductAttributeAddTemplateCopy implements Model\StoreFragmentInterface
+class ProductAttributeDeleteAll implements Model\StoreFragmentInterface
 {
 
     /** @var string */
     public $productCode;
-
-    /** @var string */
-    public $attributeTemplateCode;
 
     /**
      * getProductCode
@@ -40,7 +36,7 @@ class ProductAttributeAddTemplateCopy implements Model\StoreFragmentInterface
     /**
      * setProductCode
      *
-     * @param string productCode
+     * @param string $productCode
      *
      * @return self
      */
@@ -51,44 +47,20 @@ class ProductAttributeAddTemplateCopy implements Model\StoreFragmentInterface
     }
 
 
-    /**
-     * getAttributeTemplateCode
-     *
-     * @return string
-     */
-    public function getAttributeTemplateCode()
-    {
-        return $this->attributeTemplateCode;
-    }
-
-    /**
-     * setAttributeTemplateCode
-     *
-     * @param string $attributeTemplateCode
-     *
-     * @return self
-     */
-    public function setAttributeTemplateCode($attributeTemplateCode)
-    {
-        $this->attributeTemplateCode = $attributeTemplateCode;
-        return $this;
-    }
-
 
     /**
      * {@inheritDoc}
      *
      * Format:
      *
-     * <ProductAttribute_Add_TemplateCopy product_code="shield-small" attribute_template_code="" />
+     * <ProductAttribute_Delete_All product_code="chest" />
+     *
      */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<ProductAttribute_Add_TemplateCopy />');
+        $xmlObject = new SimpleXMLElement('<ProductAttribute_Delete_All />');
 
         $xmlObject->addAttribute('product_code', $this->getProductCode());
-        $xmlObject->addAttribute('attribute_template_code', $this->getAttributeTemplateCode());
-
 
         return $xmlObject;
     }

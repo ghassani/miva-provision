@@ -27,19 +27,6 @@ class CategoryProductAssign implements Model\StoreFragmentInterface
     /** @var string */
     public $productCode;
 
-
-    /**
-     * Constructor
-     * 
-     * @param string $categoryCode
-     * @param string $productCode
-     */
-    public function __construct($categoryCode = null, $productCode = null)
-    {
-        $this->categoryCode = $categoryCode;
-        $this->productCode = $productCode;
-    }
-
     /**
      * getCategoryCode
      *

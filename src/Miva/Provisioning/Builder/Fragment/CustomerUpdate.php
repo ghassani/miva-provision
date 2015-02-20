@@ -14,128 +14,150 @@ use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
-* CustomerAdd
-*
-* @author Gassan Idriss <gidriss@mivamerchant.com>
-*/
-class CustomerAdd implements Model\StoreFragmentInterface
+ * CustomerUpdate
+ *
+ * @author Gassan Idriss <gidriss@mivamerchant.com>
+ */
+class CustomerUpdate implements Model\StoreFragmentInterface
 {
 
     /** @var string */
     public $login;
-    
+
+    /** @var string */
+    public $newLogin;
+
     /** @var string */
     public $lostPasswordEmail;
-    
+
     /** @var string */
     public $password;
-    
+
     /** @var string */
     public $shipFirstName;
-    
+
     /** @var string */
     public $shipLastName;
-    
+
     /** @var string */
     public $shipEmail;
-    
+
     /** @var string */
     public $shipPhone;
-    
+
     /** @var string */
     public $shipFax;
-    
+
     /** @var string */
     public $shipCompany;
-    
+
     /** @var string */
     public $shipAddress;
-    
+
     /** @var string */
     public $shipCity;
-    
+
     /** @var string */
     public $shipStateCode;
-    
+
     /** @var string */
     public $shipZip;
-    
+
     /** @var string */
     public $shipCountryCode;
-    
+
     /** @var string */
     public $billFirstName;
-    
+
     /** @var string */
     public $billLastName;
-    
+
     /** @var string */
     public $billEmail;
-    
+
     /** @var string */
     public $billPhone;
-    
+
     /** @var string */
     public $billFax;
-    
+
     /** @var string */
     public $billCompany;
-    
+
     /** @var string */
     public $billAddress;
-    
+
     /** @var string */
     public $billCity;
-    
+
     /** @var string */
     public $billStateCode;
-    
+
     /** @var string */
     public $billZip;
-    
+
     /** @var string */
     public $billCountryCode;
-    
+
     /**
      * getLogin
      *
      * @return string
-    */
+     */
     public function getLogin()
     {
         return $this->login;
     }
-    
+
     /**
      * setLogin
      *
      * @param string $login
      *
      * @return self
-    */
+     */
     public function setLogin($login)
     {
         $this->login = $login;
         return $this;
-    }    
+    }
+
+    /**
+     * @return string
+     */
+    public function getNewLogin()
+    {
+        return $this->newLogin;
+    }
+
+    /**
+     * @param string $newLogin
+     */
+    public function setNewLogin($newLogin)
+    {
+        $this->newLogin = $newLogin;
+        return $this;
+    }
+
+
 
     /**
      * getLostPasswordEmail
      *
      * @return string
-    */
+     */
     public function getLostPasswordEmail()
     {
         return $this->lostPasswordEmail;
     }
-    
+
     /**
      * setLostPasswordEmail
      *
      * @param string $lostPasswordEmail
      *
      * @return self
-    */
+     */
     public function setLostPasswordEmail($lostPasswordEmail)
     {
         $this->lostPasswordEmail = $lostPasswordEmail;
@@ -145,19 +167,19 @@ class CustomerAdd implements Model\StoreFragmentInterface
      * getPassword
      *
      * @return string
-    */
+     */
     public function getPassword()
     {
         return $this->password;
     }
-    
+
     /**
      * setPassword
      *
      * @param string $password
      *
      * @return self
-    */
+     */
     public function setPassword($password)
     {
         $this->password = $password;
@@ -168,19 +190,19 @@ class CustomerAdd implements Model\StoreFragmentInterface
      * getShipFirstName
      *
      * @return string
-    */
+     */
     public function getShipFirstName()
     {
         return $this->shipFirstName;
     }
-    
+
     /**
      * setShipFirstName
      *
      * @param string $shipFirstName
      *
      * @return self
-    */
+     */
     public function setShipFirstName($shipFirstName)
     {
         $this->shipFirstName = $shipFirstName;
@@ -191,65 +213,65 @@ class CustomerAdd implements Model\StoreFragmentInterface
      * getShipLastName
      *
      * @return string
-    */
+     */
     public function getShipLastName()
     {
         return $this->shipLastName;
     }
-    
+
     /**
      * setShipLastName
      *
      * @param string $shipLastName
      *
      * @return self
-    */
+     */
     public function setShipLastName($shipLastName)
     {
         $this->shipLastName = $shipLastName;
         return $this;
     }
-    
+
     /**
      * getShipEmail
      *
      * @return string
-    */
+     */
     public function getShipEmail()
     {
         return $this->shipEmail;
     }
-    
+
     /**
      * setShipEmail
      *
      * @param string $shipEmail
      *
      * @return self
-    */
+     */
     public function setShipEmail($shipEmail)
     {
         $this->shipEmail = $shipEmail;
         return $this;
     }
-    
+
     /**
      * getShipPhone
      *
      * @return string
-    */
+     */
     public function getShipPhone()
     {
         return $this->shipPhone;
     }
-    
+
     /**
      * setShipPhone
      *
      * @param string $shipPhone
      *
      * @return self
-    */
+     */
     public function setShipPhone($shipPhone)
     {
         $this->shipPhone = $shipPhone;
@@ -260,19 +282,19 @@ class CustomerAdd implements Model\StoreFragmentInterface
      * getShipFax
      *
      * @return string
-    */
+     */
     public function getShipFax()
     {
         return $this->shipFax;
     }
-    
+
     /**
      * setShipFax
      *
      * @param string $shipFax
      *
      * @return self
-    */
+     */
     public function setShipFax($shipFax)
     {
         $this->shipFax = $shipFax;
@@ -283,19 +305,19 @@ class CustomerAdd implements Model\StoreFragmentInterface
      * getShipCompany
      *
      * @return string
-    */
+     */
     public function getShipCompany()
     {
         return $this->shipCompany;
     }
-    
+
     /**
      * setShipCompany
      *
      * @param string $shipCompany
      *
      * @return self
-    */
+     */
     public function setShipCompany($shipCompany)
     {
         $this->shipCompany = $shipCompany;
@@ -306,19 +328,19 @@ class CustomerAdd implements Model\StoreFragmentInterface
      * getShipAddress
      *
      * @return string
-    */
+     */
     public function getShipAddress()
     {
         return $this->shipAddress;
     }
-    
+
     /**
      * setShipAddress
      *
      * @param string $shipAddress
      *
      * @return self
-    */
+     */
     public function setShipAddress($shipAddress)
     {
         $this->shipAddress = $shipAddress;
@@ -329,19 +351,19 @@ class CustomerAdd implements Model\StoreFragmentInterface
      * getShipCity
      *
      * @return string
-    */
+     */
     public function getShipCity()
     {
         return $this->shipCity;
     }
-    
+
     /**
      * setShipCity
      *
      * @param string $shipCity
      *
      * @return self
-    */
+     */
     public function setShipCity($shipCity)
     {
         $this->shipCity = $shipCity;
@@ -352,19 +374,19 @@ class CustomerAdd implements Model\StoreFragmentInterface
      * getShipStateCode
      *
      * @return string
-    */
+     */
     public function getShipStateCode()
     {
         return $this->shipStateCode;
     }
-    
+
     /**
      * setShipStateCode
      *
      * @param string $shipStateCode
      *
      * @return self
-    */
+     */
     public function setShipStateCode($shipStateCode)
     {
         $this->shipStateCode = $shipStateCode;
@@ -375,42 +397,42 @@ class CustomerAdd implements Model\StoreFragmentInterface
      * getShipZip
      *
      * @return string
-    */
+     */
     public function getShipZip()
     {
         return $this->shipZip;
     }
-    
+
     /**
      * setShipZip
      *
      * @param string $shipZip
      *
      * @return self
-    */
+     */
     public function setShipZip($shipZip)
     {
         $this->shipZip = $shipZip;
         return $this;
     }
-    
+
     /**
      * getShipCountryCode
      *
      * @return string
-    */
+     */
     public function getShipCountryCode()
     {
         return $this->shipCountryCode;
     }
-    
+
     /**
      * setShipCountryCode
      *
      * @param string $shipCountryCode
      *
      * @return self
-    */
+     */
     public function setShipCountryCode($shipCountryCode)
     {
         $this->shipCountryCode = $shipCountryCode;
@@ -421,19 +443,19 @@ class CustomerAdd implements Model\StoreFragmentInterface
      * getBillFirstName
      *
      * @return string
-    */
+     */
     public function getBillFirstName()
     {
         return $this->billFirstName;
     }
-    
+
     /**
      * setBillFirstName
      *
      * @param string $billFirstName
      *
      * @return self
-    */
+     */
     public function setBillFirstName($billFirstName)
     {
         $this->billFirstName = $billFirstName;
@@ -444,65 +466,65 @@ class CustomerAdd implements Model\StoreFragmentInterface
      * getBillLastName
      *
      * @return string
-    */
+     */
     public function getBillLastName()
     {
         return $this->billLastName;
     }
-    
+
     /**
      * setBillLastName
      *
      * @param string $billLastName
      *
      * @return self
-    */
+     */
     public function setBillLastName($billLastName)
     {
         $this->billLastName = $billLastName;
         return $this;
     }
-    
+
     /**
      * getBillEmail
      *
      * @return string
-    */
+     */
     public function getBillEmail()
     {
         return $this->billEmail;
     }
-    
+
     /**
      * setBillEmail
      *
      * @param string $billEmail
      *
      * @return self
-    */
+     */
     public function setBillEmail($billEmail)
     {
         $this->billEmail = $billEmail;
         return $this;
     }
-    
+
     /**
      * getBillPhone
      *
      * @return string
-    */
+     */
     public function getBillPhone()
     {
         return $this->billPhone;
     }
-    
+
     /**
      * setBillPhone
      *
      * @param string $billPhone
      *
      * @return self
-    */
+     */
     public function setBillPhone($billPhone)
     {
         $this->billPhone = $billPhone;
@@ -513,19 +535,19 @@ class CustomerAdd implements Model\StoreFragmentInterface
      * getBillFax
      *
      * @return string
-    */
+     */
     public function getBillFax()
     {
         return $this->billFax;
     }
-    
+
     /**
      * setBillFax
      *
      * @param string $billFax
      *
      * @return self
-    */
+     */
     public function setBillFax($billFax)
     {
         $this->billFax = $billFax;
@@ -536,19 +558,19 @@ class CustomerAdd implements Model\StoreFragmentInterface
      * getBillCompany
      *
      * @return string
-    */
+     */
     public function getBillCompany()
     {
         return $this->billCompany;
     }
-    
+
     /**
      * setBillCompany
      *
      * @param string $billCompany
      *
      * @return self
-    */
+     */
     public function setBillCompany($billCompany)
     {
         $this->billCompany = $billCompany;
@@ -559,19 +581,19 @@ class CustomerAdd implements Model\StoreFragmentInterface
      * getBillAddress
      *
      * @return string
-    */
+     */
     public function getBillAddress()
     {
         return $this->billAddress;
     }
-    
+
     /**
      * setBillAddress
      *
      * @param string $billAddress
      *
      * @return self
-    */
+     */
     public function setBillAddress($billAddress)
     {
         $this->billAddress = $billAddress;
@@ -582,19 +604,19 @@ class CustomerAdd implements Model\StoreFragmentInterface
      * getBillCity
      *
      * @return string
-    */
+     */
     public function getBillCity()
     {
         return $this->billCity;
     }
-    
+
     /**
      * setBillCity
      *
      * @param string $billCity
      *
      * @return self
-    */
+     */
     public function setBillCity($billCity)
     {
         $this->billCity = $billCity;
@@ -605,19 +627,19 @@ class CustomerAdd implements Model\StoreFragmentInterface
      * getBillStateCode
      *
      * @return string
-    */
+     */
     public function getBillStateCode()
     {
         return $this->billStateCode;
     }
-    
+
     /**
      * setBillStateCode
      *
      * @param string $billStateCode
      *
      * @return self
-    */
+     */
     public function setBillStateCode($billStateCode)
     {
         $this->billStateCode = $billStateCode;
@@ -628,42 +650,42 @@ class CustomerAdd implements Model\StoreFragmentInterface
      * getBillZip
      *
      * @return string
-    */
+     */
     public function getBillZip()
     {
         return $this->billZip;
     }
-    
+
     /**
      * setBillZip
      *
      * @param string $billZip
      *
      * @return self
-    */
+     */
     public function setBillZip($billZip)
     {
         $this->billZip = $billZip;
         return $this;
     }
-    
+
     /**
      * getBillCountryCode
      *
      * @return string
-    */
+     */
     public function getBillCountryCode()
     {
         return $this->billCountryCode;
     }
-    
+
     /**
      * setBillCountryCode
      *
      * @param string $billCountryCode
      *
      * @return self
-    */
+     */
     public function setBillCountryCode($billCountryCode)
     {
         $this->billCountryCode = $billCountryCode;
@@ -673,10 +695,10 @@ class CustomerAdd implements Model\StoreFragmentInterface
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * Format:
-     * 
-     *   <Customer_Add>
+     *
+     *   <Customer_Update login="BAR">
      *       <Login>c1</Login>
      *       <LostPasswordEmail>noreply@miva.com</LostPasswordEmail>
      *       <Password>c1</Password>
@@ -702,16 +724,26 @@ class CustomerAdd implements Model\StoreFragmentInterface
      *       <BillStateCode>CA</BillStateCode>
      *       <BillZip>92109</BillZip>
      *       <BillCountryCode>US</BillCountryCode>
-     *   </Customer_Add>
-    */
+     *   </Customer_Update>
+     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new SimpleXMLElement('<Customer_Add />');
+        $xmlObject = new SimpleXMLElement('<Customer_Update />');
 
-        $xmlObject->addChild('Login', $this->getLogin());
-        $xmlObject->addChild('LostPasswordEmail', $this->getLostPasswordEmail());
-        $xmlObject->addChild('Password', $this->getPassword());
+        $xmlObject->addAttribute('login', $this->getLogin());
+
+        if ($this->getNewLogin()) {
+            $xmlObject->addChild('Login', $this->getNewLogin());
+        }
+
+        if ($this->getLostPasswordEmail()) {
+            $xmlObject->addChild('LostPasswordEmail', $this->getLostPasswordEmail());
+        }
+
+        if ($this->getPassword()) {
+            $xmlObject->addChild('Password', $this->getPassword());
+        }
 
         if($this->getShipFirstName()){
             $xmlObject->addChild('ShipFirstName', $this->getShipFirstName());

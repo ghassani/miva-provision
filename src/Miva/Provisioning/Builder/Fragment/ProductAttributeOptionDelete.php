@@ -14,18 +14,20 @@ use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
- * ProductAttributeAddTemplateCopy
+ * ProductAttributeOptionDelete
  *
  * @author Gassan Idriss <gidriss@mivamerchant.com>
  */
-class ProductAttributeAddTemplateCopy implements Model\StoreFragmentInterface
+class ProductAttributeOptionDelete implements Model\StoreFragmentInterface
 {
 
     /** @var string */
     public $productCode;
 
     /** @var string */
-    public $attributeTemplateCode;
+    public $attributeCode;
+
+    public $optionCode;
 
     /**
      * getProductCode
@@ -40,7 +42,7 @@ class ProductAttributeAddTemplateCopy implements Model\StoreFragmentInterface
     /**
      * setProductCode
      *
-     * @param string productCode
+     * @param string $productCode
      *
      * @return self
      */
@@ -52,27 +54,45 @@ class ProductAttributeAddTemplateCopy implements Model\StoreFragmentInterface
 
 
     /**
-     * getAttributeTemplateCode
+     * getAttributeCode
      *
      * @return string
      */
-    public function getAttributeTemplateCode()
+    public function getAttributeCode()
     {
-        return $this->attributeTemplateCode;
+        return $this->attributeCode;
     }
 
     /**
-     * setAttributeTemplateCode
+     * addAttributeCode
      *
-     * @param string $attributeTemplateCode
+     * @param string $attributeCode
      *
      * @return self
      */
-    public function setAttributeTemplateCode($attributeTemplateCode)
+    public function addAttributeCode($attributeCode)
     {
-        $this->attributeTemplateCode = $attributeTemplateCode;
+        $this->attributeCode = $attributeCode;
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getOptionCode()
+    {
+        return $this->optionCode;
+    }
+
+    /**
+     * @param mixed $optionCode
+     */
+    public function setOptionCode($optionCode)
+    {
+        $this->optionCode = $optionCode;
+        return $this;
+    }
+
 
 
     /**
@@ -80,14 +100,17 @@ class ProductAttributeAddTemplateCopy implements Model\StoreFragmentInterface
      *
      * Format:
      *
-     * <ProductAttribute_Add_TemplateCopy product_code="shield-small" attribute_template_code="" />
+     * <ProductAttributeOption_Delete product_code="chest" attribute_code="lock" option_code="bar" />
+     *
      */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<ProductAttribute_Add_TemplateCopy />');
+
+        $xmlObject = new SimpleXMLElement('<ProductAttributeOption_Delete />');
 
         $xmlObject->addAttribute('product_code', $this->getProductCode());
-        $xmlObject->addAttribute('attribute_template_code', $this->getAttributeTemplateCode());
+        $xmlObject->addAttribute('attribute_code', $this->getAttributeCode());
+        $xmlObject->addAttribute('option_code', $this->getOptionCode());
 
 
         return $xmlObject;
