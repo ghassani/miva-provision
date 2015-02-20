@@ -64,13 +64,13 @@ class ProductAttributeOptionDelete implements Model\StoreFragmentInterface
     }
 
     /**
-     * addAttributeCode
+     * setAttributeCode
      *
      * @param string $attributeCode
      *
      * @return self
      */
-    public function addAttributeCode($attributeCode)
+    public function setAttributeCode($attributeCode)
     {
         $this->attributeCode = $attributeCode;
         return $this;
