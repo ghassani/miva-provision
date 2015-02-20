@@ -27,6 +27,12 @@ class CategoryAdd implements Model\StoreFragmentInterface
     /** @var string */
     public $code;
 
+    /** @var string */
+    public $parentCategoryCode;
+
+    /** @var string */
+    public $alternateDisplayPage;
+
     /** @var boolean */
     public $active = true;
 
@@ -100,6 +106,42 @@ class CategoryAdd implements Model\StoreFragmentInterface
     }
 
     /**
+     * @return string
+     */
+    public function getParentCategoryCode()
+    {
+        return $this->parentCategoryCode;
+    }
+
+    /**
+     * @param string $parentCategoryCode
+     */
+    public function setParentCategoryCode($parentCategoryCode)
+    {
+        $this->parentCategoryCode = $parentCategoryCode;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAlternateDisplayPage()
+    {
+        return $this->alternateDisplayPage;
+    }
+
+    /**
+     * @param string $alternateDisplayPage
+     */
+    public function setAlternateDisplayPage($alternateDisplayPage)
+    {
+        $this->alternateDisplayPage = $alternateDisplayPage;
+        return $this;
+    }
+
+
+
+    /**
      * {@inheritDoc}
      * 
      * Format:
@@ -107,16 +149,26 @@ class CategoryAdd implements Model\StoreFragmentInterface
      *  <Category_Add>
      *     <Code>Weapons</Code>
      *     <Name><![CDATA[Weapons]]></Name>
+     *     <ParentCategoryCode></ParentCategoryCode>
+     *     <AlternateDisplayPage></AlternateDisplayPage>
      *     <Active>Yes</Active>
      *  </Category_Add> 
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new SimpleXMLElement('<Category_Add></Category_Add>');
+        $xmlObject = new SimpleXMLElement('<Category_Add />');
         $xmlObject->addChild('Name', $this->getName())->addAttribute('method-call', 'addCDATA');;
         $xmlObject->addChild('Code', $this->getCode());
         $xmlObject->addChild('Active', $this->getActive() ? 'Yes' : 'No');
+
+        if ($this->getParentCategoryCode()) {
+            $xmlObject->addChild('ParentCategoryCode', $this->getParentCategoryCode());
+        }
+
+        if ($this->getAlternateDisplayPage()) {
+            $xmlObject->addChild('AlternateDisplayPage', $this->getAlternateDisplayPage());
+        }
 
         return $xmlObject;
     }

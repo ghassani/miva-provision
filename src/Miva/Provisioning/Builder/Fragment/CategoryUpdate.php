@@ -21,8 +21,6 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 class CategoryUpdate implements Model\StoreFragmentInterface
 {
 
-    /** @var string */
-    public $categoryCode;
 
     /** @var string */
     public $name;
@@ -30,11 +28,17 @@ class CategoryUpdate implements Model\StoreFragmentInterface
     /** @var string */
     public $code;
 
-    /** @var boolean */
-    public $active = true;
-    
+    /** @var string */
+    public $newCode;
+
     /** @var string */
     public $parentCategoryCode;
+
+    /** @var string */
+    public $alternateDisplayPage;
+
+    /** @var boolean */
+    public $active = true;
 
 
     /**
@@ -84,26 +88,6 @@ class CategoryUpdate implements Model\StoreFragmentInterface
     }
 
     /**
-     * @return string
-     */
-    public function getCategoryCode()
-    {
-        return $this->categoryCode;
-    }
-
-    /**
-     * @param string $categoryCode
-     */
-    public function setCategoryCode($categoryCode)
-    {
-        $this->categoryCode = $categoryCode;
-        return $this;
-    }
-    
-
-
-
-    /**
     * setActive
     *
     * @param boolean $active
@@ -149,6 +133,42 @@ class CategoryUpdate implements Model\StoreFragmentInterface
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getNewCode()
+    {
+        return $this->newCode;
+    }
+
+    /**
+     * @param string $newCode
+     */
+    public function setNewCode($newCode)
+    {
+        $this->newCode = $newCode;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAlternateDisplayPage()
+    {
+        return $this->alternateDisplayPage;
+    }
+
+    /**
+     * @param string $alternateDisplayPage
+     */
+    public function setAlternateDisplayPage($alternateDisplayPage)
+    {
+        $this->alternateDisplayPage = $alternateDisplayPage;
+        return $this;
+    }
+
+
+
 
     /**
      * {@inheritDoc}
@@ -166,14 +186,22 @@ class CategoryUpdate implements Model\StoreFragmentInterface
 
         $xmlObject = new SimpleXMLElement('<Category_Update />');
         
-        $xmlObject->addAttribute('code', $this->getCategoryCode());
+        $xmlObject->addAttribute('code', $this->getCode());
 
         if ($this->getName()) {
             $xmlObject->addChild('Name', $this->getName());
         }
 
-        if ($this->getCode()) {
-            $xmlObject->addChild('Code', $this->getCode());
+        if ($this->getNewCode()) {
+            $xmlObject->addChild('Code', $this->getNewCode());
+        }
+
+        if ($this->getParentCategoryCode()) {
+            $xmlObject->addChild('ParentCategoryCode', $this->getParentCategoryCode());
+        }
+
+        if ($this->getAlternateDisplayPage()) {
+            $xmlObject->addChild('AlternateDisplayPage', $this->getAlternateDisplayPage());
         }
 
         $xmlObject->addChild('Active', $this->getActive() ? 'Yes' : 'No');
