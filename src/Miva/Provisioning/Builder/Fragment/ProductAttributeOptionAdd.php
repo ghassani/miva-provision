@@ -289,8 +289,8 @@ class ProductAttributeOptionAdd implements Model\StoreFragmentInterface
             $xmlObject->addChild('Weight', $this->getWeight());
         }
 
-        if ($this->getWeight()) {
-            $xmlObject->addChild('Image', $this->getWeight());
+        if ($this->getImage()) {
+            $xmlObject->addChild('Image', $this->getImage());
         }
 
         $xmlObject->addChild('DefaultOption', $this->getDefaultOption() ? 'Yes' : 'No');
