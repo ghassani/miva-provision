@@ -139,7 +139,7 @@ class ProductAttributeAddTemplate implements Model\FragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<ProductAttribute_Add_Template></ProductAttribute_Add_Template>');
+        $xmlObject = new SimpleXMLElement('<ProductAttribute_Add_Template />');
         
         $xmlObject->addAttribute('product_code', $this->getProductCode());
         
