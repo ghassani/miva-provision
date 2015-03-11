@@ -2,7 +2,7 @@
 /*
 * This file is part of the Miva PHP Provision package.
 *
-* (c) Gassan Idriss <gidriss@mivamerchant.com>
+* (c) Gassan Idriss <gidriss@miva.com>
 *
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
@@ -12,60 +12,35 @@ namespace Miva\Provisioning\Builder\Fragment;
 use Miva\Version;
 use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
+use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 
 /**
 * ProductVariantUpdate
 *
-* @author Gassan Idriss <gidriss@mivamerchant.com>
+* @author Gassan Idriss <gidriss@miva.com>
 */
 class ProductVariantUpdate implements Model\StoreFragmentInterface
 {
     /** @var string $productCode */
     public $productCode;
-    
-    /** @var array */
+
+    /** @var array of ProductVariantOption */
     public $options = array();
-    
-    /** @var array */
+
+    /** @var array ProductVariantPart */
     public $parts = array();
-    
+
     /** @var array */
-    public $productVariantPricing = array(
-        'Method' => null,
-        'Price' => null,
-        'Cost' => null,
-        'Weight' => null
-    );
-    
-    /**
-     * Constructor
-     * 
-     * @param string $productCode
-     * @param array $options
-     * @param array $parts
-     * @param array $productVariantPricing
-     */
-     public function __construct($productCode = null, array $options = array(), array $parts = array(), array $productVariantPricing = array())
-     {
-         $this->productCode = $productCode;
-         $this->setOptions($options);
-         $this->setParts($parts);
-         
-         foreach(array_keys($this->productVariantPricing) as $key) {
-             if(isset($productVariantPricing[$key])){
-                 $this->productVariantPricing = $productVariantPricing[$key];
-             }
-         }
-     }
+    public $productVariantPricing = null;
 
     /**
      * getProductCode
      *
      * @return string
-    */
+     */
     public function getProductCode()
     {
-    	return $this->productCode;
+        return $this->productCode;
     }
 
     /**
@@ -74,22 +49,22 @@ class ProductVariantUpdate implements Model\StoreFragmentInterface
      * @param string productCode
      *
      * @return self
-    */
+     */
     public function setProductCode($productCode)
     {
-	    $this->productCode = $productCode;
-	    return $this;
+        $this->productCode = $productCode;
+        return $this;
     }
-    
+
 
     /**
      * getOptions
      *
      * @return array
-    */
+     */
     public function getOptions()
     {
-    	return $this->options;
+        return $this->options;
     }
 
     /**
@@ -98,39 +73,43 @@ class ProductVariantUpdate implements Model\StoreFragmentInterface
      * @param array options
      *
      * @return self
-    */
+     */
     public function setOptions(array $options)
     {
         foreach($options as $option) {
-            if (!$option instanceof Model\ProductVariantOptionFragmentInterface) {
-                throw new \InvalidArgumentException('ProductVariantUpdate::setOptions requires an array of ProductVariantOptionFragmentInterface');
+            if (!$this->isValidOption($option)) {
+                throw new \InvalidArgumentException('ProductVariantAdd::setOptions requires an array of ProductVariantAttributeOption, ProductVariantAttributeBoolean, ProductVariantAttributeTemplateAttributeBoolean or ProductVariantAttributeTemplateAttributeOption');
             }
         }
-	    $this->options = $options;
-	    return $this;
+        $this->options = $options;
+        return $this;
     }
-    
+
     /**
      * addOption
      *
-     * @param ProductVariantOption options
+     * @param mixed option
      *
      * @return self
-    */
-    public function addOption(Model\ProductVariantOptionFragmentInterface $option)
+     */
+    public function addOption($option)
     {
-	    $this->options[] = $option;
-	    return $this;
+        if (!$this->isValidOption($option)){
+            throw new \InvalidArgumentException('ProductVariantAdd::addOption requires one of ProductVariantAttributeOption, ProductVariantAttributeBoolean, ProductVariantAttributeTemplateAttributeBoolean or ProductVariantAttributeTemplateAttributeOption');
+        }
+
+        $this->options[] = $option;
+        return $this;
     }
-    
+
     /**
      * getParts
      *
      * @return array
-    */
+     */
     public function getParts()
     {
-    	return $this->parts;
+        return $this->parts;
     }
 
     /**
@@ -139,60 +118,66 @@ class ProductVariantUpdate implements Model\StoreFragmentInterface
      * @param array parts
      *
      * @return self
-    */
+     */
     public function setParts(array $parts)
     {
         foreach($parts as $part) {
             if (!$part instanceof ProductVariantPart) {
-                throw new \InvalidArgumentException('ProductVariantUpdate::setParts Requires an array of ProductVariantPart');
+                throw new \InvalidArgumentException('ProductVariantAdd::setParts Requires an array of ProductVariantAddPart');
             }
         }
-	    $this->parts = $parts;
-	    return $this;
+        $this->parts = $parts;
+        return $this;
     }
-    
+
     /**
      * addPart
      *
-     * @param ProductVariantPart parts
+     * @param ProductVariantAddPart parts
      *
      * @return self
-    */
+     */
     public function addPart(ProductVariantPart $part)
     {
-	    $this->parts[] = $part;
-	    return $this;
+        $this->parts[] = $part;
+        return $this;
     }
-    
+
     /**
      * getProductVariantPricing
      *
-     * @return array
-    */
+     * @return ProductVariantProductVariantPricing
+     */
     public function getProductVariantPricing()
     {
-    	return $this->productVariantPricing;
+        return $this->productVariantPricing;
     }
 
     /**
      * setProductVariantPricing
      *
-     * @param string $method 
-     * @param float $price 
-     * @param float $cost
-     * @parma float $weight
+     * @param ProductVariantProductVariantPricing $productVariantPricing
      *
      * @return self
-    */
-    public function setProductVariantPricing($method = null, $price = null, $cost = null, $weight = null)
+     */
+    public function setProductVariantPricing(ProductVariantProductVariantPricing $productVariantPricing)
     {
-	    $this->productVariantPricing =  array(
-            'Method' => $method,
-            'Price' => $price,
-            'Cost' => $cost,
-            'Weight' => $weight
-        );
-	    return $this;
+        $this->productVariantPricing =  $productVariantPricing;
+        return $this;
+    }
+
+    /**
+     * isValidOption
+     *
+     * @param $option
+     * @return bool
+     */
+    private function isValidOption($option)
+    {
+        return $option instanceof ProductVariantAttributeOption
+        || $option instanceof ProductVariantAttributeBoolean
+        || $option instanceof ProductVariantAttributeTemplateAttributeBoolean
+        || $option instanceof ProductVariantAttributeTemplateAttributeOption;
     }
     
     /**
@@ -239,16 +224,11 @@ class ProductVariantUpdate implements Model\StoreFragmentInterface
                 XmlHelper::appendToParent($partsRootXml, $part->toXml());
             }
         }
-        
-        $productVariantPricing = $this->getProductVariantPricing();
-        if (implode('', $productVariantPricing)) {
-            $productVariantPricingXml = $xmlObject->addChild('ProductVariantPricing');
-            foreach(array('Method','Price','Cost','Weight') as $field) {
-                if (isset($productVariantPricing[$field]) && !empty($productVariantPricing[$field])) {
-                    $productVariantPricingXml->addChild($field, $productVariantPricing[$field]);
-                }
-            }
+
+        if ($this->getProductVariantPricing()) {
+            XmlHelper::appendToParent($xmlObject, $this->getProductVariantPricing()->toXml());
         }
+
         return $xmlObject;
     }     
 }

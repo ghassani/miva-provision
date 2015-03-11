@@ -2,7 +2,7 @@
 /*
 * This file is part of the Miva PHP Provision package.
 *
-* (c) Gassan Idriss <gidriss@mivamerchant.com>
+* (c) Gassan Idriss <gidriss@miva.com>
 *
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
@@ -14,11 +14,11 @@ use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
-* ProductVariantPart
+* ProductKitPart
 *
-* @author Gassan Idriss <gidriss@mivamerchant.com>
+* @author Gassan Idriss <gidriss@miva.com>
 */
-class ProductVariantPart implements Model\FragmentFragmentInterface
+class ProductKitPart implements Model\ChildFragmentInterface
 {
     /** @var string */
     public $productCode;
@@ -42,7 +42,7 @@ class ProductVariantPart implements Model\FragmentFragmentInterface
     */
     public function getProductCode()
     {
-    	return $this->productCode;
+        return $this->productCode;
     }
 
     /**
@@ -54,8 +54,8 @@ class ProductVariantPart implements Model\FragmentFragmentInterface
     */
     public function setProductCode($productCode)
     {
-	    $this->productCode = $productCode;
-	    return $this;
+        $this->productCode = $productCode;
+        return $this;
     }
     
     /**
@@ -65,7 +65,7 @@ class ProductVariantPart implements Model\FragmentFragmentInterface
     */
     public function getQuantity()
     {
-    	return $this->quantity;
+        return $this->quantity;
     }
 
     /**
@@ -77,8 +77,8 @@ class ProductVariantPart implements Model\FragmentFragmentInterface
     */
     public function setQuantity($quantity)
     {
-	    $this->quantity = $quantity;
-	    return $this;
+        $this->quantity = $quantity;
+        return $this;
     }
     
     /**

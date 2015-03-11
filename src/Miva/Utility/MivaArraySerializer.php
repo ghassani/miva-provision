@@ -2,7 +2,7 @@
 /*
 * This file is part of the Miva PHP Provision package.
 *
-* (c) Gassan Idriss <gidriss@mivamerchant.com>
+* (c) Gassan Idriss <gidriss@miva.com>
 *
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
@@ -16,7 +16,7 @@ namespace Miva\Utility;
  * Takes a PHP array and serializes it for use in MivaScript which can then be
  * deserialized to a miva structure/array
  *
- * @author Gassan Idriss <gidriss@mivamerchant.com>
+ * @author Gassan Idriss <gidriss@miva.com>
 */
 class MivaArraySerializer
 {

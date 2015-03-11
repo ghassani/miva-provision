@@ -2,16 +2,17 @@
 /*
 * This file is part of the Miva PHP Provision package.
 *
-* (c) Gassan Idriss <gidriss@mivamerchant.com>
+* (c) Gassan Idriss <gidriss@miva.com>
 *
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
 */
-namespace Miva\Provisioning\Builder\Fragment;
+namespace Miva\Provisioning\Builder\Fragment\Child;
 
 use Miva\Version;
 use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
+use Miva\Provisioning\Builder\Fragment\Model\ChildFragmentInterface;
 
 /**
  * PageUpdateItem
@@ -20,9 +21,9 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
  * to make a generic item. Maybe in the future something for specific
  * item types can be added
  * 
- * @author Gassan Idriss <gidriss@mivamerchant.com>
+ * @author Gassan Idriss <gidriss@miva.com>
 */
-class PageUpdateItem implements Model\FragmentFragmentInterface
+class PageUpdateItem implements ChildFragmentInterface
 {
 
     /** @var string */
@@ -30,19 +31,7 @@ class PageUpdateItem implements Model\FragmentFragmentInterface
     
     /** @var array */
     public $data = array();
-    
-    /**
-     * Constructor
-     * 
-     * @param string $code
-     * @param array $data
-     */
-    public function __construct($code = null, array $data = array())
-    {
-        $this->code = $code;
-        $this->data = $data;
-    }
-    
+
     /**
      * getCode
      *

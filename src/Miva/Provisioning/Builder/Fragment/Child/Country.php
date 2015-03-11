@@ -2,7 +2,7 @@
 /*
 * This file is part of the Miva PHP Provision package.
 *
-* (c) Gassan Idriss <gidriss@mivamerchant.com>
+* (c) Gassan Idriss <gidriss@miva.com>
 *
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
@@ -14,16 +14,15 @@ use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
-* State
+* Country
 *
-* @author Gassan Idriss <gidriss@mivamerchant.com>
+* @author Gassan Idriss <gidriss@miva.com>
 */
-class State implements Model\FragmentFragmentInterface
+class Country implements Model\ChildFragmentInterface
 {
 
     /** @var string */
     public $code;
-
 
     /**
      * Constructor
@@ -32,7 +31,6 @@ class State implements Model\FragmentFragmentInterface
      */
     public function __construct($code = null)
     {
-        $this->name = $name;
         $this->code = $code;
     }
 
@@ -59,20 +57,19 @@ class State implements Model\FragmentFragmentInterface
         return $this->code;
     }
 
-  
     /**
      * {@inheritDoc}
      * 
      * Format:
      * 
-     *  <State code="code" />
+     * <Country code="US" />
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<State />');
+        $xmlObject = new SimpleXMLElement('<Country />');
         
-        $xmlObject->addAttribute('code', $this->getName());
-
+        $xmlObject->addAttribute('code', $this->getCode());
+        
         return $xmlObject;
     }
 

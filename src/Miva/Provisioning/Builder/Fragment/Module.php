@@ -2,7 +2,7 @@
 /*
 * This file is part of the Miva PHP Provision package.
 *
-* (c) Gassan Idriss <gidriss@mivamerchant.com>
+* (c) Gassan Idriss <gidriss@miva.com>
 *
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
@@ -12,6 +12,7 @@ namespace Miva\Provisioning\Builder\Fragment;
 use Miva\Version;
 use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
+use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 
 /**
  * Module
@@ -20,9 +21,9 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
  * to make a generic item. Maybe in the future something for specific
  * modules can be added
  * 
- * @author Gassan Idriss <gidriss@mivamerchant.com>
+ * @author Gassan Idriss <gidriss@miva.com>
 */
-class Module implements Model\StoreFragmentInterface
+class Module implements StoreFragmentInterface
 {
 
     /** @var string */

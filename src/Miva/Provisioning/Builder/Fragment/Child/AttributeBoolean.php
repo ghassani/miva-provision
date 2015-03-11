@@ -2,7 +2,7 @@
 /*
 * This file is part of the Miva PHP Provision package.
 *
-* (c) Gassan Idriss <gidriss@mivamerchant.com>
+* (c) Gassan Idriss <gidriss@miva.com>
 *
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
@@ -14,31 +14,32 @@ use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 
 /**
-* AttributeOption
+* AttributeBoolean
 *
-* @author Gassan Idriss <gidriss@mivamerchant.com>
+* @author Gassan Idriss <gidriss@miva.com>
 */
-class AttributeOption implements Model\ProductVariantOptionFragmentInterface
+class AttributeBoolean implements Model\ProductVariantOptionFragmentInterface
 {
+    
     /** @var string */
     public $attributeCode;
-
-    /** @var string */
-    public $optionCode;
+    
+    /** @var bool */
+    public $present = false;
    
     /**
      * Constructor
      * 
      * @param string $attributeCode
-     * @param string $optionCode
+     * @param bool $present
     */
-    public function __construct($attributeCode = null, $optionCode = null)
+    public function __construct($attributeCode = null, $present = false)
     {
         $this->attributeCode = $attributeCode;
-        $this->optionCode = $optionCode;
+        $this->present = true == $present ? true : false;
     }
-    
-    /**
+   
+   /**
      * getAttributeCode
      *
      * @return string
@@ -62,25 +63,25 @@ class AttributeOption implements Model\ProductVariantOptionFragmentInterface
     }
     
     /**
-     * getOptionCode
+     * getPresent
      *
-     * @return string
+     * @return bool
     */
-    public function getOptionCode()
+    public function getPresent()
     {
-        return $this->optionCode;
+        return $this->present;
     }
 
     /**
-     * setOptionCode
+     * setPresent
      *
-     * @param string optionCode
+     * @param bool present
      *
      * @return self
     */
-    public function setOptionCode($optionCode)
+    public function setPresent($present)
     {
-        $this->optionCode = $optionCode;
+        $this->present = true == $present ? true : false;;
         return $this;
     }
 
@@ -89,15 +90,15 @@ class AttributeOption implements Model\ProductVariantOptionFragmentInterface
      * 
      * Format:
      * 
-     *  <Attribute_Option attribute_code="select" option_code="s1" />
+     *  <Attribute_Boolean attribute_code="text" present="true" />
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new SimpleXMLElement('<Attribute_Option />');
+        $xmlObject = new SimpleXMLElement('<Attribute_Boolean />');
 
         $xmlObject->addAttribute('attribute_code', $this->getAttributeCode());
-        $xmlObject->addAttribute('option_code', $this->getOptionCode());        
+        $xmlObject->addAttribute('present', $this->getPresent() ? 'true' : 'false');        
                 
         return $xmlObject;
     }     

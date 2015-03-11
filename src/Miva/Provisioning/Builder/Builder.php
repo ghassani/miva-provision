@@ -2,7 +2,7 @@
 /*
 * This file is part of the Miva PHP Provision package.
 *
-* (c) Gassan Idriss <gidriss@mivamerchant.com>
+* (c) Gassan Idriss <gidriss@miva.com>
 *
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
@@ -12,7 +12,7 @@ namespace Miva\Provisioning\Builder;
 use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 use Miva\Provisioning\Builder\Fragment\Model\DomainFragmentInterface;
-use Miva\Provisioning\Builder\Fragment\Model\FragmentFragmentInterface;
+use Miva\Provisioning\Builder\Fragment\Model\ChildFragmentInterface;
 use Miva\Provisioning\Builder\Fragment\Model\FragmentInterface;
 use Miva\Version;
 
@@ -42,7 +42,7 @@ use Miva\Version;
  * </code>
  * 
  * @see /docs for more information and usage
- * @author Gassan Idriss <gidriss@mivamerchant.com>
+ * @author Gassan Idriss <gidriss@miva.com>
 */
 class Builder
 {
@@ -256,7 +256,7 @@ class Builder
              throw new \Exception('Passed fragtment is both of domain and store fragment iterface. Use desired method to add this fragment');
          }
          
-         if($fragment instanceof FragmentFragmentInterface) {
+         if($fragment instanceof ChildFragmentInterface) {
             throw new \Exception('Fragment is of FragmentFrgmentInterface as can\'t be added to the document directly, it belongs to some other fragment type');   
          }
          
