@@ -12,14 +12,14 @@ namespace Miva\Provisioning\Builder\Fragment\Child;
 use Miva\Version;
 use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
-use Miva\Provisioning\Builder\Fragment\Model\ChildFragment;
+use Miva\Provisioning\Builder\Fragment\Model\ChildFragmentInterface;
 
 /**
  * ProductVariantPart
  *
  * @author Gassan Idriss <gidriss@miva.com>
  */
-class ProductVariantPart implements ChildFragment
+class ProductVariantPart implements ChildFragmentInterface
 {
     /** @var string */
     public $productCode;
