@@ -28,7 +28,7 @@ class ProductVariantProductVariantPricing implements ChildFragment
     public $price;
 
     /** @var float */
-    public $code;
+    public $cost;
 
     /** @var float */
     public $weight;
@@ -70,17 +70,17 @@ class ProductVariantProductVariantPricing implements ChildFragment
     /**
      * @return float
      */
-    public function getCode()
+    public function getCost()
     {
-        return $this->code;
+        return $this->cost;
     }
 
     /**
-     * @param float $code
+     * @param float $cost
      */
-    public function setCode($code)
+    public function setCost($cost)
     {
-        $this->code = $code;
+        $this->cost = $cost;
         return $this;
     }
 
