@@ -19,10 +19,9 @@ use Miva\Provisioning\Builder\Fragment\Model\ChildFragmentInterface;
  *
  * @author Gassan Idriss <gidriss@miva.com>
 */
-class OrderItem implements ChildFragment
+class OrderItem implements ChildFragmentInterface
 {
-    
-    
+
     /** @var string */
     public $code;
     
