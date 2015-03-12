@@ -13,6 +13,7 @@ use Miva\Version;
 use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
+use Miva\Provisioning\Builder\Fragment\Child\CountriesReplaceCountry;
 
 /**
 * CountriesReplace
@@ -43,6 +44,11 @@ class CountriesReplace implements StoreFragmentInterface
     */
     public function setCountries(array $countries)
     {
+        foreach ($countries as $country) {
+            if (!$country instanceof CountriesReplaceCountry) {
+                throw new \InvalidArgumentException('CountriesReplace:setCountries requires an array of CountriesReplaceCountry');
+            }
+        }
     	$this->countries = $countries;
         return $this;
     }
@@ -54,7 +60,7 @@ class CountriesReplace implements StoreFragmentInterface
      *
      * @return self
     */
-    public function addCountry(Country $country)
+    public function addCountry(CountriesReplaceCountry $country)
     {
         $this->countries[] = $country;
         return $this;
@@ -72,16 +78,13 @@ class CountriesReplace implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xml = null;
-        $xmlObject = new SimpleXMLElement('<Countries_Replace></Countries_Replace>');
+        $xmlObject = new SimpleXMLElement('<Countries_Replace />');
 
-
-        foreach ($this->getCounties() as $country) {
-            $childXml = $xmlObject->addChild('Country', null);
-            $childXml->addAttribute('code', $country->getCode());
+        foreach ($this->getCountries() as $country) {
+            XmlHelper::appendToParent($xmlObject, $country->toXml());
         }
         
-        return $xml;
+        return $xmlObject;
     }
 
 }

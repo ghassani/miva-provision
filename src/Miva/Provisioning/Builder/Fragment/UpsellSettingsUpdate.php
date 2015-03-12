@@ -91,7 +91,7 @@ class UpsellSettingsUpdate implements StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<UpsellSettings_Update></UpsellSettings_Update>');
+        $xmlObject = new SimpleXMLElement('<UpsellSettings_Update />');
 
         $xmlObject->addChild('ProductsToShow', $this->getProductsToShow());
         $xmlObject->addChild('MaxProductsToSelect', $this->getMaxProductsToSelect());

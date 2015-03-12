@@ -9,10 +9,15 @@
 */
 namespace Miva\Provisioning\Builder\Fragment;
 
+use Miva\Provisioning\Builder\Fragment\Child\ProductKitPart;
 use Miva\Version;
 use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
+use Miva\Provisioning\Builder\Fragment\Child\ProductKitAttributeOption;
+use Miva\Provisioning\Builder\Fragment\Child\ProductKitAttributeBoolean;
+use Miva\Provisioning\Builder\Fragment\Child\ProductKitAttributeTemplateAttributeBoolean;
+use Miva\Provisioning\Builder\Fragment\Child\ProductKitTemplateAttributeOption;
 
 /**
 * ProductKitUpdate
@@ -74,8 +79,8 @@ class ProductKitUpdate implements StoreFragmentInterface
     public function setAttributes(array $attributes)
     {
         foreach($attributes as $_attributes) {
-            if (!$_attributes instanceof Model\ProductKitFragmentInterface) {
-                throw new \InvalidArgumentException('ProductKitUpdate::setAttributes Requires an array of Model\ProductKitFragmentInterface');
+            if (!$this->isValidOption($_attributes)) {
+                throw new \InvalidArgumentException('ProductKitAdd::addOption requires one of ProductKitAttributeOption, ProductKitAttributeBoolean, ProductKitAttributeTemplateAttributeBoolean or ProductKitAttributeTemplateAttributeOption');
             }
         }
 	    $this->attributes = $attributes;
@@ -89,9 +94,12 @@ class ProductKitUpdate implements StoreFragmentInterface
      *
      * @return self
     */
-    public function addAttribute(Model\ProductKitFragmentInterface $attribute)
+    public function addAttribute($attribute)
     {
-	    $this->attributes[] = $attribute;
+        if (!$this->isValidOption($attribute)) {
+            throw new \InvalidArgumentException('ProductKitAdd::addOption requires one of ProductKitAttributeOption, ProductKitAttributeBoolean, ProductKitAttributeTemplateAttributeBoolean or ProductKitAttributeTemplateAttributeOption');
+        }
+        $this->attributes[] = $attribute;
 	    return $this;
     }
     
@@ -136,7 +144,20 @@ class ProductKitUpdate implements StoreFragmentInterface
         $this->parts[] = $part;
         return $this;
     }
-        
+
+    /**
+     * isValidOption
+     *
+     * @param $option
+     * @return bool
+     */
+    private function isValidOption($option)
+    {
+        return $option instanceof ProductKitAttributeOption
+        || $option instanceof ProductKitAttributeBoolean
+        || $option instanceof ProductKitAttributeTemplateAttributeBoolean
+        || $option instanceof ProductKitAttributeTemplateAttributeOption;
+    }
 
     /**
      * {@inheritDoc}

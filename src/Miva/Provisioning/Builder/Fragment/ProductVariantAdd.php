@@ -14,9 +14,9 @@ use Miva\Version;
 use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
-use Miva\Provisioning\Builder\Fragment\Child\ProductVariantAttributeOption;
 use Miva\Provisioning\Builder\Fragment\Child\ProductVariantPart;
 use Miva\Provisioning\Builder\Fragment\Child\ProductVariantProductVariantPricing;
+use Miva\Provisioning\Builder\Fragment\Child\ProductVariantAttributeOption;
 use Miva\Provisioning\Builder\Fragment\Child\ProductVariantAttributeBoolean;
 use Miva\Provisioning\Builder\Fragment\Child\ProductVariantAttributeTemplateAttributeBoolean;
 use Miva\Provisioning\Builder\Fragment\Child\ProductVariantAttributeTemplateAttributeOption;
@@ -237,5 +237,5 @@ class ProductVariantAdd implements StoreFragmentInterface
         }
 
         return $xmlObject;
-    } 
+    }
 }

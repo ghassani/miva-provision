@@ -7,18 +7,19 @@
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
 */
-namespace Miva\Provisioning\Builder\Fragment;
+namespace Miva\Provisioning\Builder\Fragment\Child;
 
 use Miva\Version;
 use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
+use Miva\Provisioning\Builder\Fragment\Child\ChildFragmentInterface;
 
 /**
 * ProductKitPart
 *
 * @author Gassan Idriss <gidriss@miva.com>
 */
-class ProductKitPart implements Model\ChildFragmentInterface
+class ProductKitPart implements ChildFragmentInterface
 {
     /** @var string */
     public $productCode;

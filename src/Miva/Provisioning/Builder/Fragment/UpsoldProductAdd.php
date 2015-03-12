@@ -173,7 +173,7 @@ class UpsoldProductAdd implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new SimpleXMLElement('<UpsoldProduct_Add></UpsoldProduct_Add>');
+        $xmlObject = new SimpleXMLElement('<UpsoldProduct_Add />');
 
         $xmlObject->addChild('ProductCode', $this->getProductCode());
         $xmlObject->addChild('Display', $this->getDisplay());

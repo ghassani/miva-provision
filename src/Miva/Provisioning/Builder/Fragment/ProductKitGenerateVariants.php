@@ -83,7 +83,7 @@ class ProductKitGenerateVariants implements StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<ProductVariant_Delete_All />');
+        $xmlObject = new SimpleXMLElement('<ProductKit_Generate_Variants />');
 
         $xmlObject->addAttribute('product_code', $this->getProductCode());
         $xmlObject->addAttribute('pricing_method', $this->getPricingMethod());

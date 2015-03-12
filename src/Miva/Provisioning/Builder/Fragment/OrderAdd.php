@@ -13,6 +13,9 @@ use Miva\Version;
 use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
+use Miva\Provisioning\Builder\Fragment\Child\OrderItem;
+use Miva\Provisioning\Builder\Fragment\Child\OrderItemOption;
+
 
 /**
 * OrderAdd

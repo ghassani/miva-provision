@@ -268,7 +268,7 @@ class UserUpdate implements DomainFragmentInterface
      * 
      * Format:
      * 
-     *  <User_Add>
+     *  <User_Update>
      *       <Name>Test</Name>
      *       <Password>password</Password>
      *       <DefaultPagination>10</DefaultPagination>
@@ -287,13 +287,14 @@ class UserUpdate implements DomainFragmentInterface
      *           <Minute>50</Minute>
      *           <Second>23</Second>
      *       </ExpirationDate>
-     * </User_Add>
+     * </User_Update>
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<User_Add />');
+        $xmlObject = new SimpleXMLElement('<User_Update />');
 
-        $xmlObject->addChild('Name', $this->getName());
+        $xmlObject->addAttribute('name', $this->getName());
+
         $xmlObject->addChild('Password', $this->getPassword());
         $xmlObject->addChild('DefaultPagination', $this->getDefaultPagination());
         $xmlObject->addChild('Administrator', $this->getAdministrator() ? 'Yes' : 'No');

@@ -21,25 +21,15 @@ use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 */
 class UpsoldProductRequiredProductAssign implements StoreFragmentInterface
 {
-    
+    /** @var string */
+    public $code;
+
     /** @var string */
     public $upsoldProductCode;
 
     /** @var string */
     public $requiredProductCode;
 
-
-    /**
-     * Constructor
-     * 
-     * @param string $upsoldProductCode
-     * @param string $requiredProductCode
-     */
-    public function __construct($upsoldProductCode = null, $requiredProductCode = null)
-    {
-        $this->upsoldProductCode = $upsoldProductCode;
-        $this->requiredProductCode = $requiredProductCode;
-    }
 
     /**
      * getUpsoldProductCode
@@ -88,6 +78,25 @@ class UpsoldProductRequiredProductAssign implements StoreFragmentInterface
     }
 
     /**
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param string $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+        return $this;
+    }
+
+
+
+    /**
      * {@inheritDoc}
      * 
      * Format:
@@ -96,8 +105,9 @@ class UpsoldProductRequiredProductAssign implements StoreFragmentInterface
     */
     public function toXml($version = Version::CURRENT, array $options = array())
     {
-        $xmlObject = new SimpleXMLElement('<UpsoldProductRequiredProduct_Assign></UpsoldProductRequiredProduct_Assign>');
+        $xmlObject = new SimpleXMLElement('<UpsoldProductRequiredProduct_Assign />');
 
+        $xmlObject->addAttribute('code', $this->getCode());
         $xmlObject->addAttribute('upsoldproduct_code', $this->getUpsoldProductCode());
         $xmlObject->addAttribute('requiredproduct_code', $this->getRequiredProductCode());
         
