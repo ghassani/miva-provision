@@ -121,4 +121,21 @@ class XmlHelper
         $no   = $node->ownerDocument; 
         $node->appendChild($no->createCDATASection($string)); 
     }
+
+    /**
+     * dateTimeToXml
+     *
+     * Covnerts a DateTime object to Miva Provisioning XML date time format
+     *
+     * @param \SimpleXMLElement $element
+     * @param \DateTime $dateTime
+     */
+    public static function dateTimeToXml(\SimpleXMLElement $element, \DateTime $dateTime)
+    {
+        $element->addChild('Day',    $dateTime->format('d'));
+        $element->addChild('Month',  $dateTime->format('m'));
+        $element->addChild('Year',   $dateTime->format('Y'));
+        $element->addChild('Minute', $dateTime->format('i'));
+        $element->addChild('Hour',   $dateTime->format('h'));
+    }
 }

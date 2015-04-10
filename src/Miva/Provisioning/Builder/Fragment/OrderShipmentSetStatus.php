@@ -176,7 +176,7 @@ class OrderShipmentSetStatus implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new SimpleXMLElement('<OrderShipment_SetStatus></OrderShipment_SetStatus>');
+        $xmlObject = new SimpleXMLElement('<OrderShipment_SetStatus />');
 
         $xmlObject->addAttribute('code', $this->getCode());
         
@@ -194,11 +194,7 @@ class OrderShipmentSetStatus implements StoreFragmentInterface
         
         if ($this->getShipDate() instanceof \DateTime) {
             $shipDateXml = $xmlObject->addChild('ShipDate');
-            $shipDateXml->addChild('Day', $this->getShipDate()->format('d'));
-            $shipDateXml->addChild('Month', $this->getShipDate()->format('m'));
-            $shipDateXml->addChild('Year', $this->getShipDate()->format('Y'));
-            $shipDateXml->addChild('Minute', $this->getShipDate()->format('i'));
-            $shipDateXml->addChild('Hour', $this->getShipDate()->format('h'));
+            XmlHelper::dateTimeToXml($shipDateXml, $this->getShipDate());
         }
         
         return $xmlObject;

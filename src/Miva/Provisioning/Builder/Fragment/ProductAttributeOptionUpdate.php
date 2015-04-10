@@ -15,11 +15,11 @@ use Miva\Provisioning\Builder\SimpleXMLElement;
 use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 
 /**
- * ProductAttributeOptionAdd
+ * ProductAttributeOptionUpdate
  *
  * @author Gassan Idriss <gidriss@miva.com>
  */
-class ProductAttributeOptionAdd implements StoreFragmentInterface
+class ProductAttributeOptionUpdate implements StoreFragmentInterface
 {
 
     /** @var string */
@@ -291,7 +291,7 @@ class ProductAttributeOptionAdd implements StoreFragmentInterface
     public function toXml($version = Version::CURRENT, array $options = array())
     {
 
-        $xmlObject = new SimpleXMLElement('<AttributeTemplateAttributeOption_Add />');
+        $xmlObject = new SimpleXMLElement('<ProductAttributeOption_Update />');
 
         $xmlObject->addAttribute('product_code', $this->getProductCode());
         $xmlObject->addAttribute('attribute_code', $this->getAttributeCode());
