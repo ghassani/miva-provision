@@ -23,43 +23,43 @@ class ProductAdd implements StoreFragmentInterface
 {
 
     /** @var string */
-    public $code;
+    protected $code;
     
     /** @var string */
-    public $name;
+    protected $name;
     
     /** @var string */
-    public $sku;
+    protected $sku;
     
     /** @var int */
-    public $price;
+    protected $price;
     
     /** @var int */
-    public $cost;
+    protected $cost;
     
     /** @var int */
-    public $weight;
+    protected $weight;
     
     /** @var string */
-    public $description;
+    protected $description;
     
     /** @var boolean */
-    public $taxable = false;
+    protected $taxable = false;
     
     /** @var boolean */
-    public $active = true;
+    protected $active = true;
     
     /** @var string */
-    public $canonicalCategoryCode;
+    protected $canonicalCategoryCode;
     
     /** @var string */
-    public $alternateDisplayPage;
+    protected $alternateDisplayPage;
     
     /** @var string */
-    public $thumbnailImage;
+    protected $thumbnailImage;
     
     /** @var string */
-    public $fullSizeImage;
+    protected $fullSizeImage;
     
 
     

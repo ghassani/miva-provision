@@ -29,16 +29,16 @@ use Miva\Provisioning\Builder\Fragment\Child\ProductVariantAttributeTemplateAttr
 class ProductVariantAdd implements StoreFragmentInterface
 {
     /** @var string $productCode */
-    public $productCode;
+    protected $productCode;
     
     /** @var array of ProductVariantOption */
-    public $options = array();
+    protected $options = array();
     
     /** @var array ProductVariantPart */
-    public $parts = array();
+    protected $parts = array();
     
     /** @var array */
-    public $productVariantPricing = null;
+    protected $productVariantPricing = null;
 
     /**
      * getProductCode

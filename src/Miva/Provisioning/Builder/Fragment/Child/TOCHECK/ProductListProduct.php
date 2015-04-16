@@ -126,11 +126,7 @@ class ProductListProduct implements Model\ChildFragmentInterface
         
         if ($this->getDateInStock() instanceof \DateTime) {
             $dateInStockXml = $xmlObject->addChild('DateInStock');
-            $dateInStockXml->addChild('Day', $this->getDateInStock()->format('d'));
-            $dateInStockXml->addChild('Month', $this->getDateInStock()->format('m'));
-            $dateInStockXml->addChild('Year', $this->getDateInStock()->format('Y'));
-            $dateInStockXml->addChild('Hour', $this->getDateInStock()->format('h'));
-            $dateInStockXml->addChild('Minute', $this->getDateInStock()->format('i'));
+            XmlHelper::dateTimeToXml($dateInStockXml, $this->getDateInStock());
         }
         
         return $xmlObject;

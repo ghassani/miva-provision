@@ -23,22 +23,22 @@ class BoxAdd implements StoreFragmentInterface
 {
     
     /** @var string */
-    public $description;
+    protected $description;
     
     /** @var boolean */
-    public $enabled = true;    
+    protected $enabled = true;    
     
     /** @var float */
-    public $width;    
+    protected $width;    
     
     /** @var float */
-    public $length;    
+    protected $length;    
     
     /** @var float */
-    public $height;
+    protected $height;
     
     /** @var array */
-    public $boxPackingSettings = array(
+    protected $boxPackingSettings = array(
         'MaxWeight' => null, 
         'MaxQuantity' => null,
     );

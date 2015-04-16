@@ -23,10 +23,10 @@ class OrderBackorderItems implements StoreFragmentInterface
 {
     
     /** @var int */
-    public $orderId;
+    protected $orderId;
     
     /** @var array */
-    public $products = array();
+    protected $products = array();
 
     /**
      * getOrderId

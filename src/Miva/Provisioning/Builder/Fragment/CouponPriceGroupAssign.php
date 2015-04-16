@@ -22,10 +22,10 @@ use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 class CouponPriceGroupAssign implements StoreFragmentInterface
 {
     /** @var string */
-    public $couponCode;
+    protected $couponCode;
 
     /** @var string */
-    public $groupName;
+    protected $groupName;
 
     /**
      * @return string

@@ -23,7 +23,7 @@ class ImageDelete implements StoreFragmentInterface
 {
     
     /** @var string */
-    public $filePath;
+    protected $filePath;
 
     /**
      * Constructor

@@ -22,37 +22,37 @@ class ProductAttributeAdd implements StoreFragmentInterface
 {
 
     /** @var string */
-    public $productCode;
+    protected $productCode;
 
     /** @var string */
-    public $attributeCode;
+    protected $attributeCode;
 
     /** @var string */
-    public $code;
+    protected $code;
 
     /** @var string */
-    public $type;
+    protected $type;
 
     /** @var string */
-    public $prompt;
+    protected $prompt;
 
     /** @var string */
-    public $image;
+    protected $image;
 
     /** @var int */
-    public $price;
+    protected $price;
 
     /** @var int */
-    public $cost;
+    protected $cost;
 
     /** @var int */
-    public $weight;
+    protected $weight;
 
     /** @var boolean */
-    public $required = false;
+    protected $required = false;
 
     /** @var boolean */
-    public $inventory = false;
+    protected $inventory = false;
 
     /**
      * getProductCode

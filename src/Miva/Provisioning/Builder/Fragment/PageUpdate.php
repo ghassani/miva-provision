@@ -24,10 +24,10 @@ class PageUpdate implements StoreFragmentInterface
 {
 
     /** @var string */
-    public $code;
+    protected $code;
     
     /** @var array */
-    public $items;
+    protected $items;
     
     /**
      * Constructor

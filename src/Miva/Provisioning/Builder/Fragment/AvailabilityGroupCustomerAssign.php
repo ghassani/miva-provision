@@ -23,10 +23,10 @@ class AvailabilityGroupCustomerAssign implements StoreFragmentInterface
 {
     
     /** @var string */
-    public $groupName;
+    protected $groupName;
     
     /** @var string */
-    public $customerLogin;
+    protected $customerLogin;
     
 
     /**

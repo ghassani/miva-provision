@@ -23,10 +23,10 @@ class ProductAttributeAddTemplateCopy implements StoreFragmentInterface
 {
 
     /** @var string */
-    public $productCode;
+    protected $productCode;
 
     /** @var string */
-    public $attributeTemplateCode;
+    protected $attributeTemplateCode;
 
     /**
      * getProductCode

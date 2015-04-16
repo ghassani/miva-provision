@@ -23,11 +23,11 @@ class EncryptionAdd implements StoreFragmentInterface
 {
 
     /** @var string */
-    public $prompt;
+    protected $prompt;
 
-    public $passphrase;
+    protected $passphrase;
 
-    public $current = false;
+    protected $current = false;
 
     /**
      * @return string

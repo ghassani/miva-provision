@@ -23,11 +23,11 @@ class ProductImageReplaceType implements StoreFragmentInterface
 {
 
     /** @var string */
-    public $productCode;
+    protected $productCode;
 
-    public $filePath;
+    protected $filePath;
 
-    public $imageTypeCode;
+    protected $imageTypeCode;
 
     /**
      * @return string

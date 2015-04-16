@@ -24,43 +24,43 @@ class InventorySettingsUpdate implements StoreFragmentInterface
     
     
     /** @var boolean */
-    public $trackInventory = false;
+    protected $trackInventory = false;
     
     /** @var string */
-    public $inStockMessageShort;
+    protected $inStockMessageShort;
     
     /** @var string */
-    public $inStockMessageLong;
+    protected $inStockMessageLong;
     
     /** @var boolean */
-    public $trackLowStockLevel = false;
+    protected $trackLowStockLevel = false;
     
     /** @var int */
-    public $lowStockLevel;
+    protected $lowStockLevel;
     
     /** @var string */
-    public $lowStockMessageShort;
+    protected $lowStockMessageShort;
     
     /** @var string */
-    public $lowStockMessageLong;
+    protected $lowStockMessageLong;
     
     /** @var string */
-    public $trackOutOfStockProducts = false;
+    protected $trackOutOfStockProducts = false;
     
     /** @var int */
-    public $trackOutOfStockLevel;
+    protected $trackOutOfStockLevel;
     
     /** @var string */
-    public $hideOutOfStockProducts = false;
+    protected $hideOutOfStockProducts = false;
     
     /** @var string */
-    public $outOfStockMessageShort;
+    protected $outOfStockMessageShort;
     
     /** @var string */
-    public $outOfStockMessageLong;
+    protected $outOfStockMessageLong;
     
     /** @var string */
-    public $limitedStockMessage;
+    protected $limitedStockMessage;
     
 
     

@@ -22,21 +22,21 @@ use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 class OrderAddItem implements StoreFragmentInterface
 {
 
-    public $orderId;
+    protected $orderId;
 
-    public $code;
+    protected $code;
 
-    public $name;
+    protected $name;
 
-    public $price;
+    protected $price;
 
-    public $weight;
+    protected $weight;
 
-    public $quantity;
+    protected $quantity;
 
-    public $options = array();
+    protected $options = array();
 
-    public $shipments = array();
+    protected $shipments = array();
 
     /**
      * @return mixed

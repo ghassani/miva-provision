@@ -23,13 +23,13 @@ class CountryUpdate implements DomainFragmentInterface
 {
 
     /** @var string */
-    public $name;
+    protected $name;
 
     /** @var string */
-    public $code;
+    protected $code;
 
     /** @var string */
-    public $isoCode;
+    protected $isoCode;
 
 
     /**

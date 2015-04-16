@@ -28,13 +28,13 @@ class ProductKitUpdate implements StoreFragmentInterface
 {
         
     /** @var string */
-    public $productCode;
+    protected $productCode;
     
     /** @var array */
-    public $attributes = array();
+    protected $attributes = array();
     
     /** @var array */
-    public $parts = array();
+    protected $parts = array();
     
     /**
      * getProductCode

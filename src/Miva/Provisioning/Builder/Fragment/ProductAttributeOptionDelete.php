@@ -23,12 +23,12 @@ class ProductAttributeOptionDelete implements StoreFragmentInterface
 {
 
     /** @var string */
-    public $productCode;
+    protected $productCode;
 
     /** @var string */
-    public $attributeCode;
+    protected $attributeCode;
 
-    public $optionCode;
+    protected $optionCode;
 
     /**
      * getProductCode

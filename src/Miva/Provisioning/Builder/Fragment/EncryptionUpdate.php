@@ -23,13 +23,13 @@ class EncryptionUpdate implements StoreFragmentInterface
 {
 
     /** @var string */
-    public $prompt;
+    protected $prompt;
 
-    public $newPrompt;
+    protected $newPrompt;
 
-    public $passphrase;
+    protected $passphrase;
 
-    public $current = false;
+    protected $current = false;
 
     /**
      * @return string

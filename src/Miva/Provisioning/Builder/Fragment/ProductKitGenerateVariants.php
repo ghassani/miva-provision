@@ -23,10 +23,10 @@ class ProductKitGenerateVariants implements StoreFragmentInterface
 {
         
     /** @var string */
-    public $productCode;
+    protected $productCode;
         
     /** @var string */
-    public $pricingMethod;
+    protected $pricingMethod;
         
     /**
      * getProductCode

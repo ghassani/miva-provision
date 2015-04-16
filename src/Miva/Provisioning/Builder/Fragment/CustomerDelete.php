@@ -23,7 +23,7 @@ class CustomerDelete implements StoreFragmentInterface
 {
 
     /** @var string */
-    public $login;
+    protected $login;
 
     /**
      * getLogin

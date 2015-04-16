@@ -24,10 +24,10 @@ class UpsellSettingsUpdate implements StoreFragmentInterface
     
     
     /** @var int */
-    public $productsToShow;
+    protected $productsToShow;
     
     /** @var int */
-    public $maxProductsToSelect;
+    protected $maxProductsToSelect;
     
 
     

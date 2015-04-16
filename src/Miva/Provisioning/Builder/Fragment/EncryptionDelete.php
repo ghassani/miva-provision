@@ -23,7 +23,7 @@ class EncryptionDelete implements StoreFragmentInterface
 {
 
     /** @var string */
-    public $prompt;
+    protected $prompt;
 
     /**
      * @return string

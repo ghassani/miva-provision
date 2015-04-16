@@ -23,16 +23,16 @@ class ProductAttributeAddTemplate implements StoreFragmentInterface
 {
     
     /** @var string */
-    public $productCode;
+    protected $productCode;
     
     /** @var string */
-    public $code;
+    protected $code;
     
     /** @var string */
-    public $prompt;
+    protected $prompt;
     
     /** @var string */
-    public $attributeTemplateCode;
+    protected $attributeTemplateCode;
     
     /**
      * getProductCode

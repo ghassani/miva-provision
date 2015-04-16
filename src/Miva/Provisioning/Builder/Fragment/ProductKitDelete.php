@@ -23,10 +23,10 @@ class ProductKitDelete implements StoreFragmentInterface
 {
         
     /** @var string */
-    public $productCode;
+    protected $productCode;
     
     /** @var array */
-    public $attributes = array();
+    protected $attributes = array();
     
     /**
      * getProductCode

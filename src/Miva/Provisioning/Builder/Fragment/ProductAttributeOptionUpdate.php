@@ -23,33 +23,33 @@ class ProductAttributeOptionUpdate implements StoreFragmentInterface
 {
 
     /** @var string */
-    public $productCode;
+    protected $productCode;
 
     /** @var string */
-    public $attributeCode;
+    protected $attributeCode;
 
-    public $optionCode;
-
-    /** @var string */
-    public $code;
+    protected $optionCode;
 
     /** @var string */
-    public $prompt;
+    protected $code;
 
     /** @var string */
-    public $image;
+    protected $prompt;
+
+    /** @var string */
+    protected $image;
 
     /** @var int */
-    public $price;
+    protected $price;
 
     /** @var int */
-    public $cost;
+    protected $cost;
 
     /** @var int */
-    public $weight;
+    protected $weight;
 
     /** @var bool */
-    public $defaultOption = false;
+    protected $defaultOption = false;
 
 
     /**

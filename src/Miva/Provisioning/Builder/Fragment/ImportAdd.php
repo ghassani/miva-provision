@@ -20,31 +20,31 @@ class ImportAdd implements FragmentInterface
 {
     
     /** @var string */
-    public $module;
+    protected $module;
     
     /** @var string */
-    public $description;
+    protected $description;
     
     /** @var string */
-    public $delimiter;
+    protected $delimiter;
     
     /** @var string */
-    public $delimiterOther;
+    protected $delimiterOther;
     
     /** @var string */
-    public $header;
+    protected $header;
     
     /** @var string */
-    public $autoMap;
+    protected $autoMap;
     
     /** @var array */
-    public $map = array();
+    protected $map = array();
     
     /** @var array */
-    public $settings = array();
+    protected $settings = array();
     
     /** @var array */
-    public $allowedDelimiters = array('tab','comma','semicolon','space','other');
+    protected $allowedDelimiters = array('tab','comma','semicolon','space','other');
     
     /**
      * Constructor

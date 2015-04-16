@@ -22,10 +22,10 @@ use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 class AttributeTemplateAttributeDelete implements StoreFragmentInterface
 {
     /** @var string */
-    public $templateCode;
+    protected $templateCode;
 
     /** @var string */
-    public $attributeCode;
+    protected $attributeCode;
 
     /**
      * getTemplateCode

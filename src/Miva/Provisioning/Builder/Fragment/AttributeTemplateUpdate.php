@@ -22,13 +22,13 @@ use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 class AttributeTemplateUpdate implements StoreFragmentInterface
 {
     /** @var string */
-    public $templateCode;
+    protected $templateCode;
 
     /** @var string */
-    public $code;
+    protected $code;
 
     /** @var string */
-    public $prompt;
+    protected $prompt;
 
     /**
      * @return string

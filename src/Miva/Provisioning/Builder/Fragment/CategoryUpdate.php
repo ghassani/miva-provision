@@ -24,22 +24,22 @@ class CategoryUpdate implements StoreFragmentInterface
 
 
     /** @var string */
-    public $name;
+    protected $name;
 
     /** @var string */
-    public $code;
+    protected $code;
 
     /** @var string */
-    public $newCode;
+    protected $newCode;
 
     /** @var string */
-    public $parentCategoryCode;
+    protected $parentCategoryCode;
 
     /** @var string */
-    public $alternateDisplayPage;
+    protected $alternateDisplayPage;
 
     /** @var boolean */
-    public $active = true;
+    protected $active = true;
 
 
     /**

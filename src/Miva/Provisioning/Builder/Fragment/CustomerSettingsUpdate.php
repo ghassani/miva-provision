@@ -23,13 +23,13 @@ class CustomerSettingsUpdate implements StoreFragmentInterface
 {
 
     /** @var int */
-    public $minimumPasswordLength;
+    protected $minimumPasswordLength;
 
     /** @var string */
-    public $passwordComplexity;
+    protected $passwordComplexity;
     
     /** @var int */
-    public $resetLinkExpiration;
+    protected $resetLinkExpiration;
     
     /**
      * getMinimumPasswordLength

@@ -25,49 +25,49 @@ class InventoryProductSettingsUpdate implements StoreFragmentInterface
     const VALUE_DEFAULT = 'default';
 
     /** @var string */
-    public $productCode;
+    protected $productCode;
 
     /** @var boolean */
-    public $trackProduct = false;
+    protected $trackProduct = false;
 
     /** @var int */
-    public $adjustStockBy;
+    protected $adjustStockBy;
 
     /** @var string */
-    public $inStockMessageShort;
+    protected $inStockMessageShort;
 
     /** @var string */
-    public $inStockMessageLong;
+    protected $inStockMessageLong;
 
     /** @var boolean */
-    public $trackLowStockLevel = self::VALUE_DEFAULT;
+    protected $trackLowStockLevel = self::VALUE_DEFAULT;
 
     /** @var string */
-    public $lowStockLevel = self::VALUE_DEFAULT;
+    protected $lowStockLevel = self::VALUE_DEFAULT;
 
     /** @var string */
-    public $lowStockMessageShort;
+    protected $lowStockMessageShort;
 
     /** @var string */
-    public $lowStockMessageLong;
+    protected $lowStockMessageLong;
 
     /** @var boolean */
-    public $trackOutOfStockLevel = self::VALUE_DEFAULT;
+    protected $trackOutOfStockLevel = self::VALUE_DEFAULT;
 
     /** @var string */
-    public $hideOutOfStockProducts = self::VALUE_DEFAULT;
+    protected $hideOutOfStockProducts = self::VALUE_DEFAULT;
 
     /** @var string */
-    public $outOfStockLevel = self::VALUE_DEFAULT;
+    protected $outOfStockLevel = self::VALUE_DEFAULT;
 
     /** @var string */
-    public $outOfStockMessageShort;
+    protected $outOfStockMessageShort;
 
     /** @var string */
-    public $outOfStockMessageLong;
+    protected $outOfStockMessageLong;
 
     /** @var string */
-    public $limitedStockMessage;
+    protected $limitedStockMessage;
 
     /**
      * @return int

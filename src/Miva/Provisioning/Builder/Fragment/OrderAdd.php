@@ -14,7 +14,6 @@ use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 use Miva\Provisioning\Builder\Fragment\Child\OrderItem;
-use Miva\Provisioning\Builder\Fragment\Child\OrderItemOption;
 
 
 /**
@@ -26,37 +25,37 @@ class OrderAdd implements StoreFragmentInterface
 {
 
     /** @var string */
-    public $shipFirstName;
+    protected $shipFirstName;
     
     /** @var string */
-    public $shipLastName;
+    protected $shipLastName;
     
     /** @var string */
-    public $shipEmail;
+    protected $shipEmail;
     
     /** @var string */
-    public $shipPhone;
+    protected $shipPhone;
     
     /** @var string */
-    public $shipAddress1;
+    protected $shipAddress1;
     
     /** @var string */
-    public $shipAddress2;
+    protected $shipAddress2;
     
     /** @var string */
-    public $shipCity;
+    protected $shipCity;
     
     /** @var string */
-    public $shipState;
+    protected $shipState;
     
     /** @var int */
-    public $shipZip;
+    protected $shipZip;
     
     /** @var string */
-    public $shipCountry;
+    protected $shipCountry;
     
     /** @var array */
-    public $items = array();
+    protected $items = array();
     
 
     
@@ -289,41 +288,36 @@ class OrderAdd implements StoreFragmentInterface
         $this->shipCountry = $shipCountry;
         return $this;
     }
-    
+
     /**
-     * getItems
-     *
-     * @return array
-    */
+     * @param OrderItem $item
+     * @return $this
+     */
+    public function addItem(OrderItem $item)
+    {
+        $this->items[] = $item;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getItems()
     {
         return $this->items;
     }
-    
+
     /**
-     * setItems
-     *
      * @param array $items
-     *
-     * @return self
-    */
-    public function setItems(array $items)
-    {
+     * @return $this
+     */
+    public function setItems(array $items) {
+        foreach ($items as $item) {
+            if (!$item instanceof OrderItem) {
+                throw new \InvalidArgumentException('OrderUpdate::setItems requires an array of OrderItem');
+            }
+        }
         $this->items = $items;
-        return $this;
-    }
-    
-    
-    /**
-     * addItem
-     *
-     * @param OrderItem $item
-     *
-     * @return self
-    */
-    public function addItem(OrderItem $item)
-    {
-        $this->items[] = $item;
         return $this;
     }
     

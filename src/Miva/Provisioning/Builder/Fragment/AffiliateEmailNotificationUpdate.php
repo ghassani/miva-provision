@@ -23,22 +23,22 @@ class AffiliateEmailNotificationUpdate implements StoreFragmentInterface
 {
 
     /** @var string */
-    public $sendEmailOnAffiliateSignups;
+    protected $sendEmailOnAffiliateSignups;
 
     /** @var string */
-    public $emailFrom;
+    protected $emailFrom;
 
     /** @var string */
-    public $emailTo;
+    protected $emailTo;
     
     /** @var string */
-    public $emailCC;
+    protected $emailCC;
     
     /** @var string */
-    public $subject;
+    protected $subject;
     
     /** @var string */
-    public $headerText;
+    protected $headerText;
 
 
     /**

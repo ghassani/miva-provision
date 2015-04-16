@@ -27,13 +27,13 @@ class Module implements StoreFragmentInterface
 {
 
     /** @var string */
-    public $code;
+    protected $code;
 
     /** @var string */
-    public $feature;
+    protected $feature;
     
     /** @var array */
-    public $data = array();
+    protected $data = array();
     
     /**
      * Constructor

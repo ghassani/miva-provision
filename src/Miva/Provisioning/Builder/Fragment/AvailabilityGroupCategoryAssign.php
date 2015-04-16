@@ -23,10 +23,10 @@ class AvailabilityGroupCategoryAssign implements StoreFragmentInterface
 {
     
     /** @var string */
-    public $groupName;
+    protected $groupName;
     
     /** @var string */
-    public $categoryCode;
+    protected $categoryCode;
     
     /**
      * getGroupName

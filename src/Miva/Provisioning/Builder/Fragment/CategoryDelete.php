@@ -22,7 +22,7 @@ use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 class CategoryDelete implements StoreFragmentInterface
 {
     /** @var string */
-    public $code;
+    protected $code;
 
     /**
      * setCode

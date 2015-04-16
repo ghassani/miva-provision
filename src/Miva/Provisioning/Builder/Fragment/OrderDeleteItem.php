@@ -24,12 +24,12 @@ class OrderDeleteItem implements StoreFragmentInterface
     /**
      * @var int
      */
-    public $orderId;
+    protected $orderId;
 
     /**
      * @var int
      */
-    public $lineId;
+    protected $lineId;
 
     /**
      * @return mixed

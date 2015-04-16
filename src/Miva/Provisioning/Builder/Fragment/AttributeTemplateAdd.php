@@ -23,10 +23,10 @@ class AttributeTemplateAdd implements StoreFragmentInterface
 {
 
     /** @var string */
-    public $code;
+    protected $code;
     
     /** @var string */
-    public $prompt;
+    protected $prompt;
 
     /**
      * getCode

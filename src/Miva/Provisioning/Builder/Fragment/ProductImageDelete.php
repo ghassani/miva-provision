@@ -23,10 +23,10 @@ class ProductImageDelete implements StoreFragmentInterface
 {
         
     /** @var string */
-    public $productCode;
+    protected $productCode;
     
     /** @var string */
-    public $filePath; 
+    protected $filePath; 
         
     /**
      * getProductCode

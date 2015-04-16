@@ -23,31 +23,31 @@ class AffiliateOptionsUpdate implements StoreFragmentInterface
 {
 
     /** @var string */
-    public $active;
+    protected $active;
     
     /** @var string */
-    public $applicationStatus;
+    protected $applicationStatus;
     
     /** @var float */
-    public $defaultCommissionHit;
+    protected $defaultCommissionHit;
     
     /** @var float */
-    public $defaultCommissionPercentOfOrder;
+    protected $defaultCommissionPercentOfOrder;
     
     /** @var float */
-    public $defaultCommissionOrderFlatFee;
+    protected $defaultCommissionOrderFlatFee;
     
     /** @var float */
-    public $payoutThreshold;
+    protected $payoutThreshold;
     
     /** @var string */
-    public $linkImage;
+    protected $linkImage;
     
     /** @var string */
-    public $linkText;
+    protected $linkText;
     
     /** @var string */
-    public $terms;
+    protected $terms;
 
     /**
     * getActive

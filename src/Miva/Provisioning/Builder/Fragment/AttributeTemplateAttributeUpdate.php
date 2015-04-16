@@ -22,37 +22,37 @@ use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 class AttributeTemplateAttributeAdd implements StoreFragmentInterface
 {
     /** @var string */
-    public $templateCode;
+    protected $templateCode;
 
     /** @var string */
-    public $attributeCode;
+    protected $attributeCode;
 
     /** @var string */
-    public $code;
+    protected $code;
 
     /** @var string */
-    public $type;
+    protected $type;
 
     /** @var string */
-    public $prompt;
+    protected $prompt;
 
     /** @var string */
-    public $image;
+    protected $image;
 
     /** @var float */
-    public $price;
+    protected $price;
 
     /** @var float */
-    public $cost;
+    protected $cost;
 
     /** @var float */
-    public $weight;
+    protected $weight;
 
     /** @var boolean  */
-    public $required = false;
+    protected $required = false;
 
     /** @var boolean  */
-    public $inventory = false;
+    protected $inventory = false;
 
     /**
      * getTemplateCode

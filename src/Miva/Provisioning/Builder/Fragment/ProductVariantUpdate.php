@@ -22,16 +22,16 @@ use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 class ProductVariantUpdate implements Model\StoreFragmentInterface
 {
     /** @var string $productCode */
-    public $productCode;
+    protected $productCode;
 
     /** @var array of ProductVariantOption */
-    public $options = array();
+    protected $options = array();
 
     /** @var array ProductVariantPart */
-    public $parts = array();
+    protected $parts = array();
 
     /** @var array */
-    public $productVariantPricing = null;
+    protected $productVariantPricing = null;
 
     /**
      * getProductCode

@@ -22,13 +22,13 @@ use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 class UpsoldProductRequiredProductAssign implements StoreFragmentInterface
 {
     /** @var string */
-    public $code;
+    protected $code;
 
     /** @var string */
-    public $upsoldProductCode;
+    protected $upsoldProductCode;
 
     /** @var string */
-    public $requiredProductCode;
+    protected $requiredProductCode;
 
 
     /**

@@ -22,10 +22,10 @@ use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 class CouponCustomerAssign implements StoreFragmentInterface
 {
     /** @var string */
-    public $couponCode;
+    protected $couponCode;
 
     /** @var string */
-    public $customerLogin;
+    protected $customerLogin;
 
     /**
      * @return string

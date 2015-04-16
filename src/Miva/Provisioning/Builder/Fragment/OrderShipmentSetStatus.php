@@ -23,19 +23,19 @@ class OrderShipmentSetStatus implements StoreFragmentInterface
 {
     
     /** @var string */
-    public $code;
+    protected $code;
     
     /** @var int */
-    public $markAsShipped;
+    protected $markAsShipped;
     
     /** @var int */
-    public $trackingNumber;
+    protected $trackingNumber;
     
     /** @var string */
-    public $trackingType;
+    protected $trackingType;
     
     /** @var DateTime|null */
-    public $shipDate;
+    protected $shipDate;
 
     /**
      * getCode

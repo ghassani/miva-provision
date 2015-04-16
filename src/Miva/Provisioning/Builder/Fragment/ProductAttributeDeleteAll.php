@@ -22,7 +22,7 @@ class ProductAttributeDeleteAll implements StoreFragmentInterface
 {
 
     /** @var string */
-    public $productCode;
+    protected $productCode;
 
     /**
      * getProductCode

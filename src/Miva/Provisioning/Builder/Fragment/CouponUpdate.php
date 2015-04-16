@@ -26,31 +26,31 @@ class CouponUpdate implements StoreFragmentInterface
     const ELIGIBILITY_ALL       = 'all';
 
     /** @var string */
-    public $code;
+    protected $code;
 
     /** @var string */
-    public $newCode;
+    protected $newCode;
 
     /** @var string */
-    public $description;
+    protected $description;
 
     /** @var string */
-    public $eligibility;
+    protected $eligibility;
 
     /** @var DateTime */
-    public $NotValidBefore;
+    protected $NotValidBefore;
 
     /** @var DateTime */
-    public $NotValidAfter;
+    protected $NotValidAfter;
 
     /** @var int */
-    public $maxUse = 0;
+    protected $maxUse = 0;
 
     /** @var int */
-    public $maxPerShopper = 0;
+    protected $maxPerShopper = 0;
 
     /** @var bool */
-    public $active = false;
+    protected $active = false;
 
     /**
      * @return string

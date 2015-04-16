@@ -24,10 +24,10 @@ class ShippingRulesUpdate implements StoreFragmentInterface
     
     
     /** @var string */
-    public $requiredShippingRedirectPageCode;
+    protected $requiredShippingRedirectPageCode;
     
     /** @var array */
-    public $fallbackShippingMethod = array(
+    protected $fallbackShippingMethod = array(
         'Description' => null,
         'Type' => null, 
         'Amount' => null

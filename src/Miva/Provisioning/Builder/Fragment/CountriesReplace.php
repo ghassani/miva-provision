@@ -23,7 +23,7 @@ use Miva\Provisioning\Builder\Fragment\Child\CountriesReplaceCountry;
 class CountriesReplace implements StoreFragmentInterface
 {
     /** @var array */
-    public $countries = array();
+    protected $countries = array();
 
     /**
      * getCountries

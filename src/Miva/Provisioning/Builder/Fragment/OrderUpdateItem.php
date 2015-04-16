@@ -22,27 +22,27 @@ use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 class OrderUpdateItem implements StoreFragmentInterface
 {
 
-    public $orderId;
+    protected $orderId;
 
-    public $lineId;
+    protected $lineId;
 
-    public $code;
+    protected $code;
 
-    public $name;
+    protected $name;
 
-    public $price;
+    protected $price;
 
-    public $weight;
+    protected $weight;
 
-    public $taxable = false;
+    protected $taxable = false;
 
-    public $upsold = false;
+    protected $upsold = false;
 
-    public $quantity;
+    protected $quantity;
 
-    public $options = array();
+    protected $options = array();
 
-    public $shipments = array();
+    protected $shipments = array();
 
     /**
      * @return mixed

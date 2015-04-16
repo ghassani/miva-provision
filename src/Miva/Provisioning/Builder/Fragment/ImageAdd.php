@@ -23,7 +23,7 @@ class ImageAdd implements StoreFragmentInterface
 {
     
     /** @var string */
-    public $filePath;
+    protected $filePath;
 
     /**
      * Constructor

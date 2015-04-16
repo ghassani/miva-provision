@@ -22,25 +22,25 @@ use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 class ProductShippingRulesUpdate implements StoreFragmentInterface
 {
     /** @var string */
-    public $productCode;
+    protected $productCode;
 
     /** @var bool */
-    public $shipsInOwnPackaging;
+    protected $shipsInOwnPackaging;
 
     /** @var string */
-    public $width;
+    protected $width;
 
     /** @var string */
-    public $length;
+    protected $length;
 
     /** @var string */
-    public $height;
+    protected $height;
     
     /** @var bool */
-    public $limitShippingMethods;
+    protected $limitShippingMethods;
 
     /** @var array[ShippingMethod] */
-    public $shippingMethods = array();
+    protected $shippingMethods = array();
 
     /**
      * @return mixed

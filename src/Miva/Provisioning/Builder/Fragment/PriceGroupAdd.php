@@ -44,76 +44,76 @@ class PriceGroupAdd implements StoreFragmentInterface
 
 
     /** @var string */
-    public $name;
+    protected $name;
     
     /** @var string */
-    public $pricing;
+    protected $pricing;
     
     /** @var float */
-    public $amount;
+    protected $amount;
 
     /** @var string */
-    public $eligibility;
+    protected $eligibility;
 
     /** @var DateTime|null */
-    public $notValidBefore;
+    protected $notValidBefore;
 
     /** @var DateTime|null */
-    public $notValidAfter;
+    protected $notValidAfter;
 
     /** @var int */
-    public $priority;
+    protected $priority;
 
     /** @var string */
-    public $module;
+    protected $module;
 
     /** @var string */
-    public $description;
+    protected $description;
 
     /** @var bool */
-    public $displayInBasket = false;
+    protected $displayInBasket = false;
 
     /** @var float */
-    public $qualifyingMinimumSubtotal = 0.00;
+    protected $qualifyingMinimumSubtotal = 0.00;
 
     /** @var float */
-    public $qualifyingMaximumSubtotal = 0.00;
+    protected $qualifyingMaximumSubtotal = 0.00;
 
     /** @var int */
-    public $qualifyingMinimumQuantity = 0;
+    protected $qualifyingMinimumQuantity = 0;
 
     /** @var int */
-    public $qualifyingMaximumQuantity = 0;
+    protected $qualifyingMaximumQuantity = 0;
 
     /** @var float */
-    public $qualifyingMinimumWeight = 0.00;
+    protected $qualifyingMinimumWeight = 0.00;
 
     /** @var float */
-    public $qualifyingMaximumWeight = 0.00;
+    protected $qualifyingMaximumWeight = 0.00;
 
     /** @var float */
-    public $basketMinimumSubtotal = 0.00;
+    protected $basketMinimumSubtotal = 0.00;
 
     /** @var float */
-    public $basketMaximumSubtotal = 0.00;
+    protected $basketMaximumSubtotal = 0.00;
 
     /** @var float */
-    public $basketMinimumQuantity = 0;
+    protected $basketMinimumQuantity = 0;
 
     /** @var float */
-    public $basketMaximumQuantity = 0;
+    protected $basketMaximumQuantity = 0;
 
     /** @var float */
-    public $basketMinimumWeight = 0.00;
+    protected $basketMinimumWeight = 0.00;
 
     /** @var float */
-    public $basketMaximumWeight = 0.00;
+    protected $basketMaximumWeight = 0.00;
 
     /** @var array */
-    public $settings = array();
+    protected $settings = array();
 
     /** @var array */
-    public $exclusions = array();
+    protected $exclusions = array();
 
 
 

@@ -22,10 +22,10 @@ use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 class ProductVariantDelete implements StoreFragmentInterface
 {
     /** @var string $productCode */
-    public $productCode;
+    protected $productCode;
     
     /** @var array */
-    public $options = array();
+    protected $options = array();
     
         
     /**
