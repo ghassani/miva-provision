@@ -174,9 +174,7 @@ class OrderShipment implements ChildFragmentInterface
 
         if ($this->getShipDate() instanceof \DateTime) {
             $date =  $xmlObject->addChild('ShipDate');
-            $date->addChild('Day',   $this->getShipDate()->format());
-            $date->addChild('Month', $this->getShipDate()->format());
-            $date->addChild('Year',  $this->getShipDate()->format());
+            XmlHelper::dateToXml($date, $this->getShipDate());
         }
 
         return $xmlObject;

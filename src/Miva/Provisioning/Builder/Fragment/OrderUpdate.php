@@ -652,7 +652,9 @@ class OrderUpdate implements StoreFragmentInterface
 
         $xmlObject->addAttribute('order_id', $this->getOrderId());
 
-        $xmlObject->addChild('CustomerLogin', $this->getSomething());
+        if ($this->getCustomerLogin()) {
+            $xmlObject->addChild('CustomerLogin', $this->getCustomerLogin());
+        }
 
         if ($this->getShipFirstName()) {
             $xmlObject->addChild('ShipFirstName', $this->getShipFirstName());
@@ -750,6 +752,8 @@ class OrderUpdate implements StoreFragmentInterface
         if ($this->getBillCountry()) {
             $xmlObject->addChild('BillCountry', $this->getBillCountry());
         }
+
+
 
         if (count($this->getItems())) {
             $itemsXml = $xmlObject->addChild('Items');

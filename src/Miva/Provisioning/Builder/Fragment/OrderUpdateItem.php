@@ -13,6 +13,8 @@ use Miva\Version;
 use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
+use Miva\Provisioning\Builder\Fragment\Child\OrderShipment;
+use Miva\Provisioning\Builder\Fragment\Child\OrderItemOption;
 
 /**
  * OrderUpdateItem
@@ -34,9 +36,9 @@ class OrderUpdateItem implements StoreFragmentInterface
 
     protected $weight;
 
-    protected $taxable = false;
+    protected $taxable = null;
 
-    protected $upsold = false;
+    protected $upsold = null;
 
     protected $quantity;
 
@@ -186,6 +188,11 @@ class OrderUpdateItem implements StoreFragmentInterface
      */
     public function setShipments(array $shipments = array())
     {
+        foreach ($shipments as $shipment) {
+            if (!$shipment instanceof OrderShipment) {
+                throw new \InvalidArgumentException('OrderUpdateItem::setShipments requires an array of OrderShipment');
+            }
+        }
         $this->shipments = $shipments;
         return $this;
     }
@@ -193,7 +200,7 @@ class OrderUpdateItem implements StoreFragmentInterface
     /**
      * @param OrderItemShipment $shipment
      */
-    public function addShipment(OrderAddItemShipment $shipment)
+    public function addShipment(OrderShipment $shipment)
     {
         $this->shipments[] = $shipment;
         return $this;
@@ -296,6 +303,49 @@ class OrderUpdateItem implements StoreFragmentInterface
     {
         $xmlObject = new SimpleXMLElement('<Order_Update_Item />');
 
+        $xmlObject->addAttribute('order_id', $this->getOrderId());
+        $xmlObject->addAttribute('line_id', $this->getLineId());
+
+        if ($this->getCode()) {
+            $xmlObject->addChild('Code', $this->getCode());
+        }
+
+        if ($this->getName()) {
+            $xmlObject->addChild('Name', $this->getName());
+        }
+
+        if ($this->getPrice()) {
+            $xmlObject->addChild('Price', $this->getPrice());
+        }
+
+        if ($this->getWeight()) {
+            $xmlObject->addChild('Weight', $this->getWeight());
+        }
+
+        if ($this->getQuantity()) {
+            $xmlObject->addChild('Quantity', $this->getQuantity());
+        }
+
+        if (!is_null($this->getTaxable())) {
+            $xmlObject->addChild('Quantity', $this->getTaxable() ? 'Yes' : 'No');
+        }
+
+        if (!is_null($this->getUpsold())) {
+            $xmlObject->addChild('Upsold', $this->getUpsold() ? 'Yes' : 'No');
+        }
+
+        if (count($this->getShipments())) {
+            foreach ($this->getShipments() as $shipment) {
+                XmlHelper::appendToParent($xmlObject, $shipment->toXml($version, $options));
+            }
+        }
+
+        if (count($this->getOptions())) {
+            $optionsXml = $xmlObject->addChild('Options');
+            foreach ($this->getOptions() as $option) {
+                XmlHelper::appendToParent($optionsXml, $option->toXml($version, $options));
+            }
+        }
 
 
         return $xmlObject;
