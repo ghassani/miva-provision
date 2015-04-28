@@ -145,7 +145,6 @@ class OrderShipmentAdd implements StoreFragmentInterface
 
 
         foreach($this->getProductList() as $product) {
-            $productXml = $productListXml->addChild('Product');
             XmlHelper::appendToParent($productListXml, $product->toXml());
         }
         
