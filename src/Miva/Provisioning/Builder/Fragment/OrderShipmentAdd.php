@@ -85,13 +85,13 @@ class OrderShipmentAdd implements StoreFragmentInterface
     }
     
     /**
-     * addProductList
+     * addProductToList
      *
      * @param ProductListProduct $product
      *
      * @return self
     */
-    public function addProductList(ShipmentProductListProduct $product)
+    public function addProductToList(ShipmentProductListProduct $product)
     {
         $this->productList[] = $product;
         return $this;
