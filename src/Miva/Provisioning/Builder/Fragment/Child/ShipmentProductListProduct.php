@@ -87,8 +87,8 @@ class ShipmentProductListProduct implements ChildFragmentInterface
 
         $xmlObject = new SimpleXMLElement('<Product />');
 
-        $xmlObject->addChild('Code', $this->getCode());
-        $xmlObject->addChild('Quantity', $this->getQuantity());
+        $xmlObject->addAttribute('product_code', $this->getCode());
+        $xmlObject->addAttribute('quantity', $this->getQuantity());
 
         return $xmlObject;
     }
