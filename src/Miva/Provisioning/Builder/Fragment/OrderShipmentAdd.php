@@ -13,6 +13,7 @@ use Miva\Version;
 use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
+use Miva\Provisioning\Builder\Fragment\Child\ShipmentProductListProduct;
 
 /**
 * OrderShipmentAdd
@@ -74,6 +75,11 @@ class OrderShipmentAdd implements StoreFragmentInterface
     */
     public function setProductList(array $productList)
     {
+        foreach ($productList as $product) {
+            if (!$product instanceof ShipmentProductListProduct) {
+                throw new \InvalidArgumentException('OrderShipmentAdd:setProductList requires an array of ShipmentProductListProduct');
+            }
+        }
         $this->productList = $productList;
         return $this;
     }
@@ -85,7 +91,7 @@ class OrderShipmentAdd implements StoreFragmentInterface
      *
      * @return self
     */
-    public function addProductList(ProductListProduct $product)
+    public function addProductList(ShipmentProductListProduct $product)
     {
         $this->productList[] = $product;
         return $this;
@@ -136,11 +142,11 @@ class OrderShipmentAdd implements StoreFragmentInterface
         $xmlObject->addAttribute('order_id', $this->getOrderId());
         
         $productListXml = $xmlObject->addChild('ProductList');
-        
+
+
         foreach($this->getProductList() as $product) {
             $productXml = $productListXml->addChild('Product');
-            $productXml->addAttribute('product_code', $product->getCode());
-            $productXml->addAttribute('quantity', $product->getQuantity());
+            XmlHelper::appendToParent($productListXml, $product->toXml());
         }
         
         $xmlObject->addChild('Code', $this->getCode());
