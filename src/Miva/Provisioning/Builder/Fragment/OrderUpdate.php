@@ -14,6 +14,7 @@ use Miva\Provisioning\Builder\Helper\XmlHelper;
 use Miva\Provisioning\Builder\SimpleXMLElement;
 use Miva\Provisioning\Builder\Fragment\Model\StoreFragmentInterface;
 use Miva\Provisioning\Builder\Fragment\Child\OrderItem;
+use Miva\Provisioning\Builder\Fragment\Child\OrderCharge;
 
 /**
  * OrderUpdate
@@ -107,6 +108,11 @@ class OrderUpdate implements StoreFragmentInterface
      * @var array|OrderItem
      */
     protected $items = array();
+
+    /**
+     * @var array|OrderCharge
+     */
+    protected $charges = array();
 
     /**
      * @return mixed
@@ -600,7 +606,37 @@ class OrderUpdate implements StoreFragmentInterface
         return $this->orderDate;
     }
 
+    /**
+     * @param OrderCharge $charge
+     * @return $this
+     */
+    public function addCharge(OrderCharge $charge)
+    {
+        $this->charges[] = $charge;
+        return $this;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getCharges()
+    {
+        return $this->charges;
+    }
+
+    /**
+     * @param array $charges
+     * @return $this
+     */
+    public function setCharges(array $charges) {
+        foreach ($charges as $charge) {
+            if (!$charge instanceof OrderCharge) {
+                throw new \InvalidArgumentException('OrderUpdate::setChargees requires an array of OrderCharge');
+            }
+        }
+        $this->charges = $charges;
+        return $this;
+    }
     /**
      * {@inheritDoc}
      *
@@ -643,6 +679,9 @@ class OrderUpdate implements StoreFragmentInterface
      *      </CalculateCharges>
      *      <Total></Total>
      *      <OrderDate></OrderDate>
+     *      <ChargeList>
+     *          <!-- OPTIONAL, IF SET WILL DELETE ALL EXISTING CHARGES AS OF 9.0.0.3
+     *      </ChargeList>
      *  </Order_Update>
      *
      */
@@ -759,6 +798,13 @@ class OrderUpdate implements StoreFragmentInterface
             $itemsXml = $xmlObject->addChild('Items');
             foreach ($this->getItems() as $item) {
                 XmlHelper::appendToParent($itemsXml, $item->toXml($version, $options));
+            }
+        }
+
+        if (count($this->getCharges())) {
+            $chargesXml = $xmlObject->addChild('Charges');
+            foreach ($this->getCharges() as $charge) {
+                XmlHelper::appendToParent($chargesXml, $charge->toXml($version, $options));
             }
         }
 

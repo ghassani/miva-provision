@@ -31,6 +31,9 @@ class OrderShipmentAdd implements StoreFragmentInterface
     
     /** @var string */
     protected $code;
+
+    /** @var float cost */
+    protected $cost;
     
 
     /**
@@ -118,8 +121,30 @@ class OrderShipmentAdd implements StoreFragmentInterface
     {
         $this->code = $code;
         return $this;
+    }    
+    
+    /**
+     * getCost
+     *
+     * @return float
+    */
+    public function getCost()
+    {
+        return $this->cost;
     }
     
+    /**
+     * setCost
+     *
+     * @param float $cost
+     *
+     * @return self
+    */
+    public function setCost($cost)
+    {
+        $this->cost = $cost;
+        return $this;
+    }
 
     /**
      * {@inheritDoc}
@@ -149,6 +174,11 @@ class OrderShipmentAdd implements StoreFragmentInterface
         }
         
         $xmlObject->addChild('Code', $this->getCode());
+        
+        if (!is_null($this->getCost())) {
+            $xmlObject->addChild('Cost', number_format($this->getCost(), 2, '.', ''));
+
+        }
         
         return $xmlObject;
     }
